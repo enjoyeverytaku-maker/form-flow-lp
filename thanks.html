@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>送信完了｜Form Flow</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #06C755;
+      --navy:  #0D1117;
+      --text:  #E6EDF3;
+      --sub:   #8B949E;
+      --border: rgba(255,255,255,.1);
+    }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      background: rgba(13,17,23,.97);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-logo { font-size: 18px; font-weight: 800; color: var(--text); }
+    .nav-logo span { color: var(--green); }
+    .main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .card {
+      max-width: 480px;
+    }
+    .icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(6,199,85,.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin: 0 auto 28px;
+    }
+    h1 { font-size: 24px; font-weight: 800; margin-bottom: 14px; }
+    p { font-size: 15px; color: var(--sub); line-height: 1.8; margin-bottom: 10px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 32px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .btn:hover { background: #04a344; }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: var(--sub);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">Form <span>Flow</span></div>
+</nav>
+<div class="main">
+  <div class="card">
+    <div class="icon">✓</div>
+    <h1>送信が完了しました</h1>
+    <p>お問い合わせいただきありがとうございます。</p>
+    <p>通常、1営業日以内にご返信いたします。<br>LINEからのご相談は数時間以内にご返信しています。</p>
+    <a href="/" class="btn">← トップページに戻る</a>
+  </div>
+</div>
+<footer>© 2026 Form Flow. All rights reserved.</footer>
+</body>
+</html>

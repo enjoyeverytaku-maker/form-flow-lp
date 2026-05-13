@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>構築イメージ・事例｜Form Flow</title>
+  <meta name="description" content="Form FlowのLINE公式アカウント構築イメージ。整体院・美容院・コンサル・不動産など業種別の自動化事例を紹介します。">
+  <meta name="robots" content="index, follow">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:  #06C755;
+      --green-d:#04a344;
+      --green-lt:rgba(6,199,85,.12);
+      --navy:   #0D1117;
+      --navy-lt:#161B22;
+      --slate:  #21262D;
+      --text:   #E6EDF3;
+      --sub:    #8B949E;
+      --border: rgba(255,255,255,.1);
+      --off:    #161B22;
+    }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(13,17,23,.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 18px; font-weight: 800; color: var(--text); }
+    .nav-logo span { color: var(--green); }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { font-size: 14px; color: var(--sub); transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-cta {
+      background: var(--green); color: #fff !important;
+      padding: 8px 18px; border-radius: 6px; font-weight: 700; font-size: 14px;
+    }
+    .nav-cta:hover { background: var(--green-d) !important; }
+
+    .hero {
+      background: linear-gradient(135deg, #0D1117 0%, #0F2447 60%, #0D7A5F 100%);
+      padding: 72px 40px 60px;
+      text-align: center;
+    }
+    .hero-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--green); text-transform: uppercase; margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(24px, 4vw, 36px); font-weight: 900; margin-bottom: 14px; }
+    .hero p { font-size: 15px; color: rgba(255,255,255,.7); max-width: 520px; margin: 0 auto; }
+
+    .note-bar {
+      background: var(--slate);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 40px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--sub);
+    }
+    .note-bar strong { color: var(--text); }
+
+    section { padding: 72px 40px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .section-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--green); text-transform: uppercase; margin-bottom: 10px; }
+    .section-title { font-size: clamp(20px, 3vw, 28px); font-weight: 800; margin-bottom: 12px; }
+    .section-sub { font-size: 15px; color: var(--sub); margin-bottom: 40px; line-height: 1.8; }
+    .divider { width: 36px; height: 3px; background: var(--green); border-radius: 2px; margin-bottom: 14px; }
+
+    .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .case-card {
+      background: var(--navy-lt);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .case-card:hover { box-shadow: 0 8px 32px rgba(6,199,85,.1); transform: translateY(-2px); }
+    .case-header {
+      background: linear-gradient(135deg, var(--slate), var(--navy-lt));
+      padding: 28px 24px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .case-tag {
+      display: inline-block;
+      background: var(--green-lt);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    .case-header h3 { font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.4; }
+    .case-body { padding: 20px 24px; }
+    .case-label { font-size: 11px; font-weight: 700; color: var(--sub); letter-spacing: .08em; margin-bottom: 8px; margin-top: 14px; }
+    .case-label:first-child { margin-top: 0; }
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .flow-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--sub);
+    }
+    .flow-step .dot {
+      width: 22px; height: 22px;
+      background: var(--green-lt);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: var(--green);
+      flex-shrink: 0;
+    }
+    .flow-arrow { font-size: 11px; color: var(--border); text-align: center; padding-left: 11px; }
+    .feature-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .feature-tag {
+      background: var(--slate);
+      color: var(--sub);
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+    .plan-ref {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--sub);
+    }
+    .plan-ref strong { color: var(--green); }
+
+    .cta-section {
+      background: var(--navy-lt);
+      border-top: 1px solid var(--border);
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .cta-section h2 { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
+    .cta-section p { color: var(--sub); font-size: 15px; margin-bottom: 28px; }
+    .btn-green {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--green); color: #fff;
+      font-weight: 700; font-size: 16px;
+      padding: 15px 36px; border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(6,199,85,.3);
+      transition: background .2s, transform .15s;
+    }
+    .btn-green:hover { background: var(--green-d); transform: translateY(-2px); }
+
+    footer {
+      background: var(--navy);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 13px;
+      color: var(--sub);
+    }
+    .footer-logo { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+    .footer-logo span { color: var(--green); }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero { padding: 56px 20px 48px; }
+      .note-bar { padding: 12px 20px; }
+      section { padding: 56px 20px; }
+      .cta-section { padding: 48px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Form <span>Flow</span></a>
+  <div class="nav-links">
+    <a href="/service.html">サービス詳細</a>
+    <a href="/cases.html" class="active">構築例</a>
+    <a href="/column.html">コラム</a>
+    <a href="/#cta" class="nav-cta">無料相談</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">Cases</div>
+  <h1>業種別・構築イメージ</h1>
+  <p>どんな仕組みが作れるか、業種ごとにイメージをまとめました。<br>「うちの場合は？」はお気軽にご相談ください。</p>
+</div>
+
+<div class="note-bar">
+  <strong>※ 掲載内容はイメージです。</strong> 実際の構築内容はヒアリング後にご提案します。
+</div>
+
+<section>
+  <div class="container">
+    <div class="divider"></div>
+    <div class="section-label">Case Studies</div>
+    <h2 class="section-title">こんな仕組みを作れます</h2>
+    <p class="section-sub">業種・目的に合わせて設計します。似たケースがあればそのままご依頼いただけます。</p>
+
+    <div class="case-grid">
+
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-tag">整体院・治療院</div>
+          <h3>予約確認〜リマインドまで<br>全自動化</h3>
+        </div>
+        <div class="case-body">
+          <div class="case-label">自動化フロー</div>
+          <div class="flow">
+            <div class="flow-step"><div class="dot">1</div>友だち追加</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><div class="dot">2</div>初回クーポンを自動送信</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><div class="dot">3</div>「予約」と送ると予約フォームを案内</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><div class="dot">4</div>前日リマインドを自動配信</div>
+          </div>
+          <div class="case-label">使用機能</div>
+          <div class="feature-tags">
+            <span class="feature-tag">リッチメニュー</span>
+            <span class="feature-tag">キーワード返信</span>
+            <span class="feature-tag">ステップ配信</span>
+            <span class="feature-tag">GASトリガー</span>
+          </div>
+          <div class="plan-ref">推奨プラン：<strong>スタンダード〜プレミアム</strong></div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-tag">個人コンサル・コーチング</div>
+          <h3>7日間ステップ教育<br>シナリオ配信</h3>
+        </div>
+        <div class="case-body">
+          <div class="case-label">自動化フロー</div>
+          <div class="flow">
+            <div class="flow-step"><div class="dot">1</div>友だち追加</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><div class="dot">2</div>Day1〜7のコンテンツを毎日自動配信</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><div class="dot">3</div>Day7に個別相談への誘導メッセージ</div>
+          </div>
+          <div class="case-label">使用機能</div>
+          <div class="feature-tags">
+            <span class="feature-tag">ステップ配信</span>
+            <span class="feature-tag">GAS（月額0円）</span>
+            <span class="feature-tag">リッチメニュー</span>
+          </div>
+          <div class="plan-ref">推奨プラン：<strong>スタンダード〜プレミアム</strong></div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-tag">不動産・サービス業</div>
+          <h3>問い合わせを<br>スプレッドシートに自動記録</h3>
+        </div>
+        <div class="case-body">
+          <div class="case-label">自動化フロー</div>
+          <div class="flow">
+            <div class="flow-step"><div class="dot">1</div>LINEから問い合わせが届く</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><div class="dot">2</div>内容・日時・ユーザーIDを自動記録</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><div class="dot">3</div>担当者にメールで通知</div>
+          </div>
+          <div class="case-label">使用機能</div>
+          <div class="feature-tags">
+            <span class="feature-tag">Webhook</span>
+            <span class="feature-tag">GAS連携</span>
+            <span class="feature-tag">スプレッドシート</span>
+            <span class="feature-tag">メール通知</span>
+          </div>
+          <div class="plan-ref">推奨プラン：<strong>プレミアム</strong></div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-tag">飲食・美容室</div>
+          <h3>リッチメニュー＋<br>定期クーポン配信</h3>
+        </div>
+        <div class="case-body">
+          <div class="case-label">自動化フロー</div>
+          <div class="flow">
+            <div class="flow-step"><div class="dot">1</div>友だち追加で初回クーポンを即送信</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><div class="dot">2</div>月1回の定期クーポンを配信</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><div class="dot">3</div>リッチメニューからメニュー・予約に誘導</div>
+          </div>
+          <div class="case-label">使用機能</div>
+          <div class="feature-tags">
+            <span class="feature-tag">リッチメニュー</span>
+            <span class="feature-tag">あいさつメッセージ</span>
+            <span class="feature-tag">一斉配信</span>
+          </div>
+          <div class="plan-ref">推奨プラン：<strong>ライト〜スタンダード</strong></div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-tag">士業・専門職</div>
+          <h3>初回相談の<br>自動受付フロー</h3>
+        </div>
+        <div class="case-body">
+          <div class="case-label">自動化フロー</div>
+          <div class="flow">
+            <div class="flow-step"><div class="dot">1</div>友だち追加でサービス案内を送信</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><div class="dot">2</div>「相談」と送ると相談フォームURLを案内</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><div class="dot">3</div>フォーム送信→スプレッドシートに記録</div>
+          </div>
+          <div class="case-label">使用機能</div>
+          <div class="feature-tags">
+            <span class="feature-tag">キーワード返信</span>
+            <span class="feature-tag">Googleフォーム連携</span>
+            <span class="feature-tag">GAS</span>
+          </div>
+          <div class="plan-ref">推奨プラン：<strong>スタンダード</strong></div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <div class="case-tag">ECサイト・物販</div>
+          <h3>購入後フォロー＆<br>レビュー依頼の自動化</h3>
+        </div>
+        <div class="case-body">
+          <div class="case-label">自動化フロー</div>
+          <div class="flow">
+            <div class="flow-step"><div class="dot">1</div>購入者が友だち追加</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><div class="dot">2</div>3日後にフォローメッセージを自動送信</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step"><div class="dot">3</div>7日後にレビュー依頼を自動送信</div>
+          </div>
+          <div class="case-label">使用機能</div>
+          <div class="feature-tags">
+            <span class="feature-tag">ステップ配信</span>
+            <span class="feature-tag">GASトリガー</span>
+            <span class="feature-tag">リッチメニュー</span>
+          </div>
+          <div class="plan-ref">推奨プラン：<strong>スタンダード〜プレミアム</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <h2>「うちの業種はどうなる？」</h2>
+  <p>ヒアリングした上で、最適な構成をご提案します。相談・見積もりは無料です。</p>
+  <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-green">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+    LINEで無料相談する
+  </a>
+</div>
+
+<footer>
+  <div class="footer-logo">Form <span>Flow</span></div>
+  <p>© 2026 Form Flow. All rights reserved.</p>
+  <p style="margin-top:10px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+    <a href="/privacy.html" style="color:rgba(255,255,255,.4);font-size:12px;">プライバシーポリシー</a>
+    <a href="/terms.html" style="color:rgba(255,255,255,.4);font-size:12px;">利用規約</a>
+    <a href="/tokushoho.html" style="color:rgba(255,255,255,.4);font-size:12px;">特定商取引法に基づく表記</a>
+  </p>
+</footer>
+
+</body>
+</html>

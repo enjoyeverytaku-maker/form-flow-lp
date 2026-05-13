@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ── Primary SEO ── -->
+  <title>公式LINE構築サービス｜Form Flow</title>
+  <meta name="description" content="業務フローから整理する公式LINE構築サービス。自動応答・Googleスプレッドシート連携・予約受付・リッチメニュー制作まで一括対応。個人事業主・中小企業向けにモニター価格でご提供中。">
+  <meta name="keywords" content="公式LINE構築,LINE設定代行,LINEリッチメニュー,LINE自動応答,Googleスプレッドシート連携,LINE構築サービス,LINE初期設定,LINE予約受付,LINE自動化,公式LINEアカウント設定">
+  <meta name="author" content="Form Flow">
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="c5T4gxlh0ySE7zv0lXo5yHzY0vGVnwTSfkNCSWb_fAg">
+  <meta property="og:image" content="https://line-form.netlify.app/ogp.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="670">
+  <meta name="twitter:image" content="https://line-form.netlify.app/ogp.png">
+  <link rel="canonical" href="https://line-form.netlify.app/">
+
+  <!-- ── Open Graph ── -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://line-form.netlify.app/">
+  <meta property="og:title" content="公式LINE構築サービス｜Form Flow">
+  <meta property="og:description" content="業務フローから整理する公式LINE構築サービス。自動応答・スプレッドシート連携・予約受付まで。モニター価格で受付中。">
+  <meta property="og:site_name" content="Form Flow">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="公式LINE構築サービス｜Form Flow">
+  <meta name="twitter:description" content="業務フローから整理する公式LINE構築サービス。自動応答・スプレッドシート連携・予約受付まで。モニター価格で受付中。">
+
+  <!-- ── JSON-LD ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Form Flow",
+    "description": "公式LINE構築サービス。自動応答・リッチメニュー・スプレッドシート連携まで一括対応。",
+    "url": "https://line-form.netlify.app/",
+    "email": "lineform.works@gmail.com",
+    "serviceType": "LINE公式アカウント構築・設定代行"
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:     #06C755;
+      --green-d:   #04a344;
+      --green-lt:  rgba(6,199,85,.15);
+      --navy:      #0D1117;
+      --navy-lt:   #161B22;
+      --slate:     #21262D;
+      --text:      #E6EDF3;
+      --sub:       #8B949E;
+      --border:    rgba(255,255,255,.1);
+      --bg:        #0D1117;
+      --off:       #161B22;
+      --off2:      #21262D;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 16px;
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(13,17,23,.97);
+      backdrop-filter: blur(12px);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 8px rgba(0,0,0,.3);
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: .02em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--green); }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--sub); transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--green);
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--green-d) !important; }
+
+    /* ─── HERO ─── */
+    #hero {
+      background: linear-gradient(135deg, #0D1117 0%, #0F2447 60%, #0D7A5F 100%);
+      color: #fff;
+      padding: 100px 40px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(6,199,85,.12) 0%, transparent 60%);
+    }
+    .hero-inner { position: relative; max-width: 720px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(6,199,85,.18);
+      border: 1px solid rgba(6,199,85,.4);
+      color: #5FE899;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    .hero-badge::before { content: '●'; font-size: 8px; }
+    #hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 20px;
+      letter-spacing: -.02em;
+    }
+    #hero h1 em { color: var(--green); font-style: normal; }
+    .hero-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,.78);
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 16px 32px;
+      border-radius: 8px;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 16px rgba(6,199,85,.35);
+    }
+    .btn-line:hover { background: var(--green-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(6,199,85,.4); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.3);
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 15px 28px;
+      border-radius: 8px;
+      transition: background .2s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.2); }
+    .hero-note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: rgba(255,255,255,.5);
+    }
+
+    /* ─── TRUST BAR ─── */
+    #trustbar {
+      background: var(--off);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 40px;
+    }
+    .trustbar-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--sub);
+      font-weight: 500;
+    }
+    .trust-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--green-lt);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 80px 40px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: var(--green-d);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.35;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--sub);
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+    .divider {
+      width: 40px;
+      height: 3px;
+      background: var(--green);
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+
+    /* ─── PAIN ─── */
+    #pain { background: var(--off); }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .pain-card {
+      background: var(--slate);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 24px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .pain-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .pain-text { font-size: 15px; line-height: 1.65; color: var(--text); font-weight: 500; }
+
+    /* ─── FEATURES ─── */
+    #whatwedo { background: var(--bg); }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: var(--off2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .feature-card:hover { box-shadow: 0 6px 24px rgba(15,36,71,.08); transform: translateY(-2px); }
+    .feature-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: var(--green-d);
+      margin-bottom: 10px;
+    }
+    .feature-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .feature-card p { font-size: 14px; color: var(--sub); line-height: 1.7; }
+
+    /* ─── DEMO ─── */
+    #demo { background: var(--navy); color: #fff; }
+    #demo .section-title { color: #fff; }
+    #demo .section-sub { color: rgba(255,255,255,.7); }
+    #demo .divider { background: var(--green); }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .demo-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      padding: 28px 24px;
+    }
+    .demo-tag {
+      display: inline-block;
+      background: rgba(6,199,85,.2);
+      color: #5FE899;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+    }
+    .demo-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .demo-card p { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.7; }
+
+    /* ─── PRICE ─── */
+    #price { background: var(--off); }
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .price-card {
+      background: var(--off2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 28px;
+      position: relative;
+    }
+    .price-card.featured {
+      border-color: var(--green);
+      box-shadow: 0 4px 24px rgba(6,199,85,.18);
+    }
+    .price-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--green);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .price-plan { font-size: 13px; font-weight: 700; color: var(--sub); margin-bottom: 8px; }
+    .price-regular {
+      font-size: 14px;
+      color: var(--sub);
+      text-decoration: line-through;
+      margin-bottom: 2px;
+    }
+    .price-monitor-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(6,199,85,.2);
+      color: var(--green);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+    .price-amount {
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .price-amount span { font-size: 16px; font-weight: 500; color: var(--sub); }
+    .price-days { font-size: 13px; color: var(--sub); margin-bottom: 20px; }
+    .price-items { list-style: none; margin-bottom: 28px; }
+    .price-items li {
+      font-size: 14px;
+      color: var(--text);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .price-items li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+    .price-cta {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      border-radius: 7px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: background .2s;
+    }
+    .price-cta-outline {
+      border: 2px solid var(--border);
+      color: var(--text);
+    }
+    .price-cta-outline:hover { background: var(--slate); }
+    .price-cta-fill {
+      background: var(--green);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(6,199,85,.3);
+    }
+    .price-cta-fill:hover { background: var(--green-d); }
+
+    /* ─── FAQ ─── */
+    #faq { background: var(--bg); }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    details {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    summary {
+      padding: 18px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      transition: background .2s;
+      background: var(--off2);
+    }
+    summary:hover { background: var(--slate); }
+    .faq-icon {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--green);
+      flex-shrink: 0;
+      transition: transform .2s;
+    }
+    details[open] summary { border-bottom: 1px solid var(--border); }
+    details[open] .faq-icon { transform: rotate(45deg); }
+    .faq-ans {
+      padding: 18px 24px;
+      font-size: 14px;
+      color: var(--sub);
+      line-height: 1.75;
+      background: var(--off);
+    }
+
+    /* ─── CTA ─── */
+    #cta { background: var(--bg); padding: 80px 40px; }
+    .cta-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, var(--navy) 0%, #1a3561 100%);
+      border-radius: 20px;
+      padding: 60px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-inner::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(6,199,85,.15) 0%, transparent 70%);
+    }
+    .cta-inner h2 {
+      font-size: clamp(22px, 3.5vw, 30px);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.35;
+      position: relative;
+    }
+    .cta-inner p {
+      font-size: 15px;
+      color: rgba(255,255,255,.72);
+      line-height: 1.8;
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    /* ── 信頼要素付きLINEボタン ── */
+    .cta-trust {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .cta-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: rgba(255,255,255,.6);
+    }
+    .cta-trust-item::before { content: '✓'; color: var(--green); font-weight: 700; }
+
+    .btn-cta-line {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      font-size: 17px;
+      padding: 18px 40px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 380px;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 6px 20px rgba(6,199,85,.4);
+      position: relative;
+    }
+    .btn-cta-line:hover {
+      background: var(--green-d);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(6,199,85,.45);
+    }
+    .cta-line-sub {
+      font-size: 12px;
+      opacity: .8;
+      font-weight: 400;
+      display: block;
+      margin-top: 2px;
+    }
+    .cta-separator {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+      position: relative;
+    }
+    .cta-separator::before,
+    .cta-separator::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,.15);
+    }
+    .cta-separator span { font-size: 12px; color: rgba(255,255,255,.35); }
+
+    .btn-cta-mail {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.3);
+      color: rgba(255,255,255,.8);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 13px 28px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 380px;
+      transition: background .2s, border-color .2s;
+      position: relative;
+    }
+    .btn-cta-mail:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.5); }
+
+    .cta-guarantee {
+      margin-top: 24px;
+      font-size: 13px;
+      color: rgba(255,255,255,.5);
+      position: relative;
+    }
+
+    /* ── CONTACT FORM ── */
+    .contact-form {
+      text-align: left;
+      margin-top: 10px;
+      position: relative;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,.65);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 7px;
+      padding: 11px 14px;
+      font-size: 14px;
+      color: #fff;
+      font-family: inherit;
+      transition: border-color .2s, background .2s;
+      outline: none;
+      width: 100%;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,.3); }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--green);
+      background: rgba(255,255,255,.14);
+    }
+    .form-group select option { background: var(--navy); color: #fff; }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .btn-submit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 15px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 8px;
+      color: rgba(255,255,255,.85);
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+      margin-top: 12px;
+    }
+    .btn-submit:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.5); }
+    @media (max-width: 520px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 32px 40px;
+      font-size: 13px;
+    }
+    .footer-logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .footer-logo span { color: var(--green); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 16px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      section { padding: 60px 20px; }
+      #hero { padding: 72px 20px 60px; }
+      #trustbar { padding: 16px 20px; }
+      .trustbar-inner { gap: 20px; }
+      .cta-inner { padding: 40px 24px; }
+      #cta { padding: 60px 20px; }
+      footer { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="/" class="nav-logo">Form <span>Flow</span></a>
+  <div class="nav-links">
+    <a href="/service.html">サービス詳細</a>
+    <a href="/cases.html">構築例</a>
+    <a href="/column.html">コラム</a>
+    <a href="#contact" class="nav-cta">無料相談</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">モニター価格で受付中</div>
+    <h1>公式LINEを<em>業務の入口</em>に。<br>設定から自動化まで、<br>まるごと構築します。</h1>
+    <p class="hero-sub">
+      リッチメニュー・自動返信・スプレッドシート連携まで一括対応。<br>
+      Lステップ不要、月額追加費用なしでの自動化も対応しています。
+    </p>
+    <div class="hero-btns">
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-line">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINEで無料相談する
+      </a>
+      <a href="#demo" class="btn-ghost">構築例を見る →</a>
+    </div>
+    <p class="hero-note">相談・見積もり無料。返信は数時間以内。</p>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div id="trustbar">
+  <div class="trustbar-inner">
+    <div class="trust-item">
+      <div class="trust-icon">⚡</div>
+      <span>LINEは数時間以内に返信</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🔒</div>
+      <span>情報は外部に共有しません</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">📋</div>
+      <span>着手前に仕様を確認・合意</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">📖</div>
+      <span>操作マニュアル付き納品</span>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section id="pain">
+  <div class="container">
+    <div class="divider"></div>
+    <div class="section-label">こんなお悩みありませんか</div>
+    <h2 class="section-title">公式LINEを活用しきれていない方へ</h2>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">😓</div>
+        <div class="pain-text">アカウントは作ったが、設定が複雑で止まっている</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">💸</div>
+        <div class="pain-text">Lステップが高くて導入できない。月額費用をかけたくない</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">📱</div>
+        <div class="pain-text">友だち追加してくれた人への返信を手動でやっていて時間がかかる</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">📊</div>
+        <div class="pain-text">顧客情報をスプレッドシートでまとめたいが連携方法がわからない</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🎨</div>
+        <div class="pain-text">リッチメニューを整えてもっとプロらしく見せたい</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🤝</div>
+        <div class="pain-text">業者に頼んだが「設定します」だけで終わり、使い方が分からない</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="whatwedo">
+  <div class="container">
+    <div class="divider"></div>
+    <div class="section-label">サービス内容</div>
+    <h2 class="section-title">Form Flowができること</h2>
+    <p class="section-sub">業務フローを整理してから設計するので、「使われない仕組み」になりません。</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-num">01</div>
+        <h3>初期設定・プロフィール整備</h3>
+        <p>あいさつメッセージ・基本情報・プロフィール画像の設定まで丁寧に対応。最初の印象を整えます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">02</div>
+        <h3>リッチメニュー制作</h3>
+        <p>業種・目的に合わせてデザイン・タップ領域を設計。見た目と使い勝手を同時に整えます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">03</div>
+        <h3>自動返信・シナリオ配信</h3>
+        <p>キーワード自動返信・友だち追加後のステップ配信・時間指定配信まで設定します。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">04</div>
+        <h3>Googleスプレッドシート連携</h3>
+        <p>GASを使い、友だち追加・問い合わせ内容をスプレッドシートへ自動記録。月額費用なしで実現。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">05</div>
+        <h3>予約受付・リマインド自動化</h3>
+        <p>予約確認メッセージの自動送信・当日リマインドの配信を設定。整体院・美容院で特に効果的です。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">06</div>
+        <h3>マニュアル付き引き渡し</h3>
+        <p>「納品して終わり」にしません。操作マニュアルとZoomレクチャーで、自分で運用できる状態にします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section id="demo">
+  <div class="container">
+    <div class="divider"></div>
+    <div class="section-label">構築例</div>
+    <h2 class="section-title">こんな仕組みを作っています</h2>
+    <p class="section-sub">業種・目的別の構築例です。「うちはどうなる？」はご相談でお答えします。</p>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <div class="demo-tag">整体院・治療院</div>
+        <h3>予約確認〜リマインド自動化</h3>
+        <p>友だち追加→初回クーポン配信→予約確認→前日リマインドまで自動化。手動対応をゼロに。</p>
+      </div>
+      <div class="demo-card">
+        <div class="demo-tag">個人コンサル・コーチング</div>
+        <h3>ステップ教育シナリオ</h3>
+        <p>友だち追加後7日間、毎日コンテンツを自動配信。Lステップなし・GASで月額0円で実現。</p>
+      </div>
+      <div class="demo-card">
+        <div class="demo-tag">不動産・サービス業</div>
+        <h3>問い合わせ→スプレッドシート自動記録</h3>
+        <p>LINEから問い合わせを受け取り、内容・日時・連絡先をシートに自動記録。漏れなく管理。</p>
+      </div>
+      <div class="demo-card">
+        <div class="demo-tag">飲食・物販</div>
+        <h3>リッチメニュー＋クーポン配信</h3>
+        <p>来店促進・再訪誘導のリッチメニューと定期クーポン配信の仕組みをセットで構築。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section id="price">
+  <div class="container">
+    <div class="divider"></div>
+    <div class="section-label">料金プラン</div>
+    <h2 class="section-title">シンプルな3プラン</h2>
+    <p class="section-sub">「何から始めればいいか分からない」場合は、ライトプランから始めて後から拡張できます。<br><small style="color:var(--sub);font-size:13px;">※表示価格はすべて税別です。別途消費税（10%）が加算されます。</small></p>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-plan">ライト</div>
+        <div class="price-regular">通常 ¥39,800〜</div>
+        <div class="price-monitor-label">モニター価格</div>
+        <div class="price-amount">¥19,800<span>〜 税別</span></div>
+        <div class="price-days">納品目安：3〜5営業日</div>
+        <ul class="price-items">
+          <li>基本設定・プロフィール整備</li>
+          <li>あいさつメッセージ設定</li>
+          <li>リッチメニュー（1パターン）</li>
+          <li>操作マニュアル（PDF）</li>
+        </ul>
+        <a href="#cta" class="price-cta price-cta-outline">このプランで相談する</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">一番人気</div>
+        <div class="price-plan">スタンダード</div>
+        <div class="price-regular">通常 ¥79,800〜</div>
+        <div class="price-monitor-label">モニター価格</div>
+        <div class="price-amount">¥39,800<span>〜 税別</span></div>
+        <div class="price-days">納品目安：5〜7営業日</div>
+        <ul class="price-items">
+          <li>ライトの全内容</li>
+          <li>シナリオ配信（最大3ステップ）</li>
+          <li>キーワード自動返信（最大5件）</li>
+          <li>Googleフォーム→LINE通知連携</li>
+        </ul>
+        <a href="#cta" class="price-cta price-cta-fill">このプランで相談する</a>
+      </div>
+      <div class="price-card">
+        <div class="price-plan">プレミアム</div>
+        <div class="price-regular">通常 ¥128,000〜</div>
+        <div class="price-monitor-label">モニター価格</div>
+        <div class="price-amount">¥69,800<span>〜 税別</span></div>
+        <div class="price-days">納品目安：7〜10営業日</div>
+        <ul class="price-items">
+          <li>スタンダードの全内容</li>
+          <li>友だち追加→スプレッドシート自動記録</li>
+          <li>問い合わせ振り分け・担当者通知</li>
+          <li>納品後オンラインレクチャー30分</li>
+        </ul>
+        <a href="#cta" class="price-cta price-cta-outline">このプランで相談する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="divider"></div>
+    <div class="section-label">よくある質問</div>
+    <h2 class="section-title">FAQ</h2>
+    <p class="section-sub">他にご不明な点はLINEかメールでお気軽にどうぞ。</p>
+    <div class="faq-list">
+      <details>
+        <summary>Lステップがなくても自動化できますか？<span class="faq-icon">+</span></summary>
+        <div class="faq-ans">はい。Google Apps Script（GAS）を使うことで、友だち追加時の自動返信・スプレッドシートへの記録・メッセージ配信などをLステップなしで実現できます。月額の追加費用がかかりません。</div>
+      </details>
+      <details>
+        <summary>既存のアカウントへの追加設定も対応できますか？<span class="faq-icon">+</span></summary>
+        <div class="faq-ans">はい。すでにアカウントをお持ちの方の追加設定・リニューアルも対応しています。現状の設定を確認した上でご提案します。</div>
+      </details>
+      <details>
+        <summary>どんな業種でも対応できますか？<span class="faq-icon">+</span></summary>
+        <div class="faq-ans">飲食・美容室・整骨院・クリニック・コーチング・士業・不動産など、BtoC・BtoB問わず対応しています。「自社に合うか」は相談の中で確認します。</div>
+      </details>
+      <details>
+        <summary>納品後、自分で運用できるか不安です。<span class="faq-icon">+</span></summary>
+        <div class="faq-ans">操作マニュアルの作成とZoomでのレクチャーをセットで行います。「使い方がわからなくて止まる」が起きないよう、引き渡しを丁寧に行います。</div>
+      </details>
+      <details>
+        <summary>LINE公式アカウント自体の費用はかかりますか？<span class="faq-icon">+</span></summary>
+        <div class="faq-ans">月1,000通まではLINEの無料プランで利用できます。それ以上の配信が必要な場合は月額費用が発生します（ライトプラン: 月5,000円〜）。構築費用とは別途かかります。</div>
+      </details>
+      <details>
+        <summary>モニター協力の場合、何が公開されますか？<span class="faq-icon">+</span></summary>
+        <div class="faq-ans">構築したLINEのデモアカウント（業種・使用機能のみ）をポートフォリオとして活用させていただきます。会社名・個人名・実際のトーク内容は公開しません。内容はご相談の上で決定します。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-inner">
+    <h2>まずは無料相談から<br>はじめましょう</h2>
+    <p>
+      業種・現在の業務フロー・やりたいことをお聞かせください。<br>
+      相談だけでも歓迎です。お見積もりは無料でお出しします。
+    </p>
+
+    <div class="cta-trust">
+      <div class="cta-trust-item">相談・見積もり無料</div>
+      <div class="cta-trust-item">秘密保持は徹底</div>
+      <div class="cta-trust-item">返信は数時間以内</div>
+    </div>
+
+    <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-cta-line">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      <span>
+        LINEで相談する（友だち追加）
+        <span class="cta-line-sub">友だち追加後にメッセージをお送りください</span>
+      </span>
+    </a>
+
+    <div class="cta-separator"><span>またはフォームで送る</span></div>
+
+    <form name="contact" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+      <input type="hidden" name="form-name" value="contact">
+      <p style="display:none"><input name="bot-field"></p>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">お名前 <span style="color:var(--green)">*</span></label>
+          <input type="text" id="name" name="name" placeholder="山田 太郎" required>
+        </div>
+        <div class="form-group">
+          <label for="industry">業種</label>
+          <select id="industry" name="industry">
+            <option value="">選択してください</option>
+            <option>整体院・治療院・美容院</option>
+            <option>不動産</option>
+            <option>コンサル・コーチング</option>
+            <option>飲食・小売</option>
+            <option>士業・専門職</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="message">相談内容 <span style="color:var(--green)">*</span></label>
+          <textarea id="message" name="message" placeholder="やりたいこと・現在の状況・気になることを自由にお書きください" required></textarea>
+        </div>
+      </div>
+      <button type="submit" class="btn-submit">
+        📧 送信する
+      </button>
+    </form>
+
+    <p class="cta-guarantee">
+      強引な営業はしません。相談後に断っていただいても問題ありません。
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Form <span>Flow</span></div>
+  <p>© 2026 Form Flow. All rights reserved.</p>
+  <p style="margin-top:10px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+    <a href="/privacy.html" style="color:rgba(255,255,255,.4);font-size:12px;text-decoration:none;">プライバシーポリシー</a>
+    <a href="/terms.html" style="color:rgba(255,255,255,.4);font-size:12px;text-decoration:none;">利用規約</a>
+    <a href="/tokushoho.html" style="color:rgba(255,255,255,.4);font-size:12px;text-decoration:none;">特定商取引法に基づく表記</a>
+  </p>
+</footer>
+
+</body>
+</html>

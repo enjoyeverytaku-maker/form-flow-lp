@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お役立ちコラム｜Form Flow</title>
+  <meta name="description" content="LINE公式アカウントの活用術・GAS自動化・集客のコツをわかりやすく解説するコラム記事です。">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:  #06C755;
+      --navy:   #0D1117;
+      --text:   #E6EDF3;
+      --sub:    #8B949E;
+      --border: rgba(255,255,255,.1);
+      --off:    #161B22;
+      --card:   #1C2128;
+    }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Nav ── */
+    nav {
+      background: rgba(13,17,23,.97);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo { font-size: 18px; font-weight: 800; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--green); }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { font-size: 14px; color: var(--sub); }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links a.active { color: var(--green); font-weight: 600; }
+    .nav-cta {
+      background: var(--green);
+      color: #fff !important;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 8px 20px;
+      border-radius: 6px;
+      transition: background .2s;
+    }
+    .nav-cta:hover { background: #04a344 !important; text-decoration: none !important; }
+
+    /* ── Hero ── */
+    .page-hero {
+      background: linear-gradient(135deg, #0D1117 0%, #161B22 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .page-hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 12px; }
+    .page-hero p { font-size: 15px; color: var(--sub); }
+
+    /* ── Layout ── */
+    .container { max-width: 1000px; margin: 0 auto; padding: 60px 24px 80px; }
+
+    /* ── Article Grid ── */
+    .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .article-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform .2s, border-color .2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card:hover { transform: translateY(-4px); border-color: rgba(6,199,85,.3); }
+    .article-thumb {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+    .article-thumb.green-bg { background: linear-gradient(135deg, #0a2e1a, #0f4d2b); }
+    .article-thumb.blue-bg  { background: linear-gradient(135deg, #0a1a2e, #0f2d4d); }
+    .article-thumb.purple-bg{ background: linear-gradient(135deg, #1a0a2e, #2d0f4d); }
+    .article-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .article-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: rgba(6,199,85,.12);
+      color: var(--green);
+      border: 1px solid rgba(6,199,85,.2);
+    }
+    .tag.blue { background: rgba(58,130,246,.12); color: #60a5fa; border-color: rgba(58,130,246,.2); }
+    .tag.purple { background: rgba(167,139,250,.12); color: #c4b5fd; border-color: rgba(167,139,250,.2); }
+    .article-body h2 { font-size: 16px; font-weight: 700; line-height: 1.6; margin-bottom: 8px; }
+    .article-body p { font-size: 13px; color: var(--text); line-height: 1.7; flex: 1; }
+    .article-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
+    .article-date { font-size: 12px; color: var(--sub); }
+    .article-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .article-link:hover { text-decoration: none; opacity: .8; }
+    .coming-soon {
+      opacity: .5;
+      pointer-events: none;
+    }
+    .coming-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: rgba(139,148,158,.12);
+      color: var(--sub);
+      border: 1px solid rgba(139,148,158,.2);
+    }
+
+    /* ── CTA Banner ── */
+    .cta-banner {
+      margin-top: 60px;
+      background: linear-gradient(135deg, #0a2e1a, #0f4d2b);
+      border: 1px solid rgba(6,199,85,.25);
+      border-radius: 16px;
+      padding: 48px 40px;
+      text-align: center;
+    }
+    .cta-banner h2 { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
+    .cta-banner p { font-size: 14px; color: var(--sub); margin-bottom: 28px; }
+    .btn-wrap { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-line {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: #fff;
+      font-weight: 700; font-size: 15px;
+      padding: 14px 28px; border-radius: 8px;
+      text-decoration: none; transition: background .2s;
+    }
+    .btn-line:hover { background: #04a344; text-decoration: none; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--text);
+      font-weight: 600; font-size: 15px;
+      padding: 14px 28px; border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none; transition: border-color .2s, color .2s;
+    }
+    .btn-outline:hover { border-color: var(--green); color: var(--green); text-decoration: none; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: var(--sub);
+    }
+    .footer-logo { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+    .footer-logo span { color: var(--green); }
+    .footer-links { display: flex; gap: 20px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    .footer-links a { color: var(--sub); font-size: 12px; }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 14px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .page-hero { padding: 48px 20px; }
+      .page-hero h1 { font-size: 24px; }
+      .container { padding: 40px 20px 60px; }
+      .cta-banner { padding: 36px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Form <span>Flow</span></a>
+  <div class="nav-links">
+    <a href="/service.html">サービス詳細</a>
+    <a href="/cases.html">構築例</a>
+    <a href="/column.html" class="active">コラム</a>
+    <a href="/#contact" class="nav-cta">無料相談</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>お役立ちコラム</h1>
+  <p>LINE公式アカウントの活用術・GAS自動化・集客のノウハウをお届けします</p>
+</div>
+
+<div class="container">
+  <div class="articles">
+
+    <!-- 記事1: 公開済み -->
+    <div class="article-card">
+      <div class="article-thumb green-bg">⚙️</div>
+      <div class="article-body">
+        <div class="article-tags">
+          <span class="tag">LINE公式</span>
+          <span class="tag">GAS自動化</span>
+        </div>
+        <h2>LINE公式アカウントの初期設定からGASで自動化する完全ガイド【Lステップなし・月額0円】</h2>
+        <p>LINE公式の初期設定から、Googleスプレッドシート連携・問い合わせ自動返信・顧客管理の自動化まで。有料ツールなしで月額0円で実現する手順を解説。</p>
+        <div class="article-meta">
+          <span class="article-date">2026年5月14日</span>
+          <a href="https://note.com" target="_blank" rel="noopener" class="article-link">noteで読む →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 記事2: 近日公開 -->
+    <div class="article-card coming-soon">
+      <div class="article-thumb blue-bg">📊</div>
+      <div class="article-body">
+        <div class="article-tags">
+          <span class="tag blue">リッチメニュー</span>
+          <span class="coming-badge">近日公開</span>
+        </div>
+        <h2>プロが教えるリッチメニューの設計術——ユーザーが迷わない導線のつくり方</h2>
+        <p>リッチメニューはLINE公式の顔。ボタン配置の黄金比・コピーの書き方・業種別テンプレートを紹介します。</p>
+        <div class="article-meta">
+          <span class="article-date">公開準備中</span>
+          <span style="font-size:13px; color: var(--sub);">もうすぐ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 記事3: 近日公開 -->
+    <div class="article-card coming-soon">
+      <div class="article-thumb purple-bg">🤖</div>
+      <div class="article-body">
+        <div class="article-tags">
+          <span class="tag purple">ステップ配信</span>
+          <span class="coming-badge">近日公開</span>
+        </div>
+        <h2>ステップ配信で売上が変わる——登録〜成約までのシナリオ設計5ステップ</h2>
+        <p>友だち追加した瞬間から始まる自動フォロー。開封率・クリック率を高めるシナリオの設計手順をテンプレートつきで解説。</p>
+        <div class="article-meta">
+          <span class="article-date">公開準備中</span>
+          <span style="font-size:13px; color: var(--sub);">もうすぐ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 記事4: 近日公開 -->
+    <div class="article-card coming-soon">
+      <div class="article-thumb green-bg">💰</div>
+      <div class="article-body">
+        <div class="article-tags">
+          <span class="tag">費用比較</span>
+          <span class="coming-badge">近日公開</span>
+        </div>
+        <h2>Lステップ vs GAS連携——コスト・機能・難易度を徹底比較【2026年版】</h2>
+        <p>月額数万円のLステップと無料のGAS連携、どちらが自分のビジネスに合っているのか。規模・用途別に整理しました。</p>
+        <div class="article-meta">
+          <span class="article-date">公開準備中</span>
+          <span style="font-size:13px; color: var(--sub);">もうすぐ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 記事5: 近日公開 -->
+    <div class="article-card coming-soon">
+      <div class="article-thumb blue-bg">📱</div>
+      <div class="article-body">
+        <div class="article-tags">
+          <span class="tag blue">集客</span>
+          <span class="coming-badge">近日公開</span>
+        </div>
+        <h2>LINE友だち追加を増やす7つの施策——整体院・サロン・コンサルタント向け</h2>
+        <p>QRコード設置場所の工夫から、SNS誘導・ポップアップ・特典設計まで。友だち数を伸ばした実例をもとに解説。</p>
+        <div class="article-meta">
+          <span class="article-date">公開準備中</span>
+          <span style="font-size:13px; color: var(--sub);">もうすぐ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 記事6: 近日公開 -->
+    <div class="article-card coming-soon">
+      <div class="article-thumb purple-bg">🔗</div>
+      <div class="article-body">
+        <div class="article-tags">
+          <span class="tag purple">Webhook</span>
+          <span class="tag purple">GAS</span>
+          <span class="coming-badge">近日公開</span>
+        </div>
+        <h2>LINE Messaging API × GASでWebhook受信——友だち追加を自動でスプシに記録する</h2>
+        <p>GASでdoPostを受け取り、友だち追加・ブロック・メッセージをリアルタイムでスプレッドシートに記録する実装コード付き解説。</p>
+        <div class="article-meta">
+          <span class="article-date">公開準備中</span>
+          <span style="font-size:13px; color: var(--sub);">もうすぐ</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-banner">
+    <h2>記事の内容をあなたのアカウントに実装しませんか？</h2>
+    <p>「やってみたけど詰まった」「自分のビジネスに合う形にしたい」という方はお気軽にご相談ください。</p>
+    <div class="btn-wrap">
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-line">
+        <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="40" height="40" rx="8" fill="white" fill-opacity=".15"/><path d="M33 18.5C33 12.7 27.1 8 20 8S7 12.7 7 18.5c0 5.2 4.6 9.6 10.9 10.4.4.1 1 .3 1.1.6.1.3.1.8 0 1.1l-.2 1.1c-.1.4-.3 1.6 1.4.9 1.7-.7 9.3-5.5 12.7-9.4C33 21.3 33 19.9 33 18.5z" fill="white"/></svg>
+        LINEで相談する
+      </a>
+      <a href="/#contact" class="btn-outline">お問い合わせフォーム</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Form <span>Flow</span></div>
+  <div class="footer-links">
+    <a href="/privacy.html">プライバシーポリシー</a>
+    <a href="/terms.html">利用規約</a>
+    <a href="/tokushoho.html">特定商取引法に基づく表記</a>
+  </div>
+  <p>© 2026 Form Flow. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
