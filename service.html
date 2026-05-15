@@ -9,11 +9,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --green:  #06C755;
-      --navy:   #0D1117;
-      --text:   #E6EDF3;
-      --sub:    #8B949E;
-      --border: rgba(255,255,255,.1);
-      --off:    #161B22;
+      --green-d: #04a344;
+      --navy:   #0F172A;
+      --slate:  #334155;
+      --text:   #1E293B;
+      --sub:    #64748B;
+      --border: rgba(0,0,0,.09);
+      --bg:     #FFFFFF;
+      --off:    #F8FAFC;
+      --off2:   #F1F5F9;
       --card:   #1C2128;
     }
     body {
@@ -29,7 +33,7 @@
 
     /* ── Nav ── */
     nav {
-      background: rgba(13,17,23,.97);
+      background: rgba(255,255,255,.97);
       border-bottom: 1px solid var(--border);
       padding: 0 40px;
       height: 64px;
@@ -40,7 +44,7 @@
       top: 0;
       z-index: 100;
     }
-    .nav-logo { font-size: 18px; font-weight: 800; color: var(--text); text-decoration: none; }
+    .nav-logo { font-size: 18px; font-weight: 800; color: var(--navy); text-decoration: none; }
     .nav-logo span { color: var(--green); }
     .nav-links { display: flex; align-items: center; gap: 28px; }
     .nav-links a { font-size: 14px; color: var(--sub); }
@@ -59,7 +63,7 @@
 
     /* ── Hero ── */
     .page-hero {
-      background: linear-gradient(135deg, #0D1117 0%, #161B22 100%);
+      background: linear-gradient(135deg, #F0FDF4 0%, #EFF6FF 55%, #F8FAFC 100%);
       border-bottom: 1px solid var(--border);
       padding: 60px 40px;
       text-align: center;
@@ -414,13 +418,13 @@
       <hr class="plan-divider">
       <ul class="plan-features">
         <li>スタンダードプランの全内容</li>
-        <li>LINE Messaging API構築</li>
-        <li>Webhook受信・GAS連携</li>
-        <li>顧客情報の自動管理システム</li>
-        <li>ステップ配信（本数制限なし）</li>
-        <li>カスタム自動応答ロジック</li>
-        <li>30日間の運用サポート</li>
-        <li>操作マニュアル・引き継ぎ資料</li>
+        <li>LINE Messaging API構築・Webhook連携</li>
+        <li>友だち追加→スプレッドシート自動記録</li>
+        <li>Googleカレンダー連携・Meet URL自動生成</li>
+        <li>フォーム申込み→LINE自動返信</li>
+        <li>顧客属性別の月次一斉送信</li>
+        <li>カスタム自動応答ロジック（件数制限なし）</li>
+        <li>操作マニュアル・納品後レクチャー30分</li>
       </ul>
       <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="plan-cta outline">LINEで相談する</a>
     </div>

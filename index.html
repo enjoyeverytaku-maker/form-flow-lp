@@ -49,16 +49,16 @@
     :root {
       --green:     #06C755;
       --green-d:   #04a344;
-      --green-lt:  rgba(6,199,85,.15);
-      --navy:      #0D1117;
-      --navy-lt:   #161B22;
-      --slate:     #21262D;
-      --text:      #E6EDF3;
-      --sub:       #8B949E;
-      --border:    rgba(255,255,255,.1);
-      --bg:        #0D1117;
-      --off:       #161B22;
-      --off2:      #21262D;
+      --green-lt:  rgba(6,199,85,.12);
+      --navy:      #0F172A;
+      --navy-lt:   #1E293B;
+      --slate:     #334155;
+      --text:      #1E293B;
+      --sub:       #64748B;
+      --border:    rgba(0,0,0,.09);
+      --bg:        #FFFFFF;
+      --off:       #F8FAFC;
+      --off2:      #F1F5F9;
     }
 
     html { scroll-behavior: smooth; }
@@ -79,7 +79,7 @@
       position: sticky;
       top: 0;
       z-index: 200;
-      background: rgba(13,17,23,.97);
+      background: rgba(255,255,255,.97);
       backdrop-filter: blur(12px);
       padding: 0 40px;
       height: 64px;
@@ -87,19 +87,19 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--border);
-      box-shadow: 0 1px 8px rgba(0,0,0,.3);
+      box-shadow: 0 1px 8px rgba(0,0,0,.08);
     }
     .nav-logo {
       font-size: 18px;
       font-weight: 800;
-      color: var(--text);
+      color: var(--navy);
       letter-spacing: .02em;
       text-decoration: none;
     }
     .nav-logo span { color: var(--green); }
     .nav-links { display: flex; gap: 28px; align-items: center; }
-    .nav-links a { font-size: 14px; font-weight: 500; color: var(--sub); transition: color .2s; }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--slate); transition: color .2s; }
+    .nav-links a:hover { color: var(--navy); }
     .nav-cta {
       background: var(--green);
       color: #fff !important;
@@ -113,8 +113,8 @@
 
     /* ─── HERO ─── */
     #hero {
-      background: linear-gradient(135deg, #0D1117 0%, #0F2447 60%, #0D7A5F 100%);
-      color: #fff;
+      background: linear-gradient(135deg, #F0FDF4 0%, #EFF6FF 55%, #F8FAFC 100%);
+      color: var(--navy);
       padding: 100px 40px 80px;
       text-align: center;
       position: relative;
@@ -124,16 +124,16 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 70% 40%, rgba(6,199,85,.12) 0%, transparent 60%);
+      background: radial-gradient(ellipse at 70% 40%, rgba(6,199,85,.08) 0%, transparent 60%);
     }
     .hero-inner { position: relative; max-width: 720px; margin: 0 auto; }
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(6,199,85,.18);
+      background: rgba(6,199,85,.15);
       border: 1px solid rgba(6,199,85,.4);
-      color: #5FE899;
+      color: #04a344;
       font-size: 13px;
       font-weight: 600;
       padding: 5px 14px;
@@ -151,7 +151,7 @@
     #hero h1 em { color: var(--green); font-style: normal; }
     .hero-sub {
       font-size: 17px;
-      color: rgba(255,255,255,.78);
+      color: var(--slate);
       margin-bottom: 40px;
       line-height: 1.8;
     }
@@ -174,20 +174,20 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.3);
-      color: #fff;
+      background: rgba(255,255,255,.7);
+      border: 1px solid rgba(0,0,0,.15);
+      color: var(--navy);
       font-weight: 600;
       font-size: 15px;
       padding: 15px 28px;
       border-radius: 8px;
       transition: background .2s;
     }
-    .btn-ghost:hover { background: rgba(255,255,255,.2); }
+    .btn-ghost:hover { background: rgba(255,255,255,.95); }
     .hero-note {
       margin-top: 20px;
       font-size: 13px;
-      color: rgba(255,255,255,.5);
+      color: var(--sub);
     }
 
     /* ─── TRUST BAR ─── */
@@ -264,13 +264,14 @@
       gap: 16px;
     }
     .pain-card {
-      background: var(--slate);
+      background: #FFFFFF;
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 22px 24px;
       display: flex;
       gap: 14px;
       align-items: flex-start;
+      box-shadow: 0 1px 4px rgba(0,0,0,.05);
     }
     .pain-icon {
       font-size: 22px;
@@ -310,9 +311,9 @@
     .feature-card p { font-size: 14px; color: var(--text); line-height: 1.7; }
 
     /* ─── DEMO ─── */
-    #demo { background: var(--navy); color: #fff; }
-    #demo .section-title { color: #fff; }
-    #demo .section-sub { color: rgba(255,255,255,.7); }
+    #demo { background: var(--off); color: var(--text); }
+    #demo .section-title { color: var(--navy); }
+    #demo .section-sub { color: var(--sub); }
     #demo .divider { background: var(--green); }
     .demo-grid {
       display: grid;
@@ -320,10 +321,11 @@
       gap: 20px;
     }
     .demo-card {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
+      background: #FFFFFF;
+      border: 1px solid var(--border);
       border-radius: 12px;
       padding: 28px 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.05);
     }
     .demo-tag {
       display: inline-block;
@@ -338,10 +340,10 @@
     .demo-card h3 {
       font-size: 16px;
       font-weight: 700;
-      color: #fff;
+      color: var(--navy);
       margin-bottom: 10px;
     }
-    .demo-card p { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.7; }
+    .demo-card p { font-size: 14px; color: var(--sub); line-height: 1.7; }
 
     /* ─── PRICE ─── */
     #price { background: var(--off); }
@@ -444,7 +446,7 @@
       padding: 18px 24px;
       font-size: 15px;
       font-weight: 600;
-      color: var(--text);
+      color: var(--navy);
       cursor: pointer;
       display: flex;
       justify-content: space-between;
@@ -453,7 +455,7 @@
       transition: background .2s;
       background: var(--off2);
     }
-    summary:hover { background: var(--slate); }
+    summary:hover { background: #E2E8F0; }
     .faq-icon {
       font-size: 20px;
       font-weight: 400;
@@ -466,9 +468,9 @@
     .faq-ans {
       padding: 18px 24px;
       font-size: 14px;
-      color: var(--sub);
+      color: var(--slate);
       line-height: 1.75;
-      background: var(--off);
+      background: #FFFFFF;
     }
 
     /* ─── CTA ─── */
@@ -814,8 +816,8 @@
       </div>
       <div class="feature-card">
         <div class="feature-num">05</div>
-        <h3>予約受付・リマインド自動化</h3>
-        <p>予約確認メッセージの自動送信・当日リマインドの配信を設定。整体院・美容院で特に効果的です。</p>
+        <h3>Googleカレンダー・Meet連携</h3>
+        <p>フォーム申込みからGoogleカレンダーへの予定登録・Meet URL自動生成・LINE自動返信まで一括対応。予約リマインドにも応用できます。</p>
       </div>
       <div class="feature-card">
         <div class="feature-num">06</div>
@@ -853,6 +855,11 @@
         <div class="demo-tag">飲食・物販</div>
         <h3>リッチメニュー＋クーポン配信</h3>
         <p>来店促進・再訪誘導のリッチメニューと定期クーポン配信の仕組みをセットで構築。</p>
+      </div>
+      <div class="demo-card">
+        <div class="demo-tag">士業・税理士法人</div>
+        <h3>顧問先への月次自動配信＋相談予約連携</h3>
+        <p>税務カレンダー・書類リマインダーを顧問先属性ごとに自動送信。相談申込フォームと連携し、GoogleカレンダーへのMeet URL付き予定登録・LINE自動返信まで一気通貫で自動化。</p>
       </div>
     </div>
   </div>
@@ -904,7 +911,8 @@
         <ul class="price-items">
           <li>スタンダードの全内容</li>
           <li>友だち追加→スプレッドシート自動記録</li>
-          <li>問い合わせ振り分け・担当者通知</li>
+          <li>Googleカレンダー連携・Meet URL自動生成</li>
+          <li>顧客属性別の月次一斉送信</li>
           <li>納品後オンラインレクチャー30分</li>
         </ul>
         <a href="#cta" class="price-cta price-cta-outline">このプランで相談する</a>
