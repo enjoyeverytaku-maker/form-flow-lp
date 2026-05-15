@@ -12,8 +12,8 @@
       --green:  #06C755;
       --green-d:#04a344;
       --green-lt:rgba(6,199,85,.12);
-      --navy:   #0D1117;
-      --navy-lt:#161B22;
+      --navy:   #0F172A;
+      --navy-lt:#1E293B;
       --slate:  #21262D;
       --text:   #E6EDF3;
       --sub:    #8B949E;
@@ -22,7 +22,7 @@
     }
     body {
       font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
-      background: var(--navy);
+      background: var(--bg);
       color: var(--text);
       line-height: 1.8;
       font-size: 15px;
@@ -49,7 +49,7 @@
     .nav-cta:hover { background: var(--green-d) !important; }
 
     .hero {
-      background: linear-gradient(135deg, #0D1117 0%, #0F2447 60%, #0D7A5F 100%);
+      background: linear-gradient(135deg, #F0FDF4 0%, #EFF6FF 55%, #F8FAFC 100%);
       padding: 72px 40px 60px;
       text-align: center;
     }
@@ -76,7 +76,7 @@
 
     .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
     .case-card {
-      background: var(--navy-lt);
+      background: var(--off);
       border: 1px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
@@ -84,7 +84,7 @@
     }
     .case-card:hover { box-shadow: 0 8px 32px rgba(6,199,85,.1); transform: translateY(-2px); }
     .case-header {
-      background: linear-gradient(135deg, var(--slate), var(--navy-lt));
+      background: linear-gradient(135deg, var(--off) 0%, var(--off2) 100%);
       padding: 28px 24px 20px;
       border-bottom: 1px solid var(--border);
     }
@@ -141,7 +141,7 @@
     .plan-ref strong { color: var(--green); }
 
     .cta-section {
-      background: var(--navy-lt);
+      background: var(--off);
       border-top: 1px solid var(--border);
       padding: 60px 40px;
       text-align: center;
@@ -159,7 +159,7 @@
     .btn-green:hover { background: var(--green-d); transform: translateY(-2px); }
 
     footer {
-      background: var(--navy);
+      background: var(--bg);
       border-top: 1px solid var(--border);
       text-align: center;
       padding: 28px 24px;
