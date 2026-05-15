@@ -19,6 +19,8 @@
       --sub:    #64748B;
       --border: rgba(0,0,0,.09);
       --off:    #F8FAFC;
+      --off2:   #EFF6FF;
+      --bg:     #FFFFFF;
     }
     body {
       font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
@@ -31,13 +33,13 @@
     a { text-decoration: none; color: inherit; }
     nav {
       position: sticky; top: 0; z-index: 200;
-      background: rgba(13,17,23,.97);
+      background: rgba(255,255,255,.97);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 0 40px; height: 64px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo { font-size: 18px; font-weight: 800; color: var(--text); }
+    .nav-logo { font-size: 18px; font-weight: 800; color: var(--navy); text-decoration: none; }
     .nav-logo span { color: var(--green); }
     .nav-links { display: flex; gap: 28px; align-items: center; }
     .nav-links a { font-size: 14px; color: var(--sub); transition: color .2s; }
@@ -55,17 +57,17 @@
     }
     .hero-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--green); text-transform: uppercase; margin-bottom: 12px; }
     .hero h1 { font-size: clamp(24px, 4vw, 36px); font-weight: 900; margin-bottom: 14px; }
-    .hero p { font-size: 15px; color: rgba(255,255,255,.7); max-width: 520px; margin: 0 auto; }
+    .hero p { font-size: 15px; color: var(--sub); max-width: 520px; margin: 0 auto; }
 
     .note-bar {
-      background: var(--slate);
-      border-bottom: 1px solid var(--border);
+      background: #FFF7ED;
+      border-bottom: 1px solid rgba(0,0,0,.08);
       padding: 12px 40px;
       text-align: center;
       font-size: 13px;
-      color: var(--sub);
+      color: #78350F;
     }
-    .note-bar strong { color: var(--text); }
+    .note-bar strong { color: #92400E; }
 
     section { padding: 72px 40px; }
     .container { max-width: 900px; margin: 0 auto; }
@@ -125,7 +127,8 @@
     .flow-arrow { font-size: 11px; color: var(--border); text-align: center; padding-left: 11px; }
     .feature-tags { display: flex; flex-wrap: wrap; gap: 6px; }
     .feature-tag {
-      background: var(--slate);
+      background: var(--off);
+      border: 1px solid var(--border);
       color: var(--sub);
       font-size: 12px;
       padding: 3px 10px;
