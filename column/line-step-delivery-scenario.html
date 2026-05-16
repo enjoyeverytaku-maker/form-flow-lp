@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ステップ配信で売上が変わる——登録〜成約までのシナリオ設計5ステップ｜Form Flow</title>
+  <meta name="description" content="友だち追加した瞬間から始まる自動フォロー。開封率・クリック率を高めるシナリオの設計手順をテンプレートつきで解説します。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-step-delivery-scenario.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-step-delivery-scenario.html">
+  <meta property="og:title" content="ステップ配信で売上が変わる——登録〜成約までのシナリオ設計5ステップ">
+  <meta property="og:description" content="友だち追加した瞬間から始まる自動フォロー。開封率・クリック率を高めるシナリオ設計手順をテンプレートつきで解説。">
+  <meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
+  <meta property="og:site_name" content="Form Flow">
+  <meta property="og:locale" content="ja_JP">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ステップ配信で売上が変わる——登録〜成約までのシナリオ設計5ステップ",
+    "description": "LINE公式アカウントのステップ配信設計について、登録から成約までの5ステップとテンプレートを解説。",
+    "author": { "@type": "Organization", "name": "Form Flow" },
+    "publisher": { "@type": "Organization", "name": "Form Flow", "url": "https://enjoyeverytaku-maker.github.io/form-flow-lp/" },
+    "datePublished": "2026-05-17",
+    "dateModified": "2026-05-17"
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:  #06C755;
+      --green-d:#04a344;
+      --navy:   #0F172A;
+      --text:   #1E293B;
+      --sub:    #64748B;
+      --border: rgba(0,0,0,.09);
+      --off:    #F8FAFC;
+      --bg:     #FFFFFF;
+    }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 2.0;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav {
+      background: rgba(255,255,255,.97);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo { font-size: 18px; font-weight: 800; color: var(--navy); text-decoration: none; }
+    .nav-logo span { color: var(--green); }
+    .nav-back { font-size: 14px; color: var(--sub); }
+    .nav-back:hover { color: var(--text); }
+
+    .article-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    .article-header { margin-bottom: 44px; }
+    .article-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+    .tag {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(167,139,250,.12);
+      color: #c4b5fd;
+      border: 1px solid rgba(167,139,250,.2);
+    }
+    .article-header h1 {
+      font-size: clamp(22px, 4vw, 28px);
+      font-weight: 900;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+    .article-meta { font-size: 13px; color: var(--sub); }
+
+    .article-body { line-height: 2.0; }
+    .article-body p { margin-bottom: 24px; color: var(--text); }
+    .article-body h2 {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 52px 0 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    .article-body h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 20px;
+      background: var(--green);
+      border-radius: 2px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    .article-body h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 32px 0 12px;
+      color: var(--navy);
+    }
+    .article-body ul, .article-body ol {
+      padding-left: 24px;
+      margin-bottom: 24px;
+    }
+    .article-body li { margin-bottom: 8px; }
+
+    .step-box {
+      background: var(--off);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 28px 0;
+      font-family: monospace;
+      font-size: 14px;
+      line-height: 2.0;
+      white-space: pre-line;
+    }
+
+    .template-box {
+      background: #F0FDF4;
+      border: 1px solid rgba(6,199,85,.25);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 20px 0;
+      font-size: 14px;
+      line-height: 2.0;
+      white-space: pre-line;
+    }
+    .template-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .caution-box {
+      background: #FFFBEB;
+      border-left: 4px solid #F59E0B;
+      padding: 16px 20px;
+      margin: 28px 0;
+      font-size: 15px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .article-cta {
+      background: linear-gradient(135deg, #F0FDF4, #EFF6FF);
+      border: 1px solid rgba(6,199,85,.35);
+      border-radius: 14px;
+      padding: 36px 32px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .article-cta h3 { font-size: 19px; font-weight: 800; margin-bottom: 10px; color: var(--navy); }
+    .article-cta p { font-size: 14px; color: var(--sub); margin-bottom: 24px; }
+    .btn-green {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: #fff;
+      font-weight: 700; font-size: 15px;
+      padding: 13px 28px; border-radius: 8px;
+      text-decoration: none;
+    }
+    .btn-green:hover { background: var(--green-d); text-decoration: none; }
+
+    footer {
+      background: var(--off);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 13px;
+      color: var(--sub);
+    }
+    .footer-logo { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+    .footer-logo span { color: var(--green); }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .article-wrap { padding: 40px 20px 80px; }
+      .article-cta { padding: 28px 20px; }
+      .step-box, .template-box { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Form <span>Flow</span></a>
+  <a href="../column.html" class="nav-back">← コラム一覧へ</a>
+</nav>
+
+<div class="article-wrap">
+
+  <header class="article-header">
+    <div class="article-tags">
+      <span class="tag">ステップ配信</span>
+      <span class="tag">シナリオ設計</span>
+    </div>
+    <h1>ステップ配信で売上が変わる<br>——登録〜成約までのシナリオ設計5ステップ</h1>
+    <div class="article-meta">2026年5月17日｜Form Flow</div>
+  </header>
+
+  <div class="article-body">
+
+    <p>友だち追加した瞬間から、自動でフォローが始まる。それがLINEのステップ配信です。うまく設計できれば、寝ている間も商品が売れる仕組みができあがります。でも「なんとなく設定した」だけでは、開封すらされないまま終わることも多い。</p>
+
+    <p>この記事では、登録から成約までの流れをシナリオとして設計する5つのステップを整理しています。テンプレートも合わせて紹介しているので、ぜひ手を動かしながら読んでみてください。</p>
+
+    <h2>「とりあえず自動返信だけ」では、もったいない</h2>
+
+    <p>LINE公式アカウントを作ったとき、たいていの人はまず「あいさつメッセージ」と「キーワード自動返信」を設定します。でもこれだけだと、友だち追加してくれた人への関係構築が、ほぼゼロで終わってしまいます。</p>
+
+    <ul>
+      <li>友だち追加直後が、最も関心が高い瞬間</li>
+      <li>そこで何も届かないと、次第に忘れられる</li>
+      <li>気が向いたときだけ一斉送信しても、開封率が上がらない</li>
+    </ul>
+
+    <p>ステップ配信は、この「登録直後の熱量」を逃さないために使います。タイミングを設計することで、自然な流れで信頼関係を育て、成約につなげていくことができます。</p>
+
+    <h2>全体像——5ステップのシナリオ</h2>
+
+    <p>登録から成約までを、こんな5段階で考えています。</p>
+
+    <div class="step-box">Step 1: ウェルカムメッセージ（登録直後）
+Step 2: 価値提供（1〜3日後）
+Step 3: 信頼構築（3〜7日後）
+Step 4: 課題の掘り起こし（7〜10日後）
+Step 5: オファー提示（10〜14日後）</div>
+
+    <p>順番に設計のポイントを見ていきます。</p>
+
+    <h2>Step 1：ウェルカムメッセージ（登録直後）</h2>
+
+    <p>登録直後のメッセージは、「来てくれてよかった」と思わせることが最優先です。</p>
+
+    <h3>やること</h3>
+    <ul>
+      <li>何者なのかを一言で伝える</li>
+      <li>登録してくれたお礼＋登録特典があれば案内</li>
+      <li>次のステップへの期待感を持たせる（「明日、○○をお届けします」）</li>
+    </ul>
+
+    <span class="template-label">📝 テンプレート</span>
+    <div class="template-box">友だち追加ありがとうございます！
+わたしは○○の専門家、△△です。
+
+このLINEでは、□□に役立つ情報を定期的にお届けしています。
+
+明日は「よくある失敗3選」をお送りします。
+楽しみにしていてください😊</div>
+
+    <p>ポイントは「次に何が来るか」を伝えること。続きへの期待感があると、開封率が上がります。</p>
+
+    <h2>Step 2：価値提供（1〜3日後）</h2>
+
+    <p>まだ何も売ろうとしない段階です。相手の役に立つ情報だけを届けます。</p>
+
+    <h3>内容の選び方</h3>
+    <ul>
+      <li>ターゲットが「知りたいけど調べていないこと」</li>
+      <li>よくある失敗談・誤解の解消</li>
+      <li>短時間で読める実用的なTips</li>
+    </ul>
+
+    <span class="template-label">📝 テンプレート</span>
+    <div class="template-box">昨日は登録ありがとうございました。
+
+今日は「○○でよくある失敗3選」をお届けします。
+
+① ▲▲をしてしまう
+→ 実はこれ、□□が原因です。
+
+② ▲▲を後回しにする
+→ ○○になってから気づいても手遅れなことが多い。
+
+③ ▲▲だけを頼りにする
+→ △△との組み合わせが効果的です。
+
+明日はより具体的な解決策をお送りします。</div>
+
+    <p>1通あたり、読むのに1〜2分で完結する量がちょうどいいです。</p>
+
+    <h2>Step 3：信頼構築（3〜7日後）</h2>
+
+    <p>ここで少しだけ「自分のこと」を話します。実績・経験・失敗談など、人柄が伝わるエピソードが効果的です。</p>
+
+    <ul>
+      <li>なぜこの分野をやっているのか</li>
+      <li>過去の失敗から学んだこと</li>
+      <li>お客さまの声（匿名OK）</li>
+    </ul>
+
+    <p>売り込みは一切なし。「この人の言うことは信頼できそう」と感じてもらえれば、このステップは成功です。</p>
+
+    <h2>Step 4：課題の掘り起こし（7〜10日後）</h2>
+
+    <p>相手が「自分ごと」として悩みを再認識するフェーズです。</p>
+
+    <span class="template-label">📝 テンプレート</span>
+    <div class="template-box">少し聞いてもいいですか？
+
+○○をしているとき、こんな悩みはありませんか？
+
+・毎回手作業で疲れている
+・もっと効率よくできるはずと感じている
+・でも何から手をつければいいかわからない
+
+こういった悩みを持つ方から、よくご相談をいただきます。
+
+もし当てはまることがあれば、返信してみてください。
+個別にお答えします。</div>
+
+    <p>返信を促すことで双方向のやりとりが生まれ、次のオファーが刺さりやすくなります。</p>
+
+    <h2>Step 5：オファー提示（10〜14日後）</h2>
+
+    <p>ここではじめて、サービスや商品を案内します。</p>
+
+    <h3>ポイント</h3>
+    <ul>
+      <li>「売る」より「解決策を提案する」トーンで</li>
+      <li>期間・人数限定などのアクションを促す要素を入れる</li>
+      <li>次のステップ（相談・購入）への導線を明確にする</li>
+    </ul>
+
+    <span class="template-label">📝 テンプレート</span>
+    <div class="template-box">先日、○○でお悩みとのことを話してくださった方が多くいました。
+
+そういった方に向けて、今月だけ無料相談を受け付けています。
+
+・Zoomで30分
+・現状をお聞きして、改善できる点をお伝えします
+・料金は発生しません
+
+希望の方はこちらから→ [リンク]
+
+先着5名なので、気になる方はお早めに。</div>
+
+    <h2>よくあるつまずきポイント</h2>
+
+    <div class="caution-box">
+      <strong>① メッセージが長すぎる</strong><br>
+      1通に詰め込みすぎると、読まれません。スマホで読みやすい量（300〜400文字）を意識してください。
+    </div>
+
+    <div class="caution-box">
+      <strong>② 間隔が詰まりすぎている</strong><br>
+      毎日届くと、ブロックされやすくなります。2〜3日に1通がちょうどいいペースです。
+    </div>
+
+    <div class="caution-box">
+      <strong>③ 全部「お知らせ」になっている</strong><br>
+      「わたしからあなたへ」の対話感を出すことが大切です。問いかけや「どうでしたか？」という一言を入れるだけで変わります。
+    </div>
+
+    <h2>まとめ</h2>
+
+    <p>ステップ配信の設計は、一度作ってしまえばあとは自動で動き続けます。最初の設計に少し時間をかけることで、ずっと楽になります。</p>
+
+    <ul>
+      <li><strong>Step 1 ウェルカム</strong>——来てくれたことへの感謝と期待感</li>
+      <li><strong>Step 2 価値提供</strong>——役に立つ情報を先に届ける</li>
+      <li><strong>Step 3 信頼構築</strong>——人柄を見せる</li>
+      <li><strong>Step 4 課題の掘り起こし</strong>——自分ごととして捉えてもらう</li>
+      <li><strong>Step 5 オファー</strong>——解決策として自然に提案する</li>
+    </ul>
+
+    <p>順番を守って、焦らず進めてみてください。</p>
+
+    <div class="article-cta">
+      <h3>ステップ配信の設定もお任せします</h3>
+      <p>「シナリオは設計できたけど、実際の設定が分からない」「GASで自動化したい」という方はお気軽にご相談ください。</p>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-green">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINEで無料相談する
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Form <span>Flow</span></div>
+  <p>© 2026 Form Flow. All rights reserved.</p>
+  <p style="margin-top:10px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+    <a href="../privacy.html" style="color:var(--sub);font-size:12px;">プライバシーポリシー</a>
+    <a href="../terms.html" style="color:var(--sub);font-size:12px;">利用規約</a>
+    <a href="../tokushoho.html" style="color:var(--sub);font-size:12px;">特定商取引法に基づく表記</a>
+  </p>
+</footer>
+
+</body>
+</html>
