@@ -204,6 +204,18 @@
     .mobile-menu a { font-size: 15px; color: var(--text); padding: 14px 0; border-bottom: 1px solid var(--border); text-decoration: none; font-weight: 500; }
     .mobile-menu a:last-child { border-bottom: none; }
     .mobile-menu a.m-cta { margin-top: 12px; background: var(--green); color: #fff; text-align: center; padding: 13px; border-radius: 8px; font-weight: 700; border-bottom: none; }
+    /* ── Search ── */
+    .search-wrap { margin-bottom: 32px; position: relative; }
+    .search-input {
+      width: 100%; padding: 13px 48px 13px 18px;
+      border: 1px solid var(--border); border-radius: 10px;
+      font-size: 15px; font-family: inherit; outline: none;
+      background: #fff; transition: border-color .2s, box-shadow .2s;
+    }
+    .search-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(6,199,85,.1); }
+    .search-icon { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--sub); pointer-events: none; }
+    .no-results { display: none; grid-column: 1 / -1; text-align: center; padding: 48px 24px; color: var(--sub); font-size: 15px; }
+
     @media (max-width: 640px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
@@ -244,6 +256,10 @@
 </div>
 
 <div class="container">
+  <div class="search-wrap">
+    <input type="search" id="search" class="search-input" placeholder="キーワードで記事を探す（例: GAS、ステップ配信、整体院）" aria-label="記事を検索">
+    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </div>
   <div class="articles">
 
     <!-- 記事1: 公開済み -->
@@ -347,6 +363,95 @@
       </div>
     </div>
 
+    <!-- 記事7: 準備中 -->
+    <div class="article-card coming-soon">
+      <div class="article-thumb green-bg">🏥</div>
+      <div class="article-body">
+        <div class="article-tags">
+          <span class="tag">整体院</span>
+          <span class="coming-badge">準備中</span>
+        </div>
+        <h2>整体院・接骨院のLINE公式活用術——予約リマインドから休眠顧客掘り起こしまで</h2>
+        <p>整体院・接骨院に特化したLINE活用の実例。予約前日の自動リマインド・来院後のフォロー・長期離脱顧客への再来院促進まで。</p>
+        <div class="article-meta">
+          <span class="article-date">公開準備中</span>
+          <span class="coming-badge">もうすぐ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 記事8: 準備中 -->
+    <div class="article-card coming-soon">
+      <div class="article-thumb blue-bg">💴</div>
+      <div class="article-body">
+        <div class="article-tags">
+          <span class="tag blue">料金プラン</span>
+          <span class="coming-badge">準備中</span>
+        </div>
+        <h2>LINE公式アカウントの料金プラン解説——無料でどこまでできるか【2026年版】</h2>
+        <p>コミュニケーションプラン・ライトプラン・スタンダードプランの違いを整理。無料枠でできること・有料にしないと困ることを明確に解説。</p>
+        <div class="article-meta">
+          <span class="article-date">公開準備中</span>
+          <span class="coming-badge">もうすぐ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 記事9: 準備中 -->
+    <div class="article-card coming-soon">
+      <div class="article-thumb purple-bg">🚫</div>
+      <div class="article-body">
+        <div class="article-tags">
+          <span class="tag purple">ブロック対策</span>
+          <span class="coming-badge">準備中</span>
+        </div>
+        <h2>ブロック率を下げる3つの習慣——配信前に確認すべきこと</h2>
+        <p>LINE公式アカウントのブロック率が高い原因と、配信頻度・内容・タイミングの見直し方。ブロックされにくいアカウントに共通する3つのポイントを解説。</p>
+        <div class="article-meta">
+          <span class="article-date">公開準備中</span>
+          <span class="coming-badge">もうすぐ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 記事10: 準備中 -->
+    <div class="article-card coming-soon">
+      <div class="article-thumb green-bg">📋</div>
+      <div class="article-body">
+        <div class="article-tags">
+          <span class="tag">Googleフォーム</span>
+          <span class="tag">GAS連携</span>
+          <span class="coming-badge">準備中</span>
+        </div>
+        <h2>GoogleフォームとLINEをGASで連携する——問い合わせを自動で受け取る仕組み</h2>
+        <p>Googleフォームに入力があった瞬間、LINEに通知が届く。GASで作る月額0円のフォーム→LINE連携の手順を解説。</p>
+        <div class="article-meta">
+          <span class="article-date">公開準備中</span>
+          <span class="coming-badge">もうすぐ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 記事11: 準備中 -->
+    <div class="article-card coming-soon">
+      <div class="article-thumb blue-bg">📅</div>
+      <div class="article-body">
+        <div class="article-tags">
+          <span class="tag blue">予約管理</span>
+          <span class="tag blue">カレンダー連携</span>
+          <span class="coming-badge">準備中</span>
+        </div>
+        <h2>LINE予約をGoogleカレンダーに自動登録する——GASで作るゼロ円予約システム</h2>
+        <p>LINEで受け取った予約メッセージを解析し、Googleカレンダーに自動で登録する仕組みをGASで構築する手順を解説。</p>
+        <div class="article-meta">
+          <span class="article-date">公開準備中</span>
+          <span class="coming-badge">もうすぐ</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="no-results" id="no-results">該当する記事が見つかりませんでした</div>
+
   </div>
 
   <!-- CTA -->
@@ -378,6 +483,20 @@
   hbtn.addEventListener('click', () => {
     hbtn.classList.toggle('open');
     hmenu.classList.toggle('open');
+  });
+
+  const searchInput = document.getElementById('search');
+  const cards = document.querySelectorAll('.article-card');
+  const noResults = document.getElementById('no-results');
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLowerCase();
+    let visible = 0;
+    cards.forEach(card => {
+      const match = !q || card.textContent.toLowerCase().includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    noResults.style.display = visible === 0 ? 'block' : 'none';
   });
 </script>
 </body>
