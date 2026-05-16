@@ -247,10 +247,20 @@
     .footer-links { display: flex; gap: 20px; justify-content: center; margin-bottom: 12px; flex-wrap: wrap; }
     .footer-links a { color: var(--sub); font-size: 12px; }
 
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all .25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); flex-direction: column; padding: 8px 24px 20px; z-index: 99; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 15px; color: var(--text); padding: 14px 0; border-bottom: 1px solid var(--border); text-decoration: none; font-weight: 500; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a.m-cta { margin-top: 12px; background: var(--green); color: #fff; text-align: center; padding: 13px; border-radius: 8px; font-weight: 700; border-bottom: none; }
     @media (max-width: 640px) {
       nav { padding: 0 20px; }
-      .nav-links { gap: 14px; }
-      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
       .page-hero { padding: 48px 20px; }
       .demo-card { grid-template-columns: 1fr; }
       .demo-info { padding: 32px 24px; }
@@ -268,10 +278,21 @@
   <div class="nav-links">
     <a href="./service.html">サービス詳細</a>
     <a href="./cases.html">構築例</a>
+    <a href="./demo.html" class="active">デモ体験</a>
     <a href="./column.html">コラム</a>
     <a href="./index.html#contact" class="nav-cta">無料相談</a>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="./service.html">サービス詳細</a>
+  <a href="./cases.html">構築例</a>
+  <a href="./demo.html">デモ体験</a>
+  <a href="./column.html">コラム</a>
+  <a href="./index.html#contact" class="m-cta">無料相談</a>
+</div>
 
 <div class="page-hero">
   <div class="hero-badge">LIVE DEMO</div>
@@ -359,6 +380,13 @@
   </div>
   <p>© 2026 Form Flow. All rights reserved.</p>
 </footer>
-
+<script>
+  const hbtn = document.getElementById('hamburger');
+  const hmenu = document.getElementById('mobile-menu');
+  hbtn.addEventListener('click', () => {
+    hbtn.classList.toggle('open');
+    hmenu.classList.toggle('open');
+  });
+</script>
 </body>
 </html>
