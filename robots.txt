@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://line-form.netlify.app/sitemap.xml
+Sitemap: https://enjoyeverytaku-maker.github.io/form-flow-lp/sitemap.xml
