@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>構築デモを体験する｜税理士法人向けLINE公式アカウント｜Form Flow</title>
+  <meta name="description" content="Form Flowが構築したLINE公式アカウントのデモを実際に体験できます。税理士法人向けのリッチメニュー・自動返信・ステップ配信を確認ください。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/demo.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/demo.html">
+  <meta property="og:title" content="構築デモを体験する｜税理士法人向けLINE公式アカウント｜Form Flow">
+  <meta property="og:description" content="Form Flowが構築したLINE公式アカウントのデモを実際に体験できます。">
+  <meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
+  <meta property="og:site_name" content="Form Flow">
+  <meta property="og:locale" content="ja_JP">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:  #06C755;
+      --green-d:#04a344;
+      --navy:   #0F172A;
+      --text:   #1E293B;
+      --sub:    #64748B;
+      --border: rgba(0,0,0,.09);
+      --off:    #F8FAFC;
+    }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background: var(--off);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav {
+      background: rgba(255,255,255,.97);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo { font-size: 18px; font-weight: 800; color: var(--navy); text-decoration: none; }
+    .nav-logo span { color: var(--green); }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { font-size: 14px; color: var(--sub); }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links a.active { color: var(--green); font-weight: 600; }
+    .nav-cta {
+      background: var(--green); color: #fff !important;
+      font-weight: 700; font-size: 13px;
+      padding: 8px 20px; border-radius: 6px;
+      transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--green-d) !important; }
+
+    .page-hero {
+      background: linear-gradient(135deg, #F0FDF4 0%, #EFF6FF 55%, #F8FAFC 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green);
+      background: rgba(6,199,85,.1);
+      border: 1px solid rgba(6,199,85,.25);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .page-hero h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 800; margin-bottom: 14px; }
+    .page-hero p { font-size: 15px; color: var(--sub); max-width: 520px; margin: 0 auto; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 60px 24px 80px; }
+
+    /* Demo card */
+    .demo-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .demo-info { padding: 48px 40px; }
+    .demo-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green);
+      background: rgba(6,199,85,.1);
+      border: 1px solid rgba(6,199,85,.2);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .demo-info h2 { font-size: 22px; font-weight: 800; line-height: 1.5; margin-bottom: 12px; }
+    .demo-info p { font-size: 14px; color: var(--sub); line-height: 1.8; margin-bottom: 28px; }
+
+    .feature-list { list-style: none; margin-bottom: 32px; }
+    .feature-list li {
+      font-size: 14px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .feature-list li:last-child { border-bottom: none; }
+    .feature-list li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .btn-line-demo {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: #fff;
+      font-weight: 700; font-size: 15px;
+      padding: 14px 28px; border-radius: 8px;
+      text-decoration: none; transition: background .2s;
+    }
+    .btn-line-demo:hover { background: var(--green-d); text-decoration: none; }
+
+    .demo-qr {
+      background: linear-gradient(135deg, #F0FDF4, #EFF6FF);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 32px;
+      gap: 20px;
+      border-left: 1px solid var(--border);
+    }
+    .qr-label {
+      font-size: 12px;
+      color: var(--sub);
+      text-align: center;
+      font-weight: 600;
+    }
+    .qr-wrap {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid var(--border);
+    }
+    .qr-wrap img { display: block; width: 160px; height: 160px; }
+    .qr-note {
+      font-size: 11px;
+      color: var(--sub);
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    /* Notice */
+    .demo-notice {
+      margin-top: 20px;
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 13px;
+      color: #92400E;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .demo-notice span { flex-shrink: 0; }
+
+    /* Steps */
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      margin-top: 60px;
+    }
+    .section-sub { font-size: 14px; color: var(--sub); margin-bottom: 28px; }
+
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .step-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .step-num {
+      width: 36px; height: 36px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 15px;
+      margin: 0 auto 14px;
+    }
+    .step-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+    .step-card p { font-size: 13px; color: var(--sub); line-height: 1.7; }
+
+    /* CTA */
+    .cta-banner {
+      margin-top: 60px;
+      background: linear-gradient(135deg, #F0FDF4, #EFF6FF);
+      border: 1px solid rgba(6,199,85,.35);
+      border-radius: 16px;
+      padding: 48px 40px;
+      text-align: center;
+    }
+    .cta-banner h2 { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
+    .cta-banner p { font-size: 14px; color: var(--sub); margin-bottom: 28px; }
+    .btn-wrap { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--text);
+      font-weight: 600; font-size: 15px;
+      padding: 14px 28px; border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none; transition: border-color .2s, color .2s;
+    }
+    .btn-outline:hover { border-color: var(--green); color: var(--green); text-decoration: none; }
+
+    footer {
+      background: #fff;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 13px;
+      color: var(--sub);
+    }
+    .footer-logo { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+    .footer-logo span { color: var(--green); }
+    .footer-links { display: flex; gap: 20px; justify-content: center; margin-bottom: 12px; flex-wrap: wrap; }
+    .footer-links a { color: var(--sub); font-size: 12px; }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 14px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .page-hero { padding: 48px 20px; }
+      .demo-card { grid-template-columns: 1fr; }
+      .demo-info { padding: 32px 24px; }
+      .demo-qr { border-left: none; border-top: 1px solid var(--border); padding: 32px 24px; }
+      .steps { grid-template-columns: 1fr; }
+      .cta-banner { padding: 36px 20px; }
+      .container { padding: 40px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="./index.html" class="nav-logo">Form <span>Flow</span></a>
+  <div class="nav-links">
+    <a href="./service.html">サービス詳細</a>
+    <a href="./cases.html">構築例</a>
+    <a href="./column.html">コラム</a>
+    <a href="./index.html#contact" class="nav-cta">無料相談</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-badge">LIVE DEMO</div>
+  <h1>構築デモを実際に体験する</h1>
+  <p>Form Flowが構築したLINE公式アカウントを、スマートフォンで今すぐ体験できます。リッチメニュー・自動返信・ステップ配信がどのように動くかをご確認ください。</p>
+</div>
+
+<div class="container">
+
+  <div class="demo-card">
+    <div class="demo-info">
+      <div class="demo-badge">税理士法人向けデモ</div>
+      <h2>税理士法人 サンプル事務所<br>LINE公式アカウント</h2>
+      <p>確定申告・税務相談・顧問契約の問い合わせ受付を想定した構成です。GASを使って月額ツール代0円で動いています。</p>
+
+      <ul class="feature-list">
+        <li>リッチメニュー（6分割・導線設計済み）</li>
+        <li>友だち追加時の自動あいさつメッセージ</li>
+        <li>キーワード自動返信（「相談」「料金」「確定申告」など）</li>
+        <li>ステップ配信（登録〜相談誘導の5ステップ）</li>
+        <li>GAS連携・月額ツール代0円</li>
+      </ul>
+
+      <a href="https://lin.ee/8qG8V8b" target="_blank" rel="noopener" class="btn-line-demo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        デモアカウントを追加する
+      </a>
+    </div>
+
+    <div class="demo-qr">
+      <div class="qr-label">QRコードで追加</div>
+      <div class="qr-wrap">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://lin.ee/8qG8V8b&margin=0&color=0F172A" alt="デモLINEアカウント QRコード">
+      </div>
+      <div class="qr-note">スマートフォンのカメラで<br>読み取ってください</div>
+    </div>
+  </div>
+
+  <div class="demo-notice">
+    <span>⚠️</span>
+    <span>このアカウントはデモ用です。実際のご相談・お問い合わせは<a href="./index.html#contact">こちら</a>からお願いします。</span>
+  </div>
+
+  <h2 class="section-title">体験できること</h2>
+  <p class="section-sub">友だち追加後、以下の流れで自動的に動作を確認できます</p>
+
+  <div class="steps">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h3>友だち追加直後</h3>
+      <p>ウェルカムメッセージが自動送信されます。事務所の紹介と次のステップへの案内が届きます。</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h3>キーワードを送る</h3>
+      <p>「相談」「料金」「確定申告」などのキーワードを送ると、自動で返信が届きます。</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h3>リッチメニューを操作</h3>
+      <p>画面下部のメニューから各導線を確認できます。ボタン配置と文言の設計をご覧ください。</p>
+    </div>
+  </div>
+
+  <div class="cta-banner">
+    <h2>同じ仕組みをあなたの事務所・事業に</h2>
+    <p>業種・規模・目的に合わせてカスタマイズして構築します。まずはお気軽にご相談ください。</p>
+    <div class="btn-wrap">
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-line-demo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINEで無料相談する
+      </a>
+      <a href="./index.html#contact" class="btn-outline">お問い合わせフォーム</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Form <span>Flow</span></div>
+  <div class="footer-links">
+    <a href="./privacy.html">プライバシーポリシー</a>
+    <a href="./terms.html">利用規約</a>
+    <a href="./tokushoho.html">特定商取引法に基づく表記</a>
+  </div>
+  <p>© 2026 Form Flow. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
