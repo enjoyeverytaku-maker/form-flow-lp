@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQF63CGRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NWQF63CGRL');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webhookとは何か——LINEをGASで「考えられる」ようにする仕組み｜Form Flow</title>
+  <meta name="description" content="LINE Messaging APIのWebhookをGASで受け取ると何ができるのか。友だち追加の自動記録を例に、Webhookの考え方を解説。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-webhook-gas.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-webhook-gas.html">
+  <meta property="og:title" content="Webhookとは何か——LINEをGASで「考えられる」ようにする仕組み">
+  <meta property="og:description" content="LINE Messaging APIのWebhookをGASで受け取ると何ができるのか。友だち追加の自動記録を例に解説。">
+  <meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
+  <meta property="og:site_name" content="Form Flow">
+  <meta property="og:locale" content="ja_JP">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Webhookとは何か——LINEをGASで「考えられる」ようにする仕組み",
+    "author": { "@type": "Organization", "name": "Form Flow" },
+    "publisher": { "@type": "Organization", "name": "Form Flow", "url": "https://enjoyeverytaku-maker.github.io/form-flow-lp/" },
+    "datePublished": "2026-05-17",
+    "dateModified": "2026-05-17"
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --green:#06C755; --green-d:#04a344; --navy:#0F172A; --text:#1E293B; --sub:#64748B; --border:rgba(0,0,0,.09); --off:#F8FAFC; --bg:#FFFFFF; }
+    body { font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',sans-serif; background:var(--bg); color:var(--text); line-height:2.0; font-size:16px; -webkit-font-smoothing:antialiased; }
+    a { color:var(--green); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    nav { background:rgba(255,255,255,.97); border-bottom:1px solid var(--border); padding:0 40px; height:64px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; }
+    .nav-logo { font-size:18px; font-weight:800; color:var(--navy); text-decoration:none; }
+    .nav-logo span { color:var(--green); }
+    .nav-back { font-size:14px; color:var(--sub); }
+    .nav-back:hover { color:var(--text); }
+    .article-wrap { max-width:680px; margin:0 auto; padding:60px 24px 100px; }
+    .article-header { margin-bottom:44px; }
+    .article-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+    .tag { font-size:12px; font-weight:600; padding:4px 12px; border-radius:20px; }
+    .tag-purple { background:rgba(167,139,250,.12); color:#c4b5fd; border:1px solid rgba(167,139,250,.2); }
+    .tag-green { background:rgba(6,199,85,.12); color:var(--green); border:1px solid rgba(6,199,85,.2); }
+    .article-header h1 { font-size:clamp(22px,4vw,28px); font-weight:900; line-height:1.5; margin-bottom:18px; }
+    .article-meta { font-size:13px; color:var(--sub); }
+    .article-body { line-height:2.0; }
+    .article-body p { margin-bottom:24px; color:var(--text); }
+    .article-body h2 { font-size:20px; font-weight:800; margin:52px 0 18px; padding-bottom:10px; border-bottom:2px solid var(--border); }
+    .article-body h2::before { content:''; display:inline-block; width:4px; height:20px; background:var(--green); border-radius:2px; margin-right:10px; vertical-align:middle; }
+    .article-body ul { padding-left:24px; margin-bottom:24px; }
+    .article-body li { margin-bottom:8px; }
+    blockquote { border-left:3px solid var(--green); padding:4px 0 4px 20px; margin:28px 0; color:var(--sub); font-size:15px; line-height:1.9; }
+    .flow-box { background:var(--off); border:1px solid var(--border); border-radius:10px; padding:20px 24px; margin:24px 0; font-size:14px; line-height:2.2; }
+    .flow-arrow { color:var(--green); font-weight:700; margin:0 8px; }
+    .article-cta { background:linear-gradient(135deg,#F0FDF4,#EFF6FF); border:1px solid rgba(6,199,85,.35); border-radius:14px; padding:36px 32px; text-align:center; margin-top:64px; }
+    .article-cta h3 { font-size:19px; font-weight:800; margin-bottom:10px; color:var(--navy); }
+    .article-cta p { font-size:14px; color:var(--sub); margin-bottom:24px; }
+    .btn-green { display:inline-flex; align-items:center; gap:8px; background:var(--green); color:#fff; font-weight:700; font-size:15px; padding:13px 28px; border-radius:8px; text-decoration:none; }
+    .btn-green:hover { background:var(--green-d); text-decoration:none; }
+    footer { background:var(--off); border-top:1px solid var(--border); text-align:center; padding:28px 24px; font-size:13px; color:var(--sub); }
+    .footer-logo { font-size:16px; font-weight:800; color:var(--text); margin-bottom:6px; }
+    .footer-logo span { color:var(--green); }
+    @media (max-width:640px) { nav { padding:0 20px; } .article-wrap { padding:40px 20px 80px; } .article-cta { padding:28px 20px; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">Form <span>Flow</span></a>
+  <a href="../column.html" class="nav-back">← コラム一覧へ</a>
+</nav>
+
+<div class="article-wrap">
+  <header class="article-header">
+    <div class="article-tags">
+      <span class="tag tag-purple">Webhook</span>
+      <span class="tag tag-green">GAS自動化</span>
+    </div>
+    <h1>Webhookとは何か<br>——LINEをGASで「考えられる」ようにする仕組み</h1>
+    <div class="article-meta">2026年5月17日｜Form Flow</div>
+  </header>
+
+  <div class="article-body">
+
+    <p>LINE公式アカウントのGAS連携を説明するとき、必ず登場するのが「Webhook」という言葉です。聞き慣れない言葉ですが、これを理解するとLINEの自動化の幅が一気に広がります。今回は、技術的な詳細より「何ができるか」「なぜ必要か」に絞って書きます。</p>
+
+    <h2>Webhookがない状態のLINE</h2>
+
+    <p>Webhookなしで使えるLINE公式アカウントの自動化は、「管理画面で事前に設定したことしかできない」状態です。あいさつメッセージ・キーワード自動返信・リッチメニュー——これらは全て「あらかじめ決まったパターンへの反応」です。</p>
+
+    <p>たとえば「友だち追加した人の情報を自動でスプレッドシートに記録する」「特定のメッセージを送ってきた人に条件分岐した返信をする」——こういったことは、管理画面の設定だけでは実現できません。</p>
+
+    <blockquote>Webhookなしの状態は、「事前に決めた台本通りにしか動けない」状態です。Webhookを使うことで、LINE自体が「何かが起きたときに、外部のシステムに相談できる」ようになります。</blockquote>
+
+    <h2>Webhookの仕組みを一言で言うと</h2>
+
+    <p>LINEで何かが起きたとき（友だち追加・メッセージ送信・ブロックなど）、LINEが自動的に「こんなことがありました」という通知を外部のURLに送る仕組みです。この通知を受け取るURLをGASで作ることで、LINEとGASが連携できるようになります。</p>
+
+    <div class="flow-box">
+      ユーザーが友だち追加
+      <span class="flow-arrow">→</span>
+      LINEがGASのURLに通知を送る
+      <span class="flow-arrow">→</span>
+      GASが通知を受け取り処理する
+      <span class="flow-arrow">→</span>
+      スプレッドシートに記録 ＋ 自動返信
+    </div>
+
+    <p>この流れが動くと、友だち追加のたびに手作業で記録する必要がなくなります。誰が・いつ・追加したかが自動でスプレッドシートに蓄積されていきます。</p>
+
+    <h2>Webhookで実現できること</h2>
+
+    <p>Webhookを使ったGAS連携でできることは、主に以下のとおりです。</p>
+
+    <ul>
+      <li>友だち追加・ブロック・アンブロックをスプレッドシートに自動記録</li>
+      <li>送られてきたメッセージの内容に応じた条件分岐返信</li>
+      <li>特定キーワードに反応してGoogleカレンダーに予約を自動作成</li>
+      <li>フォーム送信と連動してLINEにリアルタイム通知</li>
+      <li>問い合わせ内容をGmailに転送しつつLINEでも確認</li>
+    </ul>
+
+    <p>管理画面のキーワード自動返信との違いは、「GAS側で自由にロジックを書ける」点です。条件が複雑でも、コードで表現できれば動きます。</p>
+
+    <h2>設定に必要なものは2つだけ</h2>
+
+    <p>Webhook連携に必要なのは、LINE DevelopersのチャネルアクセストークンとGASのウェブアプリURLです。GAS側でURLを発行し、LINE Developersの管理画面にそのURLを登録するだけで接続が完了します。</p>
+
+    <p>難しく聞こえるかもしれませんが、設定の流れ自体はシンプルです。Form Flowではこの設定を込みで構築しているので、クライアント側で難しい操作をする必要はありません。</p>
+
+    <blockquote>Webhookは「LINEに神経を通す」ようなイメージです。これがあることで、LINEが外の世界と情報をやり取りできるようになります。GAS連携の核心はここにあります。</blockquote>
+
+    <div class="article-cta">
+      <h3>Webhook連携の構築もお任せします</h3>
+      <p>友だち追加の自動記録から、条件分岐の自動返信まで。GASで月額0円の仕組みを一緒に作りましょう。</p>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-green">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINEで無料相談する
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Form <span>Flow</span></div>
+  <p style="margin-top:10px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+    <a href="../privacy.html" style="color:var(--sub);font-size:12px;">プライバシーポリシー</a>
+    <a href="../terms.html" style="color:var(--sub);font-size:12px;">利用規約</a>
+    <a href="../tokushoho.html" style="color:var(--sub);font-size:12px;">特定商取引法に基づく表記</a>
+  </p>
+  <p style="margin-top:12px;">© 2026 Form Flow. All rights reserved.</p>
+</footer>
+</body>
+</html>
