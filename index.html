@@ -1089,9 +1089,11 @@
 
     <div class="cta-separator"><span>またはフォームで送る</span></div>
 
-    <form name="contact" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
-      <input type="hidden" name="form-name" value="contact">
-      <p style="display:none"><input name="bot-field"></p>
+    <form id="contact-form" name="contact" class="contact-form">
+      <input type="hidden" name="access_key" value="14a20958-b90d-44e8-a0b9-e0783cac2c1d">
+      <input type="hidden" name="subject" value="【Form Flow】お問い合わせが届きました">
+      <input type="hidden" name="from_name" value="Form Flow LP">
+      <input type="hidden" name="botcheck" value="" style="display:none">
       <div class="form-row">
         <div class="form-group">
           <label for="name">お名前 <span style="color:var(--green)">*</span></label>
@@ -1114,9 +1116,10 @@
           <textarea id="message" name="message" placeholder="やりたいこと・現在の状況・気になることを自由にお書きください" required></textarea>
         </div>
       </div>
-      <button type="submit" class="btn-submit">
+      <button type="submit" class="btn-submit" id="submit-btn">
         📧 送信する
       </button>
+      <div id="form-result" style="display:none; margin-top:16px; padding:12px 20px; border-radius:10px; text-align:center; font-size:0.95rem; font-weight:500;"></div>
     </form>
 
     <p class="cta-guarantee">
@@ -1136,5 +1139,44 @@
   </p>
 </footer>
 
+<script>
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const result = document.getElementById('form-result');
+
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+    result.style.display = 'none';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(this)
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        result.style.display = 'block';
+        result.style.background = 'rgba(6,199,85,0.15)';
+        result.style.border = '1px solid rgba(6,199,85,0.4)';
+        result.style.color = '#06c755';
+        result.textContent = '✓ 送信が完了しました。数時間以内にご連絡します。';
+        this.reset();
+      } else {
+        throw new Error('failed');
+      }
+    } catch {
+      result.style.display = 'block';
+      result.style.background = 'rgba(255,80,80,0.12)';
+      result.style.border = '1px solid rgba(255,80,80,0.35)';
+      result.style.color = '#ff6b6b';
+      result.innerHTML = '送信に失敗しました。<a href="https://lin.ee/SD2HKgtW" target="_blank" style="color:#06c755;">LINEからご相談ください。</a>';
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '📧 送信する';
+    }
+  });
+</script>
 </body>
 </html>
