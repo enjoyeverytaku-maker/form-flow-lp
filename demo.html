@@ -177,8 +177,11 @@
       display: flex;
       gap: 10px;
       align-items: flex-start;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
-    .demo-notice span { flex-shrink: 0; }
+    .demo-notice span:first-child { flex-shrink: 0; }
+    .demo-notice span:last-child { min-width: 0; }
 
     /* Steps */
     .section-title {
