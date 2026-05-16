@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プロが教えるリッチメニューの設計術——ユーザーが迷わない導線のつくり方｜Form Flow</title>
+  <meta name="description" content="LINE公式アカウントのリッチメニュー設計術を解説。ボタン配置の黄金比・コピーの書き方・業種別テンプレート（整体院・美容室・コンサル）まで、ユーザーが迷わない導線のつくり方をプロが伝授。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/column/richmenu-design.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/column/richmenu-design.html">
+  <meta property="og:title" content="プロが教えるリッチメニューの設計術——ユーザーが迷わない導線のつくり方">
+  <meta property="og:description" content="リッチメニューのボタン配置・コピー・業種別テンプレートを解説。ユーザーが迷わない導線設計のポイント。">
+  <meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
+  <meta property="og:site_name" content="Form Flow">
+  <meta property="og:locale" content="ja_JP">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "プロが教えるリッチメニューの設計術——ユーザーが迷わない導線のつくり方",
+    "description": "LINE公式アカウントのリッチメニュー設計術。ボタン配置・コピー・業種別テンプレートを解説。",
+    "author": { "@type": "Organization", "name": "Form Flow" },
+    "publisher": { "@type": "Organization", "name": "Form Flow", "url": "https://enjoyeverytaku-maker.github.io/form-flow-lp/" },
+    "datePublished": "2026-05-16",
+    "dateModified": "2026-05-16"
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:  #06C755;
+      --green-d:#04a344;
+      --navy:   #0F172A;
+      --text:   #1E293B;
+      --sub:    #64748B;
+      --border: rgba(0,0,0,.09);
+      --off:    #F8FAFC;
+      --bg:     #FFFFFF;
+    }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav {
+      background: rgba(255,255,255,.97);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo { font-size: 18px; font-weight: 800; color: var(--navy); text-decoration: none; }
+    .nav-logo span { color: var(--green); }
+    .nav-back { font-size: 14px; color: var(--sub); }
+    .nav-back:hover { color: var(--text); }
+
+    .article-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 56px 24px 100px;
+    }
+
+    /* ── ヘッダー ── */
+    .article-header { margin-bottom: 40px; }
+    .article-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .tag {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(6,199,85,.12);
+      color: var(--green);
+      border: 1px solid rgba(6,199,85,.2);
+    }
+    .article-header h1 {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 900;
+      line-height: 1.45;
+      margin-bottom: 16px;
+    }
+    .article-meta { font-size: 13px; color: var(--sub); display: flex; gap: 16px; }
+
+    /* ── 本文 ── */
+    .article-body { line-height: 1.95; }
+    .article-body p { margin-bottom: 20px; }
+    .article-body h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin: 48px 0 16px;
+      padding-left: 14px;
+      border-left: 4px solid var(--green);
+      line-height: 1.4;
+    }
+    .article-body h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 32px 0 12px;
+    }
+    .article-body ul, .article-body ol {
+      padding-left: 24px;
+      margin-bottom: 20px;
+    }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { font-weight: 700; }
+
+    .lead {
+      font-size: 17px;
+      color: var(--text);
+      background: var(--off);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      line-height: 1.85;
+    }
+
+    .point-box {
+      background: rgba(6,199,85,.07);
+      border: 1px solid rgba(6,199,85,.25);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .point-box .point-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 10px;
+      letter-spacing: .06em;
+    }
+    .point-box ul { padding-left: 18px; margin: 0; }
+    .point-box li { font-size: 15px; margin-bottom: 6px; }
+
+    .warn-box {
+      background: #FFF7ED;
+      border: 1px solid #FED7AA;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .warn-box .warn-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #C2410C;
+      margin-bottom: 10px;
+    }
+    .warn-box ul { padding-left: 18px; margin: 0; }
+    .warn-box li { font-size: 15px; margin-bottom: 6px; color: var(--text); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--off);
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+    /* ── CTA ── */
+    .article-cta {
+      background: linear-gradient(135deg, #F0FDF4, #EFF6FF);
+      border: 1px solid rgba(6,199,85,.35);
+      border-radius: 14px;
+      padding: 36px 32px;
+      text-align: center;
+      margin-top: 56px;
+    }
+    .article-cta h3 { font-size: 20px; font-weight: 800; margin-bottom: 10px; color: var(--navy); }
+    .article-cta p { font-size: 14px; color: var(--sub); margin-bottom: 24px; }
+    .btn-green {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: #fff;
+      font-weight: 700; font-size: 15px;
+      padding: 13px 28px; border-radius: 8px;
+      text-decoration: none;
+    }
+    .btn-green:hover { background: var(--green-d); text-decoration: none; }
+
+    footer {
+      background: var(--off);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 13px;
+      color: var(--sub);
+    }
+    .footer-logo { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+    .footer-logo span { color: var(--green); }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .article-wrap { padding: 40px 20px 80px; }
+      .article-body h2 { font-size: 19px; }
+      .article-cta { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Form <span>Flow</span></a>
+  <a href="../column.html" class="nav-back">← コラム一覧へ</a>
+</nav>
+
+<div class="article-wrap">
+
+  <header class="article-header">
+    <div class="article-tags">
+      <span class="tag">リッチメニュー</span>
+      <span class="tag">LINE設計</span>
+      <span class="tag">導線設計</span>
+    </div>
+    <h1>プロが教えるリッチメニューの設計術<br>——ユーザーが迷わない導線のつくり方</h1>
+    <div class="article-meta">
+      <span>2026年5月16日</span>
+      <span>Form Flow</span>
+    </div>
+  </header>
+
+  <div class="article-body">
+
+    <p class="lead">
+      LINE公式アカウントを開いたとき、画面下に広がるボタン群——これがリッチメニューです。うまく設計されたリッチメニューは「次にすべきこと」を瞬時に案内し、予約・問い合わせ・クーポン取得へスムーズに誘導します。一方、よく見かける「とりあえず作った」リッチメニューはユーザーを迷わせ、そのまま離脱を招きます。この記事では、設計の考え方から業種別の実践例まで、現場で使える知識をまとめました。
+    </p>
+
+    <h2>そもそもリッチメニューの役割とは</h2>
+    <p>リッチメニューは「常設のナビゲーション」です。Webサイトに例えるなら、どのページを見ていても表示されるヘッダーメニューに相当します。友だち追加直後でも、ステップ配信の途中でも、常に同じボタンが表示される——この「常設性」がリッチメニューの最大の強みです。</p>
+    <p>ユーザーが取れる行動を絞り込んで提示することで、「何ができるか分からない」状態を解消するのがリッチメニューの本質的な仕事です。</p>
+
+    <h2>レイアウトパターンの選び方</h2>
+    <p>LINE公式アカウントのリッチメニューには、大きく分けて2種類のサイズと複数の分割パターンがあります。</p>
+
+    <table>
+      <tr>
+        <th>パターン</th>
+        <th>ボタン数</th>
+        <th>向いている用途</th>
+      </tr>
+      <tr>
+        <td>大サイズ・2分割</td>
+        <td>2個</td>
+        <td>「予約」と「お問い合わせ」だけに絞りたい場合。迷いが生まれにくく、CVRが高い</td>
+      </tr>
+      <tr>
+        <td>大サイズ・3分割</td>
+        <td>3個</td>
+        <td>バランスが良く汎用性が高い。整体院・サロン系に多い</td>
+      </tr>
+      <tr>
+        <td>大サイズ・6分割</td>
+        <td>6個</td>
+        <td>情報量を多く見せたいとき。ただし詰め込みすぎると視認性が落ちる</td>
+      </tr>
+      <tr>
+        <td>小サイズ・3分割</td>
+        <td>3個</td>
+        <td>画面を圧迫したくないとき。チャットを多用するアカウントに適している</td>
+      </tr>
+    </table>
+
+    <div class="point-box">
+      <div class="point-title">選ぶときの基本原則</div>
+      <ul>
+        <li>ユーザーにしてほしい行動が<strong>1〜2つ</strong>に絞れるなら2〜3分割</li>
+        <li>メニュー・クーポン・予約・FAQ など複数の案内が必要なら6分割</li>
+        <li>迷ったら<strong>3分割から始める</strong>のが失敗しにくい</li>
+      </ul>
+    </div>
+
+    <h2>何を置くか——ボタン配置の優先順位</h2>
+    <p>リッチメニューで最もよくある失敗は「あれもこれも置く」ことです。ボタンが多いほどユーザーの視線は分散し、結果として何もクリックされなくなります。</p>
+    <p>配置するボタンは「ユーザーが一番したいこと」から逆算して決めます。業種ごとにユーザーの一番の目的は異なります。</p>
+
+    <h3>優先度の高いボタン（必ず入れる）</h3>
+    <ul>
+      <li><strong>予約・申し込み</strong>——整体院・サロン・コンサルなら最優先</li>
+      <li><strong>お問い合わせ・相談</strong>——士業・不動産など検討期間が長い業種</li>
+      <li><strong>メニュー・料金案内</strong>——飲食・美容室など「何があるか」を確認したいユーザー向け</li>
+    </ul>
+
+    <h3>補助的なボタン（あると便利）</h3>
+    <ul>
+      <li>クーポン・特典の受け取り</li>
+      <li>よくある質問（FAQ）</li>
+      <li>アクセス・営業時間</li>
+      <li>スタッフ・サービス紹介</li>
+    </ul>
+
+    <div class="warn-box">
+      <div class="warn-title">よくある失敗：置いてはいけないボタン</div>
+      <ul>
+        <li>「ホームページはこちら」——LINEを離脱させる導線は最小限に</li>
+        <li>「SNSをフォローする」——今すぐ行動しないユーザーが迷う原因になる</li>
+        <li>内容が重複するボタン——「予約」と「スケジュール確認」を両方置くなど</li>
+      </ul>
+    </div>
+
+    <h2>コピーの書き方——クリックされる言葉</h2>
+    <p>ボタンのテキストは短く、行動が明確に伝わる言葉を選びます。「〇〇はこちら」という受け身の表現より、「〇〇する」という動詞形の方がクリック率が上がります。</p>
+
+    <table>
+      <tr>
+        <th>NG例</th>
+        <th>OK例</th>
+        <th>改善ポイント</th>
+      </tr>
+      <tr>
+        <td>ご予約はこちら</td>
+        <td>予約する</td>
+        <td>動詞形で行動を明示</td>
+      </tr>
+      <tr>
+        <td>お問い合わせ</td>
+        <td>無料で相談する</td>
+        <td>「無料」を加えることで心理的ハードルを下げる</td>
+      </tr>
+      <tr>
+        <td>クーポン</td>
+        <td>初回クーポンを受け取る</td>
+        <td>何のクーポンかを明示する</td>
+      </tr>
+      <tr>
+        <td>メニュー</td>
+        <td>料金・メニューを見る</td>
+        <td>「料金」を並記することで実用性を伝える</td>
+      </tr>
+    </table>
+
+    <h2>業種別テンプレート</h2>
+
+    <h3>整体院・治療院（3分割推奨）</h3>
+    <div class="point-box">
+      <div class="point-title">おすすめ配置</div>
+      <ul>
+        <li>① 予約する（最大面積・左上）</li>
+        <li>② 初回限定クーポンを受け取る</li>
+        <li>③ 料金・メニューを見る</li>
+      </ul>
+    </div>
+    <p>予約がゴールなので、予約ボタンを最も目立つ位置・最大面積に配置します。初回クーポンを隣に置くことで、迷っているユーザーの後押しができます。</p>
+
+    <h3>個人コンサル・コーチング（3分割推奨）</h3>
+    <div class="point-box">
+      <div class="point-title">おすすめ配置</div>
+      <ul>
+        <li>① 無料相談を申し込む（最大面積）</li>
+        <li>② サービス・料金を見る</li>
+        <li>③ よくある質問</li>
+      </ul>
+    </div>
+    <p>検討期間が長い業種なので、FAQで疑問を先に解消してから相談に誘導する流れが効果的です。</p>
+
+    <h3>飲食・美容室（6分割推奨）</h3>
+    <div class="point-box">
+      <div class="point-title">おすすめ配置</div>
+      <ul>
+        <li>① 予約する　② クーポンを見る</li>
+        <li>③ メニュー・料金　④ アクセス・営業時間</li>
+        <li>⑤ スタッフ紹介　⑥ お知らせ</li>
+      </ul>
+    </div>
+    <p>来店前に確認したい情報が多い業種のため、6分割で情報を整理します。予約とクーポンを上段に並べ、視線が最初に向かう場所に集中させます。</p>
+
+    <hr class="divider">
+
+    <h2>設計の最終チェックリスト</h2>
+    <ul>
+      <li>ボタンを見た瞬間に「何ができるか」が分かるか</li>
+      <li>ユーザーにとって一番したいことが最も目立つ位置にあるか</li>
+      <li>6分割の場合、1ボタンあたりのテキストが10文字以内に収まっているか</li>
+      <li>リンク先が正しく機能しているか（URLが間違っていないか）</li>
+      <li>スマートフォンの実機で見たときに文字が潰れていないか</li>
+    </ul>
+
+    <div class="article-cta">
+      <h3>リッチメニューの設計・作成もお任せください</h3>
+      <p>「どう設計すればいいか分からない」「画像制作から設定まで丸ごと頼みたい」という方はお気軽にご相談ください。</p>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-green">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINEで無料相談する
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Form <span>Flow</span></div>
+  <p>© 2026 Form Flow. All rights reserved.</p>
+  <p style="margin-top:10px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+    <a href="../privacy.html" style="color:var(--sub);font-size:12px;">プライバシーポリシー</a>
+    <a href="../terms.html" style="color:var(--sub);font-size:12px;">利用規約</a>
+    <a href="../tokushoho.html" style="color:var(--sub);font-size:12px;">特定商取引法に基づく表記</a>
+  </p>
+</footer>
+
+</body>
+</html>
