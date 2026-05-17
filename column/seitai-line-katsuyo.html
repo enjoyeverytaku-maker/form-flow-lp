@@ -32,86 +32,181 @@
     "dateModified": "2026-05-17"
   }
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --green:#06C755; --green-d:#04a344; --navy:#0F172A; --text:#1E293B; --sub:#64748B; --border:rgba(0,0,0,.09); --off:#F8FAFC; --bg:#FFFFFF; }
-    body { font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',sans-serif; background:#F0F4F8; color:var(--text); line-height:2.0; font-size:16px; -webkit-font-smoothing:antialiased; }
-    a { color:var(--green); text-decoration:none; }
-    a:hover { text-decoration:underline; }
-    nav { background:rgba(255,255,255,.97); border-bottom:1px solid var(--border); padding:0 40px; height:64px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; }
-    .nav-logo { font-size:18px; font-weight:800; color:var(--navy); text-decoration:none; }
-    .nav-logo span { color:var(--green); }
-    .nav-back { font-size:14px; color:var(--sub); }
-    .nav-back:hover { color:var(--text); }
-    .page-accent { height:180px; background:linear-gradient(135deg,#D1FAE5 0%,#A7F3D0 50%,#EFF6FF 100%); border-bottom:1px solid var(--border); }
-    .article-wrap { max-width:680px; margin:0 auto; background:#fff; box-shadow:0 4px 32px rgba(0,0,0,.08); border-radius:16px; margin-top:-80px; position:relative; padding:60px 24px 100px; }
-    .article-header { margin-bottom:44px; }
-    .article-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
-    .tag { font-size:12px; font-weight:600; padding:4px 12px; border-radius:20px; background:rgba(6,199,85,.12); color:var(--green); border:1px solid rgba(6,199,85,.2); }
-    .article-header h1 { font-size:clamp(22px,4vw,28px); font-weight:900; line-height:1.5; margin-bottom:18px; }
-    .article-meta { font-size:13px; color:var(--sub); }
-    .article-body { line-height:2.0; }
-    .article-body p { margin-bottom:24px; color:var(--text); }
-    .article-body h2 { font-size:20px; font-weight:800; margin:52px 0 18px; padding-bottom:10px; border-bottom:2px solid var(--border); }
-    .article-body h2::before { content:''; display:inline-block; width:4px; height:20px; background:var(--green); border-radius:2px; margin-right:10px; vertical-align:middle; }
-    .article-body ul { padding-left:24px; margin-bottom:24px; }
-    .article-body li { margin-bottom:8px; }
-    blockquote { border-left:3px solid var(--green); padding:4px 0 4px 20px; margin:28px 0; color:var(--sub); font-size:15px; line-height:1.9; }
-    .step-box { background:var(--off); border-radius:12px; padding:24px 28px; margin:28px 0; }
-    .step-box-title { font-size:13px; font-weight:700; color:var(--green); letter-spacing:.06em; margin-bottom:12px; }
-    .step-box ul { padding-left:20px; }
-    .step-box li { margin-bottom:6px; font-size:15px; }
-    .note-box { background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px; padding:16px 20px; margin:24px 0; font-size:14px; color:#92400E; }
-    .article-cta { background:linear-gradient(135deg,#F0FDF4,#EFF6FF); border:1px solid rgba(6,199,85,.35); border-radius:14px; padding:36px 32px; text-align:center; margin-top:64px; }
-    .article-cta h3 { font-size:19px; font-weight:800; margin-bottom:10px; color:var(--navy); }
-    .article-cta p { font-size:14px; color:var(--sub); margin-bottom:24px; }
-    .btn-green { display:inline-flex; align-items:center; gap:8px; background:var(--green); color:#fff; font-weight:700; font-size:15px; padding:13px 28px; border-radius:8px; text-decoration:none; }
-    .btn-green:hover { background:var(--green-d); text-decoration:none; }
-    footer { background:var(--off); border-top:1px solid var(--border); text-align:center; padding:28px 24px; font-size:13px; color:var(--sub); }
-    .footer-logo { font-size:16px; font-weight:800; color:var(--text); margin-bottom:6px; }
-    .footer-logo span { color:var(--green); }
-    .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
-    .hamburger span { display:block; width:22px; height:2px; background:var(--navy); border-radius:2px; transition:all .25s; }
-    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity:0; }
-    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
-    .mobile-menu { display:none; position:fixed; top:64px; left:0; right:0; background:#fff; border-bottom:1px solid var(--border); flex-direction:column; padding:8px 24px 20px; z-index:99; box-shadow:0 4px 16px rgba(0,0,0,.08); }
-    .mobile-menu.open { display:flex; }
-    .mobile-menu a { font-size:15px; color:var(--text); padding:14px 0; border-bottom:1px solid var(--border); text-decoration:none; font-weight:500; }
-    .mobile-menu a:last-child { border-bottom:none; }
-    .mobile-menu a.m-cta { margin-top:12px; background:var(--green); color:#fff; text-align:center; padding:13px; border-radius:8px; font-weight:700; border-bottom:none; }
-    @media (max-width:640px) { nav { padding:0 20px; } .nav-back { display:none; } .hamburger { display:flex; } .article-wrap { padding:40px 20px 80px; } .article-cta { padding:28px 20px; } }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#06C755;--gd:#04a344;--g2:#00e0b0;
+  --navy:#040d1a;--navy2:#0b1829;
+  --border-card:rgba(255,255,255,.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;color:#fff;background:var(--navy);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.9}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+/* SCROLL PROGRESS */
+#sp{position:fixed;top:0;left:0;height:2px;background:var(--g);z-index:9999;width:0%;pointer-events:none}
+
+/* CURSOR */
+#cur,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
+#cur{width:8px;height:8px;background:var(--g)}
+#cur-ring{width:32px;height:32px;border:1.5px solid rgba(6,199,85,.5)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;transition:background .4s,box-shadow .4s}
+nav.sc{background:rgba(4,13,26,.94);backdrop-filter:blur(24px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.nlogo{font-size:20px;font-weight:900;color:#fff;letter-spacing:.01em;font-family:'Inter',sans-serif}
+.nlogo em{color:var(--g);font-style:normal}
+.nlinks{display:flex;gap:32px;align-items:center}
+.nlinks a{font-size:13px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.nlinks a:hover,.nlinks a.active{color:#fff}
+.nbtn{font-size:12px;font-weight:700;background:var(--g);color:#fff;padding:8px 20px;border-radius:8px;transition:background .2s}
+.nbtn:hover{background:var(--gd)}
+.hbtn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hbtn span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s}
+#mmenu{display:none;position:fixed;inset:0;background:rgba(4,13,26,.97);z-index:400;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+#mmenu.open{display:flex}
+#mmenu a{font-size:20px;font-weight:700;color:#fff}
+
+/* ARTICLE HERO */
+.art-hero{padding:120px 24px 56px;background:linear-gradient(160deg,var(--navy2) 0%,var(--navy) 100%);border-bottom:1px solid rgba(255,255,255,.06);position:relative;overflow:hidden}
+.art-hero::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(6,199,85,.07) 0%,transparent 70%);top:-200px;right:-100px;pointer-events:none}
+.art-hero-inner{max-width:760px;margin:0 auto}
+.art-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tag{font-size:11px;font-weight:700;padding:4px 13px;border-radius:20px;background:rgba(6,199,85,.15);color:var(--g);border:1px solid rgba(6,199,85,.25);font-family:'Inter',sans-serif;letter-spacing:.04em}
+.art-hero h1{font-size:clamp(22px,3.5vw,32px);font-weight:900;line-height:1.45;margin-bottom:18px;letter-spacing:-.02em}
+.art-meta{font-size:12px;color:rgba(255,255,255,.38);font-family:'Inter',sans-serif;display:flex;align-items:center;gap:16px}
+.art-meta-dot{width:3px;height:3px;background:rgba(255,255,255,.3);border-radius:50%}
+
+/* ARTICLE LAYOUT */
+.art-wrap{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.art-card{background:rgba(255,255,255,.03);border:1px solid var(--border-card);border-radius:20px;padding:48px 52px}
+
+/* TYPOGRAPHY */
+.art-card p{font-size:15px;color:rgba(255,255,255,.72);line-height:2.05;margin-bottom:22px}
+.art-card h2{font-size:20px;font-weight:900;color:#fff;margin:48px 0 16px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:10px;letter-spacing:-.01em}
+.art-card h2::before{content:'';display:block;width:4px;height:20px;background:var(--g);border-radius:2px;flex-shrink:0;box-shadow:0 0 8px rgba(6,199,85,.4)}
+.art-card h3{font-size:16px;font-weight:800;color:#fff;margin:28px 0 12px}
+.art-card ul,.art-card ol{padding-left:22px;margin-bottom:22px}
+.art-card li{font-size:15px;color:rgba(255,255,255,.68);line-height:1.9;margin-bottom:8px}
+.art-card blockquote{border-left:3px solid var(--g);padding:6px 0 6px 20px;margin:28px 0;color:rgba(255,255,255,.5);font-size:14px;line-height:1.9}
+.art-card strong{color:#fff;font-weight:700}
+.art-card a{color:var(--g)}
+.art-card a:hover{text-decoration:underline}
+
+/* STEP BOX */
+.step-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:24px 28px;margin:24px 0}
+.step-box h3,.step-box strong{color:#fff}
+.step-box p{margin-bottom:8px}
+.step-box p:last-child{margin-bottom:0}
+
+/* POINT BOX */
+.point-box{background:rgba(6,199,85,.07);border:1px solid rgba(6,199,85,.2);border-radius:12px;padding:20px 24px;margin:24px 0}
+.point-box p{color:rgba(255,255,255,.8);margin-bottom:0}
+
+/* SHARE SECTION */
+.share-section{margin-top:52px;padding:32px;background:rgba(255,255,255,.04);border:1px solid var(--border-card);border-radius:16px;text-align:center}
+.share-label{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.1em;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:20px}
+.like-area{margin-bottom:24px}
+.art-like-btn{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);font-size:13px;font-weight:700;padding:10px 22px;border-radius:20px;cursor:pointer;transition:all .2s;font-family:'Noto Sans JP',sans-serif}
+.art-like-btn:hover{border-color:rgba(255,100,100,.4);color:#ff8080;background:rgba(255,100,100,.06)}
+.art-like-btn.liked{border-color:#ff6b6b;color:#ff6b6b;background:rgba(255,107,107,.1)}
+.art-like-btn.liked svg{fill:#ff6b6b;stroke:#ff6b6b}
+.art-like-count{font-family:'Inter',sans-serif;font-weight:800}
+.share-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.sbtn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:'Noto Sans JP',sans-serif;transition:opacity .2s,transform .15s;text-decoration:none}
+.sbtn:hover{opacity:.85;transform:translateY(-1px)}
+.sbtn-line{background:var(--g);color:#fff}
+.sbtn-x{background:#000;color:#fff;border:1px solid rgba(255,255,255,.2)}
+.sbtn-fb{background:#1877f2;color:#fff}
+.sbtn-ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff}
+.sbtn-copy{background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.1)}
+.sbtn-copy.copied{background:rgba(6,199,85,.12);color:var(--g);border-color:rgba(6,199,85,.25)}
+
+/* BACK LINK */
+.art-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,.45);margin-top:40px;transition:color .2s}
+.art-back:hover{color:#fff}
+
+/* CTA */
+.art-cta{margin-top:56px;padding:40px;background:linear-gradient(135deg,rgba(6,199,85,.12),rgba(6,199,85,.04));border:1px solid rgba(6,199,85,.2);border-radius:20px;text-align:center}
+.art-cta h3{font-size:20px;font-weight:900;margin-bottom:10px}
+.art-cta p{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:24px}
+.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--g);color:#fff;font-weight:700;font-size:15px;padding:14px 30px;border-radius:10px;transition:background .25s;box-shadow:0 4px 24px rgba(6,199,85,.35)}
+.btn-p:hover{background:var(--gd)}
+
+/* FOOTER */
+footer{background:#030a14;border-top:1px solid rgba(255,255,255,.05);padding:32px 52px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.fl{font-size:16px;font-weight:900;color:#fff;font-family:'Inter',sans-serif}
+.fl em{color:var(--g);font-style:normal}
+.flinks{display:flex;gap:24px}
+.flinks a{font-size:12px;color:rgba(255,255,255,.38);transition:color .2s}
+.flinks a:hover{color:#fff}
+.fcopy{font-size:11px;color:rgba(255,255,255,.25)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nlinks{display:none}
+  .hbtn{display:flex}
+  .art-hero{padding:100px 20px 40px}
+  .art-wrap{padding:32px 16px 60px}
+  .art-card{padding:28px 22px}
+  .art-card h2{font-size:17px}
+  footer{padding:24px 20px;flex-direction:column;align-items:flex-start}
+  .share-row{gap:8px}
+  .sbtn{padding:8px 14px;font-size:12px}
+}
   </style>
 </head>
 <body>
-<nav>
-  <a href="../index.html" class="nav-logo">Form <span>Flow</span></a>
-  <a href="../column.html" class="nav-back">← コラム一覧へ</a>
-  <button class="hamburger" id="hamburger" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+
+<div id="sp"></div>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+<nav id="nav">
+  <a href="../index.html" class="nlogo">Form <em>Flow</em></a>
+  <div class="nlinks">
+    <a href="../index.html">ホーム</a>
+    <a href="../cases.html">構築例</a>
+    <a href="../column.html" class="active">コラム</a>
+    <a href="../demo.html">デモ</a>
+    <a href="../index.html#contact" class="nbtn">無料相談</a>
+  </div>
+  <button class="hbtn" id="hbtn" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="../column.html">← コラム一覧へ</a>
-  <a href="../service.html">サービス詳細</a>
+<div id="mmenu">
+  <a href="../index.html">ホーム</a>
   <a href="../cases.html">構築例</a>
-  <a href="../demo.html">デモ体験</a>
   <a href="../column.html">コラム</a>
-  <a href="../news.html">お知らせ</a>
-  <a href="../index.html#contact" class="m-cta">無料相談</a>
+  <a href="../demo.html">デモ</a>
+  <a href="../index.html#contact" class="nbtn">無料相談</a>
 </div>
 
-<div class="page-accent"></div>
-<div class="article-wrap">
-  <header class="article-header">
-    <div class="article-tags">
+<!-- HERO -->
+<section class="art-hero">
+  <div class="art-hero-inner">
+    <div class="art-tags">
       <span class="tag">整体院・接骨院</span>
       <span class="tag">予約管理</span>
       <span class="tag">自動化</span>
     </div>
     <h1>整体院・接骨院のLINE公式活用術<br>——予約リマインドから休眠顧客掘り起こしまで</h1>
-    <div class="article-meta">2026年5月17日｜Form Flow</div>
-  </header>
+    <div class="art-meta">
+      <span>Form Flow</span>
+      <span class="art-meta-dot"></span>
+      <span>2026年5月17日</span>
+    </div>
+  </div>
+</section>
 
-  <div class="article-body">
+<!-- CONTENT -->
+<div class="art-wrap">
+  <div class="art-card">
 
     <p>整体院・接骨院の経営において、リピート率は売上に直結する数字です。一度来てくれたお客さまが次の予約を入れるかどうか、定期的に通い続けてくれるかどうか——この部分をLINE公式アカウントで仕組み化することができます。</p>
 
@@ -122,8 +217,8 @@
     <p>友だち追加後に自動でメッセージを届ける「ステップ配信」は、LINE公式の管理画面だけで設定できます。GASや有料ツールは不要です。</p>
 
     <div class="step-box">
-      <div class="step-box-title">設計例</div>
-      <ul>
+      <strong>設計例</strong>
+      <ul style="margin-top:12px;">
         <li><strong>登録直後（あいさつメッセージ）</strong>：歓迎メッセージ＋次回来院時の割引クーポン案内</li>
         <li><strong>3日後</strong>：「施術後の体の状態はいかがですか？」体調を気にかけるメッセージ</li>
         <li><strong>7日後</strong>：定期的なケアのすすめ＋予約フォームへの誘導</li>
@@ -137,8 +232,8 @@
 
     <p>予約日の前日や当日に「明日○時にご予約いただいています」とLINEで自動通知することで、うっかり忘れによるキャンセルや無断欠席を減らすことができます。</p>
 
-    <div class="note-box">
-      📌 予約リマインドはLINE単体では自動送信できません。Googleカレンダーと連携したGASスクリプトを使うことで、予約が入ったタイミングから前日リマインドまでを自動化できます。
+    <div class="point-box">
+      <p>📌 予約リマインドはLINE単体では自動送信できません。Googleカレンダーと連携したGASスクリプトを使うことで、予約が入ったタイミングから前日リマインドまでを自動化できます。</p>
     </div>
 
     <p>Googleフォームで予約を受け付け→GASがカレンダーに自動登録→前日にLINEでリマインド送信、という流れを作ることで、予約管理の大部分を自動化できます。</p>
@@ -176,33 +271,108 @@
 
     <p>「どこから手をつければいいかわからない」という方は、まず友だち登録の入口を整えることと、あいさつメッセージを設定することから始めてみてください。</p>
 
-    <div class="article-cta">
-      <h3>設定・構築はお任せください</h3>
-      <p>ステップ配信の設計から予約リマインドの自動化まで、整体院・接骨院向けのLINE構築をサポートします。まずは相談だけでも大丈夫です。</p>
-      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-green">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-        LINEで無料相談する
-      </a>
+  </div>
+
+  <!-- SHARE -->
+  <div class="share-section">
+    <p class="share-label">この記事をシェアする</p>
+    <div class="like-area">
+      <button class="art-like-btn" id="likeBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        いいね <span class="art-like-count" id="likeCount">–</span>
+      </button>
     </div>
+    <div class="share-row">
+      <button class="sbtn sbtn-line" id="shareLine">LINEでシェア</button>
+      <button class="sbtn sbtn-x" id="shareX">Xでシェア</button>
+      <button class="sbtn sbtn-fb" id="shareFb">Facebook</button>
+      <button class="sbtn sbtn-ig" id="shareIg">Instagram</button>
+      <button class="sbtn sbtn-copy" id="shareCopy">URLコピー</button>
+    </div>
+  </div>
+
+  <!-- BACK -->
+  <a href="../column.html" class="art-back">← コラム一覧へ戻る</a>
+
+  <!-- CTA -->
+  <div class="art-cta">
+    <h3>LINE公式アカウントを構築してみませんか？</h3>
+    <p>GAS活用で月額ツール代¥0。最短3営業日で納品します。</p>
+    <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-p">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      LINEで無料相談する
+    </a>
   </div>
 </div>
 
 <footer>
-  <div class="footer-logo">Form <span>Flow</span></div>
-  <p style="margin-top:10px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
-    <a href="../privacy.html" style="color:var(--sub);font-size:12px;">プライバシーポリシー</a>
-    <a href="../terms.html" style="color:var(--sub);font-size:12px;">利用規約</a>
-    <a href="../tokushoho.html" style="color:var(--sub);font-size:12px;">特定商取引法に基づく表記</a>
-  </p>
-  <p style="margin-top:12px;">© 2026 Form Flow. All rights reserved.</p>
+  <div class="fl">Form <em>Flow</em></div>
+  <div class="flinks">
+    <a href="../privacy.html">プライバシーポリシー</a>
+    <a href="../terms.html">利用規約</a>
+    <a href="../tokushoho.html">特定商取引法</a>
+    <a href="../column.html">コラム</a>
+  </div>
+  <div class="fcopy">© 2026 Form Flow.</div>
 </footer>
+
 <script>
-  const hbtn = document.getElementById('hamburger');
-  const hmenu = document.getElementById('mobile-menu');
-  hbtn.addEventListener('click', () => {
-    hbtn.classList.toggle('open');
-    hmenu.classList.toggle('open');
+(()=>{
+  // scroll progress & nav
+  const sp=document.getElementById('sp'),nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{
+    sp.style.width=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100)+'%';
+    nav.classList.toggle('sc',window.scrollY>60);
+  },{passive:true});
+  // cursor
+  const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  (function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+  // mobile menu
+  const hbtn=document.getElementById('hbtn'),mm=document.getElementById('mmenu');
+  hbtn.addEventListener('click',()=>mm.classList.toggle('open'));
+  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
+  // share & like
+  const SLUG = 'seitai-line-katsuyo';
+  const TITLE = '整体院・接骨院のLINE公式活用術';
+  const URL = 'https://enjoyeverytaku-maker.github.io/form-flow-lp/column/' + SLUG + '.html';
+  const SB_URL = 'https://dxerzoqxaupzclohdiis.supabase.co';
+  const SB_KEY = 'sb_publishable_5iTgXF1XKOVIpLoAR0MYlQ_woZTy6V1';
+
+  // like button
+  const likeBtn=document.getElementById('likeBtn');
+  const likeCount=document.getElementById('likeCount');
+  const liked=localStorage.getItem('liked_'+SLUG)==='1';
+  if(liked)likeBtn.classList.add('liked');
+
+  fetch(SB_URL+'/rest/v1/article_likes?slug=eq.'+SLUG+'&select=count',{headers:{apikey:SB_KEY,Authorization:'Bearer '+SB_KEY}})
+    .then(r=>r.json()).then(d=>{ likeCount.textContent = d[0]?.count ?? 0; });
+
+  likeBtn.addEventListener('click',async()=>{
+    if(likeBtn.classList.contains('liked'))return;
+    likeBtn.classList.add('liked');
+    localStorage.setItem('liked_'+SLUG,'1');
+    const r=await fetch(SB_URL+'/rest/v1/rpc/increment_likes',{method:'POST',headers:{apikey:SB_KEY,Authorization:'Bearer '+SB_KEY,'Content-Type':'application/json'},body:JSON.stringify({article_slug:SLUG})});
+    const n=await r.json();
+    if(typeof n==='number')likeCount.textContent=n;
   });
+
+  // share buttons
+  document.getElementById('shareLine').addEventListener('click',()=>window.open('https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(URL),'_blank'));
+  document.getElementById('shareX').addEventListener('click',()=>window.open('https://x.com/intent/tweet?url='+encodeURIComponent(URL)+'&text='+encodeURIComponent(TITLE+' | Form Flow'),'_blank'));
+  document.getElementById('shareFb').addEventListener('click',()=>window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(URL),'_blank'));
+  document.getElementById('shareIg').addEventListener('click',async()=>{
+    if(navigator.share){try{await navigator.share({title:TITLE+' | Form Flow',url:URL});}catch(_){}}
+    else{await navigator.clipboard.writeText(URL);const b=document.getElementById('shareIg');const o=b.textContent;b.textContent='コピー!';setTimeout(()=>b.textContent=o,2000);}
+  });
+  const copyBtn=document.getElementById('shareCopy');
+  copyBtn.addEventListener('click',async()=>{
+    await navigator.clipboard.writeText(URL);
+    copyBtn.textContent='コピー完了!';copyBtn.classList.add('copied');
+    setTimeout(()=>{copyBtn.textContent='URLコピー';copyBtn.classList.remove('copied');},2000);
+  });
+})();
 </script>
 </body>
 </html>

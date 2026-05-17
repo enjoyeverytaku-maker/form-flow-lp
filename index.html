@@ -350,6 +350,7 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
   .footer-inner{flex-direction:column;align-items:flex-start;gap:16px}
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -1062,11 +1063,19 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
       try {
         const res = await fetch(form.action, {method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
         if(res.ok){
-          msg.textContent = '✓ 送信しました。1営業日以内にご連絡します。';
+          msg.textContent = '✓ 送信しました。確認メールをお送りしました。1営業日以内にご連絡します。';
           msg.style.background = 'rgba(6,199,85,.12)';
           msg.style.color = '#06C755';
           msg.style.border = '1px solid rgba(6,199,85,.25)';
           msg.style.display = 'block';
+          // 自動返信メール
+          const fd = new FormData(form);
+          emailjs.send(
+            'EMAILJS_SERVICE_ID',
+            'EMAILJS_TEMPLATE_ID',
+            { to_name: fd.get('name'), to_email: fd.get('email'), occupation: fd.get('occupation') || '未記入', message: fd.get('message') },
+            'EMAILJS_PUBLIC_KEY'
+          ).catch(()=>{});
           form.reset();
         } else {
           throw new Error();
