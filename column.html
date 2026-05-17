@@ -92,13 +92,14 @@ nav.sc{background:rgba(4,13,26,.94);backdrop-filter:blur(24px);-webkit-backdrop-
 .articles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 
 /* ── ARTICLE CARD ── */
-.article-card{background:rgba(255,255,255,.04);border:1px solid var(--border-card);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .35s cubic-bezier(.34,1.56,.64,1),transform .35s cubic-bezier(.34,1.56,.64,1)}
-.article-card:hover{box-shadow:0 20px 60px rgba(0,0,0,.3);transform:translateY(-4px)}
+.article-card-wrap{border:1px solid var(--border-card);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .35s cubic-bezier(.34,1.56,.64,1),transform .35s cubic-bezier(.34,1.56,.64,1)}
+.article-card-wrap:hover{box-shadow:0 20px 60px rgba(0,0,0,.3);transform:translateY(-4px)}
+.article-card{background:rgba(255,255,255,.04);display:flex;flex-direction:column;flex:1}
 
 /* ── THUMB ── */
 .article-thumb{height:220px;overflow:hidden;position:relative}
 .article-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .65s ease,filter .65s ease;filter:brightness(.8)}
-.article-card:hover .article-thumb img{transform:scale(1.07);filter:brightness(1)}
+.article-card-wrap:hover .article-thumb img{transform:scale(1.07);filter:brightness(1)}
 .thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,13,26,.7) 0%,transparent 60%);pointer-events:none}
 
 /* ── CARD BODY ── */
@@ -120,6 +121,23 @@ nav.sc{background:rgba(4,13,26,.94);backdrop-filter:blur(24px);-webkit-backdrop-
 /* ── READ MORE ── */
 .article-link{margin-top:16px;font-size:13px;font-weight:700;color:var(--g);display:inline-flex;align-items:center;gap:5px;transition:gap .2s,color .2s;align-self:flex-start}
 .article-link:hover{gap:9px;color:var(--g2)}
+
+/* ── CARD ACTIONS ── */
+.card-actions{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-top:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02)}
+.like-btn{display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.4);font-size:12px;font-family:'Noto Sans JP',sans-serif;padding:5px 10px;border-radius:20px;transition:color .2s,background .2s}
+.like-btn:hover{color:#ff8080;background:rgba(255,100,100,.08)}
+.like-btn.liked{color:#ff6b6b}
+.like-btn svg{transition:transform .3s cubic-bezier(.34,1.56,.64,1),fill .2s,stroke .2s}
+.like-btn.liked svg{fill:#ff6b6b;stroke:#ff6b6b;transform:scale(1.2)}
+.like-count{font-size:12px;font-weight:700;font-family:'Inter',sans-serif;min-width:14px}
+.share-btns{display:flex;gap:6px}
+.share-btn{display:inline-flex;align-items:center;gap:4px;padding:5px 11px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;border:none;font-family:'Noto Sans JP',sans-serif;transition:opacity .2s,transform .15s}
+.share-btn:hover{opacity:.8;transform:translateY(-1px)}
+.share-btn:active{transform:scale(.95)}
+.share-line{background:var(--g);color:#fff}
+.share-x{background:#000;color:#fff;border:1px solid rgba(255,255,255,.15)}
+.share-copy{background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1)}
+.share-copy.copied{background:rgba(6,199,85,.12);color:var(--g);border-color:rgba(6,199,85,.25)}
 
 /* ── CTA ── */
 #cta{background:var(--navy);padding:100px 52px;text-align:center;position:relative;overflow:hidden}
@@ -212,130 +230,179 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.05);padding:44p
     <div class="articles" id="articleGrid">
 
       <!-- 1 -->
-      <a href="./column/line-friends-increase.html" class="article-card rv d1">
-        <div class="article-thumb">
-          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="LINE友だち追加を増やす7つの施策" loading="lazy">
-          <div class="thumb-overlay"></div>
-        </div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="tag">集客</span>
-            <span class="tag">友だち追加</span>
+      <div class="article-card-wrap rv d1">
+        <a href="./column/line-friends-increase.html" class="article-card">
+          <div class="article-thumb">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="LINE友だち追加を増やす7つの施策" loading="lazy">
+            <div class="thumb-overlay"></div>
           </div>
-          <p class="article-date">2026年5月17日</p>
-          <h2>LINE友だち追加を増やす7つの施策——整体院・サロン・コンサルタント向け</h2>
-          <p>QRコード設置場所・登録特典・SNS誘導など、LINE友だちを増やすための7つの施策を構築現場の視点から解説します。</p>
-          <span class="article-link">続きを読む →</span>
+          <div class="article-body">
+            <div class="article-tags"><span class="tag">集客</span><span class="tag">友だち追加</span></div>
+            <p class="article-date">2026年5月17日</p>
+            <h2>LINE友だち追加を増やす7つの施策——整体院・サロン・コンサルタント向け</h2>
+            <p>QRコード設置場所・登録特典・SNS誘導など、LINE友だちを増やすための7つの施策を構築現場の視点から解説します。</p>
+            <span class="article-link">続きを読む →</span>
+          </div>
+        </a>
+        <div class="card-actions" data-slug="line-friends-increase" data-title="LINE友だち追加を増やす7つの施策">
+          <button class="like-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="like-count">–</span></button>
+          <div class="share-btns">
+            <button class="share-btn share-line">LINE</button>
+            <button class="share-btn share-x">X</button>
+            <button class="share-btn share-copy">リンク</button>
+          </div>
         </div>
-      </a>
+      </div>
 
       <!-- 2 -->
-      <a href="./column/seitai-line-katsuyo.html" class="article-card rv d2">
-        <div class="article-thumb">
-          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80" alt="整体院・接骨院のLINE公式活用術" loading="lazy">
-          <div class="thumb-overlay"></div>
-        </div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="tag">整体院</span>
-            <span class="tag">予約管理</span>
+      <div class="article-card-wrap rv d2">
+        <a href="./column/seitai-line-katsuyo.html" class="article-card">
+          <div class="article-thumb">
+            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80" alt="整体院・接骨院のLINE公式活用術" loading="lazy">
+            <div class="thumb-overlay"></div>
           </div>
-          <p class="article-date">2026年5月17日</p>
-          <h2>整体院・接骨院のLINE公式活用術——予約リマインドから休眠顧客掘り起こしまで</h2>
-          <p>ステップ配信・予約リマインド・休眠顧客への一斉配信の3軸でLINEを活用する方法を解説します。</p>
-          <span class="article-link">続きを読む →</span>
+          <div class="article-body">
+            <div class="article-tags"><span class="tag">整体院</span><span class="tag">予約管理</span></div>
+            <p class="article-date">2026年5月17日</p>
+            <h2>整体院・接骨院のLINE公式活用術——予約リマインドから休眠顧客掘り起こしまで</h2>
+            <p>ステップ配信・予約リマインド・休眠顧客への一斉配信の3軸でLINEを活用する方法を解説します。</p>
+            <span class="article-link">続きを読む →</span>
+          </div>
+        </a>
+        <div class="card-actions" data-slug="seitai-line-katsuyo" data-title="整体院・接骨院のLINE公式活用術">
+          <button class="like-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="like-count">–</span></button>
+          <div class="share-btns">
+            <button class="share-btn share-line">LINE</button>
+            <button class="share-btn share-x">X</button>
+            <button class="share-btn share-copy">リンク</button>
+          </div>
         </div>
-      </a>
+      </div>
 
       <!-- 3 -->
-      <a href="./column/lstep-vs-gas.html" class="article-card rv d3">
-        <div class="article-thumb">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Lステップ vs GAS連携" loading="lazy">
-          <div class="thumb-overlay"></div>
-        </div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="tag">比較</span>
-            <span class="tag">GAS</span>
+      <div class="article-card-wrap rv d3">
+        <a href="./column/lstep-vs-gas.html" class="article-card">
+          <div class="article-thumb">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Lステップ vs GAS連携" loading="lazy">
+            <div class="thumb-overlay"></div>
           </div>
-          <p class="article-date">2026年5月10日</p>
-          <h2>Lステップ vs GAS連携——コスト・機能・難易度を徹底比較【2026年版】</h2>
-          <p>月額数万円のLステップと、無料のGASで何が違うのか。機能・コスト・難易度を現場目線で比較します。</p>
-          <span class="article-link">続きを読む →</span>
+          <div class="article-body">
+            <div class="article-tags"><span class="tag">比較</span><span class="tag">GAS</span></div>
+            <p class="article-date">2026年5月10日</p>
+            <h2>Lステップ vs GAS連携——コスト・機能・難易度を徹底比較【2026年版】</h2>
+            <p>月額数万円のLステップと、無料のGASで何が違うのか。機能・コスト・難易度を現場目線で比較します。</p>
+            <span class="article-link">続きを読む →</span>
+          </div>
+        </a>
+        <div class="card-actions" data-slug="lstep-vs-gas" data-title="Lステップ vs GAS連携——徹底比較【2026年版】">
+          <button class="like-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="like-count">–</span></button>
+          <div class="share-btns">
+            <button class="share-btn share-line">LINE</button>
+            <button class="share-btn share-x">X</button>
+            <button class="share-btn share-copy">リンク</button>
+          </div>
         </div>
-      </a>
+      </div>
 
       <!-- 4 -->
-      <a href="./column/line-step-delivery-scenario.html" class="article-card rv d4">
-        <div class="article-thumb">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="ステップ配信で売上が変わる" loading="lazy">
-          <div class="thumb-overlay"></div>
-        </div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="tag">ステップ配信</span>
-            <span class="tag">自動化</span>
+      <div class="article-card-wrap rv d4">
+        <a href="./column/line-step-delivery-scenario.html" class="article-card">
+          <div class="article-thumb">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="ステップ配信で売上が変わる" loading="lazy">
+            <div class="thumb-overlay"></div>
           </div>
-          <p class="article-date">2026年5月5日</p>
-          <h2>ステップ配信で売上が変わる——登録〜成約までのシナリオ設計5ステップ</h2>
-          <p>友だち追加から成約まで、自動で育てるシナリオの作り方を5ステップで解説します。</p>
-          <span class="article-link">続きを読む →</span>
+          <div class="article-body">
+            <div class="article-tags"><span class="tag">ステップ配信</span><span class="tag">自動化</span></div>
+            <p class="article-date">2026年5月5日</p>
+            <h2>ステップ配信で売上が変わる——登録〜成約までのシナリオ設計5ステップ</h2>
+            <p>友だち追加から成約まで、自動で育てるシナリオの作り方を5ステップで解説します。</p>
+            <span class="article-link">続きを読む →</span>
+          </div>
+        </a>
+        <div class="card-actions" data-slug="line-step-delivery-scenario" data-title="ステップ配信で売上が変わる——シナリオ設計5ステップ">
+          <button class="like-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="like-count">–</span></button>
+          <div class="share-btns">
+            <button class="share-btn share-line">LINE</button>
+            <button class="share-btn share-x">X</button>
+            <button class="share-btn share-copy">リンク</button>
+          </div>
         </div>
-      </a>
+      </div>
 
       <!-- 5 -->
-      <a href="./column/line-webhook-gas.html" class="article-card rv d5">
-        <div class="article-thumb">
-          <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" alt="WebhookとGASでLINEを考えられるようにする仕組み" loading="lazy">
-          <div class="thumb-overlay"></div>
-        </div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="tag">GAS</span>
-            <span class="tag">Webhook</span>
+      <div class="article-card-wrap rv d5">
+        <a href="./column/line-webhook-gas.html" class="article-card">
+          <div class="article-thumb">
+            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" alt="WebhookとGASでLINEを考えられるようにする仕組み" loading="lazy">
+            <div class="thumb-overlay"></div>
           </div>
-          <p class="article-date">2026年4月28日</p>
-          <h2>WebhookとGASでLINEを「考えられる」ようにする仕組み</h2>
-          <p>Webhookとは何か、GASとどう組み合わせるかを、コードなしで理解できるように解説します。</p>
-          <span class="article-link">続きを読む →</span>
+          <div class="article-body">
+            <div class="article-tags"><span class="tag">GAS</span><span class="tag">Webhook</span></div>
+            <p class="article-date">2026年4月28日</p>
+            <h2>WebhookとGASでLINEを「考えられる」ようにする仕組み</h2>
+            <p>Webhookとは何か、GASとどう組み合わせるかを、コードなしで理解できるように解説します。</p>
+            <span class="article-link">続きを読む →</span>
+          </div>
+        </a>
+        <div class="card-actions" data-slug="line-webhook-gas" data-title="WebhookとGASでLINEを「考えられる」ようにする仕組み">
+          <button class="like-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="like-count">–</span></button>
+          <div class="share-btns">
+            <button class="share-btn share-line">LINE</button>
+            <button class="share-btn share-x">X</button>
+            <button class="share-btn share-copy">リンク</button>
+          </div>
         </div>
-      </a>
+      </div>
 
       <!-- 6 -->
-      <a href="./column/richmenu-design.html" class="article-card rv d6">
-        <div class="article-thumb">
-          <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&w=600&q=80" alt="リッチメニューのデザインと設定" loading="lazy">
-          <div class="thumb-overlay"></div>
-        </div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="tag">リッチメニュー</span>
-            <span class="tag">デザイン</span>
+      <div class="article-card-wrap rv d6">
+        <a href="./column/richmenu-design.html" class="article-card">
+          <div class="article-thumb">
+            <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&w=600&q=80" alt="リッチメニューのデザインと設定" loading="lazy">
+            <div class="thumb-overlay"></div>
           </div>
-          <p class="article-date">2026年4月20日</p>
-          <h2>リッチメニューのデザインと設定——業種別テンプレートで解説</h2>
-          <p>トーク画面下のリッチメニューを最大限活用するデザイン設計と設定手順を解説します。</p>
-          <span class="article-link">続きを読む →</span>
+          <div class="article-body">
+            <div class="article-tags"><span class="tag">リッチメニュー</span><span class="tag">デザイン</span></div>
+            <p class="article-date">2026年4月20日</p>
+            <h2>リッチメニューのデザインと設定——業種別テンプレートで解説</h2>
+            <p>トーク画面下のリッチメニューを最大限活用するデザイン設計と設定手順を解説します。</p>
+            <span class="article-link">続きを読む →</span>
+          </div>
+        </a>
+        <div class="card-actions" data-slug="richmenu-design" data-title="リッチメニューのデザインと設定——業種別テンプレートで解説">
+          <button class="like-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="like-count">–</span></button>
+          <div class="share-btns">
+            <button class="share-btn share-line">LINE</button>
+            <button class="share-btn share-x">X</button>
+            <button class="share-btn share-copy">リンク</button>
+          </div>
         </div>
-      </a>
+      </div>
 
       <!-- 7 -->
-      <a href="./column/line-gas-automation-guide.html" class="article-card rv d1">
-        <div class="article-thumb">
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="LINE公式アカウントの初期設定からGASで自動化する完全ガイド" loading="lazy">
-          <div class="thumb-overlay"></div>
-        </div>
-        <div class="article-body">
-          <div class="article-tags">
-            <span class="tag">GAS</span>
-            <span class="tag">初期設定</span>
+      <div class="article-card-wrap rv d1">
+        <a href="./column/line-gas-automation-guide.html" class="article-card">
+          <div class="article-thumb">
+            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="LINE公式アカウントの初期設定からGASで自動化する完全ガイド" loading="lazy">
+            <div class="thumb-overlay"></div>
           </div>
-          <p class="article-date">2026年4月10日</p>
-          <h2>LINE公式アカウントの初期設定からGASで自動化する完全ガイド【Lステップなし】</h2>
-          <p>アカウント開設からGAS連携による自動返信・顧客管理の設定まで、月額0円で実現する手順を解説します。</p>
-          <span class="article-link">続きを読む →</span>
+          <div class="article-body">
+            <div class="article-tags"><span class="tag">GAS</span><span class="tag">初期設定</span></div>
+            <p class="article-date">2026年4月10日</p>
+            <h2>LINE公式アカウントの初期設定からGASで自動化する完全ガイド【Lステップなし】</h2>
+            <p>アカウント開設からGAS連携による自動返信・顧客管理の設定まで、月額0円で実現する手順を解説します。</p>
+            <span class="article-link">続きを読む →</span>
+          </div>
+        </a>
+        <div class="card-actions" data-slug="line-gas-automation-guide" data-title="LINE公式アカウント初期設定からGASで自動化する完全ガイド">
+          <button class="like-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="like-count">–</span></button>
+          <div class="share-btns">
+            <button class="share-btn share-line">LINE</button>
+            <button class="share-btn share-x">X</button>
+            <button class="share-btn share-copy">リンク</button>
+          </div>
         </div>
-      </a>
+      </div>
 
     </div>
   </div>
@@ -393,18 +460,18 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.05);padding:44p
   const articleGrid = document.getElementById('articleGrid');
   const countEl = document.getElementById('searchCount');
   if(searchInput && articleGrid){
-    const cards = Array.from(articleGrid.querySelectorAll('.article-card'));
-    countEl.textContent = cards.length + '件';
+    const wraps = Array.from(articleGrid.querySelectorAll('.article-card-wrap'));
+    countEl.textContent = wraps.length + '件';
     searchInput.addEventListener('input', () => {
       const q = searchInput.value.trim().toLowerCase();
       articleGrid.querySelectorAll('.no-results').forEach(el => el.remove());
       let shown = 0;
-      cards.forEach(card => {
-        const match = !q || card.textContent.toLowerCase().includes(q);
-        card.style.display = match ? '' : 'none';
+      wraps.forEach(wrap => {
+        const match = !q || wrap.textContent.toLowerCase().includes(q);
+        wrap.style.display = match ? '' : 'none';
         if(match) shown++;
       });
-      countEl.textContent = (q ? shown : cards.length) + '件';
+      countEl.textContent = (q ? shown : wraps.length) + '件';
       if(shown === 0){
         const p = document.createElement('p');
         p.className = 'no-results';
@@ -413,6 +480,76 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.05);padding:44p
       }
     });
   }
+})();
+
+/* ── SUPABASE LIKES & SHARE ── */
+const SB_URL = 'https://dxerzoqxaupzclohdiis.supabase.co';
+const SB_KEY = 'sb_publishable_5iTgXF1XKOVIpLoAR0MYlQ_woZTy6V1';
+const BASE = 'https://enjoyeverytaku-maker.github.io/form-flow-lp/column/';
+
+async function sbFetch(path, opts = {}){
+  const res = await fetch(SB_URL + path, {
+    headers:{ apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY, 'Content-Type':'application/json', ...opts.headers },
+    ...opts
+  });
+  return res.ok ? res.json() : null;
+}
+
+async function loadLikes(){
+  const data = await sbFetch('/rest/v1/article_likes?select=slug,count');
+  if(!data) return {};
+  return Object.fromEntries(data.map(r => [r.slug, r.count]));
+}
+
+async function incrementLike(slug){
+  const data = await sbFetch('/rest/v1/rpc/increment_likes', {
+    method:'POST',
+    body: JSON.stringify({ article_slug: slug })
+  });
+  return typeof data === 'number' ? data : null;
+}
+
+(async () => {
+  const counts = await loadLikes();
+  document.querySelectorAll('.card-actions').forEach(actions => {
+    const slug = actions.dataset.slug;
+    const title = actions.dataset.title;
+    const url = BASE + slug + '.html';
+    const likeBtn = actions.querySelector('.like-btn');
+    const likeCount = actions.querySelector('.like-count');
+    const liked = localStorage.getItem('liked_' + slug) === '1';
+
+    likeCount.textContent = counts[slug] ?? 0;
+    if(liked){ likeBtn.classList.add('liked'); }
+
+    likeBtn.addEventListener('click', async e => {
+      e.stopPropagation();
+      if(likeBtn.classList.contains('liked')) return;
+      likeBtn.classList.add('liked');
+      localStorage.setItem('liked_' + slug, '1');
+      const newCount = await incrementLike(slug);
+      if(newCount !== null) likeCount.textContent = newCount;
+    });
+
+    actions.querySelector('.share-line').addEventListener('click', e => {
+      e.stopPropagation();
+      window.open('https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent(url), '_blank');
+    });
+
+    actions.querySelector('.share-x').addEventListener('click', e => {
+      e.stopPropagation();
+      window.open('https://x.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title + ' | Form Flow'), '_blank');
+    });
+
+    const copyBtn = actions.querySelector('.share-copy');
+    copyBtn.addEventListener('click', async e => {
+      e.stopPropagation();
+      await navigator.clipboard.writeText(url);
+      copyBtn.textContent = 'コピー完了!';
+      copyBtn.classList.add('copied');
+      setTimeout(() => { copyBtn.textContent = 'リンク'; copyBtn.classList.remove('copied'); }, 2000);
+    });
+  });
 })();
 </script>
 </body>
