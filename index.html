@@ -839,6 +839,67 @@
       #cta { padding: 60px 20px; }
       footer { padding: 24px 20px; }
     }
+
+    /* ─── HERO 2-COLUMN ─── */
+    #hero { text-align: left; }
+    .hero-inner { max-width: 1100px; display: grid; grid-template-columns: 1fr 400px; gap: 64px; align-items: center; }
+    .hero-btns { justify-content: flex-start; }
+
+    /* ─── PHONE MOCKUP ─── */
+    .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; padding: 40px 16px; }
+    .hero-visual::before { content: ''; position: absolute; width: 340px; height: 340px; background: radial-gradient(circle, rgba(6,199,85,.14) 0%, transparent 68%); top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 0; pointer-events: none; }
+    .phone-wrap { position: relative; z-index: 1; width: 230px; animation: heroFloat 4.5s ease-in-out infinite; }
+    @keyframes heroFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
+    .phone-frame { width: 230px; background: #fff; border-radius: 36px; border: 7px solid #0f172a; box-shadow: 0 32px 80px rgba(15,23,42,.28), 0 8px 20px rgba(15,23,42,.12); overflow: hidden; }
+    .phone-status { background: #0f172a; height: 18px; }
+    .phone-line-hdr { background: var(--green); padding: 9px 12px; display: flex; align-items: center; gap: 8px; }
+    .phone-avatar { width: 28px; height: 28px; background: rgba(255,255,255,.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: #fff; flex-shrink: 0; }
+    .phone-name { font-size: 12px; font-weight: 700; color: #fff; line-height: 1.2; }
+    .phone-name small { font-size: 8px; font-weight: 400; opacity: .8; }
+    .phone-chat { background: #DDD9D4; padding: 9px 7px; display: flex; flex-direction: column; gap: 5px; height: 188px; overflow: hidden; }
+    .bubble { max-width: 84%; padding: 6px 8px; font-size: 10px; line-height: 1.5; }
+    .bubble-in { background: #fff; align-self: flex-start; border-radius: 0 10px 10px 10px; box-shadow: 0 1px 2px rgba(0,0,0,.1); color: #333; }
+    .bubble-out { background: var(--green); color: #fff; align-self: flex-end; border-radius: 10px 0 10px 10px; }
+    .bubble-auto { align-self: center; background: rgba(0,0,0,.16); color: #fff; font-size: 8px; padding: 2px 8px; border-radius: 8px; margin: 2px 0; }
+    .phone-richmenu { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #aaa; border-top: 1px solid #999; }
+    .rm-btn { background: #f0f0f0; padding: 9px 2px; text-align: center; font-size: 9px; color: #333; font-weight: 500; line-height: 1.4; }
+    .rm-btn-icon { font-size: 14px; display: block; margin-bottom: 1px; }
+    .float-badge { position: absolute; background: #fff; border: 1px solid rgba(6,199,85,.3); box-shadow: 0 4px 20px rgba(0,0,0,.12); border-radius: 10px; padding: 6px 11px; font-size: 11px; font-weight: 600; color: var(--navy); white-space: nowrap; display: flex; align-items: center; gap: 5px; z-index: 3; }
+    .float-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+    .fb-1 { top: 0; right: -12px; animation: fbFloat 3.2s ease-in-out infinite; }
+    .fb-2 { bottom: 60px; left: -22px; animation: fbFloat 4s ease-in-out infinite .6s; }
+    .fb-3 { bottom: 6px; right: -8px; animation: fbFloat 3.6s ease-in-out infinite 1.2s; }
+    @keyframes fbFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+
+    /* ─── TRUST BAR ─── */
+    .trust-icon { width: 36px; height: 36px; background: rgba(6,199,85,.12); border: 1px solid rgba(6,199,85,.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--green); }
+
+    /* ─── PAIN CARD ACCENT ─── */
+    .pain-card { border-left: 3px solid var(--green); box-shadow: 0 2px 8px rgba(0,0,0,.05); transition: box-shadow .2s, transform .15s; }
+    .pain-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.09); transform: translateY(-2px); }
+    .pain-icon { background: rgba(6,199,85,.1); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0; }
+
+    /* ─── FEATURE CARDS ─── */
+    .feature-num { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; background: var(--green); color: #fff; border-radius: 8px; font-size: 11px; font-weight: 800; margin-bottom: 14px; letter-spacing: 0; }
+    .feature-card { background: #fff; border-top: 2px solid transparent; transition: box-shadow .2s, transform .2s, border-color .2s; }
+    .feature-card:hover { border-top-color: var(--green); box-shadow: 0 8px 28px rgba(0,0,0,.09); transform: translateY(-3px); }
+
+    /* ─── DEMO CARDS ─── */
+    .demo-card { border-top: 3px solid var(--green); transition: transform .2s, box-shadow .2s; }
+    .demo-card:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,0,0,.1); }
+    .demo-tag { display: inline-block; background: rgba(6,199,85,.12); color: #059669; border: 1px solid rgba(6,199,85,.2); font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 6px; margin-bottom: 14px; }
+
+    /* ─── SECTION BACKGROUNDS ─── */
+    #pain { background: linear-gradient(180deg, #F0FDF4 0%, #F8FAFC 100%); }
+    #whatwedo { background: #fff; }
+    #demo { background: linear-gradient(180deg, #F8FAFC 0%, #EFF6FF 100%); }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 0; }
+      .hero-visual { display: none; }
+      #hero { text-align: center; }
+      .hero-btns { justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -875,20 +936,52 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-inner">
-    <div class="hero-badge">モニター価格で受付中</div>
-    <h1>公式LINEを<em>業務の入口</em>に。<br>設定から自動化まで、<br>まるごと構築します。</h1>
-    <p class="hero-sub">
-      リッチメニュー・自動返信・スプレッドシート連携まで一括対応。<br>
-      Lステップ不要、月額追加費用なしでの自動化も対応しています。
-    </p>
-    <div class="hero-btns">
-      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-line">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-        LINEで無料相談する
-      </a>
-      <a href="#demo" class="btn-ghost">構築例を見る →</a>
+    <!-- Left: text -->
+    <div class="hero-text">
+      <div class="hero-badge">モニター価格で受付中</div>
+      <h1>公式LINEを<em>業務の入口</em>に。<br>設定から自動化まで、<br>まるごと構築します。</h1>
+      <p class="hero-sub">
+        リッチメニュー・自動返信・スプレッドシート連携まで一括対応。<br>
+        Lステップ不要、月額追加費用なしでの自動化も対応しています。
+      </p>
+      <div class="hero-btns">
+        <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-line">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          LINEで無料相談する
+        </a>
+        <a href="#demo" class="btn-ghost">構築例を見る →</a>
+      </div>
+      <p class="hero-note">相談・見積もり無料。返信は数時間以内。</p>
     </div>
-    <p class="hero-note">相談・見積もり無料。返信は数時間以内。</p>
+
+    <!-- Right: phone mockup -->
+    <div class="hero-visual">
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <div class="phone-status"></div>
+          <div class="phone-line-hdr">
+            <div class="phone-avatar">FF</div>
+            <div class="phone-name">Form Flow<small>公式アカウント</small></div>
+          </div>
+          <div class="phone-chat">
+            <div class="bubble bubble-in">友だち追加ありがとうございます！<br>まず無料相談をどうぞ 🎉</div>
+            <div class="bubble bubble-out">相談したいです</div>
+            <div class="bubble bubble-in">ご希望の日程をお知らせください。<br>Googleカレンダーで調整します。</div>
+            <div class="bubble-auto">自動返信</div>
+            <div class="bubble bubble-in" style="opacity:.85;font-size:9px;">【リマインド】明日10:00のご予約です。<br>お気をつけてお越しください。</div>
+          </div>
+          <div class="phone-richmenu">
+            <div class="rm-btn"><span class="rm-btn-icon">📋</span>サービス内容</div>
+            <div class="rm-btn"><span class="rm-btn-icon">💬</span>無料相談</div>
+            <div class="rm-btn"><span class="rm-btn-icon">💰</span>料金プラン</div>
+            <div class="rm-btn"><span class="rm-btn-icon">❓</span>よくある質問</div>
+          </div>
+        </div>
+        <div class="float-badge fb-1"><div class="float-dot"></div>Lステップ不要</div>
+        <div class="float-badge fb-2"><div class="float-dot"></div>GASで自動化</div>
+        <div class="float-badge fb-3"><div class="float-dot"></div>月額ツール代0円</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -896,19 +989,27 @@
 <div id="trustbar">
   <div class="trustbar-inner">
     <div class="trust-item">
-      <div class="trust-icon">⚡</div>
+      <div class="trust-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
       <span>LINEは数時間以内に返信</span>
     </div>
     <div class="trust-item">
-      <div class="trust-icon">🔒</div>
+      <div class="trust-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
       <span>情報は外部に共有しません</span>
     </div>
     <div class="trust-item">
-      <div class="trust-icon">📋</div>
+      <div class="trust-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
       <span>着手前に仕様を確認・合意</span>
     </div>
     <div class="trust-item">
-      <div class="trust-icon">📖</div>
+      <div class="trust-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+      </div>
       <span>操作マニュアル付き納品</span>
     </div>
   </div>
