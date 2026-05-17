@@ -317,6 +317,79 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
 
 .magnetic{transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
 
+/* ── COST COMPARE ── */
+#compare{background:var(--navy)}
+.compare-wrap{max-width:960px;margin:0 auto}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px}
+.cc.ft{border-color:rgba(6,199,85,.4)!important;box-shadow:0 0 0 1px rgba(6,199,85,.15),0 16px 48px rgba(6,199,85,.1)}
+.cc-ft-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--g);color:#fff;font-size:10px;font-weight:700;padding:3px 16px;border-radius:99px;white-space:nowrap;font-family:'Inter',sans-serif;box-shadow:0 4px 12px rgba(6,199,85,.4)}
+.cc-scenarios{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.cc-sc{border-radius:10px;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07)}
+.cc-sc-head{font-size:10px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.35);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.cc-sc-head span{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--g);flex-shrink:0}
+.cc-sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.cc-sc-item{display:flex;flex-direction:column;gap:2px}
+.cc-sc-item .sc-label{font-size:10px;color:rgba(255,255,255,.3)}
+.cc-sc-item .sc-val{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:var(--g)}
+.cc{border-radius:20px;padding:36px 32px;position:relative;overflow:hidden}
+.cc.neg{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.12)}
+.cc.pos{background:rgba(6,199,85,.05);border:1px solid rgba(6,199,85,.18);box-shadow:0 0 40px rgba(6,199,85,.06)}
+.cc-badge{font-size:11px;font-weight:700;letter-spacing:.1em;font-family:'Inter',sans-serif;margin-bottom:14px;display:inline-block}
+.cc-badge.neg{color:rgba(239,68,68,.7)}
+.cc-badge.pos{color:var(--g)}
+.cc-name{font-size:20px;font-weight:900;color:#fff;margin-bottom:24px}
+.cc-rows{display:flex;flex-direction:column;gap:0}
+.cc-row{display:flex;align-items:baseline;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:13px;color:rgba(255,255,255,.45)}
+.cc-row:last-child{border-bottom:none}
+.cc-val{font-family:'Inter',sans-serif;font-weight:700;font-size:15px}
+.cc-val.neg{color:rgba(239,68,68,.85)}
+.cc-val.pos{color:var(--g)}
+.cc-total{margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;align-items:baseline;justify-content:space-between}
+.cc-total span:first-child{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);letter-spacing:.06em}
+.cc-total-num{font-family:'Inter',sans-serif;font-size:32px;font-weight:900;letter-spacing:-.03em}
+.cc-total-num.neg{color:rgba(239,68,68,.9)}
+.cc-total-num.pos{color:var(--g)}
+.compare-saving{text-align:center;background:rgba(6,199,85,.06);border:1px solid rgba(6,199,85,.15);border-radius:20px;padding:32px 24px}
+.cs-label{font-size:12px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.4);text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:10px}
+.cs-amount{font-family:'Inter',sans-serif;font-size:clamp(44px,6vw,72px);font-weight:900;color:var(--g);line-height:1;letter-spacing:-.04em}
+.cs-sub{font-size:13px;color:rgba(255,255,255,.3);margin-top:10px;line-height:1.7}
+
+/* ── DELIVERABLES ── */
+#deliverables{background:var(--navy2)}
+.dlv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.dlv{border-radius:20px;padding:30px 24px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.03);transition:background .3s,transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+.dlv:hover{background:rgba(255,255,255,.06);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.dlv-ico{width:52px;height:52px;border-radius:14px;background:rgba(6,199,85,.1);border:1px solid rgba(6,199,85,.18);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px}
+.dlv h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.4}
+.dlv p{font-size:12px;color:rgba(255,255,255,.38);line-height:1.85}
+.dlv-tag{display:inline-block;font-size:10px;font-weight:700;background:rgba(6,199,85,.1);border:1px solid rgba(6,199,85,.2);color:var(--g);padding:3px 10px;border-radius:8px;margin-top:14px;font-family:'Inter',sans-serif}
+
+/* ── ABOUT ── */
+#about{background:var(--navy)}
+.about-inner{display:grid;grid-template-columns:300px 1fr;gap:72px;align-items:start;max-width:1040px;margin:0 auto}
+.about-photo-wrap{position:relative;display:flex;flex-direction:column;align-items:center}
+.about-photo-ring{position:relative;width:220px;height:220px;margin:0 auto}
+.about-photo-ring::before{content:'';position:absolute;inset:-10px;border-radius:50%;border:1px solid rgba(6,199,85,.2);animation:pring 4s ease-in-out infinite}
+.about-photo-ring::after{content:'';position:absolute;inset:-20px;border-radius:50%;border:1px solid rgba(6,199,85,.08);animation:pring 4s ease-in-out infinite .6s}
+.about-photo{width:220px;height:220px;border-radius:50%;background:linear-gradient(135deg,rgba(6,199,85,.2),rgba(79,70,229,.15));border:2px solid rgba(6,199,85,.3);display:flex;align-items:center;justify-content:center;font-size:64px;font-weight:900;color:var(--g);font-family:'Inter',sans-serif;box-shadow:0 0 60px rgba(6,199,85,.12);overflow:hidden;position:relative;z-index:1}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.about-meta{text-align:center;margin-top:20px}
+.about-meta h3{font-size:22px;font-weight:900;color:#fff;margin-bottom:6px}
+.about-meta .role{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.12em;text-transform:uppercase;font-family:'Inter',sans-serif}
+.about-contact-chip{margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:rgba(6,199,85,.08);border:1px solid rgba(6,199,85,.2);color:var(--g);font-size:11px;font-weight:700;padding:6px 14px;border-radius:99px;font-family:'Inter',sans-serif;cursor:pointer;transition:background .2s}
+.about-contact-chip:hover{background:rgba(6,199,85,.14)}
+.about-quote{border-left:2px solid var(--g);padding:14px 20px;background:rgba(6,199,85,.04);border-radius:0 12px 12px 0;margin-bottom:28px}
+.about-quote p{font-size:16px;color:rgba(255,255,255,.7);line-height:1.8;font-weight:500}
+.about-body p{font-size:14px;color:rgba(255,255,255,.45);line-height:2;margin-bottom:16px}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+.about-val{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:16px;display:flex;gap:10px;align-items:flex-start;transition:background .25s,transform .25s}
+.about-val:hover{background:rgba(255,255,255,.05);transform:translateY(-2px)}
+.about-val-ico{font-size:18px;flex-shrink:0;margin-top:1px}
+.about-val h5{font-size:12px;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.4}
+.about-val p{font-size:11px;color:rgba(255,255,255,.35);line-height:1.7;margin:0}
+.about-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.about-tag{background:rgba(6,199,85,.07);border:1px solid rgba(6,199,85,.18);color:rgba(255,255,255,.5);font-size:11px;padding:4px 12px;border-radius:99px;font-weight:500}
+
 /* ── RESPONSIVE ── */
 @media(max-width:1100px){
   .hero-inner{grid-template-columns:1fr;gap:0}
@@ -331,6 +404,11 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
   .proc-grid{grid-template-columns:1fr 1fr}.proc-line{display:none}
   .stats-inner{grid-template-columns:repeat(2,1fr)}
   .stat-item::after{display:none}
+  .dlv-grid{grid-template-columns:repeat(2,1fr)}
+  .about-inner{grid-template-columns:1fr;text-align:center;gap:48px}
+  .about-body{text-align:left}
+  .about-values{grid-template-columns:1fr}
+  .about-quote{text-align:left}
 }
 @media(max-width:700px){
   nav{padding:0 20px}
@@ -343,6 +421,8 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
   .pain-grid,.demo-grid,.pgrid{grid-template-columns:1fr}
   .bento{grid-template-columns:1fr}.bc.c2,.bc.c3,.bc.c4{grid-column:span 1}.bc.tall{grid-row:span 1}
   .proc-grid{grid-template-columns:1fr}
+  .compare-grid{grid-template-columns:1fr}
+  .dlv-grid{grid-template-columns:1fr}
   #cta{padding:80px 24px}
   #contact{padding:72px 24px}
   #contact .container > div{grid-template-columns:1fr;gap:48px}
@@ -401,7 +481,7 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
       </div>
       <h1 class="htitle">
         <span class="hw"><span>Lステップなし。</span></span><br>
-        <span class="hw grd"><span>月額0円</span></span>
+        <span class="hw grd"><span>月額ツール費0円</span></span>
         <span class="hw"><span>で動く</span></span><br>
         <span class="hw"><span>LINE公式を</span></span><br>
         <span class="hw"><span>構築します。</span></span>
@@ -611,6 +691,110 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
   </div>
 </section>
 
+<!-- ── COST COMPARE ── -->
+<section id="compare">
+  <div class="container">
+    <div class="rv" style="text-align:center;margin-bottom:56px">
+      <p class="eyebrow">Cost Compare</p>
+      <h2 class="stitle">Lステップと比べてみる</h2>
+      <p class="ssub" style="margin-bottom:0">月額ゼロの差は、年単位で大きな金額になります。</p>
+    </div>
+    <div class="compare-wrap">
+      <div class="compare-grid">
+
+        <!-- Lステップ -->
+        <div class="cc neg rv d1">
+          <div class="cc-badge neg">▲ 従来の方法</div>
+          <div class="cc-name">Lステップ<br><span style="font-size:13px;font-weight:500;color:rgba(255,255,255,.4)">スタンダード</span></div>
+          <div class="cc-rows">
+            <div class="cc-row"><span>初期費用</span><span class="cc-val">¥0</span></div>
+            <div class="cc-row"><span>月額ツール費</span><span class="cc-val neg">¥33,000/月</span></div>
+            <div class="cc-row"><span>保守・サポート</span><span class="cc-val" style="color:rgba(255,255,255,.3);font-size:11px">込み（解約不可）</span></div>
+          </div>
+          <div class="cc-scenarios">
+            <div class="cc-sc">
+              <div class="cc-sc-head"><span></span>月額固定・削減不可</div>
+              <div class="cc-sc-grid">
+                <div class="cc-sc-item"><span class="sc-label">月額</span><span class="sc-val" style="color:rgba(239,68,68,.9)">¥33,000/月</span></div>
+                <div class="cc-sc-item"><span class="sc-label">1年間</span><span class="sc-val" style="color:rgba(239,68,68,.9)">¥396,000</span></div>
+                <div class="cc-sc-item"><span class="sc-label">3年間</span><span class="sc-val" style="color:rgba(239,68,68,.9)">¥1,188,000</span></div>
+                <div class="cc-sc-item"><span class="sc-label">5年間</span><span class="sc-val" style="color:rgba(239,68,68,.9)">¥1,980,000</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Flow ライト -->
+        <div class="cc pos rv d2">
+          <div class="cc-badge pos">✓ Form Flow</div>
+          <div class="cc-name">ライトプラン<br><span style="font-size:13px;font-weight:500;color:rgba(6,199,85,.5)">初期費用 ¥29,800</span></div>
+          <div class="cc-rows">
+            <div class="cc-row"><span>月額ツール費</span><span class="cc-val pos">¥0/月</span></div>
+            <div class="cc-row"><span>保守・サポート</span><span class="cc-val" style="color:rgba(255,255,255,.35);font-size:11px">¥3,000/月（任意）</span></div>
+          </div>
+          <div class="cc-scenarios">
+            <div class="cc-sc">
+              <div class="cc-sc-head"><span></span>保守費なし（最安）</div>
+              <div class="cc-sc-grid">
+                <div class="cc-sc-item"><span class="sc-label">月額</span><span class="sc-val">¥0/月</span></div>
+                <div class="cc-sc-item"><span class="sc-label">1年間</span><span class="sc-val">¥29,800</span></div>
+                <div class="cc-sc-item"><span class="sc-label">3年間</span><span class="sc-val">¥29,800</span></div>
+                <div class="cc-sc-item"><span class="sc-label">5年間</span><span class="sc-val">¥29,800</span></div>
+              </div>
+            </div>
+            <div class="cc-sc">
+              <div class="cc-sc-head"><span></span>保守費あり（最高）</div>
+              <div class="cc-sc-grid">
+                <div class="cc-sc-item"><span class="sc-label">月額</span><span class="sc-val">¥3,000/月</span></div>
+                <div class="cc-sc-item"><span class="sc-label">1年間</span><span class="sc-val">¥65,800</span></div>
+                <div class="cc-sc-item"><span class="sc-label">3年間</span><span class="sc-val">¥137,800</span></div>
+                <div class="cc-sc-item"><span class="sc-label">5年間</span><span class="sc-val">¥209,800</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Flow スタンダード -->
+        <div class="cc pos ft rv d3">
+          <div class="cc-ft-badge">人気 No.1</div>
+          <div class="cc-badge pos">✓ Form Flow</div>
+          <div class="cc-name">スタンダードプラン<br><span style="font-size:13px;font-weight:500;color:rgba(6,199,85,.5)">初期費用 ¥49,800</span></div>
+          <div class="cc-rows">
+            <div class="cc-row"><span>月額ツール費</span><span class="cc-val pos">¥0/月</span></div>
+            <div class="cc-row"><span>保守・サポート</span><span class="cc-val" style="color:rgba(255,255,255,.35);font-size:11px">¥3,000/月（任意）</span></div>
+          </div>
+          <div class="cc-scenarios">
+            <div class="cc-sc">
+              <div class="cc-sc-head"><span></span>保守費なし（最安）</div>
+              <div class="cc-sc-grid">
+                <div class="cc-sc-item"><span class="sc-label">月額</span><span class="sc-val">¥0/月</span></div>
+                <div class="cc-sc-item"><span class="sc-label">1年間</span><span class="sc-val">¥49,800</span></div>
+                <div class="cc-sc-item"><span class="sc-label">3年間</span><span class="sc-val">¥49,800</span></div>
+                <div class="cc-sc-item"><span class="sc-label">5年間</span><span class="sc-val">¥49,800</span></div>
+              </div>
+            </div>
+            <div class="cc-sc">
+              <div class="cc-sc-head"><span></span>保守費あり（最高）</div>
+              <div class="cc-sc-grid">
+                <div class="cc-sc-item"><span class="sc-label">月額</span><span class="sc-val">¥3,000/月</span></div>
+                <div class="cc-sc-item"><span class="sc-label">1年間</span><span class="sc-val">¥85,800</span></div>
+                <div class="cc-sc-item"><span class="sc-label">3年間</span><span class="sc-val">¥157,800</span></div>
+                <div class="cc-sc-item"><span class="sc-label">5年間</span><span class="sc-val">¥229,800</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="compare-saving rv d4">
+        <div class="cs-label">スタンダード＋保守ありでも 5年間の節約額</div>
+        <div class="cs-amount">¥1,750,200</div>
+        <div class="cs-sub">※ Lステップ スタンダード（¥33,000/月）との比較。保守なしの場合、節約額はさらに大きくなります。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── BENTO FEATURES ── -->
 <section id="features">
   <div class="container">
@@ -690,6 +874,43 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
         </div>
         <h3>マニュアル付き納品</h3>
         <p>操作手順書・FAQ付きで納品。構築後も自分で管理・更新できる状態でお渡しします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DELIVERABLES ── -->
+<section id="deliverables">
+  <div class="container">
+    <div class="rv" style="text-align:center;margin-bottom:56px">
+      <p class="eyebrow">Deliverables</p>
+      <h2 class="stitle">納品物の内訳</h2>
+      <p class="ssub" style="margin-bottom:0">「何が届くか」を明確にお伝えします。すべて込みの価格です。</p>
+    </div>
+    <div class="dlv-grid">
+      <div class="dlv rv d1">
+        <div class="dlv-ico">📋</div>
+        <h4>操作マニュアル</h4>
+        <p>スクリーンショット付きのHTML形式マニュアル。構築後も自分で管理・更新できます。</p>
+        <span class="dlv-tag">HTML形式で納品</span>
+      </div>
+      <div class="dlv rv d2">
+        <div class="dlv-ico">⚙️</div>
+        <h4>GASスクリプト一式</h4>
+        <p>コメント付きのGoogle Apps Scriptコード。将来の改修・機能追加も容易な構造で渡します。</p>
+        <span class="dlv-tag">コメント付きコード</span>
+      </div>
+      <div class="dlv rv d3">
+        <div class="dlv-ico">🖼️</div>
+        <h4>リッチメニュー画像</h4>
+        <p>デザイン設計から制作・設定まで対応。後から文言変更できるようCanvaデータも添付します。</p>
+        <span class="dlv-tag">Canvaデータ付き</span>
+      </div>
+      <div class="dlv rv d4">
+        <div class="dlv-ico">✅</div>
+        <h4>動作確認レポート</h4>
+        <p>納品前に全機能の動作テストを実施。確認項目・結果をレポートとして提出した上で引き渡します。</p>
+        <span class="dlv-tag">テスト済み納品</span>
       </div>
     </div>
   </div>
@@ -781,6 +1002,84 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
         <div class="dc-body">
           <h3>購入後フォロー・セール通知の配信</h3>
           <p>購入後の自動お礼・属性に合わせたセール通知を自動配信。リピート率向上に。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="container">
+    <div class="rv" style="text-align:center;margin-bottom:64px">
+      <p class="eyebrow">About</p>
+      <h2 class="stitle">制作者について</h2>
+      <p class="ssub" style="margin-bottom:0">どんな人間が作っているか、知っておいてください。</p>
+    </div>
+    <div class="about-inner">
+      <div class="rvl">
+        <div class="about-photo-wrap">
+          <div class="about-photo-ring">
+            <div class="about-photo">
+              <img src="./images/profile.png" alt="宇都宮拓">
+            </div>
+          </div>
+          <div class="about-meta">
+            <h3>宇都宮 拓</h3>
+            <p class="role">Form Flow 運営・制作</p>
+          </div>
+          <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="about-contact-chip">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+            LINEで直接話す
+          </a>
+        </div>
+      </div>
+      <div class="rvr">
+        <p class="eyebrow">Profile</p>
+        <h2 class="stitle" style="font-size:clamp(22px,2.5vw,34px);margin-bottom:24px">「ツールに縛られず、<br>本業に集中できるLINEを」</h2>
+        <div class="about-quote">
+          <p>高額ツールなしでも、ちゃんと動くLINEは作れる。それを証明するためにこのサービスを始めました。</p>
+        </div>
+        <div class="about-body">
+          <p>整体院・サロン・士業の方から「Lステップが高くて続けられない」「設定が複雑で諦めた」という声を何度も聞きました。GAS（Google Apps Script）を使えば、月額ゼロで同等の自動化ができる。その可能性を広く届けたいと思い、Form Flowを立ち上げました。</p>
+          <p>技術的な部分はすべて引き受けます。納品後も自分で操作できるよう、マニュアルと一緒にお渡しするのが私のスタイルです。</p>
+        </div>
+        <div class="about-values">
+          <div class="about-val">
+            <div class="about-val-ico">💰</div>
+            <div>
+              <h5>透明な価格設定</h5>
+              <p>初期費用のみ。月額ゼロを最初から約束します。</p>
+            </div>
+          </div>
+          <div class="about-val">
+            <div class="about-val-ico">📦</div>
+            <div>
+              <h5>すぐ使える状態で納品</h5>
+              <p>設定済み・テスト済み・マニュアル付き。迷わず使い始められます。</p>
+            </div>
+          </div>
+          <div class="about-val">
+            <div class="about-val-ico">🔓</div>
+            <div>
+              <h5>ツール依存ゼロ</h5>
+              <p>特定サービスに縛られない構成。将来も安心して使い続けられます。</p>
+            </div>
+          </div>
+          <div class="about-val">
+            <div class="about-val-ico">💬</div>
+            <div>
+              <h5>押し売りなし・秘密厳守</h5>
+              <p>相談だけで終わっても構いません。無理な提案は一切しません。</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-tags" style="margin-top:24px">
+          <span class="about-tag">Google Apps Script</span>
+          <span class="about-tag">LINE Messaging API</span>
+          <span class="about-tag">GAS × スプレッドシート連携</span>
+          <span class="about-tag">Googleカレンダー連携</span>
+          <span class="about-tag">完全リモート対応</span>
         </div>
       </div>
     </div>
