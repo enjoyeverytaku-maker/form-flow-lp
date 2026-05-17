@@ -279,18 +279,29 @@ section{padding:112px 52px}
 .pbtn-o:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff}
 .pbtn-f{background:var(--g);color:#fff;box-shadow:0 4px 24px rgba(6,199,85,.35)}
 .pbtn-f:hover{background:var(--gd);box-shadow:0 8px 32px rgba(6,199,85,.5);transform:translateY(-1px)}
-.p-option{margin-top:32px;padding:28px 32px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(255,255,255,.02);display:flex;align-items:center;gap:32px;flex-wrap:wrap}
-.p-opt-badge{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:4px 10px;flex-shrink:0}
-.p-opt-body{flex:1;min-width:200px}
-.p-opt-name{font-size:15px;font-weight:700;color:rgba(255,255,255,.85);display:block;margin-bottom:6px}
-.p-opt-items{list-style:none;display:flex;flex-wrap:wrap;gap:6px 20px;margin-bottom:0}
-.p-opt-items li{font-size:12px;color:rgba(255,255,255,.45)}
-.p-opt-items li::before{content:'・'}
-.p-opt-price-wrap{text-align:right;flex-shrink:0}
-.p-opt-price{font-family:'Inter',sans-serif;font-size:32px;font-weight:800;color:#fff;line-height:1;letter-spacing:-.03em}
-.p-opt-price small{font-size:13px;font-weight:400;color:rgba(255,255,255,.4);font-family:'Noto Sans JP',sans-serif;letter-spacing:0}
-.p-opt-note{font-size:11px;color:rgba(255,255,255,.3);margin-top:4px;white-space:nowrap}
-@media(max-width:640px){.p-option{flex-direction:column;gap:16px}.p-opt-price-wrap{text-align:left}.p-opt-note{white-space:normal}}
+.maint-wrap{margin-top:56px;padding-top:48px;border-top:1px solid rgba(255,255,255,.07)}
+.maint-head{text-align:center;margin-bottom:36px}
+.maint-head h3{font-size:22px;font-weight:800;margin-bottom:8px}
+.maint-head p{font-size:13px;color:rgba(255,255,255,.4)}
+.maint-base{display:flex;align-items:center;gap:24px;padding:24px 28px;background:rgba(6,199,85,.05);border:1px solid rgba(6,199,85,.2);border-radius:16px;margin-bottom:16px;flex-wrap:wrap}
+.maint-base-left{flex:1;min-width:180px}
+.maint-base-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g);background:rgba(6,199,85,.1);border:1px solid rgba(6,199,85,.25);border-radius:6px;padding:3px 9px;margin-bottom:8px}
+.maint-base-name{font-size:15px;font-weight:700;color:#fff;display:block;margin-bottom:6px}
+.maint-base-desc{list-style:none;display:flex;flex-wrap:wrap;gap:4px 18px}
+.maint-base-desc li{font-size:12px;color:rgba(255,255,255,.45)}
+.maint-base-desc li::before{content:'✓ ';color:var(--g)}
+.maint-base-price{font-family:'Inter',sans-serif;font-size:36px;font-weight:800;color:#fff;line-height:1;letter-spacing:-.03em;white-space:nowrap}
+.maint-base-price small{font-size:13px;font-weight:400;color:rgba(255,255,255,.4);font-family:'Noto Sans JP',sans-serif;letter-spacing:0}
+.maint-opts-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px}
+.maint-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mopt{padding:18px 20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;display:flex;flex-direction:column;gap:6px;transition:border-color .2s}
+.mopt:hover{border-color:rgba(255,255,255,.15)}
+.mopt-name{font-size:13px;font-weight:700;color:rgba(255,255,255,.85)}
+.mopt-desc{font-size:11px;color:rgba(255,255,255,.4);line-height:1.6;flex:1}
+.mopt-price{font-family:'Inter',sans-serif;font-size:16px;font-weight:800;color:var(--g);margin-top:4px}
+.maint-note{font-size:11px;color:rgba(255,255,255,.25);text-align:center;margin-top:16px}
+@media(max-width:900px){.maint-opts{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.maint-base{flex-direction:column;align-items:flex-start}.maint-opts{grid-template-columns:1fr 1fr}}
 
 
 /* ── FAQ ── */
@@ -1155,20 +1166,80 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
         <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="pbtn pbtn-o">相談・見積もり（無料）</a>
       </div>
     </div>
-    <div class="p-option rv">
-      <span class="p-opt-badge">Option</span>
-      <div class="p-opt-body">
-        <span class="p-opt-name">保守・サポートプラン</span>
-        <ul class="p-opt-items">
-          <li>GASスクリプトの軽微な修正・調整</li>
-          <li>文言・キーワードの変更対応</li>
-          <li>月次動作確認レポート</li>
-        </ul>
+    <div class="maint-wrap rv">
+      <div class="maint-head">
+        <p class="eyebrow">Maintenance Option</p>
+        <h3>保守・サポートプラン</h3>
+        <p>構築完了後から選択可能。すべて任意です。必要なものだけ組み合わせられます。</p>
       </div>
-      <div class="p-opt-price-wrap">
-        <div class="p-opt-price">¥3,000<small>/月（税込）</small></div>
-        <div class="p-opt-note">※ 任意。納品後にご選択いただけます</div>
+      <div class="maint-base">
+        <div class="maint-base-left">
+          <span class="maint-base-badge">Base</span>
+          <span class="maint-base-name">基本プラン（全オプションの前提）</span>
+          <ul class="maint-base-desc">
+            <li>月次動作確認（GAS・Webhook・自動返信）</li>
+            <li>障害検知時の報告・一次対応</li>
+            <li>メール質問対応（月2件まで）</li>
+          </ul>
+        </div>
+        <div>
+          <div class="maint-base-price">¥3,000<small>/月（税込）</small></div>
+        </div>
       </div>
+      <p class="maint-opts-title">追加オプション（基本プランに加算）</p>
+      <div class="maint-opts">
+        <div class="mopt">
+          <div class="mopt-name">文言・キーワード変更</div>
+          <div class="mopt-desc">自動返信メッセージの文言修正、キーワード追加・変更（月5件まで）</div>
+          <div class="mopt-price">+¥2,000/月</div>
+        </div>
+        <div class="mopt">
+          <div class="mopt-name">リッチメニュー更新</div>
+          <div class="mopt-desc">メニュー画像の差し替え、ボタンリンク・テキスト変更（月1回）</div>
+          <div class="mopt-price">+¥2,000/月</div>
+        </div>
+        <div class="mopt">
+          <div class="mopt-name">GASスクリプト軽微修正</div>
+          <div class="mopt-desc">スプレッドシート項目追加・条件分岐の微調整（大規模改修は別途）</div>
+          <div class="mopt-price">+¥3,000/月</div>
+        </div>
+        <div class="mopt">
+          <div class="mopt-name">月次レポート作成</div>
+          <div class="mopt-desc">友だち数推移・キーワード反応数・配信開封率を毎月まとめてご報告</div>
+          <div class="mopt-price">+¥2,000/月</div>
+        </div>
+        <div class="mopt">
+          <div class="mopt-name">ステップ配信コンテンツ更新</div>
+          <div class="mopt-desc">配信文の改善・追加（月2通まで）、配信タイミング調整</div>
+          <div class="mopt-price">+¥3,000/月</div>
+        </div>
+        <div class="mopt">
+          <div class="mopt-name">優先サポート</div>
+          <div class="mopt-desc">返信24時間以内保証（平日）、障害時の即日一次対応</div>
+          <div class="mopt-price">+¥3,000/月</div>
+        </div>
+        <div class="mopt">
+          <div class="mopt-name">一斉配信文の作成代行</div>
+          <div class="mopt-desc">月1回のキャンペーン・お知らせ配信文をヒアリングのうえ作成・送信代行</div>
+          <div class="mopt-price">+¥3,000/月</div>
+        </div>
+        <div class="mopt">
+          <div class="mopt-name">クーポン・ポイント設定</div>
+          <div class="mopt-desc">LINEクーポン・ショップカードの新規作成・更新・期限管理（月1回）</div>
+          <div class="mopt-price">+¥2,000/月</div>
+        </div>
+        <div class="mopt">
+          <div class="mopt-name">アカウントプロフィール更新</div>
+          <div class="mopt-desc">アイコン・ヘッダー画像・プロフィール文・背景画像の差し替え（月1回）</div>
+          <div class="mopt-price">+¥1,000/月</div>
+        </div>
+        <div class="mopt">
+          <div class="mopt-name">月次ミーティング（30分）</div>
+          <div class="mopt-desc">運用状況の振り返り・改善提案・次月の施策相談をオンラインで実施</div>
+          <div class="mopt-price">+¥3,000/月</div>
+        </div>
+      </div>
+      <p class="maint-note">※ 最低契約期間3ヶ月。翌月から解約可能。大規模な仕様変更・新機能追加は別途お見積もりになります。</p>
     </div>
   </div>
 </section>
