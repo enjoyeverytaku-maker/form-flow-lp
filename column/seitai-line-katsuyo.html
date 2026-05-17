@@ -10,14 +10,14 @@
     gtag('config', 'G-NWQF63CGRL');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webhookとは何か——LINEをGASで「考えられる」ようにする仕組み｜Form Flow</title>
-  <meta name="description" content="LINE Messaging APIのWebhookをGASで受け取ると何ができるのか。友だち追加の自動記録を例に、Webhookの考え方を解説。">
+  <title>整体院・接骨院のLINE公式活用術——予約リマインドから休眠顧客掘り起こしまで｜Form Flow</title>
+  <meta name="description" content="整体院・接骨院がLINE公式アカウントで予約リマインド・ステップ配信・休眠顧客掘り起こしを実現する方法を解説。有料ツール不要で始められます。">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-webhook-gas.html">
+  <link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/column/seitai-line-katsuyo.html">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-webhook-gas.html">
-  <meta property="og:title" content="Webhookとは何か——LINEをGASで「考えられる」ようにする仕組み">
-  <meta property="og:description" content="LINE Messaging APIのWebhookをGASで受け取ると何ができるのか。友だち追加の自動記録を例に解説。">
+  <meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/column/seitai-line-katsuyo.html">
+  <meta property="og:title" content="整体院・接骨院のLINE公式活用術——予約リマインドから休眠顧客掘り起こしまで">
+  <meta property="og:description" content="整体院・接骨院がLINE公式アカウントで予約リマインド・ステップ配信・休眠顧客掘り起こしを実現する方法を解説。">
   <meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
   <meta property="og:site_name" content="Form Flow">
   <meta property="og:locale" content="ja_JP">
@@ -25,7 +25,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Webhookとは何か——LINEをGASで「考えられる」ようにする仕組み",
+    "headline": "整体院・接骨院のLINE公式活用術——予約リマインドから休眠顧客掘り起こしまで",
     "author": { "@type": "Organization", "name": "Form Flow" },
     "publisher": { "@type": "Organization", "name": "Form Flow", "url": "https://enjoyeverytaku-maker.github.io/form-flow-lp/" },
     "datePublished": "2026-05-17",
@@ -35,7 +35,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --green:#06C755; --green-d:#04a344; --navy:#0F172A; --text:#1E293B; --sub:#64748B; --border:rgba(0,0,0,.09); --off:#F8FAFC; --bg:#FFFFFF; }
-    body { font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',sans-serif; background:var(--bg); color:var(--text); line-height:2.0; font-size:16px; -webkit-font-smoothing:antialiased; }
+    body { font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',sans-serif; background:#F0F4F8; color:var(--text); line-height:2.0; font-size:16px; -webkit-font-smoothing:antialiased; }
     a { color:var(--green); text-decoration:none; }
     a:hover { text-decoration:underline; }
     nav { background:rgba(255,255,255,.97); border-bottom:1px solid var(--border); padding:0 40px; height:64px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; }
@@ -43,17 +43,11 @@
     .nav-logo span { color:var(--green); }
     .nav-back { font-size:14px; color:var(--sub); }
     .nav-back:hover { color:var(--text); }
-    .article-wrap { max-width:680px; margin:0 auto;       background: #fff;
-      box-shadow: 0 4px 32px rgba(0,0,0,.08);
-      border-radius: 16px;
-      margin-top: -80px;
-      position: relative;
-      padding:60px 24px 100px; }
+    .page-accent { height:180px; background:linear-gradient(135deg,#D1FAE5 0%,#A7F3D0 50%,#EFF6FF 100%); border-bottom:1px solid var(--border); }
+    .article-wrap { max-width:680px; margin:0 auto; background:#fff; box-shadow:0 4px 32px rgba(0,0,0,.08); border-radius:16px; margin-top:-80px; position:relative; padding:60px 24px 100px; }
     .article-header { margin-bottom:44px; }
     .article-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
-    .tag { font-size:12px; font-weight:600; padding:4px 12px; border-radius:20px; }
-    .tag-purple { background:rgba(167,139,250,.12); color:#c4b5fd; border:1px solid rgba(167,139,250,.2); }
-    .tag-green { background:rgba(6,199,85,.12); color:var(--green); border:1px solid rgba(6,199,85,.2); }
+    .tag { font-size:12px; font-weight:600; padding:4px 12px; border-radius:20px; background:rgba(6,199,85,.12); color:var(--green); border:1px solid rgba(6,199,85,.2); }
     .article-header h1 { font-size:clamp(22px,4vw,28px); font-weight:900; line-height:1.5; margin-bottom:18px; }
     .article-meta { font-size:13px; color:var(--sub); }
     .article-body { line-height:2.0; }
@@ -63,8 +57,11 @@
     .article-body ul { padding-left:24px; margin-bottom:24px; }
     .article-body li { margin-bottom:8px; }
     blockquote { border-left:3px solid var(--green); padding:4px 0 4px 20px; margin:28px 0; color:var(--sub); font-size:15px; line-height:1.9; }
-    .flow-box { background:var(--off); border:1px solid var(--border); border-radius:10px; padding:20px 24px; margin:24px 0; font-size:14px; line-height:2.2; }
-    .flow-arrow { color:var(--green); font-weight:700; margin:0 8px; }
+    .step-box { background:var(--off); border-radius:12px; padding:24px 28px; margin:28px 0; }
+    .step-box-title { font-size:13px; font-weight:700; color:var(--green); letter-spacing:.06em; margin-bottom:12px; }
+    .step-box ul { padding-left:20px; }
+    .step-box li { margin-bottom:6px; font-size:15px; }
+    .note-box { background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px; padding:16px 20px; margin:24px 0; font-size:14px; color:#92400E; }
     .article-cta { background:linear-gradient(135deg,#F0FDF4,#EFF6FF); border:1px solid rgba(6,199,85,.35); border-radius:14px; padding:36px 32px; text-align:center; margin-top:64px; }
     .article-cta h3 { font-size:19px; font-weight:800; margin-bottom:10px; color:var(--navy); }
     .article-cta p { font-size:14px; color:var(--sub); margin-bottom:24px; }
@@ -72,12 +69,7 @@
     .btn-green:hover { background:var(--green-d); text-decoration:none; }
     footer { background:var(--off); border-top:1px solid var(--border); text-align:center; padding:28px 24px; font-size:13px; color:var(--sub); }
     .footer-logo { font-size:16px; font-weight:800; color:var(--text); margin-bottom:6px; }
-    .footer-logo span { color:var(--green); }    body { background: #F0F4F8; }
-    .page-accent {
-      height: 180px;
-      background: linear-gradient(135deg, #EDE9FE 0%, #DDD6FE 50%, #E0F2FE 100%);
-      border-bottom: 1px solid var(--border);
-    }
+    .footer-logo span { color:var(--green); }
     .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
     .hamburger span { display:block; width:22px; height:2px; background:var(--navy); border-radius:2px; transition:all .25s; }
     .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
@@ -88,10 +80,7 @@
     .mobile-menu a { font-size:15px; color:var(--text); padding:14px 0; border-bottom:1px solid var(--border); text-decoration:none; font-weight:500; }
     .mobile-menu a:last-child { border-bottom:none; }
     .mobile-menu a.m-cta { margin-top:12px; background:var(--green); color:#fff; text-align:center; padding:13px; border-radius:8px; font-weight:700; border-bottom:none; }
-
-    @media (max-width:640px) { nav { padding:0 20px;       .nav-back { display:none; }
-      .hamburger { display:flex; }
-    } .article-wrap { padding:40px 20px 80px; } .article-cta { padding:28px 20px; } }
+    @media (max-width:640px) { nav { padding:0 20px; } .nav-back { display:none; } .hamburger { display:flex; } .article-wrap { padding:40px 20px 80px; } .article-cta { padding:28px 20px; } }
   </style>
 </head>
 <body>
@@ -110,71 +99,86 @@
   <a href="../index.html#contact" class="m-cta">無料相談</a>
 </div>
 
-
 <div class="page-accent"></div>
 <div class="article-wrap">
   <header class="article-header">
     <div class="article-tags">
-      <span class="tag tag-purple">Webhook</span>
-      <span class="tag tag-green">GAS自動化</span>
+      <span class="tag">整体院・接骨院</span>
+      <span class="tag">予約管理</span>
+      <span class="tag">自動化</span>
     </div>
-    <h1>Webhookとは何か<br>——LINEをGASで「考えられる」ようにする仕組み</h1>
+    <h1>整体院・接骨院のLINE公式活用術<br>——予約リマインドから休眠顧客掘り起こしまで</h1>
     <div class="article-meta">2026年5月17日｜Form Flow</div>
   </header>
 
   <div class="article-body">
 
-    <p>LINE公式アカウントのGAS連携を説明するとき、必ず登場するのが「Webhook」という言葉です。聞き慣れない言葉ですが、これを理解するとLINEの自動化の幅が一気に広がります。今回は、技術的な詳細より「何ができるか」「なぜ必要か」に絞って書きます。</p>
+    <p>整体院・接骨院の経営において、リピート率は売上に直結する数字です。一度来てくれたお客さまが次の予約を入れるかどうか、定期的に通い続けてくれるかどうか——この部分をLINE公式アカウントで仕組み化することができます。</p>
 
-    <h2>Webhookがない状態のLINE</h2>
+    <p>有料ツールなしで実現できることを、3つの軸で整理します。</p>
 
-    <p>Webhookなしで使えるLINE公式アカウントの自動化は、「管理画面で事前に設定したことしかできない」状態です。あいさつメッセージ・キーワード自動返信・リッチメニュー——これらは全て「あらかじめ決まったパターンへの反応」です。</p>
+    <h2>① ステップ配信——来院後のフォローを自動化する</h2>
 
-    <p>たとえば「友だち追加した人の情報を自動でスプレッドシートに記録する」「特定のメッセージを送ってきた人に条件分岐した返信をする」——こういったことは、管理画面の設定だけでは実現できません。</p>
+    <p>友だち追加後に自動でメッセージを届ける「ステップ配信」は、LINE公式の管理画面だけで設定できます。GASや有料ツールは不要です。</p>
 
-    <blockquote>Webhookなしの状態は、「事前に決めた台本通りにしか動けない」状態です。Webhookを使うことで、LINE自体が「何かが起きたときに、外部のシステムに相談できる」ようになります。</blockquote>
-
-    <h2>Webhookの仕組みを一言で言うと</h2>
-
-    <p>LINEで何かが起きたとき（友だち追加・メッセージ送信・ブロックなど）、LINEが自動的に「こんなことがありました」という通知を外部のURLに送る仕組みです。この通知を受け取るURLをGASで作ることで、LINEとGASが連携できるようになります。</p>
-
-    <div class="flow-box">
-      ユーザーが友だち追加
-      <span class="flow-arrow">→</span>
-      LINEがGASのURLに通知を送る
-      <span class="flow-arrow">→</span>
-      GASが通知を受け取り処理する
-      <span class="flow-arrow">→</span>
-      スプレッドシートに記録 ＋ 自動返信
+    <div class="step-box">
+      <div class="step-box-title">設計例</div>
+      <ul>
+        <li><strong>登録直後（あいさつメッセージ）</strong>：歓迎メッセージ＋次回来院時の割引クーポン案内</li>
+        <li><strong>3日後</strong>：「施術後の体の状態はいかがですか？」体調を気にかけるメッセージ</li>
+        <li><strong>7日後</strong>：定期的なケアのすすめ＋予約フォームへの誘導</li>
+        <li><strong>30日後</strong>：「最近いかがですか？」再来院を促すメッセージ</li>
+      </ul>
     </div>
 
-    <p>この流れが動くと、友だち追加のたびに手作業で記録する必要がなくなります。誰が・いつ・追加したかが自動でスプレッドシートに蓄積されていきます。</p>
+    <p>一度設計してしまえば、新しく友だち追加した人全員に自動で届き続けます。スタッフが個別にフォローする手間が省け、来院後の関係維持が自動化されます。</p>
 
-    <h2>Webhookで実現できること</h2>
+    <h2>② 予約リマインド——無断キャンセルを減らす</h2>
 
-    <p>Webhookを使ったGAS連携でできることは、主に以下のとおりです。</p>
+    <p>予約日の前日や当日に「明日○時にご予約いただいています」とLINEで自動通知することで、うっかり忘れによるキャンセルや無断欠席を減らすことができます。</p>
+
+    <div class="note-box">
+      📌 予約リマインドはLINE単体では自動送信できません。Googleカレンダーと連携したGASスクリプトを使うことで、予約が入ったタイミングから前日リマインドまでを自動化できます。
+    </div>
+
+    <p>Googleフォームで予約を受け付け→GASがカレンダーに自動登録→前日にLINEでリマインド送信、という流れを作ることで、予約管理の大部分を自動化できます。</p>
+
+    <h2>③ 休眠顧客の掘り起こし——一斉配信で接点を作る</h2>
+
+    <p>「3ヶ月以上来院がない方」に向けて、季節の体調メッセージやキャンペーン情報を一斉送信できます。LINE公式の管理画面から全友だちへの一斉配信が可能で、特定の属性（年齢・性別・地域）に絞り込むこともできます。</p>
+
+    <blockquote>「久しぶりに来てくれたお客さまに、LINEがきっかけだったと言われた」——こういった声は、継続的に配信している院から聞こえてきます。</blockquote>
+
+    <p>一度疎遠になったお客さまでも、LINEで定期的に存在を示すことで、「また行こうかな」というタイミングに思い出してもらえます。</p>
+
+    <h2>④ 友だちを増やす——入口を整える</h2>
+
+    <p>どれだけ配信を工夫しても、友だちがいなければ届きません。整体院・接骨院で友だちを増やすための基本的な設置場所は次のとおりです。</p>
 
     <ul>
-      <li>友だち追加・ブロック・アンブロックをスプレッドシートに自動記録</li>
-      <li>送られてきたメッセージの内容に応じた条件分岐返信</li>
-      <li>特定キーワードに反応してGoogleカレンダーに予約を自動作成</li>
-      <li>フォーム送信と連動してLINEにリアルタイム通知</li>
-      <li>問い合わせ内容をGmailに転送しつつLINEでも確認</li>
+      <li>受付カウンターにQRコードスタンドを設置</li>
+      <li>施術ベッド横や待合室にポップを貼る</li>
+      <li>Googleビジネスプロフィールの投稿にQRコードを掲載</li>
+      <li>初回来院時のスタッフ案内に「LINEで次回予約のご案内を送ります」と一言添える</li>
     </ul>
 
-    <p>管理画面のキーワード自動返信との違いは、「GAS側で自由にロジックを書ける」点です。条件が複雑でも、コードで表現できれば動きます。</p>
+    <p>「登録するとクーポンが届く」など、登録のメリットを明確にするとQRコードの読み取り率が上がります。</p>
 
-    <h2>設定に必要なものは2つだけ</h2>
+    <h2>まとめ——仕組みを作れば、手間なく続く</h2>
 
-    <p>Webhook連携に必要なのは、LINE DevelopersのチャネルアクセストークンとGASのウェブアプリURLです。GAS側でURLを発行し、LINE Developersの管理画面にそのURLを登録するだけで接続が完了します。</p>
+    <p>整体院・接骨院でLINEを活用する場合、最初の設計に少し時間をかけるだけで、あとは自動で動き続ける仕組みができあがります。</p>
 
-    <p>難しく聞こえるかもしれませんが、設定の流れ自体はシンプルです。Form Flowではこの設定を込みで構築しているので、クライアント側で難しい操作をする必要はありません。</p>
+    <ul>
+      <li>ステップ配信：LINE管理画面のみで設定（GAS不要）</li>
+      <li>予約リマインド：GAS＋Googleカレンダー連携</li>
+      <li>一斉配信：LINE管理画面から随時送信</li>
+    </ul>
 
-    <blockquote>Webhookは「LINEに神経を通す」ようなイメージです。これがあることで、LINEが外の世界と情報をやり取りできるようになります。GAS連携の核心はここにあります。</blockquote>
+    <p>「どこから手をつければいいかわからない」という方は、まず友だち登録の入口を整えることと、あいさつメッセージを設定することから始めてみてください。</p>
 
     <div class="article-cta">
-      <h3>Webhook連携の構築もお任せします</h3>
-      <p>友だち追加の自動記録から、条件分岐の自動返信まで。GASで月額0円の仕組みを一緒に作りましょう。</p>
+      <h3>設定・構築はお任せください</h3>
+      <p>ステップ配信の設計から予約リマインドの自動化まで、整体院・接骨院向けのLINE構築をサポートします。まずは相談だけでも大丈夫です。</p>
       <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-green">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
         LINEで無料相談する
