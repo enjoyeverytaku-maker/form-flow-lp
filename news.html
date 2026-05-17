@@ -22,136 +22,124 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --g:#06C755;--gd:#04a344;--gl:rgba(6,199,85,.12);
-  --navy:#05101e;--navy2:#0c1a2e;
-  --text:#111827;--body:#374151;--sub:#6B7280;
-  --border:rgba(0,0,0,.08);--off:#F9FAFB;--off2:#F3F4F6;
-}
+:root{--g:#06C755;--gd:#04a344;--g2:#00e0b0;--navy:#040d1a;--navy2:#0b1829;--border:rgba(255,255,255,.08)}
 html{scroll-behavior:smooth}
-body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--navy);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:'Noto Sans JP',sans-serif;color:#fff;background:var(--navy);-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
 a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
 
-/* ── SCROLL PROGRESS ── */
-#sp{position:fixed;top:0;left:0;height:2px;background:var(--g);z-index:9999;width:0%;pointer-events:none;transition:width .08s}
+#cur{position:fixed;width:10px;height:10px;background:var(--g);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);mix-blend-mode:screen}
+#cur-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(6,199,85,.5);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:left .12s ease,top .12s ease,width .3s,height .3s}
+body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:56px;height:56px;}
+@media(hover:none){#cur,#cur-ring{display:none}body{cursor:auto}}
 
-/* ── CURSOR GLOW ── */
-#cg{position:fixed;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(6,199,85,.055) 0%,transparent 68%);pointer-events:none;transform:translate(-50%,-50%);z-index:0;left:-600px;top:-600px;transition:left .25s ease,top .25s ease}
+#sp{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--g),var(--g2));z-index:9999;width:0%;pointer-events:none}
 
-/* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;transition:background .4s,box-shadow .4s}
-nav.sc{background:rgba(255,255,255,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 1px 0 rgba(0,0,0,.08)}
-.nlogo{font-size:20px;font-weight:900;color:#fff;letter-spacing:.01em;transition:color .3s;font-family:'Inter',sans-serif}
-.nlogo em{color:var(--g);font-style:normal}
-nav.sc .nlogo{color:var(--navy)}
+nav.sc{background:rgba(4,13,26,.92);backdrop-filter:blur(28px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.nlogo{font-size:20px;font-weight:900;color:#fff;font-family:'Inter',sans-serif}.nlogo em{color:#06C755;font-style:normal}
 .nlinks{display:flex;gap:32px;align-items:center}
-.nlinks a{font-size:13px;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s}
-nav.sc .nlinks a{color:var(--sub)}
-.nlinks a:hover{color:#fff}
-nav.sc .nlinks a:hover{color:var(--navy)}
-.nlinks a.active{color:var(--g)!important;font-weight:600}
-.ncta{background:var(--g)!important;color:#fff!important;padding:9px 22px;border-radius:8px;font-weight:700!important;font-size:13px;transition:background .2s,transform .15s!important}
-.ncta:hover{background:var(--gd)!important;transform:translateY(-1px)!important}
+.nlinks a{font-size:13px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
+.nlinks a:hover{color:#fff}.nlinks a.active{color:#06C755!important;font-weight:700}
+.ncta{background:#06C755!important;color:#fff!important;padding:9px 22px;border-radius:8px;font-weight:700!important;font-size:13px;box-shadow:0 0 0 0 rgba(6,199,85,0)!important;transition:background .2s,box-shadow .2s!important}
+.ncta:hover{background:#04a344!important;box-shadow:0 0 0 4px rgba(6,199,85,.25)!important}
 .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
 .hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;transition:all .25s}
-nav.sc .hamburger span{background:var(--navy)}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mmenu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(5,16,30,.97);backdrop-filter:blur(20px);flex-direction:column;padding:8px 28px 28px;z-index:400;border-bottom:1px solid rgba(255,255,255,.07)}
+.mmenu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(4,13,26,.98);backdrop-filter:blur(20px);flex-direction:column;padding:8px 28px 28px;z-index:400;border-bottom:1px solid rgba(255,255,255,.07)}
 .mmenu.open{display:flex}
 .mmenu a{font-size:15px;color:rgba(255,255,255,.75);padding:15px 0;border-bottom:1px solid rgba(255,255,255,.06);font-weight:500}
-.mmenu a:last-child{border-bottom:none}
-.mmenu a.mc{margin-top:14px;background:var(--g);color:#fff;text-align:center;padding:13px;border-radius:10px;font-weight:700;border-bottom:none}
+.mmenu a.mc{margin-top:14px;background:#06C755;color:#fff;text-align:center;padding:13px;border-radius:10px;font-weight:700;border-bottom:none}
 
-/* ── PAGE HERO ── */
-.page-hero{background:var(--navy);padding:140px 52px 80px;text-align:center;position:relative;overflow:hidden}
-.phgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:72px 72px;pointer-events:none}
-.blob{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;will-change:transform}
-.pb1{width:420px;height:420px;background:rgba(6,199,85,.12);top:-15%;left:-5%;animation:bm 13s ease-in-out infinite}
-.pb2{width:340px;height:340px;background:rgba(79,70,229,.1);top:5%;right:-5%;animation:bm 10s ease-in-out infinite reverse;animation-delay:-5s}
-@keyframes bm{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(32px,-24px) scale(1.06)}66%{transform:translate(-22px,18px) scale(.94)}}
-.page-hero-inner{position:relative;z-index:1}
-.page-hero-label{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--g);text-transform:uppercase;margin-bottom:16px}
-.page-hero h1{font-size:clamp(32px,5vw,52px);font-weight:900;color:#fff;line-height:1.18;margin-bottom:18px;letter-spacing:-.03em}
-.page-hero-sub{font-size:16px;color:rgba(255,255,255,.5);max-width:540px;margin:0 auto;line-height:1.9}
-
-/* ── REVEAL ── */
-.rv{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .rv.on{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-/* ── NEWS SECTION ── */
-.news-section{padding:80px 52px 108px;background:var(--navy);position:relative}
+.blob{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;will-change:transform}
+@keyframes bm{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.08)}66%{transform:translate(-28px,22px) scale(.93)}}
+
+/* PAGE HERO */
+.page-hero{background:var(--navy);padding:148px 52px 88px;text-align:center;position:relative;overflow:hidden}
+.phgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:72px 72px;pointer-events:none}
+.pb1{width:480px;height:480px;background:rgba(6,199,85,.1);top:-15%;left:-8%;animation:bm 14s ease-in-out infinite}
+.pb2{width:380px;height:380px;background:rgba(0,224,176,.07);top:5%;right:-6%;animation:bm 11s ease-in-out infinite reverse;animation-delay:-6s}
+.page-hero-inner{position:relative;z-index:1}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--g);text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif}
+.page-hero h1{font-size:clamp(36px,5vw,60px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:18px;letter-spacing:-.04em}
+.page-hero-sub{font-size:16px;color:rgba(255,255,255,.45);max-width:520px;margin:0 auto;line-height:1.9}
+
+/* NEWS SECTION */
+.news-section{padding:88px 52px 112px;background:var(--navy);position:relative}
 .news-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent)}
-.container{max-width:760px;margin:0 auto}
-.eyebrow{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--g);text-transform:uppercase;margin-bottom:14px}
-.section-title{font-size:clamp(24px,3vw,36px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:40px;letter-spacing:-.03em}
+.container{max-width:800px;margin:0 auto}
+.stitle{font-size:clamp(24px,3vw,36px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:44px;letter-spacing:-.035em}
 
-/* ── NEWS ITEMS ── */
+/* NEWS ITEMS */
 .news-list{display:flex;flex-direction:column;gap:16px}
-
 .news-item{
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.08);
-  border-radius:18px;
-  padding:32px 36px;
-  scroll-margin-top:80px;
-  transition:border-color .3s,box-shadow .3s,background .3s;
+  border-radius:20px;
+  padding:36px 40px;
+  scroll-margin-top:84px;
+  transition:box-shadow .3s,transform .3s cubic-bezier(.34,1.56,.64,1),border-color .3s,background .3s;
 }
 .news-item:hover{
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+  transform:translateY(-4px);
   background:rgba(255,255,255,.06);
   border-color:rgba(255,255,255,.14);
-  box-shadow:0 8px 40px rgba(0,0,0,.3);
 }
 .news-item:target{
   border-color:var(--g);
-  box-shadow:0 0 0 3px rgba(6,199,85,.15),0 8px 40px rgba(0,0,0,.3);
+  box-shadow:0 0 0 3px rgba(6,199,85,.12),0 20px 60px rgba(0,0,0,.3);
 }
-
-.news-meta{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
-.news-date{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,.4);font-weight:500;letter-spacing:.03em}
-
+.news-meta{display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.news-date{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,.38);font-weight:500;letter-spacing:.04em}
 .news-badge{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;font-family:'Inter',sans-serif;letter-spacing:.04em}
-.badge-start{background:rgba(6,199,85,.18);color:var(--g);border:1px solid rgba(6,199,85,.3)}
-.badge-update{background:rgba(58,130,246,.15);color:#60a5fa;border:1px solid rgba(58,130,246,.25)}
-.badge-notice{background:rgba(245,158,11,.15);color:#fbbf24;border:1px solid rgba(245,158,11,.25)}
-.badge-info{background:rgba(6,199,85,.18);color:var(--g);border:1px solid rgba(6,199,85,.3)}
+.badge-new{background:rgba(6,199,85,.18);color:var(--g);border:1px solid rgba(6,199,85,.3)}
+.badge-notice{background:rgba(245,158,11,.14);color:#fbbf24;border:1px solid rgba(245,158,11,.25)}
+.badge-col{background:rgba(0,224,176,.12);color:#00e0b0;border:1px solid rgba(0,224,176,.25)}
+.badge-svc{background:rgba(99,102,241,.15);color:#a5b4fc;border:1px solid rgba(99,102,241,.25)}
+.news-category{font-size:11px;font-weight:600;color:rgba(255,255,255,.28);font-family:'Inter',sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.news-title{font-size:20px;font-weight:800;color:#fff;margin-bottom:14px;line-height:1.55;letter-spacing:-.02em}
+.news-body{font-size:14px;color:rgba(255,255,255,.6);line-height:1.95}
+.news-link{display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-size:13px;font-weight:700;color:var(--g);transition:gap .2s,opacity .2s}
+.news-link:hover{gap:10px;opacity:.8}
+.news-link svg{flex-shrink:0}
 
-.news-title{font-size:20px;font-weight:800;color:#fff;margin-bottom:14px;line-height:1.5;letter-spacing:-.02em}
-.news-body{font-size:14px;color:rgba(255,255,255,.65);line-height:1.95}
-.news-body p{margin-bottom:12px}
-.news-body p:last-child{margin-bottom:0}
-.news-body a{color:var(--g);text-decoration:underline;text-underline-offset:3px;transition:opacity .2s}
-.news-body a:hover{opacity:.75}
+/* CTA SECTION */
+.cta-sec{background:var(--navy2);padding:96px 52px;text-align:center;position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent)}
+.cb1{width:500px;height:500px;background:rgba(6,199,85,.08);top:-160px;left:-80px;animation:bm 13s ease-in-out infinite}
+.cb2{width:400px;height:400px;background:rgba(0,224,176,.06);bottom:-120px;right:-60px;animation:bm 11s ease-in-out infinite reverse;animation-delay:-5s}
 
-/* Empty state */
-.news-empty{text-align:center;padding:80px 24px;color:rgba(255,255,255,.25);font-size:14px}
-
-/* ── FOOTER ── */
-footer{background:#040a14;border-top:1px solid rgba(255,255,255,.05);padding:44px 52px}
-.footer-inner{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
-.fl{font-family:'Inter',sans-serif;font-size:18px;font-weight:900;color:#fff}
-.fl em{color:var(--g);font-style:normal}
-.flinks{display:flex;gap:24px;flex-wrap:wrap}
-.flinks a{font-size:12px;color:rgba(255,255,255,.3);transition:color .2s}
-.flinks a:hover{color:rgba(255,255,255,.65)}
-.fcopy{font-size:12px;color:rgba(255,255,255,.2);font-family:'Inter',sans-serif}
-
+.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--g);color:#fff;font-weight:700;font-size:15px;padding:15px 32px;border-radius:10px;overflow:hidden;position:relative;transition:background .25s,transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;box-shadow:0 4px 30px rgba(6,199,85,.4)}
+.btn-p::after{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transform:skewX(-15deg);transition:left .5s}
+.btn-p:hover{background:var(--gd);transform:translateY(-2px);box-shadow:0 8px 40px rgba(6,199,85,.55)}
+.btn-p:hover::after{left:160%}
 .magnetic{transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
 
-/* ── RESPONSIVE ── */
-@media(max-width:640px){
+footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48px 52px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.fl{font-family:'Inter',sans-serif;font-size:18px;font-weight:900;color:#fff}.fl em{color:var(--g);font-style:normal}
+.flinks{display:flex;gap:24px;flex-wrap:wrap}
+.flinks a{font-size:12px;color:rgba(255,255,255,.25);transition:color .2s}
+.flinks a:hover{color:rgba(255,255,255,.6)}
+.fcopy{font-size:12px;color:rgba(255,255,255,.15);font-family:'Inter',sans-serif}
+
+@media(max-width:700px){
   nav{padding:0 20px}
   .nlinks{display:none}
   .hamburger{display:flex}
   .page-hero{padding:120px 24px 64px}
-  .page-hero-sub{font-size:14px}
   .news-section{padding:60px 20px 80px}
-  .news-item{padding:22px 20px}
+  .news-item{padding:24px 22px}
   .news-title{font-size:17px}
-  footer{padding:36px 20px}
+  .cta-sec{padding:72px 24px}
+  footer{padding:36px 24px}
   .footer-inner{flex-direction:column;text-align:center;gap:16px}
   .flinks{justify-content:center}
 }
@@ -159,8 +147,9 @@ footer{background:#040a14;border-top:1px solid rgba(255,255,255,.05);padding:44p
 </head>
 <body>
 
+<div id="cur"></div>
+<div id="cur-ring"></div>
 <div id="sp"></div>
-<div id="cg"></div>
 
 <nav id="nav">
   <a href="./index.html" class="nlogo">Form <em>Flow</em></a>
@@ -189,9 +178,9 @@ footer{background:#040a14;border-top:1px solid rgba(255,255,255,.05);padding:44p
   <div class="blob pb1"></div>
   <div class="blob pb2"></div>
   <div class="page-hero-inner rv">
-    <div class="page-hero-label">News</div>
+    <div class="eyebrow">News</div>
     <h1>お知らせ</h1>
-    <p class="page-hero-sub">サービスに関する更新情報・重要なお知らせを掲載しています。</p>
+    <p class="page-hero-sub">サービスに関する最新情報・重要なお知らせを掲載しています。</p>
   </div>
 </section>
 
@@ -199,55 +188,71 @@ footer{background:#040a14;border-top:1px solid rgba(255,255,255,.05);padding:44p
 <section class="news-section">
   <div class="container">
     <div class="eyebrow rv">Latest Updates</div>
-    <h2 class="section-title rv d1">更新情報</h2>
+    <h2 class="stitle rv d1">更新情報</h2>
 
     <div class="news-list">
 
-      <!-- news-001 -->
-      <div class="news-item rv d2" id="news-001">
+      <!-- news-003 -->
+      <div class="news-item rv d1" id="news-003">
         <div class="news-meta">
           <span class="news-date">2026年5月17日</span>
-          <span class="news-badge badge-start">サービス開始</span>
+          <span class="news-badge badge-new">NEW</span>
+          <span class="news-category">コラム</span>
         </div>
-        <div class="news-title">Form Flow サービス提供を開始しました</div>
-        <div class="news-body">
-          <p>LINE公式アカウントの構築サービス「Form Flow」の提供を開始しました。</p>
-          <p>有料ツール不要・GASを活用した自動化構築を、モニター価格でご提供しています。ステップ配信・自動返信・スプレッドシート連携など、ご要望に合わせてご相談ください。</p>
-          <p>詳細は<a href="./index.html#features">サービスページ</a>をご覧ください。</p>
-        </div>
+        <div class="news-title">整体院向けLINE活用コラムを公開しました</div>
+        <div class="news-body">整体院・接骨院のLINE公式アカウント活用術について、予約リマインドから休眠顧客掘り起こしまでを解説したコラム記事を公開しました。</div>
+        <a href="./column/seitai-line-katsuyo.html" class="news-link">
+          詳しく見る
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
 
       <!-- news-002 -->
-      <div class="news-item rv d1" id="news-002">
+      <div class="news-item rv d2" id="news-002">
         <div class="news-meta">
-          <span class="news-date">2026年5月16日</span>
+          <span class="news-date">2026年5月10日</span>
           <span class="news-badge badge-notice">お知らせ</span>
+          <span class="news-category">サービス</span>
         </div>
-        <div class="news-title">モニター価格での受付について</div>
-        <div class="news-body">
-          <p>現在、サービス開始を記念してモニター価格での受付を行っています。通常価格の約40〜50%オフでご提供中です。</p>
-          <p>ご検討中の方はお早めにご相談ください。受付件数に限りがあります。詳しくは<a href="./service.html">料金ページ</a>をご覧ください。</p>
-        </div>
+        <div class="news-title">モニター価格でのご提供を開始しました</div>
+        <div class="news-body">現在、初期モニターとしてライトプラン¥19,800・スタンダードプラン¥34,800にてご提供中です。定員に達し次第、通常価格に戻ります。</div>
+        <a href="./index.html#price" class="news-link">
+          詳しく見る
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
 
-      <!-- news-003 -->
-      <div class="news-item rv d2" id="news-003">
+      <!-- news-001 -->
+      <div class="news-item rv d3" id="news-001">
         <div class="news-meta">
-          <span class="news-date">2026年5月15日</span>
-          <span class="news-badge badge-update">アップデート</span>
+          <span class="news-date">2026年4月15日</span>
+          <span class="news-badge badge-notice">お知らせ</span>
+          <span class="news-category">サービス</span>
         </div>
-        <div class="news-title">コラム記事を公開しました</div>
-        <div class="news-body">
-          <p>LINE公式アカウントの自動化に関するコラム記事を7本公開しました。</p>
-          <p>GAS連携の基礎からリッチメニュー設計、ステップ配信の実践的な手順まで幅広くカバーしています。<a href="./column.html">コラム一覧</a>からぜひご覧ください。</p>
-        </div>
+        <div class="news-title">Form Flow サービスを開始しました</div>
+        <div class="news-body">LINE公式アカウントの構築・設定代行サービス「Form Flow」を開始しました。Lステップ不要・GAS活用で月額ツール代0円を実現します。</div>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="blob cb1"></div>
+  <div class="blob cb2"></div>
+  <div style="position:relative;z-index:1;max-width:780px;margin:0 auto" class="rv">
+    <div class="eyebrow">GET STARTED</div>
+    <h2 style="font-size:clamp(28px,4vw,48px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:20px;letter-spacing:-.035em">まず、無料で相談してみてください。</h2>
+    <p style="font-size:16px;color:rgba(255,255,255,.45);margin-bottom:44px;line-height:1.9">「何から始めればいいか分からない」という段階からでも大丈夫です。</p>
+    <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-p magnetic">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      LINEで無料相談する
+    </a>
+    <p style="font-size:12px;color:rgba(255,255,255,.22);margin-top:20px">相談・見積もり無料 ・ 秘密厳守 ・ 返信は数時間以内</p>
+  </div>
+</section>
+
 <footer>
   <div class="footer-inner">
     <div class="fl">Form <em>Flow</em></div>
@@ -263,22 +268,20 @@ footer{background:#040a14;border-top:1px solid rgba(255,255,255,.05);padding:44p
 
 <script>
 (function(){
-  const cg=document.getElementById('cg');
-  document.addEventListener('mousemove',e=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px'},{passive:true});
-  const sp=document.getElementById('sp');
-  function onScroll(){
-    const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
-    sp.style.width=p+'%';
-    document.getElementById('nav').classList.toggle('sc',window.scrollY>60);
-  }
-  window.addEventListener('scroll',onScroll,{passive:true});
+  const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+  let mx=-100,my=-100,rx=-100,ry=-100;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY},{passive:true});
+  (function a(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a)})();
+  const sp=document.getElementById('sp'),nav=document.getElementById('nav');
+  function onScroll(){sp.style.width=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100)+'%';nav.classList.toggle('sc',window.scrollY>60);}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
   const hbtn=document.getElementById('hbtn'),mm=document.getElementById('mmenu');
   hbtn.addEventListener('click',()=>{hbtn.classList.toggle('open');mm.classList.toggle('open')});
   mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hbtn.classList.remove('open');mm.classList.remove('open')}));
-  const rvObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.1});
+  const rvObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');rvObs.unobserve(e.target)}}),{threshold:.1});
   document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
   document.querySelectorAll('.magnetic').forEach(btn=>{
-    btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)*.28,y=(e.clientY-r.top-r.height/2)*.28;btn.style.transform=`translate(${x}px,${y}px)`;});
+    btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.3}px,${(e.clientY-r.top-r.height/2)*.3}px)`});
     btn.addEventListener('mouseleave',()=>{btn.style.transform=''});
   });
 })();

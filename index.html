@@ -2,331 +2,364 @@
 <html lang="ja" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQF63CGRL"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NWQF63CGRL');</script>
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LINE公式アカウント 構築・設定代行｜Lステップ不要・GAS連携｜Form Flow</title>
-<meta name="description" content="LINE公式アカウントの構築・設定を代行します。リッチメニュー・自動返信・Googleスプレッドシート連携・予約受付まで一括対応。Lステップ不要、月額ツール代0円で運用できます。個人事業主・中小企業向けモニター価格でご提供中。">
-<meta name="keywords" content="LINE公式アカウント構築,LINE設定代行,LINE公式アカウント代行,LINEリッチメニュー作成,LINE自動返信設定,GASライン連携,LINE自動化,Lステップ不要,LINE公式アカウント初期設定,LINE予約受付自動化">
-<meta name="author" content="Form Flow">
-<meta name="robots" content="index, follow">
-<meta name="google-site-verification" content="7LLU3F39awCdnLndZoe9rshx_byRTdG-gsdoQVGgdVQ">
-<link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/">
-<meta property="og:title" content="LINE公式アカウント 構築・設定代行｜Form Flow">
-<meta property="og:description" content="Lステップ不要・GAS活用で月額0円。リッチメニュー・自動返信・スプレッドシート連携まで一括対応。">
-<meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
-<meta property="og:image:width" content="1280">
-<meta property="og:image:height" content="670">
-<meta property="og:site_name" content="Form Flow">
-<meta property="og:locale" content="ja_JP">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
+<title>LINE公式アカウント 構築・設定代行｜Form Flow</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --g:#06C755;--gd:#04a344;--gl:rgba(6,199,85,.12);
-  --navy:#05101e;--navy2:#0c1a2e;
-  --text:#111827;--body:#374151;--sub:#6B7280;
-  --border:rgba(0,0,0,.08);--off:#F9FAFB;--off2:#F3F4F6;
+  --g:#06C755;--gd:#04a344;--g2:#00e0b0;
+  --navy:#040d1a;--navy2:#0b1829;
+  --text:#0f172a;--body:#334155;--sub:#64748b;
+  --border:rgba(255,255,255,.08);--off:#F8FAFC;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-img{display:block;max-width:100%}
-.inter{font-family:'Inter',sans-serif}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--navy);-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
+
+/* ── CUSTOM CURSOR ── */
+#cur{position:fixed;width:10px;height:10px;background:var(--g);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .1s,background .2s;mix-blend-mode:screen}
+#cur-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(6,199,85,.5);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:left .12s ease,top .12s ease,width .3s,height .3s,border-color .3s}
+body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:56px;height:56px;border-color:rgba(6,199,85,.8)}
+@media(hover:none){#cur,#cur-ring{display:none}body{cursor:auto}}
+
+/* ── LOADER ── */
+#loader{position:fixed;inset:0;background:#000;z-index:99000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0}
+.ld-logo{font-family:'Inter',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:900;color:#fff;letter-spacing:-.03em;overflow:hidden}
+.ld-logo span{display:inline-block;transform:translateY(100%);animation:ldSlide .6s cubic-bezier(.16,1,.3,1) forwards}
+.ld-logo span:nth-child(2){color:var(--g);animation-delay:.08s}
+.ld-line{width:0;height:2px;background:linear-gradient(90deg,var(--g),var(--g2));margin-top:14px;animation:ldLine .6s ease forwards .5s;border-radius:2px}
+@keyframes ldSlide{to{transform:translateY(0)}}
+@keyframes ldLine{to{width:100%}}
+#loader.out{animation:ldOut .6s cubic-bezier(.16,1,.3,1) forwards .9s}
+@keyframes ldOut{to{clip-path:polygon(0 0,100% 0,100% 0,0 0);opacity:0;pointer-events:none}}
 
 /* ── SCROLL PROGRESS ── */
-#sp{position:fixed;top:0;left:0;height:2px;background:var(--g);z-index:9999;width:0%;pointer-events:none;transition:width .08s}
-
-/* ── CURSOR GLOW ── */
-#cg{position:fixed;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(6,199,85,.055) 0%,transparent 68%);pointer-events:none;transform:translate(-50%,-50%);z-index:0;left:-600px;top:-600px;transition:left .25s ease,top .25s ease}
+#sp{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--g),var(--g2));z-index:9999;width:0%;pointer-events:none}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;transition:background .4s,box-shadow .4s}
-nav.sc{background:rgba(255,255,255,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 1px 0 rgba(0,0,0,.08)}
-.nlogo{font-size:20px;font-weight:900;color:#fff;letter-spacing:.01em;transition:color .3s;font-family:'Inter',sans-serif}
+nav.sc{background:rgba(4,13,26,.92);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.nlogo{font-size:20px;font-weight:900;color:#fff;letter-spacing:.01em;font-family:'Inter',sans-serif}
 .nlogo em{color:var(--g);font-style:normal}
-nav.sc .nlogo{color:var(--navy)}
 .nlinks{display:flex;gap:32px;align-items:center}
-.nlinks a{font-size:13px;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s}
-nav.sc .nlinks a{color:var(--sub)}
+.nlinks a{font-size:13px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
 .nlinks a:hover{color:#fff}
-nav.sc .nlinks a:hover{color:var(--navy)}
-.ncta{background:var(--g)!important;color:#fff!important;padding:9px 22px;border-radius:8px;font-weight:700!important;font-size:13px;transition:background .2s,transform .15s!important}
-.ncta:hover{background:var(--gd)!important;transform:translateY(-1px)!important}
+.nlinks a.active{color:var(--g)!important;font-weight:700}
+.ncta{background:var(--g)!important;color:#fff!important;padding:9px 22px;border-radius:8px;font-weight:700!important;font-size:13px;transition:background .2s,box-shadow .2s!important;box-shadow:0 0 0 0 rgba(6,199,85,0)!important}
+.ncta:hover{background:var(--gd)!important;box-shadow:0 0 0 4px rgba(6,199,85,.25)!important}
 .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
 .hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;transition:all .25s}
-nav.sc .hamburger span{background:var(--navy)}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mmenu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(5,16,30,.97);backdrop-filter:blur(20px);flex-direction:column;padding:8px 28px 28px;z-index:400;border-bottom:1px solid rgba(255,255,255,.07)}
+.mmenu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(4,13,26,.98);backdrop-filter:blur(20px);flex-direction:column;padding:8px 28px 28px;z-index:400;border-bottom:1px solid rgba(255,255,255,.07)}
 .mmenu.open{display:flex}
 .mmenu a{font-size:15px;color:rgba(255,255,255,.75);padding:15px 0;border-bottom:1px solid rgba(255,255,255,.06);font-weight:500}
-.mmenu a:last-child{border-bottom:none}
 .mmenu a.mc{margin-top:14px;background:var(--g);color:#fff;text-align:center;padding:13px;border-radius:10px;font-weight:700;border-bottom:none}
 
-/* ── NEWS BAR ── */
-.nbar{display:flex;align-items:center;justify-content:center;gap:10px;background:rgba(6,199,85,.12);border-bottom:1px solid rgba(6,199,85,.25);padding:9px 24px;font-size:13px;color:#fff;transition:background .2s;position:fixed;top:68px;left:0;right:0;z-index:490}
-.nbar:hover{background:rgba(6,199,85,.18)}
-.nbar:hover{background:rgba(6,199,85,.12)}
-.nb-badge{background:var(--g);color:#fff;font-size:10px;font-weight:700;padding:2px 9px;border-radius:20px;letter-spacing:.04em;font-family:'Inter',sans-serif}
-.nb-arrow{color:var(--g);font-weight:700}
-
 /* ── HERO ── */
-#hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;padding:120px 52px 80px;position:relative;overflow:hidden}
-.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:72px 72px;pointer-events:none}
-.blob{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;will-change:transform}
-.b1{width:560px;height:560px;background:rgba(6,199,85,.18);top:-20%;left:-10%;animation:bm 13s ease-in-out infinite}
-.b2{width:440px;height:440px;background:rgba(79,70,229,.16);top:10%;right:-5%;animation:bm 10s ease-in-out infinite reverse;animation-delay:-5s}
-.b3{width:380px;height:380px;background:rgba(6,199,85,.09);bottom:-10%;left:40%;animation:bm 16s ease-in-out infinite;animation-delay:-10s}
-@keyframes bm{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(32px,-24px) scale(1.06)}66%{transform:translate(-22px,18px) scale(.94)}}
+#hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;padding:100px 52px 80px;position:relative;overflow:hidden}
+#particles{position:absolute;inset:0;pointer-events:none;z-index:0}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(6,199,85,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(6,199,85,.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000 40%,transparent 100%)}
+.blob{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;will-change:transform}
+.b1{width:700px;height:700px;background:rgba(6,199,85,.12);top:-30%;left:-15%;animation:bm 15s ease-in-out infinite}
+.b2{width:500px;height:500px;background:rgba(79,70,229,.1);top:5%;right:-10%;animation:bm 12s ease-in-out infinite reverse;animation-delay:-4s}
+.b3{width:400px;height:400px;background:rgba(0,224,176,.07);bottom:-15%;left:35%;animation:bm 18s ease-in-out infinite;animation-delay:-9s}
+@keyframes bm{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.08)}66%{transform:translate(-28px,22px) scale(.93)}}
 
-.hero-inner{position:relative;z-index:1;max-width:1240px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 500px;gap:88px;align-items:center}
+.hero-inner{position:relative;z-index:1;max-width:1280px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 480px;gap:80px;align-items:center}
+.hero-kicker{display:inline-flex;align-items:center;gap:8px;background:rgba(6,199,85,.1);border:1px solid rgba(6,199,85,.25);color:var(--g);font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:32px;letter-spacing:.1em;font-family:'Inter',sans-serif;opacity:0;animation:fu .6s ease forwards .4s}
+.hero-kicker-dot{width:6px;height:6px;background:var(--g);border-radius:50%;animation:pulse 2s ease-in-out infinite;box-shadow:0 0 6px var(--g)}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 
-/* hero text */
-.hero-kicker{display:inline-flex;align-items:center;gap:7px;background:rgba(6,199,85,.13);border:1px solid rgba(6,199,85,.28);color:var(--g);font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:28px;letter-spacing:.07em;opacity:0;animation:fu .6s ease forwards .2s;font-family:'Inter',sans-serif}
-.hero-kicker-dot{width:6px;height:6px;background:var(--g);border-radius:50%;animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-h1.htitle{font-size:clamp(40px,5.5vw,70px);font-weight:900;color:#fff;line-height:1.14;margin-bottom:26px;letter-spacing:-.03em;opacity:0;animation:fu .75s ease forwards .4s}
-h1.htitle em{font-style:normal;background:linear-gradient(135deg,#06C755 0%,#00e0b0 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gs 4s linear infinite}
-@keyframes gs{to{background-position:200% center}}
-.hero-sub{font-size:17px;color:rgba(255,255,255,.58);line-height:1.92;margin-bottom:42px;opacity:0;animation:fu .75s ease forwards .6s}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fu .75s ease forwards .8s}
-.hero-note{font-size:12px;color:rgba(255,255,255,.3);margin-top:20px;opacity:0;animation:fu .75s ease forwards 1s;display:flex;align-items:center;gap:12px}
-.hero-note span{display:flex;align-items:center;gap:5px}
-.hero-note svg{color:var(--g);opacity:.7}
-@keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+/* split-word headline */
+h1.htitle{font-size:clamp(44px,5.8vw,76px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:30px;letter-spacing:-.04em;overflow:visible}
+.hw{display:inline-block;overflow:hidden;vertical-align:bottom;margin-right:.18em}
+.hw span{display:inline-block;transform:translateY(110%);animation:wordUp .7s cubic-bezier(.16,1,.3,1) forwards}
+.hw:nth-child(1) span{animation-delay:.5s}
+.hw:nth-child(2) span{animation-delay:.62s}
+.hw:nth-child(3) span{animation-delay:.74s}
+.hw:nth-child(4) span{animation-delay:.86s}
+.hw:nth-child(5) span{animation-delay:.98s}
+.hw:nth-child(6) span{animation-delay:1.1s}
+.hw:nth-child(7) span{animation-delay:1.22s}
+.hw.grd span{background:linear-gradient(135deg,var(--g) 0%,var(--g2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+@keyframes wordUp{to{transform:translateY(0)}}
+
+.hero-sub{font-size:17px;color:rgba(255,255,255,.5);line-height:2;margin-bottom:44px;opacity:0;animation:fu .75s ease forwards 1.4s;max-width:520px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fu .75s ease forwards 1.6s}
+.hero-note{font-size:12px;color:rgba(255,255,255,.28);margin-top:20px;opacity:0;animation:fu .75s ease forwards 1.8s;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hero-note-item{display:flex;align-items:center;gap:5px}
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── PHONE MOCKUP ── */
+.phone-wrap{position:relative;opacity:0;animation:fu 1s ease forwards .6s}
+.phone{width:280px;height:580px;background:#0d1117;border-radius:44px;border:2px solid rgba(255,255,255,.15);box-shadow:0 60px 120px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.05),inset 0 1px 0 rgba(255,255,255,.08);position:relative;margin:0 auto;overflow:hidden;flex-shrink:0}
+.phone::before{content:'';position:absolute;top:14px;left:50%;transform:translateX(-50%);width:80px;height:5px;background:rgba(255,255,255,.25);border-radius:4px;z-index:10}
+.phone-screen{height:100%;display:flex;flex-direction:column;padding-top:36px}
+.phone-status{display:flex;align-items:center;justify-content:space-between;padding:0 20px 10px;font-size:9px;color:rgba(255,255,255,.4);font-family:'Inter',sans-serif}
+.phone-header{background:#1a1a2e;padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.06)}
+.ph-avatar{width:34px;height:34px;background:var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;font-family:'Inter',sans-serif;flex-shrink:0}
+.ph-info{flex:1}
+.ph-name{font-size:12px;font-weight:700;color:#fff}
+.ph-status{font-size:9px;color:var(--g);margin-top:1px}
+.phone-body{flex:1;padding:14px 12px;display:flex;flex-direction:column;gap:9px;overflow:hidden}
+.msg{display:flex;flex-direction:column;gap:3px}
+.bubble{font-size:10px;line-height:1.55;padding:8px 11px;border-radius:16px;max-width:78%;color:#fff;position:relative}
+.bubble.in{background:rgba(255,255,255,.1);align-self:flex-start;border-bottom-left-radius:4px}
+.bubble.out{background:var(--g);align-self:flex-end;border-bottom-right-radius:4px;color:#fff}
+.bubble.auto{background:rgba(6,199,85,.15);border:1px solid rgba(6,199,85,.3);color:rgba(255,255,255,.75);font-size:9px;align-self:flex-start;border-radius:10px;max-width:90%}
+.msg-time{font-size:8px;color:rgba(255,255,255,.3);padding:0 4px;font-family:'Inter',sans-serif}
+.msg-time.right{text-align:right}
+.phone-input{background:rgba(255,255,255,.05);margin:8px 12px 12px;border-radius:20px;padding:8px 14px;font-size:10px;color:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between}
+.phone-input-ico{width:20px;height:20px;background:var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.msg-animate{opacity:0;transform:translateY(10px)}
+
+/* phone floating bubbles */
+.phone-float{position:absolute}
+.pf1{top:40px;right:-48px;animation:bf 3.8s ease-in-out infinite}
+.pf2{bottom:120px;left:-48px;animation:bf 4.4s ease-in-out infinite .7s}
+.pf3{top:200px;right:-52px;animation:bf 3.2s ease-in-out infinite 1.2s}
+@keyframes bf{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.pfloat-card{background:rgba(255,255,255,.08);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:12px 16px;color:#fff;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.pf-num{font-family:'Inter',sans-serif;font-size:22px;font-weight:800;color:#fff;line-height:1}
+.pf-label{font-size:10px;color:rgba(255,255,255,.5);margin-top:2px}
+.pf-row{display:flex;align-items:center;gap:7px}
+.pf-dot{width:7px;height:7px;background:var(--g);border-radius:50%;box-shadow:0 0 8px var(--g)}
+.pf-txt{font-size:11px;font-weight:600}
 
 /* ── BUTTONS ── */
-.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--g);color:#fff;font-weight:700;font-size:15px;padding:15px 30px;border-radius:10px;position:relative;overflow:hidden;transition:background .25s,transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;box-shadow:0 4px 24px rgba(6,199,85,.38)}
-.btn-p::after{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.26),transparent);transform:skewX(-15deg);transition:left .5s ease}
-.btn-p:hover{background:var(--gd);transform:translateY(-2px);box-shadow:0 8px 36px rgba(6,199,85,.5)}
+.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--g);color:#fff;font-weight:700;font-size:15px;padding:15px 32px;border-radius:10px;position:relative;overflow:hidden;transition:background .25s,transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;box-shadow:0 4px 30px rgba(6,199,85,.4)}
+.btn-p::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1) 0%,transparent 60%);pointer-events:none}
+.btn-p::after{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transform:skewX(-15deg);transition:left .5s ease}
+.btn-p:hover{background:var(--gd);transform:translateY(-2px);box-shadow:0 8px 40px rgba(6,199,85,.55)}
 .btn-p:hover::after{left:160%}
-.btn-gd{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85);font-weight:600;font-size:14px;padding:14px 26px;border-radius:10px;transition:background .2s,border-color .2s}
-.btn-gd:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.32)}
+.btn-gd{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-weight:600;font-size:14px;padding:14px 26px;border-radius:10px;transition:all .25s;backdrop-filter:blur(8px)}
+.btn-gd:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3)}
 
-/* ── HERO VISUAL (photo composition) ── */
-.hero-visual{position:relative;opacity:0;animation:fu 1s ease forwards .5s}
-.hv-photo{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 40px 100px rgba(0,0,0,.55),0 8px 24px rgba(0,0,0,.3)}
-.hv-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transform:scale(1.02);transition:transform 8s ease}
-.hv-photo:hover img{transform:scale(1)}
-.hv-overlay{position:absolute;inset:0;background:linear-gradient(170deg,rgba(5,16,30,.25) 0%,rgba(5,16,30,.55) 100%)}
-/* glassmorphic floating cards */
-.glass-card{position:absolute;background:rgba(255,255,255,.13);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:14px 18px;color:#fff;z-index:2;box-shadow:0 8px 32px rgba(0,0,0,.2)}
-.gc1{top:20px;left:-28px;animation:bf 3.8s ease-in-out infinite}
-.gc2{bottom:80px;right:-24px;animation:bf 4.4s ease-in-out infinite .7s}
-.gc3{bottom:20px;left:-24px;animation:bf 3.5s ease-in-out infinite 1.4s}
-@keyframes bf{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.gc-stat-num{font-family:'Inter',sans-serif;font-size:26px;font-weight:800;line-height:1;color:#fff}
-.gc-stat-label{font-size:11px;color:rgba(255,255,255,.65);margin-top:3px}
-.gc-row{display:flex;align-items:center;gap:8px}
-.gc-dot{width:8px;height:8px;background:var(--g);border-radius:50%;box-shadow:0 0 8px rgba(6,199,85,.8);flex-shrink:0}
-.gc-tag-txt{font-size:12px;font-weight:600;white-space:nowrap}
-.gc-chat{width:200px}
-.gc-chat-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:9px;border-bottom:1px solid rgba(255,255,255,.15)}
-.gc-chat-avatar{width:26px;height:26px;background:var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0}
-.gc-chat-name{font-size:11px;font-weight:600}
-.gc-chat-status{font-size:9px;color:rgba(255,255,255,.5)}
-.gc-bubble{background:rgba(255,255,255,.1);border-radius:0 8px 8px 8px;padding:6px 8px;font-size:10px;line-height:1.5;margin-bottom:5px;max-width:90%}
-.gc-bubble.out{background:rgba(6,199,85,.3);align-self:flex-end;border-radius:8px 0 8px 8px;margin-left:auto}
-.gc-auto{font-size:8px;text-align:center;color:rgba(255,255,255,.4);background:rgba(0,0,0,.2);border-radius:8px;padding:2px 8px;margin:2px auto;width:fit-content}
+/* ── MARQUEE ── */
+#marquee{background:rgba(6,199,85,.06);border-top:1px solid rgba(6,199,85,.12);border-bottom:1px solid rgba(6,199,85,.12);padding:14px 0;overflow:hidden;white-space:nowrap}
+.mq-track{display:inline-flex;gap:0;animation:mq 25s linear infinite}
+.mq-track:hover{animation-play-state:paused}
+.mq-item{display:inline-flex;align-items:center;gap:10px;padding:0 32px;font-size:12px;font-weight:600;color:rgba(255,255,255,.45);letter-spacing:.05em;font-family:'Inter',sans-serif}
+.mq-dot{width:4px;height:4px;background:var(--g);border-radius:50%;opacity:.6;flex-shrink:0}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* ── STATS BAR ── */
-#stats{background:var(--off);border-bottom:1px solid var(--border);padding:40px 52px}
-.stats-inner{max-width:960px;margin:0 auto;display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;gap:24px}
-.stat-divider{width:1px;height:40px;background:var(--border)}
-.stat-item{text-align:center}
-.snum{font-family:'Inter',sans-serif;font-size:46px;font-weight:800;color:var(--navy);line-height:1}
-.snum em{color:var(--g);font-style:normal;font-size:32px}
-.slabel{font-size:12px;color:var(--sub);margin-top:6px;font-weight:500}
+/* ── STATS ── */
+#stats{background:var(--navy2);padding:60px 52px;border-bottom:1px solid rgba(255,255,255,.05)}
+.stats-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat-item{text-align:center;padding:24px 20px;position:relative}
+.stat-item:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:rgba(255,255,255,.07)}
+.snum{font-family:'Inter',sans-serif;font-size:52px;font-weight:800;color:#fff;line-height:1;letter-spacing:-.04em}
+.snum em{color:var(--g);font-style:normal;font-size:34px}
+.slabel{font-size:12px;color:rgba(255,255,255,.35);margin-top:8px;font-weight:500}
 
 /* ── SECTION COMMON ── */
-section{padding:108px 52px}
-.container{max-width:1160px;margin:0 auto}
-.eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--g);text-transform:uppercase;margin-bottom:14px;font-family:'Inter',sans-serif}
-.stitle{font-size:clamp(30px,3.8vw,48px);font-weight:900;color:var(--navy);line-height:1.2;margin-bottom:18px;letter-spacing:-.03em}
-.ssub{font-size:16px;color:var(--sub);line-height:1.95;margin-bottom:60px}
+section{padding:112px 52px}
+.container{max-width:1200px;margin:0 auto}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--g);text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif}
+.stitle{font-size:clamp(32px,4vw,52px);font-weight:900;color:#fff;line-height:1.18;margin-bottom:20px;letter-spacing:-.035em}
+.stitle.dk{color:var(--text)}
+.ssub{font-size:16px;color:rgba(255,255,255,.45);line-height:2;margin-bottom:64px}
+.ssub.dk{color:var(--sub)}
 
 /* ── REVEAL ── */
-.rv{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .rv.on{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+.rvl{opacity:0;transform:translateX(-40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.rvl.on{opacity:1;transform:translateX(0)}
+.rvr{opacity:0;transform:translateX(40px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.rvr.on{opacity:1;transform:translateX(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
 
 /* ── PAIN ── */
-#pain{background:#fff}
-.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.pain-card{background:var(--off);border:1px solid var(--border);border-left:3px solid var(--g);border-radius:14px;padding:26px 22px;display:flex;gap:14px;align-items:flex-start;transition:box-shadow .3s cubic-bezier(.34,1.56,.64,1),transform .3s cubic-bezier(.34,1.56,.64,1);cursor:default}
-.pain-card:hover{box-shadow:0 10px 40px rgba(0,0,0,.09);transform:translateY(-4px)}
-.pico{width:42px;height:42px;background:rgba(6,199,85,.1);border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--g)}
-.pain-txt h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px}
-.pain-txt p{font-size:13px;color:var(--sub);line-height:1.75}
+#pain{background:var(--navy2)}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pain-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-left:2px solid var(--g);border-radius:16px;padding:28px 24px;display:flex;gap:14px;align-items:flex-start;transition:background .3s,box-shadow .3s,transform .3s cubic-bezier(.34,1.56,.64,1)}
+.pain-card:hover{background:rgba(255,255,255,.05);box-shadow:0 12px 40px rgba(0,0,0,.3);transform:translateY(-4px)}
+.pico{width:42px;height:42px;background:rgba(6,199,85,.12);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--g)}
+.pain-txt h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:6px}
+.pain-txt p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.8}
 
-/* ── FEATURES ── */
-#features{background:linear-gradient(180deg,var(--off) 0%,#fff 100%);position:relative;overflow:hidden}
-#features::before{content:'';position:absolute;top:-200px;right:-200px;width:520px;height:520px;background:radial-gradient(circle,rgba(6,199,85,.06) 0%,transparent 70%);pointer-events:none}
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.fc{background:#fff;border:1px solid var(--border);border-radius:20px;padding:34px 28px;position:relative;overflow:hidden;transition:box-shadow .3s,transform .3s cubic-bezier(.34,1.56,.64,1);cursor:default}
-.fc:hover{box-shadow:0 16px 50px rgba(0,0,0,.1);transform:translateY(-5px)}
-.fc-shine{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(6,199,85,.04),transparent);transform:skewX(-15deg);transition:left .6s ease;pointer-events:none}
-.fc:hover .fc-shine{left:160%}
-.ficon{width:52px;height:52px;background:linear-gradient(135deg,rgba(6,199,85,.16),rgba(6,199,85,.04));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--g);position:relative}
-.ficon::after{content:'';position:absolute;inset:-1px;border-radius:16px;border:1px solid rgba(6,199,85,.2)}
-.fc h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:10px}
-.fc p{font-size:13px;color:var(--sub);line-height:1.8}
-.fn{position:absolute;top:20px;right:22px;font-size:32px;font-weight:900;color:rgba(6,199,85,.1);line-height:1;font-family:'Inter',sans-serif}
+/* ── BENTO FEATURES ── */
+#features{background:var(--navy)}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:auto auto;gap:14px}
+.bc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:32px 28px;position:relative;overflow:hidden;transition:background .3s,box-shadow .3s,transform .3s cubic-bezier(.34,1.56,.64,1)}
+.bc:hover{background:rgba(255,255,255,.06);box-shadow:0 20px 60px rgba(0,0,0,.3);transform:translateY(-4px)}
+.bc-glow{position:absolute;top:-60px;right:-60px;width:180px;height:180px;background:radial-gradient(circle,rgba(6,199,85,.15) 0%,transparent 70%);pointer-events:none;opacity:0;transition:opacity .4s}
+.bc:hover .bc-glow{opacity:1}
+.bc.c2{grid-column:span 2}.bc.c3{grid-column:span 3}.bc.c4{grid-column:span 4}
+.bc.tall{grid-row:span 2}
+.bc-shine{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.03) 0%,transparent 50%);pointer-events:none;border-radius:20px}
+.ficon{width:52px;height:52px;background:rgba(6,199,85,.12);border:1px solid rgba(6,199,85,.2);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;color:var(--g)}
+.bc h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.4}
+.bc p{font-size:13px;color:rgba(255,255,255,.42);line-height:1.85}
+.bc-tag{display:inline-flex;align-items:center;gap:5px;background:rgba(6,199,85,.1);border:1px solid rgba(6,199,85,.2);color:var(--g);font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;margin-top:16px;font-family:'Inter',sans-serif}
+.bc-bignum{font-family:'Inter',sans-serif;font-size:72px;font-weight:900;color:rgba(6,199,85,.15);line-height:1;margin-bottom:-8px;letter-spacing:-.05em}
+.bc-demo{margin-top:20px;background:rgba(0,0,0,.3);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.bd-row{display:flex;align-items:center;gap:8px;font-size:11px}
+.bd-key{background:rgba(6,199,85,.15);color:var(--g);padding:2px 8px;border-radius:6px;font-weight:600;font-family:'Inter',sans-serif;white-space:nowrap}
+.bd-arr{color:rgba(255,255,255,.25)}
+.bd-val{color:rgba(255,255,255,.55);line-height:1.5}
 
-/* ── PROCESS (dark) ── */
-#process{background:var(--navy);position:relative;overflow:hidden}
-#process .eyebrow{color:rgba(6,199,85,.75)}
-#process .stitle{color:#fff}
-#process .ssub{color:rgba(255,255,255,.45)}
-#process::before{content:'';position:absolute;top:-120px;left:-80px;width:460px;height:460px;background:radial-gradient(circle,rgba(6,199,85,.1) 0%,transparent 70%);pointer-events:none}
-#process::after{content:'';position:absolute;bottom:-100px;right:-60px;width:360px;height:360px;background:radial-gradient(circle,rgba(79,70,229,.1) 0%,transparent 70%);pointer-events:none}
-.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);position:relative}
-.proc-line{position:absolute;top:52px;left:calc(12.5% + 28px);right:calc(12.5% + 28px);height:1px;background:linear-gradient(90deg,rgba(6,199,85,.6),rgba(6,199,85,.1),rgba(6,199,85,.6))}
-.pstep{text-align:center;padding:0 20px;position:relative;z-index:1}
-.pnum-wrap{width:104px;height:104px;margin:0 auto 24px;position:relative}
-.pnum-bg{position:absolute;inset:0;border-radius:50%;background:rgba(6,199,85,.08);border:1px solid rgba(6,199,85,.22);animation:pring 3s ease-in-out infinite}
-.pnum-bg2{position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(6,199,85,.1);animation:pring 3s ease-in-out infinite .3s}
-@keyframes pring{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
-.pnum-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
-.pnum-n{font-size:10px;font-weight:700;color:rgba(6,199,85,.65);letter-spacing:.08em;font-family:'Inter',sans-serif}
-.pnum-ico{font-size:30px;line-height:1}
+/* ── PROCESS ── */
+#process{background:var(--navy2);position:relative;overflow:hidden}
+#process::before{content:'';position:absolute;top:-200px;left:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(6,199,85,.07) 0%,transparent 70%);pointer-events:none}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.proc-line{position:absolute;top:52px;left:calc(12.5% + 20px);right:calc(12.5% + 20px);height:1px;background:linear-gradient(90deg,rgba(6,199,85,.5),rgba(6,199,85,.1),rgba(6,199,85,.5))}
+.pstep{text-align:center;padding:0 20px 40px;position:relative;z-index:1}
+.pnum-wrap{width:104px;height:104px;margin:0 auto 28px;position:relative}
+.pnum-bg{position:absolute;inset:0;border-radius:50%;background:rgba(6,199,85,.06);border:1px solid rgba(6,199,85,.2);animation:pring 3.5s ease-in-out infinite}
+.pnum-bg2{position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(6,199,85,.08);animation:pring 3.5s ease-in-out infinite .4s}
+.pnum-bg3{position:absolute;inset:-18px;border-radius:50%;border:1px solid rgba(6,199,85,.04);animation:pring 3.5s ease-in-out infinite .8s}
+@keyframes pring{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.04);opacity:.7}}
+.pnum-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+.pnum-n{font-size:9px;font-weight:700;color:rgba(6,199,85,.6);letter-spacing:.1em;font-family:'Inter',sans-serif}
+.pnum-ico{font-size:32px;line-height:1}
 .pstep h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:8px}
-.pstep p{font-size:12px;color:rgba(255,255,255,.42);line-height:1.8}
+.pstep p{font-size:12px;color:rgba(255,255,255,.38);line-height:1.9}
 
-/* ── DEMO (use cases with photos) ── */
-#demo{background:#fff}
-.demo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.dc{background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:box-shadow .3s cubic-bezier(.34,1.56,.64,1),transform .3s cubic-bezier(.34,1.56,.64,1)}
-.dc:hover{box-shadow:0 16px 50px rgba(0,0,0,.1);transform:translateY(-5px)}
-.dc-photo{height:180px;overflow:hidden;position:relative}
-.dc-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
-.dc:hover .dc-photo img{transform:scale(1.05)}
-.dc-photo-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(5,16,30,.6) 100%)}
-.dc-tag{position:absolute;bottom:12px;left:14px;display:inline-flex;align-items:center;background:rgba(6,199,85,.22);backdrop-filter:blur(8px);border:1px solid rgba(6,199,85,.35);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px}
-.dc-body{padding:22px 22px 24px}
-.dc h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px}
-.dc p{font-size:13px;color:var(--sub);line-height:1.78}
+/* ── DEMO (USE CASES) ── */
+#demo{background:var(--navy)}
+.demo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.dc{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.07);transition:box-shadow .3s,transform .3s cubic-bezier(.34,1.56,.64,1);background:rgba(255,255,255,.02)}
+.dc:hover{box-shadow:0 20px 60px rgba(0,0,0,.4);transform:translateY(-6px)}
+.dc-photo{height:200px;overflow:hidden;position:relative}
+.dc-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease;filter:brightness(.85)}
+.dc:hover .dc-photo img{transform:scale(1.08);filter:brightness(1)}
+.dc-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 20%,rgba(4,13,26,.8) 100%)}
+.dc-tag{position:absolute;bottom:14px;left:16px;display:inline-flex;align-items:center;background:rgba(6,199,85,.2);backdrop-filter:blur(10px);border:1px solid rgba(6,199,85,.35);color:#fff;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px}
+.dc-body{padding:24px}
+.dc h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:9px}
+.dc p{font-size:13px;color:rgba(255,255,255,.42);line-height:1.8}
 
 /* ── PRICING ── */
-#price{background:var(--off)}
-.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
-.pc{background:#fff;border:1px solid var(--border);border-radius:22px;padding:40px 32px;position:relative;transition:box-shadow .3s,transform .3s cubic-bezier(.34,1.56,.64,1)}
-.pc:hover{box-shadow:0 16px 50px rgba(0,0,0,.1);transform:translateY(-4px)}
-.pc.ft{border-color:var(--g);box-shadow:0 8px 48px rgba(6,199,85,.14)}
-.pc.ft:hover{box-shadow:0 20px 60px rgba(6,199,85,.2)}
-.pbadge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--g);color:#fff;font-size:11px;font-weight:700;padding:4px 18px;border-radius:20px;white-space:nowrap;font-family:'Inter',sans-serif}
-.pname{font-size:11px;font-weight:700;color:var(--sub);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;font-family:'Inter',sans-serif}
-.pold{font-size:13px;color:var(--sub);text-decoration:line-through;margin-bottom:3px}
-.pmon{display:inline-block;font-size:10px;font-weight:700;background:rgba(6,199,85,.12);color:var(--g);padding:2px 9px;border-radius:4px;margin-bottom:5px;font-family:'Inter',sans-serif}
-.pamount{font-family:'Inter',sans-serif;font-size:46px;font-weight:800;color:var(--navy);line-height:1}
-.pamount small{font-size:14px;font-weight:400;color:var(--sub);font-family:'Noto Sans JP',sans-serif}
-.pdays{font-size:12px;color:var(--sub);margin:10px 0 28px}
-.plist{list-style:none;margin-bottom:32px;display:flex;flex-direction:column;gap:12px}
-.plist li{font-size:13px;color:var(--body);display:flex;align-items:flex-start;gap:10px}
-.plist li::before{content:'';width:18px;height:18px;background:var(--g) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/11px no-repeat;border-radius:50%;flex-shrink:0;margin-top:1px}
+#price{background:var(--navy2)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start}
+.pc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:40px 32px;position:relative;transition:box-shadow .3s,transform .3s cubic-bezier(.34,1.56,.64,1),border-color .3s}
+.pc:hover{box-shadow:0 20px 60px rgba(0,0,0,.3);transform:translateY(-4px)}
+.pc.ft{border-color:rgba(6,199,85,.4);background:rgba(6,199,85,.04);box-shadow:0 0 0 1px rgba(6,199,85,.15),0 12px 60px rgba(6,199,85,.1)}
+.pc.ft:hover{box-shadow:0 0 0 1px rgba(6,199,85,.3),0 24px 80px rgba(6,199,85,.18)}
+.pbadge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--g);color:#fff;font-size:11px;font-weight:700;padding:4px 20px;border-radius:20px;white-space:nowrap;font-family:'Inter',sans-serif;box-shadow:0 4px 16px rgba(6,199,85,.4)}
+.pname{font-size:10px;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;font-family:'Inter',sans-serif}
+.pold{font-size:13px;color:rgba(255,255,255,.3);text-decoration:line-through;margin-bottom:3px}
+.pmon{display:inline-block;font-size:10px;font-weight:700;background:rgba(6,199,85,.12);color:var(--g);padding:2px 10px;border-radius:4px;margin-bottom:6px;font-family:'Inter',sans-serif}
+.pamount{font-family:'Inter',sans-serif;font-size:50px;font-weight:800;color:#fff;line-height:1;letter-spacing:-.04em}
+.pamount small{font-size:15px;font-weight:400;color:rgba(255,255,255,.4);font-family:'Noto Sans JP',sans-serif;letter-spacing:0}
+.pdays{font-size:12px;color:rgba(255,255,255,.35);margin:10px 0 30px}
+.plist{list-style:none;margin-bottom:34px;display:flex;flex-direction:column;gap:13px}
+.plist li{font-size:13px;color:rgba(255,255,255,.6);display:flex;align-items:flex-start;gap:11px}
+.plist li::before{content:'';width:18px;height:18px;background:rgba(6,199,85,.2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%2306C755' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/10px no-repeat;border-radius:50%;flex-shrink:0;margin-top:1px;border:1px solid rgba(6,199,85,.2)}
 .pbtn{display:block;text-align:center;padding:14px;border-radius:12px;font-weight:700;font-size:14px;transition:all .25s}
-.pbtn-o{border:1.5px solid var(--border);color:var(--text)}
-.pbtn-o:hover{border-color:var(--g);color:var(--g);background:rgba(6,199,85,.04)}
-.pbtn-f{background:var(--g);color:#fff;box-shadow:0 4px 20px rgba(6,199,85,.32)}
-.pbtn-f:hover{background:var(--gd);box-shadow:0 8px 28px rgba(6,199,85,.48);transform:translateY(-1px)}
+.pbtn-o{border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);background:rgba(255,255,255,.04)}
+.pbtn-o:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff}
+.pbtn-f{background:var(--g);color:#fff;box-shadow:0 4px 24px rgba(6,199,85,.35)}
+.pbtn-f:hover{background:var(--gd);box-shadow:0 8px 32px rgba(6,199,85,.5);transform:translateY(-1px)}
 
-/* MONTHLY */
-.monthly{max-width:660px;margin:52px auto 0;background:#fff;border:1px solid var(--border);border-radius:20px;padding:36px 36px}
-.ml{font-size:10px;font-weight:700;color:var(--g);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;font-family:'Inter',sans-serif}
-.mt{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:4px}
-.ms{font-size:12px;color:var(--sub);margin-bottom:24px}
-.mr{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--off);border-radius:10px;border:1px solid var(--border);margin-bottom:10px}
-.mr-title{font-size:13px;font-weight:600;color:var(--text)}
-.mr-desc{font-size:11px;color:var(--sub)}
-.mr-price{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--text);white-space:nowrap}
-.m-total{display:flex;justify-content:space-between;align-items:center;background:var(--navy);border-radius:12px;padding:14px 20px}
-.m-total-l{color:#fff;font-size:13px;font-weight:600}
-.m-total-r{font-family:'Inter',sans-serif;color:#fff;font-size:22px;font-weight:800}
-.m-total-r small{font-size:12px;font-weight:400;color:#94a3b8;margin-left:4px}
+/* ── TESTIMONIALS ── */
+#testimonials{background:var(--navy)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tcard{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:32px 28px;transition:background .3s,transform .3s cubic-bezier(.34,1.56,.64,1)}
+.tcard:hover{background:rgba(255,255,255,.07);transform:translateY(-4px)}
+.tcard-stars{color:var(--g);font-size:14px;margin-bottom:16px;letter-spacing:2px}
+.tcard p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.9;margin-bottom:20px}
+.tcard-author{display:flex;align-items:center;gap:12px}
+.tcard-av{width:36px;height:36px;background:rgba(6,199,85,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;border:1px solid rgba(6,199,85,.3)}
+.tcard-name{font-size:13px;font-weight:700;color:#fff}
+.tcard-role{font-size:11px;color:rgba(255,255,255,.35);margin-top:1px}
 
 /* ── FAQ ── */
-#faq{background:#fff}
+#faq{background:var(--navy2)}
 .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
-.fi{border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow .25s,border-color .25s}
-.fi:hover{box-shadow:0 4px 20px rgba(0,0,0,.07)}
-.fi.open{border-color:rgba(6,199,85,.35);box-shadow:0 4px 20px rgba(6,199,85,.08)}
-.fq{padding:22px 28px;font-size:15px;font-weight:600;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none;background:var(--off);transition:background .2s}
-.fq:hover{background:#f1f5f9}
-.fqico{width:30px;height:30px;background:rgba(6,199,85,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--g);font-size:20px;font-weight:300;transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .25s;line-height:1;font-family:'Inter',sans-serif}
+.fi{border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.fi.open{border-color:rgba(6,199,85,.3);box-shadow:0 4px 24px rgba(6,199,85,.08)}
+.fq{padding:22px 28px;font-size:15px;font-weight:600;color:#fff;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none;background:rgba(255,255,255,.03);transition:background .2s}
+.fq:hover{background:rgba(255,255,255,.06)}
+.fqico{width:30px;height:30px;background:rgba(255,255,255,.07);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:rgba(255,255,255,.5);font-size:20px;font-weight:300;transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .25s;line-height:1;font-family:'Inter',sans-serif}
 .fi.open .fqico{transform:rotate(45deg);background:var(--g);color:#fff}
 .fa{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1)}
-.fa-in{padding:22px 28px;font-size:14px;color:var(--sub);line-height:1.9;border-top:1px solid var(--border);background:#fff}
+.fa-in{padding:22px 28px;font-size:14px;color:rgba(255,255,255,.5);line-height:1.9;border-top:1px solid rgba(255,255,255,.06);background:rgba(0,0,0,.15)}
 
 /* ── CTA ── */
-#cta{background:var(--navy);position:relative;overflow:hidden;text-align:center;padding:120px 52px}
-.cta-b1,.cta-b2{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
-.cta-b1{width:440px;height:440px;background:rgba(6,199,85,.1);top:-100px;left:-60px;animation:bm 12s ease-in-out infinite}
-.cta-b2{width:380px;height:380px;background:rgba(79,70,229,.1);bottom:-80px;right:-40px;animation:bm 10s ease-in-out infinite reverse;animation-delay:-5s}
-#cta .eyebrow{color:rgba(6,199,85,.75)}
-#cta h2{font-size:clamp(28px,4vw,52px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:20px;letter-spacing:-.03em}
-#cta p{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:48px;line-height:1.95}
+#cta{background:var(--navy);position:relative;overflow:hidden;text-align:center;padding:130px 52px}
+#cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(6,199,85,.08) 0%,transparent 70%);pointer-events:none}
+.cta-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(6,199,85,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(6,199,85,.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(6,199,85,.12) 0%,transparent 70%);pointer-events:none}
+#cta .eyebrow{color:rgba(6,199,85,.7)}
+#cta h2{font-size:clamp(32px,5vw,60px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:22px;letter-spacing:-.04em}
+#cta h2 em{font-style:normal;background:linear-gradient(135deg,var(--g),var(--g2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+#cta p{font-size:16px;color:rgba(255,255,255,.45);margin-bottom:52px;line-height:2}
 .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.cta-note{font-size:12px;color:rgba(255,255,255,.28);margin-top:22px}
+.cta-note{font-size:12px;color:rgba(255,255,255,.22);margin-top:24px;letter-spacing:.02em}
 
 /* ── FOOTER ── */
-footer{background:#040a14;border-top:1px solid rgba(255,255,255,.05);padding:44px 52px}
-.footer-inner{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48px 52px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
 .fl{font-family:'Inter',sans-serif;font-size:18px;font-weight:900;color:#fff}
 .fl em{color:var(--g);font-style:normal}
 .flinks{display:flex;gap:24px;flex-wrap:wrap}
-.flinks a{font-size:12px;color:rgba(255,255,255,.3);transition:color .2s}
-.flinks a:hover{color:rgba(255,255,255,.65)}
-.fcopy{font-size:12px;color:rgba(255,255,255,.2);font-family:'Inter',sans-serif}
+.flinks a{font-size:12px;color:rgba(255,255,255,.25);transition:color .2s}
+.flinks a:hover{color:rgba(255,255,255,.6)}
+.fcopy{font-size:12px;color:rgba(255,255,255,.15);font-family:'Inter',sans-serif}
 
 .magnetic{transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1100px){
   .hero-inner{grid-template-columns:1fr;gap:0}
-  .hero-visual{display:none}
+  .phone-wrap{display:none}
   #hero{text-align:center}
   .hero-btns{justify-content:center}
   .hero-note{justify-content:center}
-  .pain-grid,.feat-grid,.demo-grid,.pgrid{grid-template-columns:1fr 1fr}
-  .proc-grid{grid-template-columns:1fr 1fr;gap:40px}
-  .proc-line{display:none}
+  .hero-sub{max-width:100%}
+  .pain-grid,.demo-grid,.pgrid,.testi-grid{grid-template-columns:1fr 1fr}
+  .bento{grid-template-columns:repeat(4,1fr)}
+  .bc.c4{grid-column:span 4}.bc.c3{grid-column:span 2}.bc.c2{grid-column:span 2}
+  .proc-grid{grid-template-columns:1fr 1fr}.proc-line{display:none}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .stat-item::after{display:none}
 }
-@media(max-width:640px){
+@media(max-width:700px){
   nav{padding:0 20px}
   .nlinks{display:none}
   .hamburger{display:flex}
-  section{padding:80px 20px}
-  #hero{padding:100px 24px 72px}
-  #stats{padding:32px 20px}
-  .stats-inner{gap:24px}
-  .stat-divider{display:none}
-  .pain-grid,.feat-grid,.demo-grid,.pgrid,.proc-grid{grid-template-columns:1fr}
-  footer{padding:36px 20px}
-  .footer-inner{flex-direction:column;text-align:center;gap:16px}
-  .flinks{justify-content:center}
-  .monthly{padding:28px 20px}
+  #hero{padding:100px 24px 64px}
+  section{padding:72px 24px}
+  #stats{padding:48px 24px}
+  #marquee{display:none}
+  .pain-grid,.demo-grid,.pgrid,.testi-grid{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr}.bc.c2,.bc.c3,.bc.c4{grid-column:span 1}.bc.tall{grid-row:span 1}
+  .proc-grid{grid-template-columns:1fr}
+  #cta{padding:80px 24px}
+  #contact{padding:72px 24px}
+  #contact .container > div{grid-template-columns:1fr;gap:48px}
+  footer{padding:36px 24px}
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:16px}
 }
 </style>
 </head>
 <body>
-<div id="cg"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-logo"><span>Form</span>&nbsp;<span>Flow</span></div>
+  <div class="ld-line"></div>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
 <div id="sp"></div>
 
-<!-- NAV -->
 <nav id="nav">
   <a href="./index.html" class="nlogo">Form <em>Flow</em></a>
   <div class="nlinks">
     <a href="#features">サービス内容</a>
-    <a href="#demo">構築例</a>
+    <a href="./cases.html">構築例</a>
     <a href="./demo.html">デモ体験</a>
     <a href="./column.html">コラム</a>
     <a href="./news.html">お知らせ</a>
@@ -336,330 +369,607 @@ footer{background:#040a14;border-top:1px solid rgba(255,255,255,.05);padding:44p
 </nav>
 <div class="mmenu" id="mmenu">
   <a href="#features">サービス内容</a>
-  <a href="#demo">構築例</a>
+  <a href="./cases.html">構築例</a>
   <a href="./demo.html">デモ体験</a>
   <a href="./column.html">コラム</a>
   <a href="./news.html">お知らせ</a>
   <a href="#cta" class="mc">無料相談する</a>
 </div>
 
-<!-- NEWS BAR -->
-<a class="nbar" href="./news.html#news-001">
-  <span class="nb-badge">NEW</span>
-  <span>Form Flow サービス提供を開始しました</span>
-  <span class="nb-arrow">→</span>
-</a>
-
-<!-- HERO -->
+<!-- ── HERO ── -->
 <section id="hero">
+  <canvas id="particles"></canvas>
   <div class="hgrid"></div>
-  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
-
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
   <div class="hero-inner">
-    <div>
-      <div class="hero-kicker"><span class="hero-kicker-dot"></span>モニター価格で受付中</div>
-      <h1 class="htitle">公式LINEを、<br><em>業務の入口</em>に。</h1>
-      <p class="hero-sub">リッチメニュー・自動返信・スプレッドシート連携まで一括対応。<br>Lステップ不要、月額追加費用なしで実現します。</p>
+    <div class="hero-text">
+      <div class="hero-kicker">
+        <span class="hero-kicker-dot"></span>
+        Form Flow — LINE構築専門
+      </div>
+      <h1 class="htitle">
+        <span class="hw"><span>Lステップなし。</span></span><br>
+        <span class="hw grd"><span>月額0円</span></span>
+        <span class="hw"><span>で動く</span></span><br>
+        <span class="hw"><span>LINE公式を</span></span><br>
+        <span class="hw"><span>構築します。</span></span>
+      </h1>
+      <p class="hero-sub">リッチメニュー・自動返信・GAS連携まで一括対応。<br>高額ツール不要で、整体院・サロン・個人事業主が<br>すぐ使える状態で納品します。</p>
       <div class="hero-btns">
         <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-p magnetic">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
           LINEで無料相談する
         </a>
-        <a href="#demo" class="btn-gd">構築例を見る →</a>
+        <a href="./demo.html" class="btn-gd magnetic">デモを体験する →</a>
       </div>
-      <p class="hero-note">
-        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>相談・見積もり無料</span>
-        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>秘密厳守</span>
-        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>返信は数時間以内</span>
-      </p>
+      <div class="hero-note">
+        <span class="hero-note-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--g)"><polyline points="20 6 9 17 4 12"/></svg>
+          相談・見積もり無料
+        </span>
+        <span class="hero-note-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--g)"><polyline points="20 6 9 17 4 12"/></svg>
+          月額ツール代0円
+        </span>
+        <span class="hero-note-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--g)"><polyline points="20 6 9 17 4 12"/></svg>
+          最短3営業日で納品
+        </span>
+      </div>
     </div>
 
-    <!-- RIGHT: photo + glassmorphic UI -->
-    <div class="hero-visual">
-      <div class="hv-photo">
-        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=82" alt="ビジネスパーソンがスマートフォンを使用している様子" loading="eager">
-        <div class="hv-overlay"></div>
-      </div>
-
-      <!-- Floating: LINE chat preview (outside hv-photo to avoid clipping) -->
-      <div class="glass-card gc1 gc-chat">
-        <div class="gc-chat-hdr">
-          <div class="gc-chat-avatar">FF</div>
-          <div><div class="gc-chat-name">Form Flow 公式</div><div class="gc-chat-status">● オンライン</div></div>
+    <!-- PHONE MOCKUP -->
+    <div class="phone-wrap">
+      <div class="phone-float pf1">
+        <div class="pfloat-card">
+          <div class="pf-num">¥0</div>
+          <div class="pf-label">月額ツール維持費</div>
         </div>
-        <div class="gc-bubble">友だち追加ありがとうございます！ご相談はいつでもどうぞ 🎉</div>
-        <div class="gc-bubble out">相談したいです</div>
-        <div class="gc-auto">自動返信</div>
       </div>
-
-      <!-- Floating: stats -->
-      <div class="glass-card gc2">
-        <div class="gc-stat-num">¥0<span style="font-size:14px;opacity:.7">/月</span></div>
-        <div class="gc-stat-label">追加ツール費用</div>
+      <div class="phone-float pf2">
+        <div class="pfloat-card">
+          <div class="pf-row">
+            <div class="pf-dot"></div>
+            <div class="pf-txt">月額ツール代 ¥0</div>
+          </div>
+        </div>
       </div>
-
-      <!-- Floating: tag -->
-      <div class="glass-card gc3">
-        <div class="gc-row"><div class="gc-dot"></div><span class="gc-tag-txt">Lステップ不要で自動化</span></div>
+      <div class="phone-float pf3">
+        <div class="pfloat-card">
+          <div class="pf-num">★ 5.0</div>
+          <div class="pf-label">クライアント評価</div>
+        </div>
+      </div>
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-status">
+            <span>9:41</span>
+            <span style="display:flex;gap:4px;align-items:center">
+              <svg width="12" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 8.5L12 2l10.5 6.5"/></svg>
+              ▌▌▌▌
+            </span>
+          </div>
+          <div class="phone-header">
+            <div class="ph-avatar">FF</div>
+            <div class="ph-info">
+              <div class="ph-name">Form Flow デモ</div>
+              <div class="ph-status">● オンライン</div>
+            </div>
+          </div>
+          <div class="phone-body" id="chatBody">
+            <div class="msg msg-animate" id="msg1">
+              <div class="bubble in">こんにちは！友だち追加ありがとうございます🎉</div>
+              <div class="msg-time">09:41</div>
+            </div>
+            <div class="msg msg-animate" id="msg2">
+              <div class="bubble auto">📋 メニューからお選びください：<br>① 料金を見る<br>② デモを体験<br>③ 無料相談</div>
+            </div>
+            <div class="msg msg-animate" id="msg3">
+              <div class="bubble out">料金</div>
+              <div class="msg-time right">09:42</div>
+            </div>
+            <div class="msg msg-animate" id="msg4">
+              <div class="bubble in">💰 ライトプランは<br><strong>¥19,800</strong>（税込）です。<br>最短3営業日で納品します！</div>
+              <div class="msg-time">09:42</div>
+            </div>
+          </div>
+          <div class="phone-input">
+            <span>メッセージを入力…</span>
+            <div class="phone-input-ico">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
+<!-- ── MARQUEE ── -->
+<div id="marquee">
+  <div class="mq-track">
+    <span class="mq-item"><span class="mq-dot"></span>Lステップ不要</span>
+    <span class="mq-item"><span class="mq-dot"></span>月額ツール代0円</span>
+    <span class="mq-item"><span class="mq-dot"></span>GAS連携</span>
+    <span class="mq-item"><span class="mq-dot"></span>リッチメニュー制作</span>
+    <span class="mq-item"><span class="mq-dot"></span>自動返信設定</span>
+    <span class="mq-item"><span class="mq-dot"></span>ステップ配信</span>
+    <span class="mq-item"><span class="mq-dot"></span>マニュアル付き納品</span>
+    <span class="mq-item"><span class="mq-dot"></span>最短3営業日</span>
+    <span class="mq-item"><span class="mq-dot"></span>整体院・サロン対応</span>
+    <span class="mq-item"><span class="mq-dot"></span>個人事業主歓迎</span>
+    <!-- duplicate for seamless loop -->
+    <span class="mq-item"><span class="mq-dot"></span>Lステップ不要</span>
+    <span class="mq-item"><span class="mq-dot"></span>月額ツール代0円</span>
+    <span class="mq-item"><span class="mq-dot"></span>GAS連携</span>
+    <span class="mq-item"><span class="mq-dot"></span>リッチメニュー制作</span>
+    <span class="mq-item"><span class="mq-dot"></span>自動返信設定</span>
+    <span class="mq-item"><span class="mq-dot"></span>ステップ配信</span>
+    <span class="mq-item"><span class="mq-dot"></span>マニュアル付き納品</span>
+    <span class="mq-item"><span class="mq-dot"></span>最短3営業日</span>
+    <span class="mq-item"><span class="mq-dot"></span>整体院・サロン対応</span>
+    <span class="mq-item"><span class="mq-dot"></span>個人事業主歓迎</span>
+  </div>
+</div>
+
+<!-- ── STATS ── -->
 <div id="stats">
   <div class="stats-inner">
     <div class="stat-item rv">
-      <div class="snum inter"><span class="cnt" data-target="3">3</span><em>日〜</em></div>
-      <div class="slabel">最短納品日数</div>
+      <div class="snum">¥<span class="counter" data-target="0">0</span><em>/月</em></div>
+      <div class="slabel">ツール維持費（GAS活用）</div>
     </div>
-    <div class="stat-divider"></div>
     <div class="stat-item rv d1">
-      <div class="snum inter">¥<span class="cnt" data-target="0">0</span><em>/月</em></div>
-      <div class="slabel">追加ツール代</div>
+      <div class="snum"><span class="counter" data-target="3">0</span><em>営業日〜</em></div>
+      <div class="slabel">最短納品スピード</div>
     </div>
-    <div class="stat-divider"></div>
     <div class="stat-item rv d2">
-      <div class="snum inter"><span class="cnt" data-target="10">0</span><em>+</em></div>
-      <div class="slabel">対応業種</div>
+      <div class="snum"><span class="counter" data-target="10">0</span><em>+業種</em></div>
+      <div class="slabel">対応可能な業種</div>
     </div>
-    <div class="stat-divider"></div>
     <div class="stat-item rv d3">
-      <div class="snum inter">100<em>%</em></div>
+      <div class="snum"><span class="counter" data-target="100">0</span><em>%</em></div>
       <div class="slabel">マニュアル付き納品</div>
     </div>
   </div>
 </div>
 
-<!-- PAIN -->
+<!-- ── PAIN ── -->
 <section id="pain">
   <div class="container">
-    <p class="eyebrow rv">PROBLEM</p>
-    <h2 class="stitle rv">こんなお悩みを解決します</h2>
-    <p class="ssub rv">「設定が複雑で止まっている」「費用が高くて踏み出せない」——そのよくある壁を、Form Flowは丁寧に取り除きます。</p>
+    <div class="rv" style="text-align:center;margin-bottom:56px">
+      <p class="eyebrow">Problem</p>
+      <h2 class="stitle">こんな悩み、ありませんか？</h2>
+      <p class="ssub" style="margin-bottom:0">LINE公式アカウントを活かしきれていない方へ</p>
+    </div>
     <div class="pain-grid">
-      <div class="pain-card rv">
-        <div class="pico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 19.07l1.41-1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg></div>
-        <div class="pain-txt"><h4>設定が複雑で止まっている</h4><p>アカウントは作ったのに、設定方法が分からず放置している。</p></div>
-      </div>
       <div class="pain-card rv d1">
-        <div class="pico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-        <div class="pain-txt"><h4>Lステップの費用が高い</h4><p>月額数万円のツール費用がネック。もっと安く自動化したい。</p></div>
+        <div class="pico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="pain-txt"><h4>Lステップの月額費用が高い</h4><p>毎月数千〜数万円かかるツール費用を削減したいが、代替手段が分からない。</p></div>
       </div>
       <div class="pain-card rv d2">
-        <div class="pico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <div class="pain-txt"><h4>手動返信に時間を取られている</h4><p>友だち追加のたびに手動で案内を送っていて非効率。</p></div>
-      </div>
-      <div class="pain-card rv d1">
-        <div class="pico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-        <div class="pain-txt"><h4>顧客情報がバラバラ</h4><p>LINEとスプレッドシートを連携したいが、方法が分からない。</p></div>
-      </div>
-      <div class="pain-card rv d2">
-        <div class="pico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
-        <div class="pain-txt"><h4>リッチメニューをプロらしくしたい</h4><p>見た目を整えてブランド感を出したいが、どう作るか分からない。</p></div>
+        <div class="pico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="pain-txt"><h4>設定が複雑で前に進めない</h4><p>アカウントは作ったものの、自動返信やリッチメニューの設定が難しくて止まっている。</p></div>
       </div>
       <div class="pain-card rv d3">
-        <div class="pico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <div class="pain-txt"><h4>設定後の使い方が分からない</h4><p>他社に頼んだが「設定しました」で終わり。自分で運用できない。</p></div>
+        <div class="pico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="pain-txt"><h4>友だちが増えない・使われない</h4><p>QRコードを置いているだけで、実際に友だち追加されず活用できていない。</p></div>
+      </div>
+      <div class="pain-card rv d1">
+        <div class="pico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="pain-txt"><h4>予約・問い合わせ対応が手動</h4><p>メッセージのたびに手で返信していて、本業に集中できていない。</p></div>
+      </div>
+      <div class="pain-card rv d2">
+        <div class="pico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="pain-txt"><h4>作ってもらったが使い方が分からない</h4><p>以前に構築してもらったが、操作マニュアルがなく管理できていない。</p></div>
+      </div>
+      <div class="pain-card rv d3">
+        <div class="pico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="pain-txt"><h4>どこに頼めばいいか分からない</h4><p>フリーランスや代行会社を探したが、価格感・品質感が掴めない。</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
+<!-- ── BENTO FEATURES ── -->
 <section id="features">
   <div class="container">
-    <p class="eyebrow rv">WHAT WE DO</p>
-    <h2 class="stitle rv">Form Flowができること</h2>
-    <p class="ssub rv">業務フローを整理してから設計するので、「使われない仕組み」になりません。</p>
-    <div class="feat-grid">
-      <div class="fc rv tilt-card"><div class="fc-shine"></div><div class="fn">01</div>
-        <div class="ficon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
-        <h3>初期設定・プロフィール整備</h3><p>あいさつメッセージ・基本情報・プロフィール画像の設定まで丁寧に対応します。</p>
+    <div class="rv" style="text-align:center;margin-bottom:56px">
+      <p class="eyebrow">Features</p>
+      <h2 class="stitle">Form Flow でできること</h2>
+      <p class="ssub" style="margin-bottom:0">GASを使った独自実装で、ツール代ゼロを実現します。</p>
+    </div>
+    <div class="bento">
+      <!-- 大きいカード -->
+      <div class="bc c3 tall rv d1">
+        <div class="bc-glow"></div>
+        <div class="bc-shine"></div>
+        <div class="ficon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>キーワード自動返信</h3>
+        <p>「料金」「予約」「場所」など、送られてきたキーワードを瞬時に判定し、適切なメッセージを自動で返信します。GASが判定エンジンとなり、月額費用は0円です。</p>
+        <div class="bc-demo">
+          <div class="bd-row"><div class="bd-key">「料金」</div><div class="bd-arr">→</div><div class="bd-val">料金表を自動送信</div></div>
+          <div class="bd-row"><div class="bd-key">「予約」</div><div class="bd-arr">→</div><div class="bd-val">予約フォームを案内</div></div>
+          <div class="bd-row"><div class="bd-key">「場所」</div><div class="bd-arr">→</div><div class="bd-val">地図リンクを自動送信</div></div>
+        </div>
+        <div class="bc-tag">月額 ¥0 で動作</div>
       </div>
-      <div class="fc rv d1 tilt-card"><div class="fc-shine"></div><div class="fn">02</div>
-        <div class="ficon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
-        <h3>リッチメニュー制作</h3><p>業種・目的に合わせてデザイン・タップ領域を設計。見た目と使い勝手を整えます。</p>
+
+      <div class="bc c3 rv d2">
+        <div class="bc-glow"></div>
+        <div class="bc-shine"></div>
+        <div class="ficon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3>リッチメニュー制作</h3>
+        <p>トーク画面の下半分を使ったタップ型メニューを設計・制作します。「予約」「料金」「アクセス」などのボタンを自由にカスタマイズ。</p>
+        <div class="bc-tag">デザインから設定まで一括</div>
       </div>
-      <div class="fc rv d2 tilt-card"><div class="fc-shine"></div><div class="fn">03</div>
-        <div class="ficon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <h3>自動返信・ステップ配信</h3><p>キーワード自動返信・友だち追加後のステップ配信・時間指定配信まで設定します。</p>
+
+      <div class="bc c3 rv d3">
+        <div class="bc-glow"></div>
+        <div class="bc-shine"></div>
+        <div class="ficon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h5l2 9H4zm16 0h-5l-2 9h7z"/><circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/></svg>
+        </div>
+        <h3>スプレッドシート顧客管理</h3>
+        <p>友だち追加・フォーム送信のたびにGoogleスプレッドシートへ自動記録。顧客データをリアルタイムで蓄積します。</p>
+        <div class="bc-tag">Google Sheets 連携</div>
       </div>
-      <div class="fc rv d1 tilt-card"><div class="fc-shine"></div><div class="fn">04</div>
-        <div class="ficon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-        <h3>スプレッドシート連携</h3><p>GASを使い、友だち追加・問い合わせをスプレッドシートへ自動記録します。</p>
+
+      <div class="bc c2 rv d1">
+        <div class="bc-glow"></div>
+        <div class="bc-shine"></div>
+        <div class="bc-bignum">01</div>
+        <div class="ficon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.49 12 19.79 19.79 0 0 1 1.21 3.5 2 2 0 0 1 3.22 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg>
+        </div>
+        <h3>予約リマインド自動送信</h3>
+        <p>Googleカレンダーと連携し、前日・当日に自動でリマインドメッセージを送信します。</p>
       </div>
-      <div class="fc rv d2 tilt-card"><div class="fc-shine"></div><div class="fn">05</div>
-        <div class="ficon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-        <h3>Googleカレンダー・Meet連携</h3><p>フォーム申込みから自動でカレンダー登録・Meet URL生成・LINE通知まで一括対応。</p>
+
+      <div class="bc c2 rv d2">
+        <div class="bc-glow"></div>
+        <div class="bc-shine"></div>
+        <div class="bc-bignum">02</div>
+        <div class="ficon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>ステップ配信設計</h3>
+        <p>友だち追加から成約までのシナリオを設計。追加3日後・7日後に自動でフォローメッセージを送れます。</p>
       </div>
-      <div class="fc rv d3 tilt-card"><div class="fc-shine"></div><div class="fn">06</div>
-        <div class="ficon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-        <h3>マニュアル付き引き渡し</h3><p>操作マニュアルとZoomレクチャーで、自分で運用できる状態にして納品します。</p>
+
+      <div class="bc c2 rv d3">
+        <div class="bc-glow"></div>
+        <div class="bc-shine"></div>
+        <div class="bc-bignum">03</div>
+        <div class="ficon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>マニュアル付き納品</h3>
+        <p>操作手順書・FAQ付きで納品。構築後も自分で管理・更新できる状態でお渡しします。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
+<!-- ── PROCESS ── -->
 <section id="process">
   <div class="container">
-    <p class="eyebrow rv">HOW IT WORKS</p>
-    <h2 class="stitle rv">導入の流れ</h2>
-    <p class="ssub rv">ご相談から納品まで、すべてオンラインで完結します。</p>
+    <div class="rv" style="text-align:center;margin-bottom:64px">
+      <p class="eyebrow">Flow</p>
+      <h2 class="stitle">ご相談から納品まで</h2>
+      <p class="ssub" style="margin-bottom:0">最短3営業日で、すぐ使える状態でお渡しします。</p>
+    </div>
     <div class="proc-grid">
       <div class="proc-line"></div>
-      <div class="pstep rv"><div class="pnum-wrap"><div class="pnum-bg"></div><div class="pnum-bg2"></div><div class="pnum-inner"><span class="pnum-n">STEP 01</span><span class="pnum-ico">💬</span></div></div><h3>無料相談</h3><p>LINEまたはフォームからご連絡ください。現状のヒアリングと要件確認を行います。</p></div>
-      <div class="pstep rv d1"><div class="pnum-wrap"><div class="pnum-bg"></div><div class="pnum-bg2"></div><div class="pnum-inner"><span class="pnum-n">STEP 02</span><span class="pnum-ico">📋</span></div></div><h3>お見積り・ご提案</h3><p>内容をもとに仕様と金額をご提案。ご納得いただいてからご契約となります。</p></div>
-      <div class="pstep rv d2"><div class="pnum-wrap"><div class="pnum-bg"></div><div class="pnum-bg2"></div><div class="pnum-inner"><span class="pnum-n">STEP 03</span><span class="pnum-ico">⚙️</span></div></div><h3>構築・設定</h3><p>ご入金確認後、作業を開始。進捗はLINEでお知らせしながら進めます。</p></div>
-      <div class="pstep rv d3"><div class="pnum-wrap"><div class="pnum-bg"></div><div class="pnum-bg2"></div><div class="pnum-inner"><span class="pnum-n">STEP 04</span><span class="pnum-ico">🎉</span></div></div><h3>納品・レクチャー</h3><p>マニュアルと一緒に納品。Zoomで操作方法をご説明し、安心して引き渡します。</p></div>
+      <div class="pstep rv d1">
+        <div class="pnum-wrap">
+          <div class="pnum-bg"></div><div class="pnum-bg2"></div><div class="pnum-bg3"></div>
+          <div class="pnum-inner"><div class="pnum-n">STEP 01</div><div class="pnum-ico">💬</div></div>
+        </div>
+        <h3>LINE で無料相談</h3>
+        <p>業種・やりたいこと・現状をヒアリングします。当日〜翌営業日にお返事。</p>
+      </div>
+      <div class="pstep rv d2">
+        <div class="pnum-wrap">
+          <div class="pnum-bg"></div><div class="pnum-bg2"></div><div class="pnum-bg3"></div>
+          <div class="pnum-inner"><div class="pnum-n">STEP 02</div><div class="pnum-ico">📋</div></div>
+        </div>
+        <h3>お見積もり・ご契約</h3>
+        <p>ヒアリング内容をもとにお見積もりを提示。合意後に着手します。</p>
+      </div>
+      <div class="pstep rv d3">
+        <div class="pnum-wrap">
+          <div class="pnum-bg"></div><div class="pnum-bg2"></div><div class="pnum-bg3"></div>
+          <div class="pnum-inner"><div class="pnum-n">STEP 03</div><div class="pnum-ico">⚙️</div></div>
+        </div>
+        <h3>構築・テスト</h3>
+        <p>リッチメニュー・自動返信・GAS連携を構築し、動作確認を行います。</p>
+      </div>
+      <div class="pstep rv d4">
+        <div class="pnum-wrap">
+          <div class="pnum-bg"></div><div class="pnum-bg2"></div><div class="pnum-bg3"></div>
+          <div class="pnum-inner"><div class="pnum-n">STEP 04</div><div class="pnum-ico">🎉</div></div>
+        </div>
+        <h3>納品・引き渡し</h3>
+        <p>操作マニュアル付きで納品。疑問点があれば LINE でサポートします。</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- DEMO — USE CASES WITH PHOTOS -->
+<!-- ── USE CASES ── -->
 <section id="demo">
   <div class="container">
-    <p class="eyebrow rv">USE CASES</p>
-    <h2 class="stitle rv">こんな仕組みを作っています</h2>
-    <p class="ssub rv">業種・目的別の構築例です。「うちはどうなる？」はご相談でお答えします。</p>
+    <div class="rv" style="text-align:center;margin-bottom:60px">
+      <p class="eyebrow">Use Cases</p>
+      <h2 class="stitle">こんな業種・目的に対応</h2>
+      <p class="ssub" style="margin-bottom:0">業種ごとにカスタマイズして構築します。</p>
+    </div>
     <div class="demo-grid">
-      <div class="dc rv">
-        <div class="dc-photo">
-          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80" alt="整体院" loading="lazy">
-          <div class="dc-photo-overlay"></div>
-          <span class="dc-tag">整体院・治療院</span>
-        </div>
-        <div class="dc-body"><h3>予約確認〜リマインド自動化</h3><p>友だち追加→初回クーポン→予約確認→前日リマインドまで自動化。手動対応ゼロに。</p></div>
-      </div>
       <div class="dc rv d1">
         <div class="dc-photo">
-          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="コーチング" loading="lazy">
-          <div class="dc-photo-overlay"></div>
-          <span class="dc-tag">コンサル・コーチング</span>
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80" alt="整体院・サロン" loading="lazy">
+          <div class="dc-overlay"></div>
+          <span class="dc-tag">整体院・サロン</span>
         </div>
-        <div class="dc-body"><h3>ステップ教育シナリオ</h3><p>友だち追加後7日間、毎日コンテンツを自動配信。Lステップなし・月額0円で実現。</p></div>
+        <div class="dc-body">
+          <h3>予約リマインド・休眠顧客の掘り起こし</h3>
+          <p>来院前日の自動リマインド・来院後のフォロー・休眠顧客への一斉配信まで自動化。</p>
+        </div>
       </div>
       <div class="dc rv d2">
         <div class="dc-photo">
-          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80" alt="不動産" loading="lazy">
-          <div class="dc-photo-overlay"></div>
-          <span class="dc-tag">不動産・サービス業</span>
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="コンサルタント・士業" loading="lazy">
+          <div class="dc-overlay"></div>
+          <span class="dc-tag">コンサル・士業</span>
         </div>
-        <div class="dc-body"><h3>問い合わせ→スプレッドシート自動記録</h3><p>LINEから問い合わせを受け取り、内容・日時・連絡先をシートに自動記録。</p></div>
-      </div>
-      <div class="dc rv d1">
-        <div class="dc-photo">
-          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80" alt="飲食店" loading="lazy">
-          <div class="dc-photo-overlay"></div>
-          <span class="dc-tag">飲食・物販</span>
+        <div class="dc-body">
+          <h3>問い合わせ受付・日程調整の自動化</h3>
+          <p>フォーム送信後にLINEへ即時通知。Googleカレンダー連携でMeet URLを自動生成。</p>
         </div>
-        <div class="dc-body"><h3>リッチメニュー＋クーポン配信</h3><p>来店促進・再訪誘導のリッチメニューと定期クーポン配信の仕組みをセットで構築。</p></div>
-      </div>
-      <div class="dc rv d2">
-        <div class="dc-photo">
-          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=600&q=80" alt="士業" loading="lazy">
-          <div class="dc-photo-overlay"></div>
-          <span class="dc-tag">士業・税理士法人</span>
-        </div>
-        <div class="dc-body"><h3>月次自動配信＋相談予約連携</h3><p>税務カレンダー・書類リマインダーを顧問先属性ごとに自動送信。Meet連携も対応。</p></div>
       </div>
       <div class="dc rv d3">
         <div class="dc-photo">
-          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80" alt="美容サロン" loading="lazy">
-          <div class="dc-photo-overlay"></div>
-          <span class="dc-tag">美容室・サロン</span>
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80" alt="EC・ショップ" loading="lazy">
+          <div class="dc-overlay"></div>
+          <span class="dc-tag">EC・ショップ</span>
         </div>
-        <div class="dc-body"><h3>来店後フォローアップ自動化</h3><p>来店翌日に感謝メッセージ・3週間後に再来店クーポンを自動送信。リピート率向上。</p></div>
+        <div class="dc-body">
+          <h3>購入後フォロー・セール通知の配信</h3>
+          <p>購入後の自動お礼・属性に合わせたセール通知を自動配信。リピート率向上に。</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- ── PRICING ── -->
 <section id="price">
   <div class="container">
-    <p class="eyebrow rv" style="text-align:center">PRICING</p>
-    <h2 class="stitle rv" style="text-align:center">シンプルな3プラン</h2>
-    <p class="ssub rv" style="text-align:center">「何から始めればいいか分からない」場合は、ライトプランから始めて後から拡張できます。<br><small>※表示価格はすべて税別です。</small></p>
-    <div class="pgrid">
-      <div class="pc rv">
-        <div class="pname">ライト</div>
-        <div class="pold">通常 ¥49,800〜</div>
-        <div class="pmon">モニター価格</div>
-        <div class="pamount">¥29,800<small>〜 税別</small></div>
-        <div class="pdays">納品目安：3〜5営業日</div>
-        <ul class="plist"><li>基本設定・プロフィール整備</li><li>あいさつメッセージ設定</li><li>リッチメニュー（1パターン）</li><li>操作マニュアル（PDF）</li></ul>
-        <a href="#cta" class="pbtn pbtn-o">このプランで相談する</a>
-      </div>
-      <div class="pc ft rv d1">
-        <div class="pbadge">一番人気</div>
-        <div class="pname">スタンダード</div>
-        <div class="pold">通常 ¥150,000〜</div>
-        <div class="pmon">モニター価格</div>
-        <div class="pamount">¥79,800<small>〜 税別</small></div>
-        <div class="pdays">納品目安：5〜7営業日</div>
-        <ul class="plist"><li>ライトの全内容</li><li>シナリオ配信（最大3ステップ）</li><li>キーワード自動返信（最大5件）</li><li>Googleフォーム→LINE通知連携</li></ul>
-        <a href="#cta" class="pbtn pbtn-f magnetic">このプランで相談する</a>
-      </div>
-      <div class="pc rv d2">
-        <div class="pname">プレミアム</div>
-        <div class="pold">通常 ¥390,000〜</div>
-        <div class="pmon">モニター価格</div>
-        <div class="pamount">¥198,000<small>〜 税別</small></div>
-        <div class="pdays">納品目安：7〜10営業日</div>
-        <ul class="plist"><li>スタンダードの全内容</li><li>友だち追加→スプレッドシート自動記録</li><li>Googleカレンダー連携・Meet URL自動生成</li><li>顧客属性別の月次一斉送信</li><li>納品後オンラインレクチャー30分</li></ul>
-        <a href="#cta" class="pbtn pbtn-o">このプランで相談する</a>
-      </div>
+    <div class="rv" style="text-align:center;margin-bottom:60px">
+      <p class="eyebrow">Pricing</p>
+      <h2 class="stitle">料金プラン</h2>
+      <p class="ssub" style="margin-bottom:0">初期費用のみ。月額ツール代は一切かかりません。</p>
     </div>
-    <p style="text-align:center;font-size:12px;color:var(--sub);margin-top:18px">※ カレンダー連携・API開発など高度な要件はプレミアムプランの上限を超える場合があります。その場合は別途お見積りいたします。</p>
-    <div class="monthly rv">
-      <div class="ml">MONTHLY</div>
-      <div class="mt">月額保守費</div>
-      <div class="ms">構築完了後、翌月より発生。最低契約期間3ヶ月。</div>
-      <div class="mr"><div><div class="mr-title">システム監視・障害対応</div><div class="mr-desc">異常検知・不具合発生時の修正対応</div></div><div class="mr-price">¥5,000<span style="font-size:11px;color:var(--sub);font-weight:400">/月</span></div></div>
-      <div class="mr"><div><div class="mr-title">キーワード追加・文言修正（月2件）</div><div class="mr-desc">自動返信テキストの変更・追加</div></div><div class="mr-price">¥5,000<span style="font-size:11px;color:var(--sub);font-weight:400">/月</span></div></div>
-      <div class="mr"><div><div class="mr-title">税務カレンダー・配信内容更新</div><div class="mr-desc">年次法令改正・配信文の年次更新</div></div><div class="mr-price">¥5,000<span style="font-size:11px;color:var(--sub);font-weight:400">/月</span></div></div>
-      <div class="m-total"><div class="m-total-l">月額合計（税別）</div><div class="m-total-r">¥15,000<small>／月〜</small></div></div>
+    <div class="pgrid">
+      <div class="pc rv d1">
+        <div class="pname">Light</div>
+        <div class="pold">¥29,800</div>
+        <div class="pmon">モニター価格</div>
+        <div class="pamount">¥19,800<small>（税込）</small></div>
+        <div class="pdays">納品目安：5〜7営業日</div>
+        <ul class="plist">
+          <li>友だち追加ウェルカムメッセージ</li>
+          <li>キーワード自動返信（最大5種）</li>
+          <li>リッチメニュー（1パターン）</li>
+          <li>スプレッドシート顧客記録</li>
+          <li>操作マニュアル付き納品</li>
+        </ul>
+        <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="pbtn pbtn-o">相談・見積もり（無料）</a>
+      </div>
+      <div class="pc ft rv d2">
+        <div class="pbadge">人気 No.1</div>
+        <div class="pname">Standard</div>
+        <div class="pold">¥49,800</div>
+        <div class="pmon">モニター価格</div>
+        <div class="pamount">¥34,800<small>（税込）</small></div>
+        <div class="pdays">納品目安：3〜5営業日</div>
+        <ul class="plist">
+          <li>ライトプランの全内容</li>
+          <li>キーワード返信（最大15種）</li>
+          <li>ステップ配信（最大7通）</li>
+          <li>予約リマインド自動送信</li>
+          <li>Googleカレンダー連携</li>
+          <li>一斉配信テンプレート作成</li>
+        </ul>
+        <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="pbtn pbtn-f">相談・見積もり（無料）</a>
+      </div>
+      <div class="pc rv d3">
+        <div class="pname">Custom</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:6px">要件に合わせてお見積もり</div>
+        <div class="pamount" style="font-size:30px">オーダーメイド</div>
+        <div class="pdays">納品目安：ご相談</div>
+        <ul class="plist">
+          <li>スタンダードの全内容</li>
+          <li>フォーム→LINE通知連携</li>
+          <li>見積もりボット実装</li>
+          <li>複数アカウント管理</li>
+          <li>既存システムとの連携</li>
+          <li>継続サポート（別途）</li>
+        </ul>
+        <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="pbtn pbtn-o">相談・見積もり（無料）</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials">
+  <div class="container">
+    <div class="rv" style="text-align:center;margin-bottom:60px">
+      <p class="eyebrow">Testimonials</p>
+      <h2 class="stitle">お客様の声</h2>
+      <p class="ssub" style="margin-bottom:0">実際に構築した方からの声をご紹介します。</p>
+    </div>
+    <div class="testi-grid">
+      <div class="tcard rv d1">
+        <div class="tcard-stars">★★★★★</div>
+        <p>「設定が難しくて止まっていたリッチメニューを、こちらの要望通りに作っていただきました。マニュアルも丁寧で、今は自分で更新できています。」</p>
+        <div class="tcard-author">
+          <div class="tcard-av">🌸</div>
+          <div>
+            <div class="tcard-name">A.M. さん</div>
+            <div class="tcard-role">サロンオーナー・東京</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard rv d2">
+        <div class="tcard-stars">★★★★★</div>
+        <p>「Lステップの月額が負担になっていたところ、GASで同じことができると知って依頼しました。移行後は月額費用がゼロになり、満足しています。」</p>
+        <div class="tcard-author">
+          <div class="tcard-av">💼</div>
+          <div>
+            <div class="tcard-name">T.K. さん</div>
+            <div class="tcard-role">整体院経営・大阪</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard rv d3">
+        <div class="tcard-stars">★★★★★</div>
+        <p>「問い合わせのたびに手で返信していた作業が自動化されました。スプレッドシートに記録も残るので、顧客管理がとても楽になりました。」</p>
+        <div class="tcard-author">
+          <div class="tcard-av">📊</div>
+          <div>
+            <div class="tcard-name">Y.S. さん</div>
+            <div class="tcard-role">コンサルタント・福岡</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
 <section id="faq">
   <div class="container">
-    <p class="eyebrow rv" style="text-align:center">FAQ</p>
-    <h2 class="stitle rv" style="text-align:center">よくあるご質問</h2>
-    <p class="ssub rv" style="text-align:center">他にご不明な点はLINEかメールでお気軽にどうぞ。</p>
+    <div class="rv" style="text-align:center;margin-bottom:60px">
+      <p class="eyebrow">FAQ</p>
+      <h2 class="stitle">よくある質問</h2>
+    </div>
     <div class="faq-list">
-      <div class="fi rv"><div class="fq">Lステップがなくても自動化できますか？<span class="fqico">+</span></div><div class="fa"><div class="fa-in">はい。Google Apps Script（GAS）を使うことで、友だち追加時の自動返信・スプレッドシートへの記録・メッセージ配信などをLステップなしで実現できます。月額の追加費用がかかりません。</div></div></div>
-      <div class="fi rv d1"><div class="fq">既存のアカウントへの追加設定も対応できますか？<span class="fqico">+</span></div><div class="fa"><div class="fa-in">はい。すでにアカウントをお持ちの方の追加設定・リニューアルも対応しています。現状の設定を確認した上でご提案します。</div></div></div>
-      <div class="fi rv d2"><div class="fq">どんな業種でも対応できますか？<span class="fqico">+</span></div><div class="fa"><div class="fa-in">飲食・美容室・整骨院・クリニック・コーチング・士業・不動産など、BtoC・BtoB問わず対応しています。「自社に合うか」は相談の中で確認します。</div></div></div>
-      <div class="fi rv d1"><div class="fq">納品後、自分で運用できるか不安です。<span class="fqico">+</span></div><div class="fa"><div class="fa-in">操作マニュアルの作成とZoomでのレクチャーをセットで行います。「使い方が分からなくて止まる」が起きないよう、引き渡しを丁寧に行います。</div></div></div>
-      <div class="fi rv d2"><div class="fq">相談・見積もりは無料ですか？<span class="fqico">+</span></div><div class="fa"><div class="fa-in">はい、無料です。LINEまたはお問い合わせフォームからお気軽にご連絡ください。「何から始めればいいか分からない」という段階からご相談いただけます。</div></div></div>
+      <div class="fi rv d1">
+        <div class="fq"><span>Lステップと何が違うのですか？</span><span class="fqico">+</span></div>
+        <div class="fa"><div class="fa-in">Lステップは月額数千〜数万円のツールですが、Form Flowが使うGAS（Google Apps Script）はGoogleアカウントがあれば無料で使えます。自動返信・ステップ配信・顧客管理など、Lステップで使う主要機能の多くをGASで代替できます。</div></div>
+      </div>
+      <div class="fi rv d2">
+        <div class="fq"><span>自分でも管理・更新できますか？</span><span class="fqico">+</span></div>
+        <div class="fa"><div class="fa-in">はい。操作マニュアル付きで納品しています。文言変更・メニュー更新など基本的な操作は、マニュアルを見ながらご自身で行えるようにお渡しします。難しい場合は追加サポートも対応可能です。</div></div>
+      </div>
+      <div class="fi rv d3">
+        <div class="fq"><span>どんな業種でも対応できますか？</span><span class="fqico">+</span></div>
+        <div class="fa"><div class="fa-in">整体院・サロン・コンサルタント・士業・EC事業者など、幅広い業種に対応しています。まずご相談いただければ、業種に合った構成をご提案します。</div></div>
+      </div>
+      <div class="fi rv d4">
+        <div class="fq"><span>LINE公式アカウントを持っていなくても依頼できますか？</span><span class="fqico">+</span></div>
+        <div class="fa"><div class="fa-in">はい。アカウント開設からサポートします。無料プランから始められるので、初期費用はForm Flowへの構築費のみです。</div></div>
+      </div>
+      <div class="fi rv d5">
+        <div class="fq"><span>納品後のサポートはありますか？</span><span class="fqico">+</span></div>
+        <div class="fa"><div class="fa-in">納品後7日間は無償で動作確認・修正対応をしています。それ以降は追加サポートプランをご用意しています（別途お見積もり）。</div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
+<!-- ── CONTACT FORM ── -->
+<section id="contact" style="background:var(--navy2);padding:112px 52px">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1000px;margin:0 auto">
+      <div class="rvl">
+        <p class="eyebrow">Contact</p>
+        <h2 class="stitle" style="font-size:clamp(28px,3.5vw,44px)">お問い合わせ</h2>
+        <p style="font-size:15px;color:rgba(255,255,255,.45);line-height:2;margin-bottom:36px">ご質問・お見積もりのご依頼はフォームまたはLINEから。<br>当日〜翌営業日にご連絡します。</p>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(255,255,255,.5)">
+            <div style="width:36px;height:36px;background:rgba(6,199,85,.12);border:1px solid rgba(6,199,85,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06C755" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            相談・見積もり無料
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(255,255,255,.5)">
+            <div style="width:36px;height:36px;background:rgba(6,199,85,.12);border:1px solid rgba(6,199,85,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06C755" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            返信は当日〜翌営業日
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(255,255,255,.5)">
+            <div style="width:36px;height:36px;background:rgba(6,199,85,.12);border:1px solid rgba(6,199,85,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06C755" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            秘密厳守・押し売りなし
+          </div>
+        </div>
+        <div style="margin-top:36px;padding:20px 22px;background:rgba(6,199,85,.06);border:1px solid rgba(6,199,85,.15);border-radius:14px">
+          <p style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:10px">LINEでも受け付けています</p>
+          <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-p magnetic" style="font-size:14px;padding:12px 24px;display:inline-flex">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+            LINEで相談する
+          </a>
+        </div>
+      </div>
+      <div class="rvr">
+        <form action="https://formspree.io/f/xbjndpwq" method="POST" id="contactForm" style="display:flex;flex-direction:column;gap:16px">
+          <div>
+            <label style="font-size:12px;font-weight:600;color:rgba(255,255,255,.5);display:block;margin-bottom:7px;letter-spacing:.05em">お名前 <span style="color:var(--g)">*</span></label>
+            <input type="text" name="name" required placeholder="山田 太郎" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:13px 16px;font-size:14px;color:#fff;font-family:'Noto Sans JP',sans-serif;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='rgba(6,199,85,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.12)'">
+          </div>
+          <div>
+            <label style="font-size:12px;font-weight:600;color:rgba(255,255,255,.5);display:block;margin-bottom:7px;letter-spacing:.05em">メールアドレス <span style="color:var(--g)">*</span></label>
+            <input type="email" name="email" required placeholder="example@email.com" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:13px 16px;font-size:14px;color:#fff;font-family:'Noto Sans JP',sans-serif;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='rgba(6,199,85,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.12)'">
+          </div>
+          <div>
+            <label style="font-size:12px;font-weight:600;color:rgba(255,255,255,.5);display:block;margin-bottom:7px;letter-spacing:.05em">業種・職業</label>
+            <input type="text" name="occupation" placeholder="例：整体院経営、フリーランスコンサルタント" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:13px 16px;font-size:14px;color:#fff;font-family:'Noto Sans JP',sans-serif;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='rgba(6,199,85,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.12)'">
+          </div>
+          <div>
+            <label style="font-size:12px;font-weight:600;color:rgba(255,255,255,.5);display:block;margin-bottom:7px;letter-spacing:.05em">お問い合わせ内容 <span style="color:var(--g)">*</span></label>
+            <textarea name="message" required rows="4" placeholder="例：LINE公式アカウントの構築を検討しています。自動返信とリッチメニューを設定したいです。" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:13px 16px;font-size:14px;color:#fff;font-family:'Noto Sans JP',sans-serif;outline:none;resize:vertical;transition:border-color .2s;line-height:1.8" onfocus="this.style.borderColor='rgba(6,199,85,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.12)'"></textarea>
+          </div>
+          <button type="submit" class="btn-p magnetic" style="width:100%;justify-content:center;font-size:15px;padding:15px" id="submitBtn">
+            送信する
+          </button>
+          <p id="formMsg" style="display:none;text-align:center;font-size:13px;padding:12px;border-radius:8px"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
 <section id="cta">
-  <div class="cta-b1"></div><div class="cta-b2"></div>
-  <div class="container" style="position:relative;z-index:1">
-    <p class="eyebrow rv">GET STARTED</p>
-    <h2 class="rv">まず、無料で相談してみてください。</h2>
-    <p class="rv">「何から始めればいいか分からない」という段階からでも大丈夫です。<br>ご要望を聞いた上で、最適な構成をご提案します。</p>
-    <div class="cta-btns rv">
-      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-p magnetic">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+  <div class="cta-grid-bg"></div>
+  <div class="cta-glow"></div>
+  <div style="position:relative;z-index:1;max-width:860px;margin:0 auto" class="rv">
+    <p class="eyebrow">GET STARTED</p>
+    <h2>まず、<em>無料で</em>相談<br>してみてください。</h2>
+    <p>「何から始めればいいか分からない」という段階からでも大丈夫です。<br>当日〜翌営業日にお返事します。</p>
+    <div class="cta-btns">
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-p magnetic" style="font-size:16px;padding:17px 36px">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
         LINEで無料相談する
       </a>
-      <a href="./service.html" class="btn-gd">サービス詳細を見る →</a>
+      <a href="./demo.html" class="btn-gd magnetic" style="font-size:15px;padding:16px 30px">デモを体験する →</a>
     </div>
-    <p class="cta-note rv">相談・見積もり無料 ・ 秘密厳守 ・ 返信は数時間以内</p>
+    <p class="cta-note">相談・見積もり無料 &nbsp;|&nbsp; 秘密厳守 &nbsp;|&nbsp; 返信は数時間以内</p>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="fl">Form <em>Flow</em></div>
@@ -668,6 +978,7 @@ footer{background:#040a14;border-top:1px solid rgba(255,255,255,.05);padding:44p
       <a href="./terms.html">利用規約</a>
       <a href="./tokushoho.html">特定商取引法</a>
       <a href="./news.html">お知らせ</a>
+      <a href="./column.html">コラム</a>
     </div>
     <div class="fcopy">© 2026 Form Flow.</div>
   </div>
@@ -675,86 +986,181 @@ footer{background:#040a14;border-top:1px solid rgba(255,255,255,.05);padding:44p
 
 <script>
 (function(){
-  // CURSOR GLOW
-  const cg=document.getElementById('cg');
-  document.addEventListener('mousemove',e=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px'},{passive:true});
+  /* ── LOADER ── */
+  const loader = document.getElementById('loader');
+  window.addEventListener('load', () => {
+    loader.classList.add('out');
+    setTimeout(() => { loader.style.display = 'none'; }, 1500);
+  });
 
-  // SCROLL PROGRESS
-  const sp=document.getElementById('sp');
+  /* ── CUSTOM CURSOR ── */
+  const cur = document.getElementById('cur');
+  const ring = document.getElementById('cur-ring');
+  let mx = -100, my = -100, rx = -100, ry = -100;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, {passive:true});
+  (function animCur(){
+    cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animCur);
+  })();
+
+  /* ── SCROLL PROGRESS ── */
+  const sp = document.getElementById('sp');
+  const nav = document.getElementById('nav');
   function onScroll(){
-    const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
-    sp.style.width=p+'%';
-    document.getElementById('nav').classList.toggle('sc',window.scrollY>60);
+    const p = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    sp.style.width = p + '%';
+    nav.classList.toggle('sc', window.scrollY > 60);
   }
-  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
 
-  // HAMBURGER
-  const hbtn=document.getElementById('hbtn'),mm=document.getElementById('mmenu');
-  hbtn.addEventListener('click',()=>{hbtn.classList.toggle('open');mm.classList.toggle('open')});
-  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hbtn.classList.remove('open');mm.classList.remove('open')}));
+  /* ── HAMBURGER ── */
+  const hbtn = document.getElementById('hbtn'), mm = document.getElementById('mmenu');
+  hbtn.addEventListener('click', () => { hbtn.classList.toggle('open'); mm.classList.toggle('open'); });
+  mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbtn.classList.remove('open'); mm.classList.remove('open'); }));
 
-  // REVEAL
-  const rvObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.1});
-  document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+  /* ── REVEAL ── */
+  const rvObs = new IntersectionObserver(entries => entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('on'); rvObs.unobserve(e.target); }
+  }), {threshold:.12});
+  document.querySelectorAll('.rv,.rvl,.rvr').forEach(el => rvObs.observe(el));
 
-  // COUNTER
-  function cnt(el,target,dur=1500){
-    const s=performance.now();
-    const tick=now=>{
-      const p=Math.min((now-s)/dur,1);
-      el.textContent=Math.floor(p*target);
-      if(p<1)requestAnimationFrame(tick);else el.textContent=target;
-    };
-    requestAnimationFrame(tick);
+  /* ── COUNTER ── */
+  function animCounter(el){
+    const target = +el.dataset.target;
+    const dur = 1800;
+    const start = performance.now();
+    (function tick(now){
+      const p = Math.min((now - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target).toLocaleString();
+      if(p < 1) requestAnimationFrame(tick);
+    })(start);
   }
-  const cObs=new IntersectionObserver(entries=>entries.forEach(e=>{
-    if(e.isIntersecting&&!e.target.dataset.c){e.target.dataset.c='1';cnt(e.target,+e.target.dataset.target)}
-  }),{threshold:.5});
-  document.querySelectorAll('.cnt').forEach(el=>cObs.observe(el));
+  const cntObs = new IntersectionObserver(entries => entries.forEach(e => {
+    if(e.isIntersecting){ animCounter(e.target); cntObs.unobserve(e.target); }
+  }), {threshold:.5});
+  document.querySelectorAll('.counter').forEach(el => cntObs.observe(el));
 
-  // HERO PHOTO parallax on scroll
-  const hphoto=document.querySelector('.hv-photo img');
-  if(hphoto){
-    window.addEventListener('scroll',()=>{
-      const s=window.scrollY;
-      if(s<window.innerHeight)hphoto.style.transform=`scale(1.02) translateY(${s*0.08}px)`;
-    },{passive:true});
-  }
-
-  // 3D TILT CARDS
-  document.querySelectorAll('.tilt-card').forEach(card=>{
-    card.addEventListener('mousemove',e=>{
-      const r=card.getBoundingClientRect();
-      const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-      card.style.transform=`perspective(700px) rotateX(${-y*10}deg) rotateY(${x*10}deg) translateZ(8px) translateY(-5px)`;
-    });
-    card.addEventListener('mouseleave',()=>{card.style.transform=''});
-  });
-
-  // MAGNETIC BUTTONS
-  document.querySelectorAll('.magnetic').forEach(btn=>{
-    btn.addEventListener('mousemove',e=>{
-      const r=btn.getBoundingClientRect();
-      const x=(e.clientX-r.left-r.width/2)*.28,y=(e.clientY-r.top-r.height/2)*.28;
-      btn.style.transform=`translate(${x}px,${y}px)`;
-    });
-    btn.addEventListener('mouseleave',()=>{btn.style.transform=''});
-  });
-
-  // FAQ ACCORDION
-  document.querySelectorAll('.fi').forEach(item=>{
-    item.querySelector('.fq').addEventListener('click',()=>{
-      const open=item.classList.contains('open');
-      document.querySelectorAll('.fi').forEach(i=>{i.classList.remove('open');i.querySelector('.fa').style.maxHeight='0'});
-      if(!open){item.classList.add('open');item.querySelector('.fa').style.maxHeight=item.querySelector('.fa-in').scrollHeight+40+'px'}
+  /* ── FAQ ── */
+  document.querySelectorAll('.fq').forEach(fq => {
+    fq.addEventListener('click', () => {
+      const fi = fq.parentElement;
+      const fa = fi.querySelector('.fa');
+      const isOpen = fi.classList.contains('open');
+      document.querySelectorAll('.fi.open').forEach(o => {
+        o.classList.remove('open');
+        o.querySelector('.fa').style.maxHeight = '0';
+      });
+      if(!isOpen){ fi.classList.add('open'); fa.style.maxHeight = fa.scrollHeight + 'px'; }
     });
   });
 
-  // DEMO CARD photo lazy animation
-  const imgObs=new IntersectionObserver(entries=>entries.forEach(e=>{
-    if(e.isIntersecting){e.target.style.opacity='1';imgObs.unobserve(e.target)}
-  }),{threshold:.1});
-  document.querySelectorAll('.dc-photo img').forEach(img=>{img.style.opacity='0';img.style.transition='opacity .6s ease';imgObs.observe(img)});
+  /* ── CONTACT FORM ── */
+  const form = document.getElementById('contactForm');
+  if(form){
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const msg = document.getElementById('formMsg');
+      btn.textContent = '送信中…';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, {method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+        if(res.ok){
+          msg.textContent = '✓ 送信しました。1営業日以内にご連絡します。';
+          msg.style.background = 'rgba(6,199,85,.12)';
+          msg.style.color = '#06C755';
+          msg.style.border = '1px solid rgba(6,199,85,.25)';
+          msg.style.display = 'block';
+          form.reset();
+        } else {
+          throw new Error();
+        }
+      } catch {
+        msg.textContent = '送信に失敗しました。LINEからご連絡ください。';
+        msg.style.background = 'rgba(239,68,68,.1)';
+        msg.style.color = '#f87171';
+        msg.style.border = '1px solid rgba(239,68,68,.2)';
+        msg.style.display = 'block';
+      }
+      btn.textContent = '送信する';
+      btn.disabled = false;
+    });
+  }
+
+  /* ── MAGNETIC ── */
+  document.querySelectorAll('.magnetic').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width/2) * .3;
+      const y = (e.clientY - r.top - r.height/2) * .3;
+      btn.style.transform = `translate(${x}px,${y}px)`;
+    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  });
+
+  /* ── CANVAS PARTICLES ── */
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let W, H, dots = [];
+  function resize(){ W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+  resize();
+  window.addEventListener('resize', resize, {passive:true});
+  for(let i = 0; i < 70; i++){
+    dots.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      r: Math.random() * 1.8 + .4,
+      vx: (Math.random() - .5) * .35,
+      vy: (Math.random() - .5) * .35,
+      a: Math.random() * .5 + .1
+    });
+  }
+  (function animP(){
+    ctx.clearRect(0, 0, W, H);
+    dots.forEach(d => {
+      d.x += d.vx; d.y += d.vy;
+      if(d.x < 0) d.x = W; if(d.x > W) d.x = 0;
+      if(d.y < 0) d.y = H; if(d.y > H) d.y = 0;
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(6,199,85,${d.a})`;
+      ctx.fill();
+    });
+    dots.forEach((d, i) => {
+      for(let j = i+1; j < dots.length; j++){
+        const dx = d.x - dots[j].x, dy = d.y - dots[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < 100){
+          ctx.beginPath();
+          ctx.moveTo(d.x, d.y);
+          ctx.lineTo(dots[j].x, dots[j].y);
+          ctx.strokeStyle = `rgba(6,199,85,${.06 * (1 - dist/100)})`;
+          ctx.lineWidth = .5;
+          ctx.stroke();
+        }
+      }
+    });
+    requestAnimationFrame(animP);
+  })();
+
+  /* ── CHAT ANIMATION ── */
+  const msgs = document.querySelectorAll('.msg-animate');
+  let shown = 0;
+  function showNextMsg(){
+    if(shown < msgs.length){
+      msgs[shown].style.transition = 'opacity .5s ease, transform .5s cubic-bezier(.16,1,.3,1)';
+      msgs[shown].style.opacity = '1';
+      msgs[shown].style.transform = 'translateY(0)';
+      shown++;
+      setTimeout(showNextMsg, 900);
+    }
+  }
+  setTimeout(showNextMsg, 1800);
+
 })();
 </script>
 </body>
