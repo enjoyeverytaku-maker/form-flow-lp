@@ -1,503 +1,393 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" prefix="og: https://ogp.me/ns#">
 <head>
-  <meta charset="UTF-8">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQF63CGRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-NWQF63CGRL');
-  </script>
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LINE活用コラム｜自動化・GAS連携・集客ノウハウ｜Form Flow</title>
-  <meta name="description" content="LINE公式アカウントの活用術・GAS自動化・Lステップなしで実現できる自動化・集客のコツをわかりやすく解説するコラム記事です。">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/column.html">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/column.html">
-  <meta property="og:title" content="LINE活用コラム｜自動化・GAS連携・集客ノウハウ｜Form Flow">
-  <meta property="og:description" content="LINE公式アカウントの活用術・GAS自動化・集客のコツを解説。Lステップなしで実現できる自動化も紹介。">
-  <meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
-  <meta property="og:site_name" content="Form Flow">
-  <meta property="og:locale" content="ja_JP">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --green:  #06C755;
-      --navy:   #0F172A;
-      --text:   #1E293B;
-      --sub:    #64748B;
-      --border: rgba(0,0,0,.09);
-      --off:    #F8FAFC;
-      --card:   #FFFFFF;
-    }
-    body {
-      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.8;
-      font-size: 15px;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: var(--green); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQF63CGRL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NWQF63CGRL');</script>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LINE活用コラム｜自動化・GAS連携・集客ノウハウ｜Form Flow</title>
+<meta name="description" content="LINE公式アカウントの活用術・GAS自動化・Lステップなしで実現できる自動化・集客のコツをわかりやすく解説するコラム記事です。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/column.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/column.html">
+<meta property="og:title" content="LINE活用コラム｜自動化・GAS連携・集客ノウハウ｜Form Flow">
+<meta property="og:description" content="LINE公式アカウントの活用術・GAS自動化・集客のコツを解説。Lステップなしで実現できる自動化も紹介。">
+<meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
+<meta property="og:site_name" content="Form Flow">
+<meta property="og:locale" content="ja_JP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#06C755;--gd:#04a344;
+  --navy:#05101e;--navy2:#0c1a2e;
+  --text:#111827;--body:#374151;--sub:#6B7280;
+  --border:rgba(0,0,0,.08);--off:#F9FAFB;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
 
-    /* ── Nav ── */
-    nav {
-      background: rgba(255,255,255,.97);
-      border-bottom: 1px solid var(--border);
-      padding: 0 40px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-logo { font-size: 18px; font-weight: 800; color: var(--text); text-decoration: none; }
-    .nav-logo span { color: var(--green); }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-links a { font-size: 14px; color: var(--sub); }
-    .nav-links a:hover { color: var(--text); text-decoration: none; }
-    .nav-links a.active { color: var(--green); font-weight: 600; }
-    .nav-cta {
-      background: var(--green);
-      color: #fff !important;
-      font-weight: 700;
-      font-size: 13px;
-      padding: 8px 20px;
-      border-radius: 6px;
-      transition: background .2s;
-    }
-    .nav-cta:hover { background: #04a344 !important; text-decoration: none !important; }
+/* ── SCROLL PROGRESS ── */
+#sp{position:fixed;top:0;left:0;height:2px;background:var(--g);z-index:9999;width:0%;pointer-events:none;transition:width .08s}
 
-    /* ── Hero ── */
-    .page-hero {
-      background: linear-gradient(135deg, #F0FDF4 0%, #EFF6FF 55%, #F8FAFC 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 60px 40px;
-      text-align: center;
-    }
-    .page-hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 12px; }
-    .page-hero p { font-size: 15px; color: var(--sub); }
+/* ── CURSOR GLOW ── */
+#cg{position:fixed;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(6,199,85,.055) 0%,transparent 68%);pointer-events:none;transform:translate(-50%,-50%);z-index:0;left:-600px;top:-600px;transition:left .25s ease,top .25s ease}
 
-    /* ── Layout ── */
-    .container { max-width: 1000px; margin: 0 auto; padding: 60px 24px 80px; }
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;transition:background .4s,box-shadow .4s}
+nav.sc{background:rgba(255,255,255,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.nlogo{font-size:20px;font-weight:900;color:#fff;letter-spacing:.01em;transition:color .3s;font-family:'Inter',sans-serif}
+.nlogo em{color:var(--g);font-style:normal}
+nav.sc .nlogo{color:var(--navy)}
+.nlinks{display:flex;gap:32px;align-items:center}
+.nlinks a{font-size:13px;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s}
+nav.sc .nlinks a{color:var(--sub)}
+.nlinks a:hover{color:#fff}
+nav.sc .nlinks a:hover{color:var(--navy)}
+.nlinks a.active{color:var(--g)!important;font-weight:700}
+.ncta{background:var(--g)!important;color:#fff!important;padding:9px 22px;border-radius:8px;font-weight:700!important;font-size:13px;transition:background .2s,transform .15s!important}
+.ncta:hover{background:var(--gd)!important;transform:translateY(-1px)!important}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;transition:all .25s}
+nav.sc .hamburger span{background:var(--navy)}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mmenu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(5,16,30,.97);backdrop-filter:blur(20px);flex-direction:column;padding:8px 28px 28px;z-index:400;border-bottom:1px solid rgba(255,255,255,.07)}
+.mmenu.open{display:flex}
+.mmenu a{font-size:15px;color:rgba(255,255,255,.75);padding:15px 0;border-bottom:1px solid rgba(255,255,255,.06);font-weight:500}
+.mmenu a:last-child{border-bottom:none}
+.mmenu a.mc{margin-top:14px;background:var(--g);color:#fff;text-align:center;padding:13px;border-radius:10px;font-weight:700;border-bottom:none}
 
-    /* ── Article Grid ── */
-    .articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
-    .article-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: transform .2s, border-color .2s;
-      display: flex;
-      flex-direction: column;
-    }
-    .article-card:hover { transform: translateY(-4px); border-color: rgba(6,199,85,.3); }
-    .article-thumb {
-      height: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-    }
-    .article-thumb.green-bg { background: linear-gradient(135deg, #D1FAE5, #A7F3D0); }
-    .article-thumb.blue-bg  { background: linear-gradient(135deg, #DBEAFE, #BFDBFE); }
-    .article-thumb.purple-bg{ background: linear-gradient(135deg, #EDE9FE, #DDD6FE); }
-    .article-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-    .article-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-    .tag {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 20px;
-      background: rgba(6,199,85,.12);
-      color: var(--green);
-      border: 1px solid rgba(6,199,85,.2);
-    }
-    .tag.blue { background: rgba(58,130,246,.12); color: #60a5fa; border-color: rgba(58,130,246,.2); }
-    .tag.purple { background: rgba(167,139,250,.12); color: #c4b5fd; border-color: rgba(167,139,250,.2); }
-    .article-body h2 { font-size: 16px; font-weight: 700; line-height: 1.6; margin-bottom: 8px; }
-    .article-body p { font-size: 13px; color: var(--text); line-height: 1.7; flex: 1; }
-    .article-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
-    .article-date { font-size: 12px; color: var(--sub); }
-    .article-link {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--green);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .article-link:hover { text-decoration: none; opacity: .8; }
-    .coming-soon {
-      opacity: .5;
-      pointer-events: none;
-    }
-    .coming-badge {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 20px;
-      background: rgba(139,148,158,.12);
-      color: var(--sub);
-      border: 1px solid rgba(139,148,158,.2);
-    }
+/* ── PAGE HERO ── */
+#page-hero{min-height:340px;background:var(--navy);display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 52px 80px;position:relative;overflow:hidden}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:72px 72px;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+.b1{width:420px;height:420px;background:rgba(6,199,85,.15);top:-20%;left:-10%;animation:bm 13s ease-in-out infinite}
+.b2{width:360px;height:360px;background:rgba(79,70,229,.13);bottom:-10%;right:-5%;animation:bm 10s ease-in-out infinite reverse;animation-delay:-5s}
+@keyframes bm{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(32px,-24px) scale(1.06)}66%{transform:translate(-22px,18px) scale(.94)}}
+.ph-label{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;color:rgba(6,199,85,.75);text-transform:uppercase;margin-bottom:14px}
+.ph-title{font-size:clamp(32px,5vw,56px);font-weight:900;color:#fff;line-height:1.18;margin-bottom:18px;letter-spacing:-.03em}
+.ph-sub{font-size:16px;color:rgba(255,255,255,.5);line-height:1.9;max-width:640px;margin:0 auto}
 
-    /* ── CTA Banner ── */
-    .cta-banner {
-      margin-top: 60px;
-      background: linear-gradient(135deg, #F0FDF4, #EFF6FF);
-      border: 1px solid rgba(6,199,85,.35);
-      border-radius: 16px;
-      padding: 48px 40px;
-      text-align: center;
-    }
-    .cta-banner h2 { font-size: 22px; font-weight: 800; margin-bottom: 12px; color: var(--navy); }
-    .cta-banner p { font-size: 14px; color: var(--sub); margin-bottom: 28px; }
-    .btn-wrap { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn-line {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--green); color: #fff;
-      font-weight: 700; font-size: 15px;
-      padding: 14px 28px; border-radius: 8px;
-      text-decoration: none; transition: background .2s;
-    }
-    .btn-line:hover { background: #04a344; text-decoration: none; }
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: var(--text);
-      font-weight: 600; font-size: 15px;
-      padding: 14px 28px; border-radius: 8px;
-      border: 1px solid var(--border);
-      text-decoration: none; transition: border-color .2s, color .2s;
-    }
-    .btn-outline:hover { border-color: var(--green); color: var(--green); text-decoration: none; }
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-    /* ── Footer ── */
-    footer {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      text-align: center;
-      padding: 32px 24px;
-      font-size: 13px;
-      color: var(--sub);
-    }
-    .footer-logo { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
-    .footer-logo span { color: var(--green); }
-    .footer-links { display: flex; gap: 20px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    .footer-links a { color: var(--sub); font-size: 12px; }
-    .footer-links a:hover { color: var(--text); }
+/* ── SECTION ── */
+.section{padding:96px 52px;background:#fff}
+.section.off{background:var(--off)}
+.container{max-width:1160px;margin:0 auto}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--g);text-transform:uppercase;margin-bottom:14px;font-family:'Inter',sans-serif}
+.stitle{font-size:clamp(28px,3.5vw,44px);font-weight:900;color:var(--navy);line-height:1.2;margin-bottom:16px;letter-spacing:-.03em}
+.ssub{font-size:16px;color:var(--sub);line-height:1.95;margin-bottom:52px}
 
-    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all .25s; }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); flex-direction: column; padding: 8px 24px 20px; z-index: 99; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { font-size: 15px; color: var(--text); padding: 14px 0; border-bottom: 1px solid var(--border); text-decoration: none; font-weight: 500; }
-    .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a.m-cta { margin-top: 12px; background: var(--green); color: #fff; text-align: center; padding: 13px; border-radius: 8px; font-weight: 700; border-bottom: none; }
-    /* ── Search ── */
-    .search-wrap { margin-bottom: 32px; position: relative; }
-    .search-input {
-      width: 100%; padding: 13px 48px 13px 18px;
-      border: 1px solid var(--border); border-radius: 10px;
-      font-size: 15px; font-family: inherit; outline: none;
-      background: #fff; transition: border-color .2s, box-shadow .2s;
-    }
-    .search-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(6,199,85,.1); }
-    .search-icon { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--sub); pointer-events: none; }
-    .no-results { display: none; grid-column: 1 / -1; text-align: center; padding: 48px 24px; color: var(--sub); font-size: 15px; }
+/* ── ARTICLE GRID ── */
+.articles{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.article-card{background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .3s cubic-bezier(.34,1.56,.64,1),transform .3s cubic-bezier(.34,1.56,.64,1)}
+.article-card:hover{box-shadow:0 16px 50px rgba(0,0,0,.1);transform:translateY(-4px)}
+.article-thumb{height:200px;overflow:hidden;position:relative}
+.article-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.article-card:hover .article-thumb img{transform:scale(1.05)}
+.article-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.article-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tag{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(6,199,85,.1);color:var(--g);border:1px solid rgba(6,199,85,.2);font-family:'Inter',sans-serif;letter-spacing:.04em}
+.tag.blue{background:rgba(59,130,246,.1);color:#3b82f6;border-color:rgba(59,130,246,.2)}
+.tag.purple{background:rgba(139,92,246,.1);color:#8b5cf6;border-color:rgba(139,92,246,.2)}
+.tag.gray{background:rgba(107,114,128,.1);color:var(--sub);border-color:rgba(107,114,128,.2)}
+.article-body h2{font-size:16px;font-weight:800;line-height:1.6;margin-bottom:10px;color:var(--navy)}
+.article-body p{font-size:13px;color:var(--body);line-height:1.8;flex:1}
+.article-meta{display:flex;align-items:center;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid var(--border)}
+.article-date{font-size:12px;color:var(--sub);font-family:'Inter',sans-serif}
+.article-link{font-size:13px;font-weight:700;color:var(--g);display:inline-flex;align-items:center;gap:4px;transition:gap .2s}
+.article-link:hover{gap:8px}
+.coming-soon{opacity:.5;pointer-events:none;cursor:default}
+.coming-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(107,114,128,.1);color:var(--sub);border:1px solid rgba(107,114,128,.2);font-family:'Inter',sans-serif}
 
-    @media (max-width: 640px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .page-hero { padding: 48px 20px; }
-      .page-hero h1 { font-size: 24px; }
-      .container { padding: 40px 20px 60px; }
-      .cta-banner { padding: 36px 20px; }
-    }
-  </style>
+/* ── CTA ── */
+#cta{background:var(--navy);padding:100px 52px;text-align:center;position:relative;overflow:hidden}
+.cta-b1,.cta-b2{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+.cta-b1{width:440px;height:440px;background:rgba(6,199,85,.1);top:-100px;left:-60px;animation:bm 12s ease-in-out infinite}
+.cta-b2{width:380px;height:380px;background:rgba(79,70,229,.1);bottom:-80px;right:-40px;animation:bm 10s ease-in-out infinite reverse;animation-delay:-5s}
+.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--g);color:#fff;font-weight:700;font-size:15px;padding:15px 30px;border-radius:10px;position:relative;overflow:hidden;transition:background .25s,transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;box-shadow:0 4px 24px rgba(6,199,85,.38)}
+.btn-p::after{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.26),transparent);transform:skewX(-15deg);transition:left .5s ease}
+.btn-p:hover{background:var(--gd);transform:translateY(-2px);box-shadow:0 8px 36px rgba(6,199,85,.5)}
+.btn-p:hover::after{left:160%}
+.magnetic{transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
+
+/* ── FOOTER ── */
+footer{background:#040a14;border-top:1px solid rgba(255,255,255,.05);padding:44px 52px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .articles{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  nav{padding:0 20px}
+  .nlinks{display:none}
+  .hamburger{display:flex}
+  #page-hero{padding:120px 24px 60px}
+  .section{padding:64px 24px}
+  .articles{grid-template-columns:1fr}
+  #cta{padding:72px 24px}
+  footer{padding:36px 24px}
+}
+</style>
 </head>
 <body>
 
-<nav>
-  <a href="./index.html" class="nav-logo">Form <span>Flow</span></a>
-  <div class="nav-links">
-    <a href="./service.html">サービス詳細</a>
+<div id="cg"></div>
+<div id="sp"></div>
+<nav id="nav">
+  <a href="./index.html" class="nlogo">Form <em>Flow</em></a>
+  <div class="nlinks">
+    <a href="./index.html#features">サービス内容</a>
     <a href="./cases.html">構築例</a>
     <a href="./demo.html">デモ体験</a>
     <a href="./column.html" class="active">コラム</a>
-    <a href="./index.html#contact" class="nav-cta">無料相談</a>
+    <a href="./news.html">お知らせ</a>
+    <a href="./index.html#cta" class="ncta magnetic">無料相談</a>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="メニューを開く">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" id="hbtn"><span></span><span></span><span></span></button>
 </nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="./service.html">サービス詳細</a>
+<div class="mmenu" id="mmenu">
+  <a href="./index.html#features">サービス内容</a>
   <a href="./cases.html">構築例</a>
   <a href="./demo.html">デモ体験</a>
   <a href="./column.html">コラム</a>
   <a href="./news.html">お知らせ</a>
-  <a href="./index.html#contact" class="m-cta">無料相談</a>
+  <a href="./index.html#cta" class="mc">無料相談する</a>
 </div>
 
-<div class="page-hero">
-  <h1>お役立ちコラム</h1>
-  <p>LINE公式アカウントの活用術・GAS自動化・集客のノウハウをお届けします</p>
-</div>
-
-<div class="container">
-  <div class="search-wrap">
-    <input type="search" id="search" class="search-input" placeholder="キーワードで記事を探す（例: GAS、ステップ配信、整体院）" aria-label="記事を検索">
-    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<section id="page-hero">
+  <div class="hgrid"></div>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div style="position:relative;z-index:1">
+    <p class="ph-label">Column</p>
+    <h1 class="ph-title">コラム</h1>
+    <p class="ph-sub">LINE自動化・GAS活用・マーケティングに関する実践的な記事を発信しています。</p>
   </div>
-  <div class="articles">
+</section>
 
-    <!-- 記事1: 公開済み -->
-    <div class="article-card">
-      <div class="article-thumb" style="background:#D1FAE5;padding:0;overflow:hidden;"><img src="https://assets.st-note.com/production/uploads/images/275838849/rectangle_large_type_2_65a337d3aa7279bcbf6c3b264a3b0748.png?width=1280" alt="LINE公式アカウントの初期設定からGASで自動化する完全ガイド" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="article-body">
-        <div class="article-tags">
-          <span class="tag">LINE公式</span>
-          <span class="tag">GAS自動化</span>
-        </div>
-        <h2>LINE公式アカウントの初期設定からGASで自動化する完全ガイド【Lステップなし・月額0円】</h2>
-        <p>LINE公式の初期設定から、Googleスプレッドシート連携・問い合わせ自動返信・顧客管理の自動化まで。有料ツールなしで月額0円で実現する手順を解説。</p>
-        <div class="article-meta">
-          <span class="article-date">2026年5月14日</span>
-          <a href="./column/line-gas-automation-guide.html" class="article-link">読む →</a>
-        </div>
-      </div>
-    </div>
+<section class="section">
+  <div class="container">
+    <div class="articles">
 
-    <!-- 記事2: 公開済み -->
-    <div class="article-card">
-      <div class="article-thumb" style="background:#DBEAFE;padding:0;overflow:hidden;"><img src="https://assets.st-note.com/production/uploads/images/276634732/rectangle_large_type_2_4f41191797f2b5f773ba4ccaf06dad6b.png?width=1280" alt="リッチメニューの設計術" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="article-body">
-        <div class="article-tags">
-          <span class="tag blue">リッチメニュー</span>
-          <span class="tag">導線設計</span>
+      <!-- 記事1 -->
+      <a href="./column/line-gas-automation-guide.html" class="article-card rv d1">
+        <div class="article-thumb">
+          <img src="https://assets.st-note.com/production/uploads/images/276631685/rectangle_large_type_2_b1a57a5cb2ab7b34a7040117b3e0e4e5.png?width=1280" alt="GASとLINE Messaging APIを連携させる方法" loading="lazy">
         </div>
-        <h2>プロが教えるリッチメニューの設計術——ユーザーが迷わない導線のつくり方</h2>
-        <p>リッチメニューはLINE公式の顔。ボタン配置の考え方・コピーの書き方・業種別テンプレート（整体院・サロン・コンサル）を解説します。</p>
-        <div class="article-meta">
-          <span class="article-date">2026年5月16日</span>
-          <a href="./column/richmenu-design.html" class="article-link">読む →</a>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="tag">GAS</span>
+            <span class="tag">Webhook</span>
+          </div>
+          <h2>GASとLINE Messaging APIを連携させる方法——Webhookから自動返信まで完全ガイド</h2>
+          <p>LINE公式アカウントとGASを繋ぐWebhookの仕組みと、友だち追加・キーワード返信・スプレッドシート記録の実装方法をステップ解説。</p>
+          <div class="article-meta">
+            <span class="article-date">2026年5月16日</span>
+            <span class="article-link">読む →</span>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <!-- 記事3: 公開済み -->
-    <div class="article-card">
-      <div class="article-thumb" style="background:#EDE9FE;padding:0;overflow:hidden;"><img src="https://assets.st-note.com/production/uploads/images/276712983/rectangle_large_type_2_4fc4608f5b6daed242f2e75c2b2bb852.png?width=1280" alt="ステップ配信で売上が変わる——登録〜成約までのシナリオ設計5ステップ" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="article-body">
-        <div class="article-tags">
-          <span class="tag purple">ステップ配信</span>
-          <span class="tag purple">シナリオ設計</span>
-        </div>
-        <h2>ステップ配信で売上が変わる——登録〜成約までのシナリオ設計5ステップ</h2>
-        <p>友だち追加した瞬間から始まる自動フォロー。開封率・クリック率を高めるシナリオの設計手順をテンプレートつきで解説。</p>
-        <div class="article-meta">
-          <span class="article-date">2026年5月17日</span>
-          <a href="./column/line-step-delivery-scenario.html" class="article-link">読む →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 記事4: 公開済み -->
-    <div class="article-card">
-      <div class="article-thumb" style="background:#D1FAE5;padding:0;overflow:hidden;"><img src="https://assets.st-note.com/production/uploads/images/276717164/rectangle_large_type_2_bbff349ad0792bc893b9a1312e319fc2.png?width=1280" alt="Lステップ vs GAS連携" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="article-body">
-        <div class="article-tags">
-          <span class="tag">費用比較</span>
-        </div>
-        <h2>Lステップ vs GAS連携——コスト・機能・難易度を徹底比較【2026年版】</h2>
-        <p>月額数万円のLステップと無料のGAS連携、どちらが自分のビジネスに合っているのか。規模・用途別に整理しました。</p>
-        <div class="article-meta">
-          <span class="article-date">2026年5月17日</span>
-          <a href="./column/lstep-vs-gas.html" class="article-link">読む →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 記事5: 公開済み -->
-    <div class="article-card">
-      <div class="article-thumb" style="background:#DBEAFE;padding:0;overflow:hidden;"><img src="https://assets.st-note.com/production/uploads/images/276719931/rectangle_large_type_2_13092d87a7e6cc91c96b466960c48f9a.png?width=1280" alt="LINE友だち追加を増やす7つの施策" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="article-body">
-        <div class="article-tags">
-          <span class="tag blue">集客</span>
-          <span class="tag blue">友だち追加</span>
-        </div>
-        <h2>LINE友だち追加を増やす7つの施策——整体院・サロン・コンサルタント向け</h2>
-        <p>QRコード設置場所の工夫から、SNS誘導・ポップアップ・特典設計まで。友だち数を伸ばすための施策を解説。</p>
-        <div class="article-meta">
-          <span class="article-date">2026年5月17日</span>
-          <a href="./column/line-friends-increase.html" class="article-link">読む →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 記事6: 公開済み -->
-    <div class="article-card">
-      <div class="article-thumb" style="background:#EDE9FE;padding:0;overflow:hidden;"><img src="https://assets.st-note.com/production/uploads/images/276720023/rectangle_large_type_2_aee0dc010b5777240c40fc9c59d2182a.png?width=1280" alt="Webhookとは何か" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div class="article-body">
-        <div class="article-tags">
-          <span class="tag purple">Webhook</span>
-          <span class="tag purple">GAS自動化</span>
-        </div>
-        <h2>Webhookとは何か——LINEをGASで「考えられる」ようにする仕組み</h2>
-        <p>友だち追加・メッセージ・ブロックを外部に通知するWebhookの仕組みと、GASと連携することで何が変わるかを解説。</p>
-        <div class="article-meta">
-          <span class="article-date">2026年5月17日</span>
-          <a href="./column/line-webhook-gas.html" class="article-link">読む →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 記事7 -->
-    <a class="article-card" href="column/seitai-line-katsuyo.html">
-      <div class="article-thumb" style="background:linear-gradient(135deg,#D1FAE5,#A7F3D0);font-size:36px;display:flex;align-items:center;justify-content:center;">🏥</div>
-      <div class="article-body">
-        <div class="article-tags">
-          <span class="tag">整体院・接骨院</span>
-          <span class="tag">予約管理</span>
-        </div>
-        <h2>整体院・接骨院のLINE公式活用術——予約リマインドから休眠顧客掘り起こしまで</h2>
-        <p>整体院・接骨院に特化したLINE活用の方法。予約前日の自動リマインド・来院後のフォロー・休眠顧客への掘り起こしまで解説します。</p>
-        <div class="article-meta">
-          <span class="article-date">2026年5月17日</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- 記事8: 準備中 -->
-    <div class="article-card coming-soon">
-      <div class="article-thumb blue-bg">💴</div>
-      <div class="article-body">
-        <div class="article-tags">
-          <span class="tag blue">料金プラン</span>
-          <span class="coming-badge">準備中</span>
-        </div>
-        <h2>LINE公式アカウントの料金プラン解説——無料でどこまでできるか【2026年版】</h2>
-        <p>コミュニケーションプラン・ライトプラン・スタンダードプランの違いを整理。無料枠でできること・有料にしないと困ることを明確に解説。</p>
-        <div class="article-meta">
-          <span class="article-date">公開準備中</span>
-          <span class="coming-badge">もうすぐ</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 記事9: 準備中 -->
-    <div class="article-card coming-soon">
-      <div class="article-thumb purple-bg">🚫</div>
-      <div class="article-body">
-        <div class="article-tags">
-          <span class="tag purple">ブロック対策</span>
-          <span class="coming-badge">準備中</span>
-        </div>
-        <h2>ブロック率を下げる3つの習慣——配信前に確認すべきこと</h2>
-        <p>LINE公式アカウントのブロック率が高い原因と、配信頻度・内容・タイミングの見直し方。ブロックされにくいアカウントに共通する3つのポイントを解説。</p>
-        <div class="article-meta">
-          <span class="article-date">公開準備中</span>
-          <span class="coming-badge">もうすぐ</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 記事10: 準備中 -->
-    <div class="article-card coming-soon">
-      <div class="article-thumb green-bg">📋</div>
-      <div class="article-body">
-        <div class="article-tags">
-          <span class="tag">Googleフォーム</span>
-          <span class="tag">GAS連携</span>
-          <span class="coming-badge">準備中</span>
-        </div>
-        <h2>GoogleフォームとLINEをGASで連携する——問い合わせを自動で受け取る仕組み</h2>
-        <p>Googleフォームに入力があった瞬間、LINEに通知が届く。GASで作る月額0円のフォーム→LINE連携の手順を解説。</p>
-        <div class="article-meta">
-          <span class="article-date">公開準備中</span>
-          <span class="coming-badge">もうすぐ</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 記事11: 準備中 -->
-    <div class="article-card coming-soon">
-      <div class="article-thumb blue-bg">📅</div>
-      <div class="article-body">
-        <div class="article-tags">
-          <span class="tag blue">予約管理</span>
-          <span class="tag blue">カレンダー連携</span>
-          <span class="coming-badge">準備中</span>
-        </div>
-        <h2>LINE予約をGoogleカレンダーに自動登録する——GASで作るゼロ円予約システム</h2>
-        <p>LINEで受け取った予約メッセージを解析し、Googleカレンダーに自動で登録する仕組みをGASで構築する手順を解説。</p>
-        <div class="article-meta">
-          <span class="article-date">公開準備中</span>
-          <span class="coming-badge">もうすぐ</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="no-results" id="no-results">該当する記事が見つかりませんでした</div>
-
-  </div>
-
-  <!-- CTA -->
-  <div class="cta-banner">
-    <h2>記事の内容をあなたのアカウントに実装しませんか？</h2>
-    <p>「やってみたけど詰まった」「自分のビジネスに合う形にしたい」という方はお気軽にご相談ください。</p>
-    <div class="btn-wrap">
-      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-line">
-        <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="40" height="40" rx="8" fill="white" fill-opacity=".15"/><path d="M33 18.5C33 12.7 27.1 8 20 8S7 12.7 7 18.5c0 5.2 4.6 9.6 10.9 10.4.4.1 1 .3 1.1.6.1.3.1.8 0 1.1l-.2 1.1c-.1.4-.3 1.6 1.4.9 1.7-.7 9.3-5.5 12.7-9.4C33 21.3 33 19.9 33 18.5z" fill="white"/></svg>
-        LINEで相談する
       </a>
-      <a href="./index.html#contact" class="btn-outline">お問い合わせフォーム</a>
+
+      <!-- 記事2 -->
+      <a href="./column/richmenu-design.html" class="article-card rv d2">
+        <div class="article-thumb">
+          <img src="https://assets.st-note.com/production/uploads/images/276634732/rectangle_large_type_2_4f41191797f2b5f773ba4ccaf06dad6b.png?width=1280" alt="プロが教えるリッチメニューの設計術" loading="lazy">
+        </div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="tag blue">リッチメニュー</span>
+            <span class="tag">導線設計</span>
+          </div>
+          <h2>プロが教えるリッチメニューの設計術——ユーザーが迷わない導線のつくり方</h2>
+          <p>リッチメニューはLINE公式の顔。ボタン配置の考え方・コピーの書き方・業種別テンプレート（整体院・サロン・コンサル）を解説します。</p>
+          <div class="article-meta">
+            <span class="article-date">2026年5月16日</span>
+            <span class="article-link">読む →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 記事3 -->
+      <a href="./column/line-step-delivery-scenario.html" class="article-card rv d1">
+        <div class="article-thumb">
+          <img src="https://assets.st-note.com/production/uploads/images/276712983/rectangle_large_type_2_4fc4608f5b6daed242f2e75c2b2bb852.png?width=1280" alt="ステップ配信で売上が変わる" loading="lazy">
+        </div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="tag purple">ステップ配信</span>
+            <span class="tag purple">シナリオ設計</span>
+          </div>
+          <h2>ステップ配信で売上が変わる——登録〜成約までのシナリオ設計5ステップ</h2>
+          <p>友だち追加した瞬間から始まる自動フォロー。開封率・クリック率を高めるシナリオの設計手順をテンプレートつきで解説。</p>
+          <div class="article-meta">
+            <span class="article-date">2026年5月17日</span>
+            <span class="article-link">読む →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 記事4 -->
+      <a href="./column/lstep-vs-gas.html" class="article-card rv d2">
+        <div class="article-thumb">
+          <img src="https://assets.st-note.com/production/uploads/images/276717164/rectangle_large_type_2_bbff349ad0792bc893b9a1312e319fc2.png?width=1280" alt="Lステップ vs GAS連携" loading="lazy">
+        </div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="tag">費用比較</span>
+          </div>
+          <h2>Lステップ vs GAS連携——コスト・機能・難易度を徹底比較【2026年版】</h2>
+          <p>月額数万円のLステップと無料のGAS連携、どちらが自分のビジネスに合っているのか。規模・用途別に整理しました。</p>
+          <div class="article-meta">
+            <span class="article-date">2026年5月17日</span>
+            <span class="article-link">読む →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 記事5 -->
+      <a href="./column/line-friends-increase.html" class="article-card rv d1">
+        <div class="article-thumb">
+          <img src="https://assets.st-note.com/production/uploads/images/276719931/rectangle_large_type_2_13092d87a7e6cc91c96b466960c48f9a.png?width=1280" alt="LINE友だち追加を増やす7つの施策" loading="lazy">
+        </div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="tag blue">集客</span>
+            <span class="tag blue">友だち追加</span>
+          </div>
+          <h2>LINE友だち追加を増やす7つの施策——整体院・サロン・コンサルタント向け</h2>
+          <p>QRコード設置場所の工夫から、SNS誘導・ポップアップ・特典設計まで。友だち数を伸ばすための施策を解説。</p>
+          <div class="article-meta">
+            <span class="article-date">2026年5月17日</span>
+            <span class="article-link">読む →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 記事6 -->
+      <a href="./column/line-webhook-gas.html" class="article-card rv d2">
+        <div class="article-thumb">
+          <img src="https://assets.st-note.com/production/uploads/images/276720023/rectangle_large_type_2_aee0dc010b5777240c40fc9c59d2182a.png?width=1280" alt="Webhookとは何か" loading="lazy">
+        </div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="tag purple">Webhook</span>
+            <span class="tag purple">GAS自動化</span>
+          </div>
+          <h2>Webhookとは何か——LINEをGASで「考えられる」ようにする仕組み</h2>
+          <p>友だち追加・メッセージ・ブロックを外部に通知するWebhookの仕組みと、GASと連携することで何が変わるかを解説。</p>
+          <div class="article-meta">
+            <span class="article-date">2026年5月17日</span>
+            <span class="article-link">読む →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 記事7 -->
+      <a href="./column/seitai-line-katsuyo.html" class="article-card rv d1">
+        <div class="article-thumb">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80" alt="整体院・接骨院のLINE公式活用術" loading="lazy">
+        </div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="tag">整体院・接骨院</span>
+            <span class="tag">予約管理</span>
+          </div>
+          <h2>整体院・接骨院のLINE公式活用術——予約リマインドから休眠顧客掘り起こしまで</h2>
+          <p>整体院・接骨院に特化したLINE活用の方法。予約前日の自動リマインド・来院後のフォロー・休眠顧客への掘り起こしまで解説します。</p>
+          <div class="article-meta">
+            <span class="article-date">2026年5月17日</span>
+            <span class="article-link">読む →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 記事8: 準備中 -->
+      <div class="article-card coming-soon rv d2">
+        <div class="article-thumb" style="background:linear-gradient(135deg,#1e293b,#0f172a);display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center">
+            <div style="font-size:13px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.2);font-family:'Inter',sans-serif;text-transform:uppercase;margin-bottom:8px">Coming Soon</div>
+            <div style="width:48px;height:2px;background:rgba(6,199,85,.3);margin:0 auto"></div>
+          </div>
+        </div>
+        <div class="article-body">
+          <div class="article-tags">
+            <span class="tag blue">料金プラン</span>
+            <span class="coming-badge">準備中</span>
+          </div>
+          <h2>LINE公式アカウントの料金プラン解説——無料でどこまでできるか【2026年版】</h2>
+          <p>コミュニケーションプラン・ライトプラン・スタンダードプランの違いを整理。無料枠でできること・有料にしないと困ることを明確に解説。</p>
+          <div class="article-meta">
+            <span class="article-date">公開準備中</span>
+            <span class="coming-badge">COMING SOON</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
+</section>
+
+<section id="cta">
+  <div class="cta-b1"></div><div class="cta-b2"></div>
+  <div style="position:relative;z-index:1;max-width:800px;margin:0 auto" class="rv">
+    <p style="font-size:11px;font-weight:700;letter-spacing:.16em;color:rgba(6,199,85,.75);text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif">GET STARTED</p>
+    <h2 style="font-size:clamp(28px,4vw,48px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:20px;letter-spacing:-.03em">まず、無料で相談してみてください。</h2>
+    <p style="font-size:16px;color:rgba(255,255,255,.5);margin-bottom:44px;line-height:1.9">「何から始めればいいか分からない」という段階からでも大丈夫です。</p>
+    <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-p magnetic" style="display:inline-flex;align-items:center;gap:10px">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      LINEで無料相談する
+    </a>
+    <p style="font-size:12px;color:rgba(255,255,255,.28);margin-top:20px">相談・見積もり無料 ・ 秘密厳守 ・ 返信は数時間以内</p>
+  </div>
+</section>
 
 <footer>
-  <div class="footer-logo">Form <span>Flow</span></div>
-  <div class="footer-links">
-    <a href="./privacy.html">プライバシーポリシー</a>
-    <a href="./terms.html">利用規約</a>
-    <a href="./tokushoho.html">特定商取引法に基づく表記</a>
+  <div style="max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px">
+    <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:900;color:#fff">Form <span style="color:var(--g)">Flow</span></div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+      <a href="./privacy.html" style="font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s">プライバシーポリシー</a>
+      <a href="./terms.html" style="font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s">利用規約</a>
+      <a href="./tokushoho.html" style="font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s">特定商取引法</a>
+      <a href="./news.html" style="font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s">お知らせ</a>
+    </div>
+    <div style="font-size:12px;color:rgba(255,255,255,.2);font-family:'Inter',sans-serif">© 2026 Form Flow.</div>
   </div>
-  <p>© 2026 Form Flow. All rights reserved.</p>
 </footer>
-<script>
-  const hbtn = document.getElementById('hamburger');
-  const hmenu = document.getElementById('mobile-menu');
-  hbtn.addEventListener('click', () => {
-    hbtn.classList.toggle('open');
-    hmenu.classList.toggle('open');
-  });
 
-  const searchInput = document.getElementById('search');
-  const cards = document.querySelectorAll('.article-card');
-  const noResults = document.getElementById('no-results');
-  searchInput.addEventListener('input', () => {
-    const q = searchInput.value.trim().toLowerCase();
-    let visible = 0;
-    cards.forEach(card => {
-      const match = !q || card.textContent.toLowerCase().includes(q);
-      card.style.display = match ? '' : 'none';
-      if (match) visible++;
-    });
-    noResults.style.display = visible === 0 ? 'block' : 'none';
+<script>
+(function(){
+  const cg=document.getElementById('cg');
+  document.addEventListener('mousemove',e=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px'},{passive:true});
+  const sp=document.getElementById('sp');
+  function onScroll(){
+    const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+    sp.style.width=p+'%';
+    document.getElementById('nav').classList.toggle('sc',window.scrollY>60);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+  const hbtn=document.getElementById('hbtn'),mm=document.getElementById('mmenu');
+  hbtn.addEventListener('click',()=>{hbtn.classList.toggle('open');mm.classList.toggle('open')});
+  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hbtn.classList.remove('open');mm.classList.remove('open')}));
+  const rvObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.1});
+  document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+  document.querySelectorAll('.magnetic').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)*.28,y=(e.clientY-r.top-r.height/2)*.28;btn.style.transform=`translate(${x}px,${y}px)`;});
+    btn.addEventListener('mouseleave',()=>{btn.style.transform=''});
   });
+})();
 </script>
 </body>
 </html>

@@ -1,1016 +1,432 @@
 <!DOCTYPE html>
 <html lang="ja" prefix="og: https://ogp.me/ns#">
 <head>
-  <meta charset="UTF-8">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQF63CGRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-NWQF63CGRL');
-  </script>
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQF63CGRL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NWQF63CGRL');</script>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LINE公式アカウント 構築・設定代行｜Lステップ不要・GAS連携｜Form Flow</title>
+<meta name="description" content="LINE公式アカウントの構築・設定を代行します。リッチメニュー・自動返信・Googleスプレッドシート連携・予約受付まで一括対応。Lステップ不要、月額ツール代0円で運用できます。個人事業主・中小企業向けモニター価格でご提供中。">
+<meta name="keywords" content="LINE公式アカウント構築,LINE設定代行,LINE公式アカウント代行,LINEリッチメニュー作成,LINE自動返信設定,GASライン連携,LINE自動化,Lステップ不要,LINE公式アカウント初期設定,LINE予約受付自動化">
+<meta name="author" content="Form Flow">
+<meta name="robots" content="index, follow">
+<meta name="google-site-verification" content="7LLU3F39awCdnLndZoe9rshx_byRTdG-gsdoQVGgdVQ">
+<link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/">
+<meta property="og:title" content="LINE公式アカウント 構築・設定代行｜Form Flow">
+<meta property="og:description" content="Lステップ不要・GAS活用で月額0円。リッチメニュー・自動返信・スプレッドシート連携まで一括対応。">
+<meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="670">
+<meta property="og:site_name" content="Form Flow">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#06C755;--gd:#04a344;--gl:rgba(6,199,85,.12);
+  --navy:#05101e;--navy2:#0c1a2e;
+  --text:#111827;--body:#374151;--sub:#6B7280;
+  --border:rgba(0,0,0,.08);--off:#F9FAFB;--off2:#F3F4F6;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+.inter{font-family:'Inter',sans-serif}
 
-  <!-- ── Primary SEO ── -->
-  <title>LINE公式アカウント 構築・設定代行｜Lステップ不要・GAS連携｜Form Flow</title>
-  <meta name="description" content="LINE公式アカウントの構築・設定を代行します。リッチメニュー・自動返信・Googleスプレッドシート連携・予約受付まで一括対応。Lステップ不要、月額ツール代0円で運用できます。個人事業主・中小企業向けモニター価格でご提供中。">
-  <meta name="keywords" content="LINE公式アカウント構築,LINE設定代行,LINE公式アカウント代行,LINEリッチメニュー作成,LINE自動返信設定,GASライン連携,LINE自動化,Lステップ不要,LINE公式アカウント初期設定,LINE予約受付自動化">
-  <meta name="author" content="Form Flow">
-  <meta name="robots" content="index, follow">
-  <meta name="google-site-verification" content="7LLU3F39awCdnLndZoe9rshx_byRTdG-gsdoQVGgdVQ">
-  <meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
-  <meta property="og:image:width" content="1280">
-  <meta property="og:image:height" content="670">
-  <meta name="twitter:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
-  <link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/">
+/* ── SCROLL PROGRESS ── */
+#sp{position:fixed;top:0;left:0;height:2px;background:var(--g);z-index:9999;width:0%;pointer-events:none;transition:width .08s}
 
-  <!-- ── Open Graph ── -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/">
-  <meta property="og:title" content="LINE公式アカウント 構築・設定代行｜Lステップ不要・GAS連携｜Form Flow">
-  <meta property="og:description" content="リッチメニュー・自動返信・GAS連携まで一括代行。Lステップ不要で月額ツール代0円。モニター価格で受付中。">
-  <meta property="og:site_name" content="Form Flow">
-  <meta property="og:locale" content="ja_JP">
+/* ── CURSOR GLOW ── */
+#cg{position:fixed;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(6,199,85,.055) 0%,transparent 68%);pointer-events:none;transform:translate(-50%,-50%);z-index:0;left:-600px;top:-600px;transition:left .25s ease,top .25s ease}
 
-  <!-- ── Twitter Card ── -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="LINE公式アカウント 構築・設定代行｜Lステップ不要｜Form Flow">
-  <meta name="twitter:description" content="リッチメニュー・自動返信・GAS連携まで一括代行。Lステップ不要で月額ツール代0円。モニター価格で受付中。">
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;transition:background .4s,box-shadow .4s}
+nav.sc{background:rgba(255,255,255,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.nlogo{font-size:20px;font-weight:900;color:#fff;letter-spacing:.01em;transition:color .3s;font-family:'Inter',sans-serif}
+.nlogo em{color:var(--g);font-style:normal}
+nav.sc .nlogo{color:var(--navy)}
+.nlinks{display:flex;gap:32px;align-items:center}
+.nlinks a{font-size:13px;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s}
+nav.sc .nlinks a{color:var(--sub)}
+.nlinks a:hover{color:#fff}
+nav.sc .nlinks a:hover{color:var(--navy)}
+.ncta{background:var(--g)!important;color:#fff!important;padding:9px 22px;border-radius:8px;font-weight:700!important;font-size:13px;transition:background .2s,transform .15s!important}
+.ncta:hover{background:var(--gd)!important;transform:translateY(-1px)!important}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;transition:all .25s}
+nav.sc .hamburger span{background:var(--navy)}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mmenu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(5,16,30,.97);backdrop-filter:blur(20px);flex-direction:column;padding:8px 28px 28px;z-index:400;border-bottom:1px solid rgba(255,255,255,.07)}
+.mmenu.open{display:flex}
+.mmenu a{font-size:15px;color:rgba(255,255,255,.75);padding:15px 0;border-bottom:1px solid rgba(255,255,255,.06);font-weight:500}
+.mmenu a:last-child{border-bottom:none}
+.mmenu a.mc{margin-top:14px;background:var(--g);color:#fff;text-align:center;padding:13px;border-radius:10px;font-weight:700;border-bottom:none}
 
-  <!-- ── JSON-LD ── -->
-  <script type="application/ld+json">
-  [
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Form Flow",
-      "description": "LINE公式アカウントの構築・設定代行サービス。リッチメニュー・自動返信・GAS連携まで一括対応。",
-      "url": "https://enjoyeverytaku-maker.github.io/form-flow-lp/",
-      "email": "lineform.works@gmail.com",
-      "serviceType": "LINE公式アカウント構築・設定代行",
-      "areaServed": "JP",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "LINE構築プラン",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "name": "ライトプラン",
-            "description": "基本設定・リッチメニュー・キーワード自動返信",
-            "price": "29800",
-            "priceCurrency": "JPY",
-            "priceSpecification": { "@type": "UnitPriceSpecification", "price": "29800", "priceCurrency": "JPY", "unitText": "モニター価格（税別）" }
-          },
-          {
-            "@type": "Offer",
-            "name": "スタンダードプラン",
-            "description": "ステップ配信・Googleフォーム連携・スプレッドシート自動記録",
-            "price": "79800",
-            "priceCurrency": "JPY",
-            "priceSpecification": { "@type": "UnitPriceSpecification", "price": "79800", "priceCurrency": "JPY", "unitText": "モニター価格（税別）" }
-          },
-          {
-            "@type": "Offer",
-            "name": "プレミアムプラン",
-            "description": "Webhook・API連携・GASフル活用・カスタム自動応答",
-            "price": "198000",
-            "priceCurrency": "JPY",
-            "priceSpecification": { "@type": "UnitPriceSpecification", "price": "198000", "priceCurrency": "JPY", "unitText": "モニター価格（税別）" }
-          }
-        ]
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "LINE公式アカウントをまだ持っていませんが依頼できますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "はい、アカウント開設からサポートします。開設は無料でできるため、お気軽にご相談ください。" }
-        },
-        {
-          "@type": "Question",
-          "name": "LステップなどのツールなしでLINE公式アカウントを自動化できますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "はい、可能です。ライト・スタンダードプランはLINE公式アカウントの無料機能のみで構築します。プレミアムプランはGAS（Google Apps Script）を活用するため、Lステップ等の月額ツール代は一切かかりません。" }
-        },
-        {
-          "@type": "Question",
-          "name": "納品後に自分で変更・追加できますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "はい、操作マニュアルを納品しますので、基本的な変更は自分で行えます。追加の変更サポートが必要な場合は別途ご相談ください。" }
-        },
-        {
-          "@type": "Question",
-          "name": "どのくらいで納品されますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "ご入金確認後、3〜10営業日を目安に納品します。ライトプランは最短3営業日、プレミアムプランは内容により10営業日程度です。" }
-        },
-        {
-          "@type": "Question",
-          "name": "相談・見積もりは無料ですか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "はい、無料です。LINEまたはお問い合わせフォームからお気軽にご連絡ください。「何から始めればいいか分からない」という段階からご相談いただけます。" }
-        }
-      ]
-    }
-  ]
-  </script>
+/* ── NEWS BAR ── */
+.nbar{display:flex;align-items:center;justify-content:center;gap:10px;background:rgba(6,199,85,.12);border-bottom:1px solid rgba(6,199,85,.25);padding:9px 24px;font-size:13px;color:#fff;transition:background .2s;position:fixed;top:68px;left:0;right:0;z-index:490}
+.nbar:hover{background:rgba(6,199,85,.18)}
+.nbar:hover{background:rgba(6,199,85,.12)}
+.nb-badge{background:var(--g);color:#fff;font-size:10px;font-weight:700;padding:2px 9px;border-radius:20px;letter-spacing:.04em;font-family:'Inter',sans-serif}
+.nb-arrow{color:var(--g);font-weight:700}
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── HERO ── */
+#hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;padding:120px 52px 80px;position:relative;overflow:hidden}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:72px 72px;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;will-change:transform}
+.b1{width:560px;height:560px;background:rgba(6,199,85,.18);top:-20%;left:-10%;animation:bm 13s ease-in-out infinite}
+.b2{width:440px;height:440px;background:rgba(79,70,229,.16);top:10%;right:-5%;animation:bm 10s ease-in-out infinite reverse;animation-delay:-5s}
+.b3{width:380px;height:380px;background:rgba(6,199,85,.09);bottom:-10%;left:40%;animation:bm 16s ease-in-out infinite;animation-delay:-10s}
+@keyframes bm{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(32px,-24px) scale(1.06)}66%{transform:translate(-22px,18px) scale(.94)}}
 
-    :root {
-      --green:     #06C755;
-      --green-d:   #04a344;
-      --green-lt:  rgba(6,199,85,.12);
-      --navy:      #0F172A;
-      --navy-lt:   #1E293B;
-      --slate:     #334155;
-      --text:      #1E293B;
-      --sub:       #64748B;
-      --border:    rgba(0,0,0,.09);
-      --bg:        #FFFFFF;
-      --off:       #F8FAFC;
-      --off2:      #F1F5F9;
-    }
+.hero-inner{position:relative;z-index:1;max-width:1240px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 500px;gap:88px;align-items:center}
 
-    html { scroll-behavior: smooth; }
+/* hero text */
+.hero-kicker{display:inline-flex;align-items:center;gap:7px;background:rgba(6,199,85,.13);border:1px solid rgba(6,199,85,.28);color:var(--g);font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:28px;letter-spacing:.07em;opacity:0;animation:fu .6s ease forwards .2s;font-family:'Inter',sans-serif}
+.hero-kicker-dot{width:6px;height:6px;background:var(--g);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+h1.htitle{font-size:clamp(40px,5.5vw,70px);font-weight:900;color:#fff;line-height:1.14;margin-bottom:26px;letter-spacing:-.03em;opacity:0;animation:fu .75s ease forwards .4s}
+h1.htitle em{font-style:normal;background:linear-gradient(135deg,#06C755 0%,#00e0b0 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gs 4s linear infinite}
+@keyframes gs{to{background-position:200% center}}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.58);line-height:1.92;margin-bottom:42px;opacity:0;animation:fu .75s ease forwards .6s}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fu .75s ease forwards .8s}
+.hero-note{font-size:12px;color:rgba(255,255,255,.3);margin-top:20px;opacity:0;animation:fu .75s ease forwards 1s;display:flex;align-items:center;gap:12px}
+.hero-note span{display:flex;align-items:center;gap:5px}
+.hero-note svg{color:var(--g);opacity:.7}
+@keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
-    body {
-      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
-      color: var(--text);
-      line-height: 1.75;
-      font-size: 16px;
-      background: var(--bg);
-      -webkit-font-smoothing: antialiased;
-    }
+/* ── BUTTONS ── */
+.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--g);color:#fff;font-weight:700;font-size:15px;padding:15px 30px;border-radius:10px;position:relative;overflow:hidden;transition:background .25s,transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;box-shadow:0 4px 24px rgba(6,199,85,.38)}
+.btn-p::after{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.26),transparent);transform:skewX(-15deg);transition:left .5s ease}
+.btn-p:hover{background:var(--gd);transform:translateY(-2px);box-shadow:0 8px 36px rgba(6,199,85,.5)}
+.btn-p:hover::after{left:160%}
+.btn-gd{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85);font-weight:600;font-size:14px;padding:14px 26px;border-radius:10px;transition:background .2s,border-color .2s}
+.btn-gd:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.32)}
 
-    a { text-decoration: none; color: inherit; }
+/* ── HERO VISUAL (photo composition) ── */
+.hero-visual{position:relative;opacity:0;animation:fu 1s ease forwards .5s}
+.hv-photo{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 40px 100px rgba(0,0,0,.55),0 8px 24px rgba(0,0,0,.3)}
+.hv-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transform:scale(1.02);transition:transform 8s ease}
+.hv-photo:hover img{transform:scale(1)}
+.hv-overlay{position:absolute;inset:0;background:linear-gradient(170deg,rgba(5,16,30,.25) 0%,rgba(5,16,30,.55) 100%)}
+/* glassmorphic floating cards */
+.glass-card{position:absolute;background:rgba(255,255,255,.13);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:14px 18px;color:#fff;z-index:2;box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.gc1{top:20px;left:-28px;animation:bf 3.8s ease-in-out infinite}
+.gc2{bottom:80px;right:-24px;animation:bf 4.4s ease-in-out infinite .7s}
+.gc3{bottom:20px;left:-24px;animation:bf 3.5s ease-in-out infinite 1.4s}
+@keyframes bf{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.gc-stat-num{font-family:'Inter',sans-serif;font-size:26px;font-weight:800;line-height:1;color:#fff}
+.gc-stat-label{font-size:11px;color:rgba(255,255,255,.65);margin-top:3px}
+.gc-row{display:flex;align-items:center;gap:8px}
+.gc-dot{width:8px;height:8px;background:var(--g);border-radius:50%;box-shadow:0 0 8px rgba(6,199,85,.8);flex-shrink:0}
+.gc-tag-txt{font-size:12px;font-weight:600;white-space:nowrap}
+.gc-chat{width:200px}
+.gc-chat-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:9px;border-bottom:1px solid rgba(255,255,255,.15)}
+.gc-chat-avatar{width:26px;height:26px;background:var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0}
+.gc-chat-name{font-size:11px;font-weight:600}
+.gc-chat-status{font-size:9px;color:rgba(255,255,255,.5)}
+.gc-bubble{background:rgba(255,255,255,.1);border-radius:0 8px 8px 8px;padding:6px 8px;font-size:10px;line-height:1.5;margin-bottom:5px;max-width:90%}
+.gc-bubble.out{background:rgba(6,199,85,.3);align-self:flex-end;border-radius:8px 0 8px 8px;margin-left:auto}
+.gc-auto{font-size:8px;text-align:center;color:rgba(255,255,255,.4);background:rgba(0,0,0,.2);border-radius:8px;padding:2px 8px;margin:2px auto;width:fit-content}
 
-    /* ─── NAV ─── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      background: rgba(255,255,255,.97);
-      backdrop-filter: blur(12px);
-      padding: 0 40px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-      box-shadow: 0 1px 8px rgba(0,0,0,.08);
-    }
-    .nav-logo {
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--navy);
-      letter-spacing: .02em;
-      text-decoration: none;
-    }
-    .nav-logo span { color: var(--green); }
-    .nav-links { display: flex; gap: 28px; align-items: center; }
-    .nav-links a { font-size: 14px; font-weight: 500; color: var(--slate); transition: color .2s; }
-    .nav-links a:hover { color: var(--navy); }
-    .nav-cta {
-      background: var(--green);
-      color: #fff !important;
-      padding: 8px 20px;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 14px;
-      transition: background .2s;
-    }
-    .nav-cta:hover { background: var(--green-d) !important; }
+/* ── STATS BAR ── */
+#stats{background:var(--off);border-bottom:1px solid var(--border);padding:40px 52px}
+.stats-inner{max-width:960px;margin:0 auto;display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;gap:24px}
+.stat-divider{width:1px;height:40px;background:var(--border)}
+.stat-item{text-align:center}
+.snum{font-family:'Inter',sans-serif;font-size:46px;font-weight:800;color:var(--navy);line-height:1}
+.snum em{color:var(--g);font-style:normal;font-size:32px}
+.slabel{font-size:12px;color:var(--sub);margin-top:6px;font-weight:500}
 
-    /* ─── HERO ─── */
-    #hero {
-      background: linear-gradient(135deg, #F0FDF4 0%, #EFF6FF 55%, #F8FAFC 100%);
-      color: var(--navy);
-      padding: 100px 40px 80px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 70% 40%, rgba(6,199,85,.08) 0%, transparent 60%);
-    }
-    .hero-inner { position: relative; max-width: 720px; margin: 0 auto; }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(6,199,85,.15);
-      border: 1px solid rgba(6,199,85,.4);
-      color: #04a344;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 5px 14px;
-      border-radius: 20px;
-      margin-bottom: 24px;
-    }
-    .hero-badge::before { content: '●'; font-size: 8px; }
-    #hero h1 {
-      font-size: clamp(28px, 5vw, 48px);
-      font-weight: 900;
-      line-height: 1.3;
-      margin-bottom: 20px;
-      letter-spacing: -.02em;
-    }
-    #hero h1 em { color: var(--green); font-style: normal; }
-    .hero-sub {
-      font-size: 17px;
-      color: var(--slate);
-      margin-bottom: 40px;
-      line-height: 1.8;
-    }
-    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .btn-line {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--green);
-      color: #fff;
-      font-weight: 700;
-      font-size: 16px;
-      padding: 16px 32px;
-      border-radius: 8px;
-      transition: background .2s, transform .15s, box-shadow .2s;
-      box-shadow: 0 4px 16px rgba(6,199,85,.35);
-    }
-    .btn-line:hover { background: var(--green-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(6,199,85,.4); }
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,.7);
-      border: 1px solid rgba(0,0,0,.15);
-      color: var(--navy);
-      font-weight: 600;
-      font-size: 15px;
-      padding: 15px 28px;
-      border-radius: 8px;
-      transition: background .2s;
-    }
-    .btn-ghost:hover { background: rgba(255,255,255,.95); }
-    .hero-note {
-      margin-top: 20px;
-      font-size: 13px;
-      color: var(--sub);
-    }
+/* ── SECTION COMMON ── */
+section{padding:108px 52px}
+.container{max-width:1160px;margin:0 auto}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--g);text-transform:uppercase;margin-bottom:14px;font-family:'Inter',sans-serif}
+.stitle{font-size:clamp(30px,3.8vw,48px);font-weight:900;color:var(--navy);line-height:1.2;margin-bottom:18px;letter-spacing:-.03em}
+.ssub{font-size:16px;color:var(--sub);line-height:1.95;margin-bottom:60px}
 
-    /* ─── TRUST BAR ─── */
-    #trustbar {
-      background: var(--off);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 20px 40px;
-    }
-    .trustbar-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
-    }
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--sub);
-      font-weight: 500;
-    }
-    .trust-icon {
-      width: 32px;
-      height: 32px;
-      background: var(--green-lt);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-    }
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
 
-    /* ─── SECTION COMMON ─── */
-    section { padding: 80px 40px; }
-    .container { max-width: 900px; margin: 0 auto; }
-    .section-label {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .12em;
-      color: var(--green-d);
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .section-title {
-      font-size: clamp(22px, 3.5vw, 32px);
-      font-weight: 800;
-      color: var(--text);
-      line-height: 1.35;
-      margin-bottom: 14px;
-    }
-    .section-sub {
-      font-size: 16px;
-      color: var(--sub);
-      line-height: 1.8;
-      margin-bottom: 48px;
-    }
-    .divider {
-      width: 40px;
-      height: 3px;
-      background: var(--green);
-      border-radius: 2px;
-      margin-bottom: 16px;
-    }
+/* ── PAIN ── */
+#pain{background:#fff}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pain-card{background:var(--off);border:1px solid var(--border);border-left:3px solid var(--g);border-radius:14px;padding:26px 22px;display:flex;gap:14px;align-items:flex-start;transition:box-shadow .3s cubic-bezier(.34,1.56,.64,1),transform .3s cubic-bezier(.34,1.56,.64,1);cursor:default}
+.pain-card:hover{box-shadow:0 10px 40px rgba(0,0,0,.09);transform:translateY(-4px)}
+.pico{width:42px;height:42px;background:rgba(6,199,85,.1);border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--g)}
+.pain-txt h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.pain-txt p{font-size:13px;color:var(--sub);line-height:1.75}
 
-    /* ─── PAIN ─── */
-    #pain { background: var(--off); }
-    .pain-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-    }
-    .pain-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 22px 24px;
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      box-shadow: 0 1px 4px rgba(0,0,0,.05);
-    }
-    .pain-icon {
-      font-size: 22px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .pain-text { font-size: 15px; line-height: 1.65; color: var(--text); font-weight: 500; }
+/* ── FEATURES ── */
+#features{background:linear-gradient(180deg,var(--off) 0%,#fff 100%);position:relative;overflow:hidden}
+#features::before{content:'';position:absolute;top:-200px;right:-200px;width:520px;height:520px;background:radial-gradient(circle,rgba(6,199,85,.06) 0%,transparent 70%);pointer-events:none}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.fc{background:#fff;border:1px solid var(--border);border-radius:20px;padding:34px 28px;position:relative;overflow:hidden;transition:box-shadow .3s,transform .3s cubic-bezier(.34,1.56,.64,1);cursor:default}
+.fc:hover{box-shadow:0 16px 50px rgba(0,0,0,.1);transform:translateY(-5px)}
+.fc-shine{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(6,199,85,.04),transparent);transform:skewX(-15deg);transition:left .6s ease;pointer-events:none}
+.fc:hover .fc-shine{left:160%}
+.ficon{width:52px;height:52px;background:linear-gradient(135deg,rgba(6,199,85,.16),rgba(6,199,85,.04));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--g);position:relative}
+.ficon::after{content:'';position:absolute;inset:-1px;border-radius:16px;border:1px solid rgba(6,199,85,.2)}
+.fc h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:10px}
+.fc p{font-size:13px;color:var(--sub);line-height:1.8}
+.fn{position:absolute;top:20px;right:22px;font-size:32px;font-weight:900;color:rgba(6,199,85,.1);line-height:1;font-family:'Inter',sans-serif}
 
-    /* ─── FEATURES ─── */
-    #whatwedo { background: var(--bg); }
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-    .feature-card {
-      background: var(--off2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px 24px;
-      transition: box-shadow .2s, transform .2s;
-    }
-    .feature-card:hover { box-shadow: 0 6px 24px rgba(15,36,71,.08); transform: translateY(-2px); }
-    .feature-num {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .1em;
-      color: var(--green-d);
-      margin-bottom: 10px;
-    }
-    .feature-card h3 {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 10px;
-    }
-    .feature-card p { font-size: 14px; color: var(--text); line-height: 1.7; }
+/* ── PROCESS (dark) ── */
+#process{background:var(--navy);position:relative;overflow:hidden}
+#process .eyebrow{color:rgba(6,199,85,.75)}
+#process .stitle{color:#fff}
+#process .ssub{color:rgba(255,255,255,.45)}
+#process::before{content:'';position:absolute;top:-120px;left:-80px;width:460px;height:460px;background:radial-gradient(circle,rgba(6,199,85,.1) 0%,transparent 70%);pointer-events:none}
+#process::after{content:'';position:absolute;bottom:-100px;right:-60px;width:360px;height:360px;background:radial-gradient(circle,rgba(79,70,229,.1) 0%,transparent 70%);pointer-events:none}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.proc-line{position:absolute;top:52px;left:calc(12.5% + 28px);right:calc(12.5% + 28px);height:1px;background:linear-gradient(90deg,rgba(6,199,85,.6),rgba(6,199,85,.1),rgba(6,199,85,.6))}
+.pstep{text-align:center;padding:0 20px;position:relative;z-index:1}
+.pnum-wrap{width:104px;height:104px;margin:0 auto 24px;position:relative}
+.pnum-bg{position:absolute;inset:0;border-radius:50%;background:rgba(6,199,85,.08);border:1px solid rgba(6,199,85,.22);animation:pring 3s ease-in-out infinite}
+.pnum-bg2{position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(6,199,85,.1);animation:pring 3s ease-in-out infinite .3s}
+@keyframes pring{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+.pnum-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.pnum-n{font-size:10px;font-weight:700;color:rgba(6,199,85,.65);letter-spacing:.08em;font-family:'Inter',sans-serif}
+.pnum-ico{font-size:30px;line-height:1}
+.pstep h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:8px}
+.pstep p{font-size:12px;color:rgba(255,255,255,.42);line-height:1.8}
 
-    /* ─── DEMO ─── */
-    #demo { background: var(--off); color: var(--text); }
-    #demo .section-title { color: var(--navy); }
-    #demo .section-sub { color: var(--sub); }
-    #demo .divider { background: var(--green); }
-    .demo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-    .demo-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.05);
-    }
-    .demo-tag {
-      display: inline-block;
-      background: rgba(6,199,85,.2);
-      color: #5FE899;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 4px;
-      margin-bottom: 14px;
-    }
-    .demo-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
-    .demo-card p { font-size: 14px; color: var(--sub); line-height: 1.7; }
+/* ── DEMO (use cases with photos) ── */
+#demo{background:#fff}
+.demo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.dc{background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:box-shadow .3s cubic-bezier(.34,1.56,.64,1),transform .3s cubic-bezier(.34,1.56,.64,1)}
+.dc:hover{box-shadow:0 16px 50px rgba(0,0,0,.1);transform:translateY(-5px)}
+.dc-photo{height:180px;overflow:hidden;position:relative}
+.dc-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.dc:hover .dc-photo img{transform:scale(1.05)}
+.dc-photo-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(5,16,30,.6) 100%)}
+.dc-tag{position:absolute;bottom:12px;left:14px;display:inline-flex;align-items:center;background:rgba(6,199,85,.22);backdrop-filter:blur(8px);border:1px solid rgba(6,199,85,.35);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px}
+.dc-body{padding:22px 22px 24px}
+.dc h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.dc p{font-size:13px;color:var(--sub);line-height:1.78}
 
-    /* ─── PRICE ─── */
-    #price { background: var(--off); }
-    .price-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .price-card {
-      background: var(--off2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 32px 28px;
-      position: relative;
-    }
-    .price-card.featured {
-      border-color: var(--green);
-      box-shadow: 0 4px 24px rgba(6,199,85,.18);
-    }
-    .price-badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--green);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 3px 14px;
-      border-radius: 20px;
-      white-space: nowrap;
-    }
-    .price-plan { font-size: 13px; font-weight: 700; color: var(--sub); margin-bottom: 8px; }
-    .price-regular {
-      font-size: 14px;
-      color: var(--sub);
-      text-decoration: line-through;
-      margin-bottom: 2px;
-    }
-    .price-monitor-label {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      background: rgba(6,199,85,.2);
-      color: var(--green);
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-bottom: 4px;
-    }
-    .price-amount {
-      font-size: 36px;
-      font-weight: 900;
-      color: var(--text);
-      line-height: 1.1;
-      margin-bottom: 4px;
-    }
-    .price-amount span { font-size: 16px; font-weight: 500; color: var(--sub); }
-    .price-days { font-size: 13px; color: var(--sub); margin-bottom: 20px; }
-    .price-items { list-style: none; margin-bottom: 28px; }
-    .price-items li {
-      font-size: 14px;
-      color: var(--text);
-      padding: 6px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-    .price-items li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
-    .price-cta {
-      display: block;
-      text-align: center;
-      padding: 12px;
-      border-radius: 7px;
-      font-weight: 700;
-      font-size: 14px;
-      transition: background .2s;
-    }
-    .price-cta-outline {
-      border: 2px solid var(--border);
-      color: var(--text);
-    }
-    .price-cta-outline:hover { background: var(--slate); }
-    .price-cta-fill {
-      background: var(--green);
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(6,199,85,.3);
-    }
-    .price-cta-fill:hover { background: var(--green-d); }
+/* ── PRICING ── */
+#price{background:var(--off)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+.pc{background:#fff;border:1px solid var(--border);border-radius:22px;padding:40px 32px;position:relative;transition:box-shadow .3s,transform .3s cubic-bezier(.34,1.56,.64,1)}
+.pc:hover{box-shadow:0 16px 50px rgba(0,0,0,.1);transform:translateY(-4px)}
+.pc.ft{border-color:var(--g);box-shadow:0 8px 48px rgba(6,199,85,.14)}
+.pc.ft:hover{box-shadow:0 20px 60px rgba(6,199,85,.2)}
+.pbadge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--g);color:#fff;font-size:11px;font-weight:700;padding:4px 18px;border-radius:20px;white-space:nowrap;font-family:'Inter',sans-serif}
+.pname{font-size:11px;font-weight:700;color:var(--sub);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;font-family:'Inter',sans-serif}
+.pold{font-size:13px;color:var(--sub);text-decoration:line-through;margin-bottom:3px}
+.pmon{display:inline-block;font-size:10px;font-weight:700;background:rgba(6,199,85,.12);color:var(--g);padding:2px 9px;border-radius:4px;margin-bottom:5px;font-family:'Inter',sans-serif}
+.pamount{font-family:'Inter',sans-serif;font-size:46px;font-weight:800;color:var(--navy);line-height:1}
+.pamount small{font-size:14px;font-weight:400;color:var(--sub);font-family:'Noto Sans JP',sans-serif}
+.pdays{font-size:12px;color:var(--sub);margin:10px 0 28px}
+.plist{list-style:none;margin-bottom:32px;display:flex;flex-direction:column;gap:12px}
+.plist li{font-size:13px;color:var(--body);display:flex;align-items:flex-start;gap:10px}
+.plist li::before{content:'';width:18px;height:18px;background:var(--g) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/11px no-repeat;border-radius:50%;flex-shrink:0;margin-top:1px}
+.pbtn{display:block;text-align:center;padding:14px;border-radius:12px;font-weight:700;font-size:14px;transition:all .25s}
+.pbtn-o{border:1.5px solid var(--border);color:var(--text)}
+.pbtn-o:hover{border-color:var(--g);color:var(--g);background:rgba(6,199,85,.04)}
+.pbtn-f{background:var(--g);color:#fff;box-shadow:0 4px 20px rgba(6,199,85,.32)}
+.pbtn-f:hover{background:var(--gd);box-shadow:0 8px 28px rgba(6,199,85,.48);transform:translateY(-1px)}
 
-    /* ─── FAQ ─── */
-    #faq { background: var(--bg); }
-    .faq-list { display: flex; flex-direction: column; gap: 12px; }
-    details {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    summary {
-      padding: 18px 24px;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--navy);
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      list-style: none;
-      transition: background .2s;
-      background: var(--off2);
-    }
-    summary:hover { background: #E2E8F0; }
-    .faq-icon {
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--green);
-      flex-shrink: 0;
-      transition: transform .2s;
-    }
-    details[open] summary { border-bottom: 1px solid var(--border); }
-    details[open] .faq-icon { transform: rotate(45deg); }
-    .faq-ans {
-      padding: 18px 24px;
-      font-size: 14px;
-      color: var(--slate);
-      line-height: 1.75;
-      background: #FFFFFF;
-    }
+/* MONTHLY */
+.monthly{max-width:660px;margin:52px auto 0;background:#fff;border:1px solid var(--border);border-radius:20px;padding:36px 36px}
+.ml{font-size:10px;font-weight:700;color:var(--g);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;font-family:'Inter',sans-serif}
+.mt{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.ms{font-size:12px;color:var(--sub);margin-bottom:24px}
+.mr{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--off);border-radius:10px;border:1px solid var(--border);margin-bottom:10px}
+.mr-title{font-size:13px;font-weight:600;color:var(--text)}
+.mr-desc{font-size:11px;color:var(--sub)}
+.mr-price{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--text);white-space:nowrap}
+.m-total{display:flex;justify-content:space-between;align-items:center;background:var(--navy);border-radius:12px;padding:14px 20px}
+.m-total-l{color:#fff;font-size:13px;font-weight:600}
+.m-total-r{font-family:'Inter',sans-serif;color:#fff;font-size:22px;font-weight:800}
+.m-total-r small{font-size:12px;font-weight:400;color:#94a3b8;margin-left:4px}
 
-    /* ─── CTA ─── */
-    #cta { background: var(--bg); padding: 80px 40px; }
-    .cta-inner {
-      max-width: 680px;
-      margin: 0 auto;
-      background: linear-gradient(135deg, var(--navy) 0%, #1a3561 100%);
-      border-radius: 20px;
-      padding: 60px 48px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-inner::before {
-      content: '';
-      position: absolute;
-      top: -60px;
-      right: -60px;
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, rgba(6,199,85,.15) 0%, transparent 70%);
-    }
-    .cta-inner h2 {
-      font-size: clamp(22px, 3.5vw, 30px);
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 14px;
-      line-height: 1.35;
-      position: relative;
-    }
-    .cta-inner p {
-      font-size: 15px;
-      color: rgba(255,255,255,.72);
-      line-height: 1.8;
-      margin-bottom: 36px;
-      position: relative;
-    }
+/* ── FAQ ── */
+#faq{background:#fff}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.fi{border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow .25s,border-color .25s}
+.fi:hover{box-shadow:0 4px 20px rgba(0,0,0,.07)}
+.fi.open{border-color:rgba(6,199,85,.35);box-shadow:0 4px 20px rgba(6,199,85,.08)}
+.fq{padding:22px 28px;font-size:15px;font-weight:600;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none;background:var(--off);transition:background .2s}
+.fq:hover{background:#f1f5f9}
+.fqico{width:30px;height:30px;background:rgba(6,199,85,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--g);font-size:20px;font-weight:300;transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .25s;line-height:1;font-family:'Inter',sans-serif}
+.fi.open .fqico{transform:rotate(45deg);background:var(--g);color:#fff}
+.fa{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1)}
+.fa-in{padding:22px 28px;font-size:14px;color:var(--sub);line-height:1.9;border-top:1px solid var(--border);background:#fff}
 
-    /* ── 信頼要素付きLINEボタン ── */
-    .cta-trust {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-      position: relative;
-    }
-    .cta-trust-item {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 12px;
-      color: rgba(255,255,255,.6);
-    }
-    .cta-trust-item::before { content: '✓'; color: var(--green); font-weight: 700; }
+/* ── CTA ── */
+#cta{background:var(--navy);position:relative;overflow:hidden;text-align:center;padding:120px 52px}
+.cta-b1,.cta-b2{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+.cta-b1{width:440px;height:440px;background:rgba(6,199,85,.1);top:-100px;left:-60px;animation:bm 12s ease-in-out infinite}
+.cta-b2{width:380px;height:380px;background:rgba(79,70,229,.1);bottom:-80px;right:-40px;animation:bm 10s ease-in-out infinite reverse;animation-delay:-5s}
+#cta .eyebrow{color:rgba(6,199,85,.75)}
+#cta h2{font-size:clamp(28px,4vw,52px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:20px;letter-spacing:-.03em}
+#cta p{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:48px;line-height:1.95}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cta-note{font-size:12px;color:rgba(255,255,255,.28);margin-top:22px}
 
-    .btn-cta-line {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: var(--green);
-      color: #fff;
-      font-weight: 700;
-      font-size: 17px;
-      padding: 18px 40px;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 380px;
-      transition: background .2s, transform .15s, box-shadow .2s;
-      box-shadow: 0 6px 20px rgba(6,199,85,.4);
-      position: relative;
-    }
-    .btn-cta-line:hover {
-      background: var(--green-d);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(6,199,85,.45);
-    }
-    .cta-line-sub {
-      font-size: 12px;
-      opacity: .8;
-      font-weight: 400;
-      display: block;
-      margin-top: 2px;
-    }
-    .cta-separator {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 20px 0;
-      position: relative;
-    }
-    .cta-separator::before,
-    .cta-separator::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(255,255,255,.15);
-    }
-    .cta-separator span { font-size: 12px; color: rgba(255,255,255,.35); }
+/* ── FOOTER ── */
+footer{background:#040a14;border-top:1px solid rgba(255,255,255,.05);padding:44px 52px}
+.footer-inner{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.fl{font-family:'Inter',sans-serif;font-size:18px;font-weight:900;color:#fff}
+.fl em{color:var(--g);font-style:normal}
+.flinks{display:flex;gap:24px;flex-wrap:wrap}
+.flinks a{font-size:12px;color:rgba(255,255,255,.3);transition:color .2s}
+.flinks a:hover{color:rgba(255,255,255,.65)}
+.fcopy{font-size:12px;color:rgba(255,255,255,.2);font-family:'Inter',sans-serif}
 
-    .btn-cta-mail {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: transparent;
-      border: 1px solid rgba(255,255,255,.3);
-      color: rgba(255,255,255,.8);
-      font-weight: 600;
-      font-size: 14px;
-      padding: 13px 28px;
-      border-radius: 8px;
-      width: 100%;
-      max-width: 380px;
-      transition: background .2s, border-color .2s;
-      position: relative;
-    }
-    .btn-cta-mail:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.5); }
+.magnetic{transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
 
-    .cta-guarantee {
-      margin-top: 24px;
-      font-size: 13px;
-      color: rgba(255,255,255,.5);
-      position: relative;
-    }
-
-    /* ── CONTACT FORM ── */
-    .contact-form {
-      text-align: left;
-      margin-top: 10px;
-      position: relative;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .form-group { display: flex; flex-direction: column; gap: 5px; }
-    .form-group.full { grid-column: 1 / -1; }
-    .form-group label {
-      font-size: 12px;
-      font-weight: 600;
-      color: rgba(255,255,255,.65);
-    }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 7px;
-      padding: 11px 14px;
-      font-size: 14px;
-      color: #fff;
-      font-family: inherit;
-      transition: border-color .2s, background .2s;
-      outline: none;
-      width: 100%;
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: rgba(255,255,255,.3); }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--green);
-      background: rgba(255,255,255,.14);
-    }
-    .form-group select option { background: var(--navy); color: #fff; }
-    .form-group textarea { resize: vertical; min-height: 100px; }
-    .btn-submit {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 15px;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.3);
-      border-radius: 8px;
-      color: rgba(255,255,255,.85);
-      font-size: 15px;
-      font-weight: 700;
-      font-family: inherit;
-      cursor: pointer;
-      transition: background .2s, border-color .2s;
-      margin-top: 12px;
-    }
-    .btn-submit:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.5); }
-    @media (max-width: 520px) {
-      .form-row { grid-template-columns: 1fr; }
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--navy);
-      color: rgba(255,255,255,.5);
-      text-align: center;
-      padding: 32px 40px;
-      font-size: 13px;
-    }
-    .footer-logo {
-      font-size: 18px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 8px;
-    }
-    .footer-logo span { color: var(--green); }
-
-    /* News bar */
-    .news-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: linear-gradient(90deg, rgba(6,199,85,.07), rgba(6,199,85,.13), rgba(6,199,85,.07));
-      border-bottom: 1px solid rgba(6,199,85,.2);
-      padding: 9px 24px;
-      font-size: 13px;
-      color: var(--navy);
-      text-decoration: none;
-      transition: background .2s;
-    }
-    .news-bar:hover { background: rgba(6,199,85,.2); }
-    .news-bar-badge { background: var(--green); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; letter-spacing: .05em; white-space: nowrap; }
-    .news-bar-arrow { color: var(--green); font-weight: 700; }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--navy);
-      border-radius: 2px;
-      transition: all .25s;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 64px;
-      left: 0; right: 0;
-      background: #fff;
-      border-bottom: 1px solid var(--border);
-      flex-direction: column;
-      padding: 8px 24px 20px;
-      z-index: 99;
-      box-shadow: 0 4px 16px rgba(0,0,0,.08);
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-size: 15px;
-      color: var(--text);
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a.m-cta {
-      margin-top: 12px;
-      background: var(--green);
-      color: #fff;
-      text-align: center;
-      padding: 13px;
-      border-radius: 8px;
-      font-weight: 700;
-      border-bottom: none;
-    }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 640px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      section { padding: 60px 20px; }
-      #hero { padding: 72px 20px 60px; }
-      #trustbar { padding: 16px 20px; }
-      .trustbar-inner { gap: 20px; }
-      .cta-inner { padding: 40px 24px; }
-      #cta { padding: 60px 20px; }
-      footer { padding: 24px 20px; }
-    }
-
-    /* ─── HERO 2-COLUMN ─── */
-    #hero { text-align: left; }
-    .hero-inner { max-width: 1100px; display: grid; grid-template-columns: 1fr 400px; gap: 64px; align-items: center; }
-    .hero-btns { justify-content: flex-start; }
-
-    /* ─── PHONE MOCKUP ─── */
-    .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; padding: 40px 16px; }
-    .hero-visual::before { content: ''; position: absolute; width: 340px; height: 340px; background: radial-gradient(circle, rgba(6,199,85,.14) 0%, transparent 68%); top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 0; pointer-events: none; }
-    .phone-wrap { position: relative; z-index: 1; width: 230px; animation: heroFloat 4.5s ease-in-out infinite; }
-    @keyframes heroFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
-    .phone-frame { width: 230px; background: #fff; border-radius: 36px; border: 7px solid #0f172a; box-shadow: 0 32px 80px rgba(15,23,42,.28), 0 8px 20px rgba(15,23,42,.12); overflow: hidden; }
-    .phone-status { background: #0f172a; height: 18px; }
-    .phone-line-hdr { background: var(--green); padding: 9px 12px; display: flex; align-items: center; gap: 8px; }
-    .phone-avatar { width: 28px; height: 28px; background: rgba(255,255,255,.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: #fff; flex-shrink: 0; }
-    .phone-name { font-size: 12px; font-weight: 700; color: #fff; line-height: 1.2; }
-    .phone-name small { font-size: 8px; font-weight: 400; opacity: .8; }
-    .phone-chat { background: #DDD9D4; padding: 9px 7px; display: flex; flex-direction: column; gap: 5px; height: 188px; overflow: hidden; }
-    .bubble { max-width: 84%; padding: 6px 8px; font-size: 10px; line-height: 1.5; }
-    .bubble-in { background: #fff; align-self: flex-start; border-radius: 0 10px 10px 10px; box-shadow: 0 1px 2px rgba(0,0,0,.1); color: #333; }
-    .bubble-out { background: var(--green); color: #fff; align-self: flex-end; border-radius: 10px 0 10px 10px; }
-    .bubble-auto { align-self: center; background: rgba(0,0,0,.16); color: #fff; font-size: 8px; padding: 2px 8px; border-radius: 8px; margin: 2px 0; }
-    .phone-richmenu { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #aaa; border-top: 1px solid #999; }
-    .rm-btn { background: #f0f0f0; padding: 9px 2px; text-align: center; font-size: 9px; color: #333; font-weight: 500; line-height: 1.4; }
-    .rm-btn-icon { font-size: 14px; display: block; margin-bottom: 1px; }
-    .float-badge { position: absolute; background: #fff; border: 1px solid rgba(6,199,85,.3); box-shadow: 0 4px 20px rgba(0,0,0,.12); border-radius: 10px; padding: 6px 11px; font-size: 11px; font-weight: 600; color: var(--navy); white-space: nowrap; display: flex; align-items: center; gap: 5px; z-index: 3; }
-    .float-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
-    .fb-1 { top: 0; right: -12px; animation: fbFloat 3.2s ease-in-out infinite; }
-    .fb-2 { bottom: 60px; left: -22px; animation: fbFloat 4s ease-in-out infinite .6s; }
-    .fb-3 { bottom: 6px; right: -8px; animation: fbFloat 3.6s ease-in-out infinite 1.2s; }
-    @keyframes fbFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
-
-    /* ─── TRUST BAR ─── */
-    .trust-icon { width: 36px; height: 36px; background: rgba(6,199,85,.12); border: 1px solid rgba(6,199,85,.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--green); }
-
-    /* ─── PAIN CARD ACCENT ─── */
-    .pain-card { border-left: 3px solid var(--green); box-shadow: 0 2px 8px rgba(0,0,0,.05); transition: box-shadow .2s, transform .15s; }
-    .pain-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.09); transform: translateY(-2px); }
-    .pain-icon { background: rgba(6,199,85,.1); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0; }
-
-    /* ─── FEATURE CARDS ─── */
-    .feature-num { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; background: var(--green); color: #fff; border-radius: 8px; font-size: 11px; font-weight: 800; margin-bottom: 14px; letter-spacing: 0; }
-    .feature-card { background: #fff; border-top: 2px solid transparent; transition: box-shadow .2s, transform .2s, border-color .2s; }
-    .feature-card:hover { border-top-color: var(--green); box-shadow: 0 8px 28px rgba(0,0,0,.09); transform: translateY(-3px); }
-
-    /* ─── DEMO CARDS ─── */
-    .demo-card { border-top: 3px solid var(--green); transition: transform .2s, box-shadow .2s; }
-    .demo-card:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,0,0,.1); }
-    .demo-tag { display: inline-block; background: rgba(6,199,85,.12); color: #059669; border: 1px solid rgba(6,199,85,.2); font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 6px; margin-bottom: 14px; }
-
-    /* ─── SECTION BACKGROUNDS ─── */
-    #pain { background: linear-gradient(180deg, #F0FDF4 0%, #F8FAFC 100%); }
-    #whatwedo { background: #fff; }
-    #demo { background: linear-gradient(180deg, #F8FAFC 0%, #EFF6FF 100%); }
-
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 0; }
-      .hero-visual { display: none; }
-      #hero { text-align: center; }
-      .hero-btns { justify-content: center; }
-    }
-  </style>
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .hero-inner{grid-template-columns:1fr;gap:0}
+  .hero-visual{display:none}
+  #hero{text-align:center}
+  .hero-btns{justify-content:center}
+  .hero-note{justify-content:center}
+  .pain-grid,.feat-grid,.demo-grid,.pgrid{grid-template-columns:1fr 1fr}
+  .proc-grid{grid-template-columns:1fr 1fr;gap:40px}
+  .proc-line{display:none}
+}
+@media(max-width:640px){
+  nav{padding:0 20px}
+  .nlinks{display:none}
+  .hamburger{display:flex}
+  section{padding:80px 20px}
+  #hero{padding:100px 24px 72px}
+  #stats{padding:32px 20px}
+  .stats-inner{gap:24px}
+  .stat-divider{display:none}
+  .pain-grid,.feat-grid,.demo-grid,.pgrid,.proc-grid{grid-template-columns:1fr}
+  footer{padding:36px 20px}
+  .footer-inner{flex-direction:column;text-align:center;gap:16px}
+  .flinks{justify-content:center}
+  .monthly{padding:28px 20px}
+}
+</style>
 </head>
 <body>
+<div id="cg"></div>
+<div id="sp"></div>
 
-<!-- NAVIGATION -->
-<nav>
-  <a href="./index.html" class="nav-logo">Form <span>Flow</span></a>
-  <div class="nav-links">
-    <a href="./service.html">サービス詳細</a>
-    <a href="./cases.html">構築例</a>
+<!-- NAV -->
+<nav id="nav">
+  <a href="./index.html" class="nlogo">Form <em>Flow</em></a>
+  <div class="nlinks">
+    <a href="#features">サービス内容</a>
+    <a href="#demo">構築例</a>
     <a href="./demo.html">デモ体験</a>
     <a href="./column.html">コラム</a>
     <a href="./news.html">お知らせ</a>
-    <a href="#contact" class="nav-cta">無料相談</a>
+    <a href="#cta" class="ncta magnetic">無料相談</a>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="メニューを開く">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" id="hbtn"><span></span><span></span><span></span></button>
 </nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="./service.html">サービス詳細</a>
-  <a href="./cases.html">構築例</a>
+<div class="mmenu" id="mmenu">
+  <a href="#features">サービス内容</a>
+  <a href="#demo">構築例</a>
   <a href="./demo.html">デモ体験</a>
   <a href="./column.html">コラム</a>
   <a href="./news.html">お知らせ</a>
-  <a href="#contact" class="m-cta">無料相談</a>
+  <a href="#cta" class="mc">無料相談する</a>
 </div>
-<a class="news-bar" href="./news.html#news-001">
-  <span class="news-bar-badge">NEW</span>
+
+<!-- NEWS BAR -->
+<a class="nbar" href="./news.html#news-001">
+  <span class="nb-badge">NEW</span>
   <span>Form Flow サービス提供を開始しました</span>
-  <span class="news-bar-arrow">→</span>
+  <span class="nb-arrow">→</span>
 </a>
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hgrid"></div>
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+
   <div class="hero-inner">
-    <!-- Left: text -->
-    <div class="hero-text">
-      <div class="hero-badge">モニター価格で受付中</div>
-      <h1>公式LINEを<em>業務の入口</em>に。<br>設定から自動化まで、<br>まるごと構築します。</h1>
-      <p class="hero-sub">
-        リッチメニュー・自動返信・スプレッドシート連携まで一括対応。<br>
-        Lステップ不要、月額追加費用なしでの自動化も対応しています。
-      </p>
+    <div>
+      <div class="hero-kicker"><span class="hero-kicker-dot"></span>モニター価格で受付中</div>
+      <h1 class="htitle">公式LINEを、<br><em>業務の入口</em>に。</h1>
+      <p class="hero-sub">リッチメニュー・自動返信・スプレッドシート連携まで一括対応。<br>Lステップ不要、月額追加費用なしで実現します。</p>
       <div class="hero-btns">
-        <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-line">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-p magnetic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
           LINEで無料相談する
         </a>
-        <a href="#demo" class="btn-ghost">構築例を見る →</a>
+        <a href="#demo" class="btn-gd">構築例を見る →</a>
       </div>
-      <p class="hero-note">相談・見積もり無料。返信は数時間以内。</p>
+      <p class="hero-note">
+        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>相談・見積もり無料</span>
+        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>秘密厳守</span>
+        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>返信は数時間以内</span>
+      </p>
     </div>
 
-    <!-- Right: phone mockup -->
+    <!-- RIGHT: photo + glassmorphic UI -->
     <div class="hero-visual">
-      <div class="phone-wrap">
-        <div class="phone-frame">
-          <div class="phone-status"></div>
-          <div class="phone-line-hdr">
-            <div class="phone-avatar">FF</div>
-            <div class="phone-name">Form Flow<small>公式アカウント</small></div>
-          </div>
-          <div class="phone-chat">
-            <div class="bubble bubble-in">友だち追加ありがとうございます！<br>まず無料相談をどうぞ 🎉</div>
-            <div class="bubble bubble-out">相談したいです</div>
-            <div class="bubble bubble-in">ご希望の日程をお知らせください。<br>Googleカレンダーで調整します。</div>
-            <div class="bubble-auto">自動返信</div>
-            <div class="bubble bubble-in" style="opacity:.85;font-size:9px;">【リマインド】明日10:00のご予約です。<br>お気をつけてお越しください。</div>
-          </div>
-          <div class="phone-richmenu">
-            <div class="rm-btn"><span class="rm-btn-icon">📋</span>サービス内容</div>
-            <div class="rm-btn"><span class="rm-btn-icon">💬</span>無料相談</div>
-            <div class="rm-btn"><span class="rm-btn-icon">💰</span>料金プラン</div>
-            <div class="rm-btn"><span class="rm-btn-icon">❓</span>よくある質問</div>
-          </div>
+      <div class="hv-photo">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=82" alt="ビジネスパーソンがスマートフォンを使用している様子" loading="eager">
+        <div class="hv-overlay"></div>
+      </div>
+
+      <!-- Floating: LINE chat preview (outside hv-photo to avoid clipping) -->
+      <div class="glass-card gc1 gc-chat">
+        <div class="gc-chat-hdr">
+          <div class="gc-chat-avatar">FF</div>
+          <div><div class="gc-chat-name">Form Flow 公式</div><div class="gc-chat-status">● オンライン</div></div>
         </div>
-        <div class="float-badge fb-1"><div class="float-dot"></div>Lステップ不要</div>
-        <div class="float-badge fb-2"><div class="float-dot"></div>GASで自動化</div>
-        <div class="float-badge fb-3"><div class="float-dot"></div>月額ツール代0円</div>
+        <div class="gc-bubble">友だち追加ありがとうございます！ご相談はいつでもどうぞ 🎉</div>
+        <div class="gc-bubble out">相談したいです</div>
+        <div class="gc-auto">自動返信</div>
+      </div>
+
+      <!-- Floating: stats -->
+      <div class="glass-card gc2">
+        <div class="gc-stat-num">¥0<span style="font-size:14px;opacity:.7">/月</span></div>
+        <div class="gc-stat-label">追加ツール費用</div>
+      </div>
+
+      <!-- Floating: tag -->
+      <div class="glass-card gc3">
+        <div class="gc-row"><div class="gc-dot"></div><span class="gc-tag-txt">Lステップ不要で自動化</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TRUST BAR -->
-<div id="trustbar">
-  <div class="trustbar-inner">
-    <div class="trust-item">
-      <div class="trust-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-      </div>
-      <span>LINEは数時間以内に返信</span>
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-inner">
+    <div class="stat-item rv">
+      <div class="snum inter"><span class="cnt" data-target="3">3</span><em>日〜</em></div>
+      <div class="slabel">最短納品日数</div>
     </div>
-    <div class="trust-item">
-      <div class="trust-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <span>情報は外部に共有しません</span>
+    <div class="stat-divider"></div>
+    <div class="stat-item rv d1">
+      <div class="snum inter">¥<span class="cnt" data-target="0">0</span><em>/月</em></div>
+      <div class="slabel">追加ツール代</div>
     </div>
-    <div class="trust-item">
-      <div class="trust-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12l2 2 4-4"/></svg>
-      </div>
-      <span>着手前に仕様を確認・合意</span>
+    <div class="stat-divider"></div>
+    <div class="stat-item rv d2">
+      <div class="snum inter"><span class="cnt" data-target="10">0</span><em>+</em></div>
+      <div class="slabel">対応業種</div>
     </div>
-    <div class="trust-item">
-      <div class="trust-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-      </div>
-      <span>操作マニュアル付き納品</span>
+    <div class="stat-divider"></div>
+    <div class="stat-item rv d3">
+      <div class="snum inter">100<em>%</em></div>
+      <div class="slabel">マニュアル付き納品</div>
     </div>
   </div>
 </div>
@@ -1018,211 +434,193 @@
 <!-- PAIN -->
 <section id="pain">
   <div class="container">
-    <div class="divider"></div>
-    <div class="section-label">こんなお悩みありませんか</div>
-    <h2 class="section-title">公式LINEを活用しきれていない方へ</h2>
+    <p class="eyebrow rv">PROBLEM</p>
+    <h2 class="stitle rv">こんなお悩みを解決します</h2>
+    <p class="ssub rv">「設定が複雑で止まっている」「費用が高くて踏み出せない」——そのよくある壁を、Form Flowは丁寧に取り除きます。</p>
     <div class="pain-grid">
-      <div class="pain-card">
-        <div class="pain-icon">😓</div>
-        <div class="pain-text">アカウントは作ったが、設定が複雑で止まっている</div>
+      <div class="pain-card rv">
+        <div class="pico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 19.07l1.41-1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg></div>
+        <div class="pain-txt"><h4>設定が複雑で止まっている</h4><p>アカウントは作ったのに、設定方法が分からず放置している。</p></div>
       </div>
-      <div class="pain-card">
-        <div class="pain-icon">💸</div>
-        <div class="pain-text">Lステップが高くて導入できない。月額費用をかけたくない</div>
+      <div class="pain-card rv d1">
+        <div class="pico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <div class="pain-txt"><h4>Lステップの費用が高い</h4><p>月額数万円のツール費用がネック。もっと安く自動化したい。</p></div>
       </div>
-      <div class="pain-card">
-        <div class="pain-icon">📱</div>
-        <div class="pain-text">友だち追加してくれた人への返信を手動でやっていて時間がかかる</div>
+      <div class="pain-card rv d2">
+        <div class="pico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div class="pain-txt"><h4>手動返信に時間を取られている</h4><p>友だち追加のたびに手動で案内を送っていて非効率。</p></div>
       </div>
-      <div class="pain-card">
-        <div class="pain-icon">📊</div>
-        <div class="pain-text">顧客情報をスプレッドシートでまとめたいが連携方法がわからない</div>
+      <div class="pain-card rv d1">
+        <div class="pico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="pain-txt"><h4>顧客情報がバラバラ</h4><p>LINEとスプレッドシートを連携したいが、方法が分からない。</p></div>
       </div>
-      <div class="pain-card">
-        <div class="pain-icon">🎨</div>
-        <div class="pain-text">リッチメニューを整えてもっとプロらしく見せたい</div>
+      <div class="pain-card rv d2">
+        <div class="pico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+        <div class="pain-txt"><h4>リッチメニューをプロらしくしたい</h4><p>見た目を整えてブランド感を出したいが、どう作るか分からない。</p></div>
       </div>
-      <div class="pain-card">
-        <div class="pain-icon">🤝</div>
-        <div class="pain-text">業者に頼んだが「設定します」だけで終わり、使い方が分からない</div>
+      <div class="pain-card rv d3">
+        <div class="pico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="pain-txt"><h4>設定後の使い方が分からない</h4><p>他社に頼んだが「設定しました」で終わり。自分で運用できない。</p></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FEATURES -->
-<section id="whatwedo">
+<section id="features">
   <div class="container">
-    <div class="divider"></div>
-    <div class="section-label">サービス内容</div>
-    <h2 class="section-title">Form Flowができること</h2>
-    <p class="section-sub">業務フローを整理してから設計するので、「使われない仕組み」になりません。</p>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-num">01</div>
-        <h3>初期設定・プロフィール整備</h3>
-        <p>あいさつメッセージ・基本情報・プロフィール画像の設定まで丁寧に対応。最初の印象を整えます。</p>
+    <p class="eyebrow rv">WHAT WE DO</p>
+    <h2 class="stitle rv">Form Flowができること</h2>
+    <p class="ssub rv">業務フローを整理してから設計するので、「使われない仕組み」になりません。</p>
+    <div class="feat-grid">
+      <div class="fc rv tilt-card"><div class="fc-shine"></div><div class="fn">01</div>
+        <div class="ficon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+        <h3>初期設定・プロフィール整備</h3><p>あいさつメッセージ・基本情報・プロフィール画像の設定まで丁寧に対応します。</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-num">02</div>
-        <h3>リッチメニュー制作</h3>
-        <p>業種・目的に合わせてデザイン・タップ領域を設計。見た目と使い勝手を同時に整えます。</p>
+      <div class="fc rv d1 tilt-card"><div class="fc-shine"></div><div class="fn">02</div>
+        <div class="ficon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+        <h3>リッチメニュー制作</h3><p>業種・目的に合わせてデザイン・タップ領域を設計。見た目と使い勝手を整えます。</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-num">03</div>
-        <h3>自動返信・シナリオ配信</h3>
-        <p>キーワード自動返信・友だち追加後のステップ配信・時間指定配信まで設定します。</p>
+      <div class="fc rv d2 tilt-card"><div class="fc-shine"></div><div class="fn">03</div>
+        <div class="ficon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <h3>自動返信・ステップ配信</h3><p>キーワード自動返信・友だち追加後のステップ配信・時間指定配信まで設定します。</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-num">04</div>
-        <h3>Googleスプレッドシート連携</h3>
-        <p>GASを使い、友だち追加・問い合わせ内容をスプレッドシートへ自動記録。月額費用なしで実現。</p>
+      <div class="fc rv d1 tilt-card"><div class="fc-shine"></div><div class="fn">04</div>
+        <div class="ficon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h3>スプレッドシート連携</h3><p>GASを使い、友だち追加・問い合わせをスプレッドシートへ自動記録します。</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-num">05</div>
-        <h3>Googleカレンダー・Meet連携</h3>
-        <p>フォーム申込みからGoogleカレンダーへの予定登録・Meet URL自動生成・LINE自動返信まで一括対応。予約リマインドにも応用できます。</p>
+      <div class="fc rv d2 tilt-card"><div class="fc-shine"></div><div class="fn">05</div>
+        <div class="ficon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h3>Googleカレンダー・Meet連携</h3><p>フォーム申込みから自動でカレンダー登録・Meet URL生成・LINE通知まで一括対応。</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-num">06</div>
-        <h3>マニュアル付き引き渡し</h3>
-        <p>「納品して終わり」にしません。操作マニュアルとZoomレクチャーで、自分で運用できる状態にします。</p>
+      <div class="fc rv d3 tilt-card"><div class="fc-shine"></div><div class="fn">06</div>
+        <div class="ficon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+        <h3>マニュアル付き引き渡し</h3><p>操作マニュアルとZoomレクチャーで、自分で運用できる状態にして納品します。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DEMO -->
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <p class="eyebrow rv">HOW IT WORKS</p>
+    <h2 class="stitle rv">導入の流れ</h2>
+    <p class="ssub rv">ご相談から納品まで、すべてオンラインで完結します。</p>
+    <div class="proc-grid">
+      <div class="proc-line"></div>
+      <div class="pstep rv"><div class="pnum-wrap"><div class="pnum-bg"></div><div class="pnum-bg2"></div><div class="pnum-inner"><span class="pnum-n">STEP 01</span><span class="pnum-ico">💬</span></div></div><h3>無料相談</h3><p>LINEまたはフォームからご連絡ください。現状のヒアリングと要件確認を行います。</p></div>
+      <div class="pstep rv d1"><div class="pnum-wrap"><div class="pnum-bg"></div><div class="pnum-bg2"></div><div class="pnum-inner"><span class="pnum-n">STEP 02</span><span class="pnum-ico">📋</span></div></div><h3>お見積り・ご提案</h3><p>内容をもとに仕様と金額をご提案。ご納得いただいてからご契約となります。</p></div>
+      <div class="pstep rv d2"><div class="pnum-wrap"><div class="pnum-bg"></div><div class="pnum-bg2"></div><div class="pnum-inner"><span class="pnum-n">STEP 03</span><span class="pnum-ico">⚙️</span></div></div><h3>構築・設定</h3><p>ご入金確認後、作業を開始。進捗はLINEでお知らせしながら進めます。</p></div>
+      <div class="pstep rv d3"><div class="pnum-wrap"><div class="pnum-bg"></div><div class="pnum-bg2"></div><div class="pnum-inner"><span class="pnum-n">STEP 04</span><span class="pnum-ico">🎉</span></div></div><h3>納品・レクチャー</h3><p>マニュアルと一緒に納品。Zoomで操作方法をご説明し、安心して引き渡します。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO — USE CASES WITH PHOTOS -->
 <section id="demo">
   <div class="container">
-    <div class="divider"></div>
-    <div class="section-label">構築例</div>
-    <h2 class="section-title">こんな仕組みを作っています</h2>
-    <p class="section-sub">業種・目的別の構築例です。「うちはどうなる？」はご相談でお答えします。</p>
+    <p class="eyebrow rv">USE CASES</p>
+    <h2 class="stitle rv">こんな仕組みを作っています</h2>
+    <p class="ssub rv">業種・目的別の構築例です。「うちはどうなる？」はご相談でお答えします。</p>
     <div class="demo-grid">
-      <div class="demo-card">
-        <div class="demo-tag">整体院・治療院</div>
-        <h3>予約確認〜リマインド自動化</h3>
-        <p>友だち追加→初回クーポン配信→予約確認→前日リマインドまで自動化。手動対応をゼロに。</p>
+      <div class="dc rv">
+        <div class="dc-photo">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80" alt="整体院" loading="lazy">
+          <div class="dc-photo-overlay"></div>
+          <span class="dc-tag">整体院・治療院</span>
+        </div>
+        <div class="dc-body"><h3>予約確認〜リマインド自動化</h3><p>友だち追加→初回クーポン→予約確認→前日リマインドまで自動化。手動対応ゼロに。</p></div>
       </div>
-      <div class="demo-card">
-        <div class="demo-tag">個人コンサル・コーチング</div>
-        <h3>ステップ教育シナリオ</h3>
-        <p>友だち追加後7日間、毎日コンテンツを自動配信。Lステップなし・GASで月額0円で実現。</p>
+      <div class="dc rv d1">
+        <div class="dc-photo">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="コーチング" loading="lazy">
+          <div class="dc-photo-overlay"></div>
+          <span class="dc-tag">コンサル・コーチング</span>
+        </div>
+        <div class="dc-body"><h3>ステップ教育シナリオ</h3><p>友だち追加後7日間、毎日コンテンツを自動配信。Lステップなし・月額0円で実現。</p></div>
       </div>
-      <div class="demo-card">
-        <div class="demo-tag">不動産・サービス業</div>
-        <h3>問い合わせ→スプレッドシート自動記録</h3>
-        <p>LINEから問い合わせを受け取り、内容・日時・連絡先をシートに自動記録。漏れなく管理。</p>
+      <div class="dc rv d2">
+        <div class="dc-photo">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80" alt="不動産" loading="lazy">
+          <div class="dc-photo-overlay"></div>
+          <span class="dc-tag">不動産・サービス業</span>
+        </div>
+        <div class="dc-body"><h3>問い合わせ→スプレッドシート自動記録</h3><p>LINEから問い合わせを受け取り、内容・日時・連絡先をシートに自動記録。</p></div>
       </div>
-      <div class="demo-card">
-        <div class="demo-tag">飲食・物販</div>
-        <h3>リッチメニュー＋クーポン配信</h3>
-        <p>来店促進・再訪誘導のリッチメニューと定期クーポン配信の仕組みをセットで構築。</p>
+      <div class="dc rv d1">
+        <div class="dc-photo">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80" alt="飲食店" loading="lazy">
+          <div class="dc-photo-overlay"></div>
+          <span class="dc-tag">飲食・物販</span>
+        </div>
+        <div class="dc-body"><h3>リッチメニュー＋クーポン配信</h3><p>来店促進・再訪誘導のリッチメニューと定期クーポン配信の仕組みをセットで構築。</p></div>
       </div>
-      <div class="demo-card">
-        <div class="demo-tag">士業・税理士法人</div>
-        <h3>顧問先への月次自動配信＋相談予約連携</h3>
-        <p>税務カレンダー・書類リマインダーを顧問先属性ごとに自動送信。相談申込フォームと連携し、GoogleカレンダーへのMeet URL付き予定登録・LINE自動返信まで一気通貫で自動化。</p>
+      <div class="dc rv d2">
+        <div class="dc-photo">
+          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=600&q=80" alt="士業" loading="lazy">
+          <div class="dc-photo-overlay"></div>
+          <span class="dc-tag">士業・税理士法人</span>
+        </div>
+        <div class="dc-body"><h3>月次自動配信＋相談予約連携</h3><p>税務カレンダー・書類リマインダーを顧問先属性ごとに自動送信。Meet連携も対応。</p></div>
+      </div>
+      <div class="dc rv d3">
+        <div class="dc-photo">
+          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80" alt="美容サロン" loading="lazy">
+          <div class="dc-photo-overlay"></div>
+          <span class="dc-tag">美容室・サロン</span>
+        </div>
+        <div class="dc-body"><h3>来店後フォローアップ自動化</h3><p>来店翌日に感謝メッセージ・3週間後に再来店クーポンを自動送信。リピート率向上。</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICE -->
+<!-- PRICING -->
 <section id="price">
   <div class="container">
-    <div class="divider"></div>
-    <div class="section-label">料金プラン</div>
-    <h2 class="section-title">シンプルな3プラン</h2>
-    <p class="section-sub">「何から始めればいいか分からない」場合は、ライトプランから始めて後から拡張できます。<br><small style="color:var(--sub);font-size:13px;">※表示価格はすべて税別です。別途消費税（10%）が加算されます。</small></p>
-    <div class="price-grid">
-      <div class="price-card">
-        <div class="price-plan">ライト</div>
-        <div class="price-regular">通常 ¥49,800〜</div>
-        <div class="price-monitor-label">モニター価格</div>
-        <div class="price-amount">¥29,800<span>〜 税別</span></div>
-        <div class="price-days">納品目安：3〜5営業日</div>
-        <ul class="price-items">
-          <li>基本設定・プロフィール整備</li>
-          <li>あいさつメッセージ設定</li>
-          <li>リッチメニュー（1パターン）</li>
-          <li>操作マニュアル（PDF）</li>
-        </ul>
-        <a href="#cta" class="price-cta price-cta-outline">このプランで相談する</a>
+    <p class="eyebrow rv" style="text-align:center">PRICING</p>
+    <h2 class="stitle rv" style="text-align:center">シンプルな3プラン</h2>
+    <p class="ssub rv" style="text-align:center">「何から始めればいいか分からない」場合は、ライトプランから始めて後から拡張できます。<br><small>※表示価格はすべて税別です。</small></p>
+    <div class="pgrid">
+      <div class="pc rv">
+        <div class="pname">ライト</div>
+        <div class="pold">通常 ¥49,800〜</div>
+        <div class="pmon">モニター価格</div>
+        <div class="pamount">¥29,800<small>〜 税別</small></div>
+        <div class="pdays">納品目安：3〜5営業日</div>
+        <ul class="plist"><li>基本設定・プロフィール整備</li><li>あいさつメッセージ設定</li><li>リッチメニュー（1パターン）</li><li>操作マニュアル（PDF）</li></ul>
+        <a href="#cta" class="pbtn pbtn-o">このプランで相談する</a>
       </div>
-      <div class="price-card featured">
-        <div class="price-badge">一番人気</div>
-        <div class="price-plan">スタンダード</div>
-        <div class="price-regular">通常 ¥150,000〜</div>
-        <div class="price-monitor-label">モニター価格</div>
-        <div class="price-amount">¥79,800<span>〜 税別</span></div>
-        <div class="price-days">納品目安：5〜7営業日</div>
-        <ul class="price-items">
-          <li>ライトの全内容</li>
-          <li>シナリオ配信（最大3ステップ）</li>
-          <li>キーワード自動返信（最大5件）</li>
-          <li>Googleフォーム→LINE通知連携</li>
-        </ul>
-        <a href="#cta" class="price-cta price-cta-fill">このプランで相談する</a>
+      <div class="pc ft rv d1">
+        <div class="pbadge">一番人気</div>
+        <div class="pname">スタンダード</div>
+        <div class="pold">通常 ¥150,000〜</div>
+        <div class="pmon">モニター価格</div>
+        <div class="pamount">¥79,800<small>〜 税別</small></div>
+        <div class="pdays">納品目安：5〜7営業日</div>
+        <ul class="plist"><li>ライトの全内容</li><li>シナリオ配信（最大3ステップ）</li><li>キーワード自動返信（最大5件）</li><li>Googleフォーム→LINE通知連携</li></ul>
+        <a href="#cta" class="pbtn pbtn-f magnetic">このプランで相談する</a>
       </div>
-      <div class="price-card">
-        <div class="price-plan">プレミアム</div>
-        <div class="price-regular">通常 ¥390,000〜</div>
-        <div class="price-monitor-label">モニター価格</div>
-        <div class="price-amount">¥198,000<span>〜 税別</span></div>
-        <div class="price-days">納品目安：7〜10営業日</div>
-        <ul class="price-items">
-          <li>スタンダードの全内容</li>
-          <li>友だち追加→スプレッドシート自動記録</li>
-          <li>Googleカレンダー連携・Meet URL自動生成</li>
-          <li>顧客属性別の月次一斉送信</li>
-          <li>納品後オンラインレクチャー30分</li>
-        </ul>
-        <a href="#cta" class="price-cta price-cta-outline">このプランで相談する</a>
+      <div class="pc rv d2">
+        <div class="pname">プレミアム</div>
+        <div class="pold">通常 ¥390,000〜</div>
+        <div class="pmon">モニター価格</div>
+        <div class="pamount">¥198,000<small>〜 税別</small></div>
+        <div class="pdays">納品目安：7〜10営業日</div>
+        <ul class="plist"><li>スタンダードの全内容</li><li>友だち追加→スプレッドシート自動記録</li><li>Googleカレンダー連携・Meet URL自動生成</li><li>顧客属性別の月次一斉送信</li><li>納品後オンラインレクチャー30分</li></ul>
+        <a href="#cta" class="pbtn pbtn-o">このプランで相談する</a>
       </div>
     </div>
-  </div>
-  <p style="text-align:center;font-size:12px;color:#64748B;margin-top:16px;">※ 表示は税別・モニター価格です。カレンダー連携・API開発など高度な要件はプレミアムプランの上限を超える場合があります。その場合は別途お見積りいたします。</p>
-
-  <!-- 月額保守費 -->
-  <div style="max-width:640px;margin:40px auto 0;background:var(--off2);border:1px solid var(--border);border-radius:14px;padding:28px 32px;">
-    <div style="font-size:13px;font-weight:700;color:var(--green);letter-spacing:.06em;margin-bottom:6px;">MONTHLY</div>
-    <div style="font-size:20px;font-weight:800;color:var(--navy);margin-bottom:4px;">月額保守費</div>
-    <div style="font-size:12px;color:var(--sub);margin-bottom:20px;">構築完了後、翌月より発生。最低契約期間3ヶ月。</div>
-    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
-        <div>
-          <div style="font-size:13px;font-weight:600;color:var(--text);">システム監視・障害対応</div>
-          <div style="font-size:11px;color:var(--sub);">異常検知・不具合発生時の修正対応</div>
-        </div>
-        <div style="font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;">¥5,000<span style="font-size:11px;font-weight:400;color:var(--sub);">/月</span></div>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
-        <div>
-          <div style="font-size:13px;font-weight:600;color:var(--text);">キーワード追加・文言修正（月2件）</div>
-          <div style="font-size:11px;color:var(--sub);">自動返信テキストの変更・追加</div>
-        </div>
-        <div style="font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;">¥5,000<span style="font-size:11px;font-weight:400;color:var(--sub);">/月</span></div>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg);border-radius:8px;border:1px solid var(--border);">
-        <div>
-          <div style="font-size:13px;font-weight:600;color:var(--text);">税務カレンダー・配信内容更新</div>
-          <div style="font-size:11px;color:var(--sub);">年次法令改正・配信文の年次更新</div>
-        </div>
-        <div style="font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;">¥5,000<span style="font-size:11px;font-weight:400;color:var(--sub);">/月</span></div>
-      </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#F0FDF4;border-radius:8px;border:1px solid #BBF7D0;">
-        <div>
-          <div style="font-size:13px;font-weight:600;color:var(--text);">【オプション】月次動作確認レポート</div>
-          <div style="font-size:11px;color:var(--sub);">友だち数・送信件数・申込み件数を毎月1枚でご報告</div>
-        </div>
-        <div style="font-size:14px;font-weight:700;color:var(--green);white-space:nowrap;">¥3,000<span style="font-size:11px;font-weight:400;color:var(--sub);">/月</span></div>
-      </div>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;background:var(--navy);border-radius:8px;padding:12px 16px;">
-      <div style="color:#fff;font-size:13px;font-weight:600;">月額合計（税別）</div>
-      <div style="color:#fff;font-size:18px;font-weight:800;">¥15,000<span style="font-size:12px;font-weight:400;color:#94A3B8;margin-left:4px;">／月〜</span></div>
+    <p style="text-align:center;font-size:12px;color:var(--sub);margin-top:18px">※ カレンダー連携・API開発など高度な要件はプレミアムプランの上限を超える場合があります。その場合は別途お見積りいたします。</p>
+    <div class="monthly rv">
+      <div class="ml">MONTHLY</div>
+      <div class="mt">月額保守費</div>
+      <div class="ms">構築完了後、翌月より発生。最低契約期間3ヶ月。</div>
+      <div class="mr"><div><div class="mr-title">システム監視・障害対応</div><div class="mr-desc">異常検知・不具合発生時の修正対応</div></div><div class="mr-price">¥5,000<span style="font-size:11px;color:var(--sub);font-weight:400">/月</span></div></div>
+      <div class="mr"><div><div class="mr-title">キーワード追加・文言修正（月2件）</div><div class="mr-desc">自動返信テキストの変更・追加</div></div><div class="mr-price">¥5,000<span style="font-size:11px;color:var(--sub);font-weight:400">/月</span></div></div>
+      <div class="mr"><div><div class="mr-title">税務カレンダー・配信内容更新</div><div class="mr-desc">年次法令改正・配信文の年次更新</div></div><div class="mr-price">¥5,000<span style="font-size:11px;color:var(--sub);font-weight:400">/月</span></div></div>
+      <div class="m-total"><div class="m-total-l">月額合計（税別）</div><div class="m-total-r">¥15,000<small>／月〜</small></div></div>
     </div>
   </div>
 </section>
@@ -1230,173 +628,134 @@
 <!-- FAQ -->
 <section id="faq">
   <div class="container">
-    <div class="divider"></div>
-    <div class="section-label">よくある質問</div>
-    <h2 class="section-title">FAQ</h2>
-    <p class="section-sub">他にご不明な点はLINEかメールでお気軽にどうぞ。</p>
+    <p class="eyebrow rv" style="text-align:center">FAQ</p>
+    <h2 class="stitle rv" style="text-align:center">よくあるご質問</h2>
+    <p class="ssub rv" style="text-align:center">他にご不明な点はLINEかメールでお気軽にどうぞ。</p>
     <div class="faq-list">
-      <details>
-        <summary>Lステップがなくても自動化できますか？<span class="faq-icon">+</span></summary>
-        <div class="faq-ans">はい。Google Apps Script（GAS）を使うことで、友だち追加時の自動返信・スプレッドシートへの記録・メッセージ配信などをLステップなしで実現できます。月額の追加費用がかかりません。</div>
-      </details>
-      <details>
-        <summary>既存のアカウントへの追加設定も対応できますか？<span class="faq-icon">+</span></summary>
-        <div class="faq-ans">はい。すでにアカウントをお持ちの方の追加設定・リニューアルも対応しています。現状の設定を確認した上でご提案します。</div>
-      </details>
-      <details>
-        <summary>どんな業種でも対応できますか？<span class="faq-icon">+</span></summary>
-        <div class="faq-ans">飲食・美容室・整骨院・クリニック・コーチング・士業・不動産など、BtoC・BtoB問わず対応しています。「自社に合うか」は相談の中で確認します。</div>
-      </details>
-      <details>
-        <summary>納品後、自分で運用できるか不安です。<span class="faq-icon">+</span></summary>
-        <div class="faq-ans">操作マニュアルの作成とZoomでのレクチャーをセットで行います。「使い方がわからなくて止まる」が起きないよう、引き渡しを丁寧に行います。</div>
-      </details>
-      <details>
-        <summary>LINE公式アカウント自体の費用はかかりますか？<span class="faq-icon">+</span></summary>
-        <div class="faq-ans">月1,000通まではLINEの無料プランで利用できます。それ以上の配信が必要な場合は月額費用が発生します（ライトプラン: 月15,000円〜）。構築費用とは別途かかります。</div>
-      </details>
-      <details>
-        <summary>モニター協力の場合、何が公開されますか？<span class="faq-icon">+</span></summary>
-        <div class="faq-ans">構築したLINEのデモアカウント（業種・使用機能のみ）をポートフォリオとして活用させていただきます。会社名・個人名・実際のトーク内容は公開しません。内容はご相談の上で決定します。</div>
-      </details>
+      <div class="fi rv"><div class="fq">Lステップがなくても自動化できますか？<span class="fqico">+</span></div><div class="fa"><div class="fa-in">はい。Google Apps Script（GAS）を使うことで、友だち追加時の自動返信・スプレッドシートへの記録・メッセージ配信などをLステップなしで実現できます。月額の追加費用がかかりません。</div></div></div>
+      <div class="fi rv d1"><div class="fq">既存のアカウントへの追加設定も対応できますか？<span class="fqico">+</span></div><div class="fa"><div class="fa-in">はい。すでにアカウントをお持ちの方の追加設定・リニューアルも対応しています。現状の設定を確認した上でご提案します。</div></div></div>
+      <div class="fi rv d2"><div class="fq">どんな業種でも対応できますか？<span class="fqico">+</span></div><div class="fa"><div class="fa-in">飲食・美容室・整骨院・クリニック・コーチング・士業・不動産など、BtoC・BtoB問わず対応しています。「自社に合うか」は相談の中で確認します。</div></div></div>
+      <div class="fi rv d1"><div class="fq">納品後、自分で運用できるか不安です。<span class="fqico">+</span></div><div class="fa"><div class="fa-in">操作マニュアルの作成とZoomでのレクチャーをセットで行います。「使い方が分からなくて止まる」が起きないよう、引き渡しを丁寧に行います。</div></div></div>
+      <div class="fi rv d2"><div class="fq">相談・見積もりは無料ですか？<span class="fqico">+</span></div><div class="fa"><div class="fa-in">はい、無料です。LINEまたはお問い合わせフォームからお気軽にご連絡ください。「何から始めればいいか分からない」という段階からご相談いただけます。</div></div></div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section id="cta">
-  <div class="cta-inner">
-    <h2>まずは無料相談から<br>はじめましょう</h2>
-    <p>
-      業種・現在の業務フロー・やりたいことをお聞かせください。<br>
-      相談だけでも歓迎です。お見積もりは無料でお出しします。
-    </p>
-
-    <div class="cta-trust">
-      <div class="cta-trust-item">相談・見積もり無料</div>
-      <div class="cta-trust-item">秘密保持は徹底</div>
-      <div class="cta-trust-item">返信は数時間以内</div>
+  <div class="cta-b1"></div><div class="cta-b2"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <p class="eyebrow rv">GET STARTED</p>
+    <h2 class="rv">まず、無料で相談してみてください。</h2>
+    <p class="rv">「何から始めればいいか分からない」という段階からでも大丈夫です。<br>ご要望を聞いた上で、最適な構成をご提案します。</p>
+    <div class="cta-btns rv">
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-p magnetic">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINEで無料相談する
+      </a>
+      <a href="./service.html" class="btn-gd">サービス詳細を見る →</a>
     </div>
-
-    <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-cta-line">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-      <span>
-        LINEで相談する（友だち追加）
-        <span class="cta-line-sub">友だち追加後にメッセージをお送りください</span>
-      </span>
-    </a>
-
-    <div class="cta-separator"><span>またはフォームで送る</span></div>
-
-    <form id="contact-form" name="contact" class="contact-form">
-      <input type="hidden" name="access_key" value="14a20958-b90d-44e8-a0b9-e0783cac2c1d">
-      <input type="hidden" name="subject" value="【Form Flow】お問い合わせが届きました">
-      <input type="hidden" name="replyto" value="$email">
-      <input type="hidden" name="from_name" value="Form Flow LP">
-      <input type="hidden" name="botcheck" value="" style="display:none">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="name">お名前 <span style="color:var(--green)">*</span></label>
-          <input type="text" id="name" name="name" placeholder="山田 太郎" required>
-        </div>
-        <div class="form-group">
-          <label for="email">メールアドレス <span style="color:var(--green)">*</span></label>
-          <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
-        </div>
-        <div class="form-group">
-          <label for="industry">業種</label>
-          <select id="industry" name="industry">
-            <option value="">選択してください</option>
-            <option>整体院・治療院・美容院</option>
-            <option>不動産</option>
-            <option>コンサル・コーチング</option>
-            <option>飲食・小売</option>
-            <option>士業・専門職</option>
-            <option>その他</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="plan">気になるプラン <span style="color:rgba(255,255,255,.4); font-weight:400; font-size:11px;">任意</span></label>
-          <select id="plan" name="plan">
-            <option value="">まだ決めていない</option>
-            <option>ライトプラン（¥29,800〜）</option>
-            <option>スタンダードプラン（¥49,800〜）</option>
-            <option>プレミアムプラン（¥79,800〜）</option>
-            <option>内容を聞いてから考えたい</option>
-          </select>
-        </div>
-        <div class="form-group full">
-          <label for="message">相談内容 <span style="color:var(--green)">*</span></label>
-          <textarea id="message" name="message" placeholder="やりたいこと・現在の状況・気になることを自由にお書きください" required></textarea>
-        </div>
-      </div>
-      <button type="submit" class="btn-submit" id="submit-btn">
-        📧 送信する
-      </button>
-      <div id="form-result" style="display:none; margin-top:16px; padding:12px 20px; border-radius:10px; text-align:center; font-size:0.95rem; font-weight:500;"></div>
-    </form>
-
-    <p class="cta-guarantee">
-      強引な営業はしません。相談後に断っていただいても問題ありません。
-    </p>
+    <p class="cta-note rv">相談・見積もり無料 ・ 秘密厳守 ・ 返信は数時間以内</p>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Form <span>Flow</span></div>
-  <p>© 2026 Form Flow. All rights reserved.</p>
-  <p style="margin-top:10px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
-    <a href="/privacy.html" style="color:rgba(255,255,255,.4);font-size:12px;text-decoration:none;">プライバシーポリシー</a>
-    <a href="/terms.html" style="color:rgba(255,255,255,.4);font-size:12px;text-decoration:none;">利用規約</a>
-    <a href="/tokushoho.html" style="color:rgba(255,255,255,.4);font-size:12px;text-decoration:none;">特定商取引法に基づく表記</a>
-  </p>
+  <div class="footer-inner">
+    <div class="fl">Form <em>Flow</em></div>
+    <div class="flinks">
+      <a href="./privacy.html">プライバシーポリシー</a>
+      <a href="./terms.html">利用規約</a>
+      <a href="./tokushoho.html">特定商取引法</a>
+      <a href="./news.html">お知らせ</a>
+    </div>
+    <div class="fcopy">© 2026 Form Flow.</div>
+  </div>
 </footer>
 
 <script>
-  document.getElementById('contact-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submit-btn');
-    const result = document.getElementById('form-result');
+(function(){
+  // CURSOR GLOW
+  const cg=document.getElementById('cg');
+  document.addEventListener('mousemove',e=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px'},{passive:true});
 
-    btn.disabled = true;
-    btn.textContent = '送信中...';
-    result.style.display = 'none';
+  // SCROLL PROGRESS
+  const sp=document.getElementById('sp');
+  function onScroll(){
+    const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+    sp.style.width=p+'%';
+    document.getElementById('nav').classList.toggle('sc',window.scrollY>60);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
 
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: new FormData(this)
-      });
-      const data = await res.json();
+  // HAMBURGER
+  const hbtn=document.getElementById('hbtn'),mm=document.getElementById('mmenu');
+  hbtn.addEventListener('click',()=>{hbtn.classList.toggle('open');mm.classList.toggle('open')});
+  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hbtn.classList.remove('open');mm.classList.remove('open')}));
 
-      if (data.success) {
-        result.style.display = 'block';
-        result.style.background = 'rgba(6,199,85,0.15)';
-        result.style.border = '1px solid rgba(6,199,85,0.4)';
-        result.style.color = '#06c755';
-        result.textContent = '✓ 送信が完了しました。数時間以内にご連絡します。';
-        this.reset();
-      } else {
-        throw new Error('failed');
-      }
-    } catch {
-      result.style.display = 'block';
-      result.style.background = 'rgba(255,80,80,0.12)';
-      result.style.border = '1px solid rgba(255,80,80,0.35)';
-      result.style.color = '#ff6b6b';
-      result.innerHTML = '送信に失敗しました。<a href="https://lin.ee/SD2HKgtW" target="_blank" style="color:#06c755;">LINEからご相談ください。</a>';
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = '📧 送信する';
-    }
+  // REVEAL
+  const rvObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.1});
+  document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+
+  // COUNTER
+  function cnt(el,target,dur=1500){
+    const s=performance.now();
+    const tick=now=>{
+      const p=Math.min((now-s)/dur,1);
+      el.textContent=Math.floor(p*target);
+      if(p<1)requestAnimationFrame(tick);else el.textContent=target;
+    };
+    requestAnimationFrame(tick);
+  }
+  const cObs=new IntersectionObserver(entries=>entries.forEach(e=>{
+    if(e.isIntersecting&&!e.target.dataset.c){e.target.dataset.c='1';cnt(e.target,+e.target.dataset.target)}
+  }),{threshold:.5});
+  document.querySelectorAll('.cnt').forEach(el=>cObs.observe(el));
+
+  // HERO PHOTO parallax on scroll
+  const hphoto=document.querySelector('.hv-photo img');
+  if(hphoto){
+    window.addEventListener('scroll',()=>{
+      const s=window.scrollY;
+      if(s<window.innerHeight)hphoto.style.transform=`scale(1.02) translateY(${s*0.08}px)`;
+    },{passive:true});
+  }
+
+  // 3D TILT CARDS
+  document.querySelectorAll('.tilt-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(700px) rotateX(${-y*10}deg) rotateY(${x*10}deg) translateZ(8px) translateY(-5px)`;
+    });
+    card.addEventListener('mouseleave',()=>{card.style.transform=''});
   });
-  const hbtn = document.getElementById('hamburger');
-  const hmenu = document.getElementById('mobile-menu');
-  hbtn.addEventListener('click', () => {
-    hbtn.classList.toggle('open');
-    hmenu.classList.toggle('open');
+
+  // MAGNETIC BUTTONS
+  document.querySelectorAll('.magnetic').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{
+      const r=btn.getBoundingClientRect();
+      const x=(e.clientX-r.left-r.width/2)*.28,y=(e.clientY-r.top-r.height/2)*.28;
+      btn.style.transform=`translate(${x}px,${y}px)`;
+    });
+    btn.addEventListener('mouseleave',()=>{btn.style.transform=''});
   });
+
+  // FAQ ACCORDION
+  document.querySelectorAll('.fi').forEach(item=>{
+    item.querySelector('.fq').addEventListener('click',()=>{
+      const open=item.classList.contains('open');
+      document.querySelectorAll('.fi').forEach(i=>{i.classList.remove('open');i.querySelector('.fa').style.maxHeight='0'});
+      if(!open){item.classList.add('open');item.querySelector('.fa').style.maxHeight=item.querySelector('.fa-in').scrollHeight+40+'px'}
+    });
+  });
+
+  // DEMO CARD photo lazy animation
+  const imgObs=new IntersectionObserver(entries=>entries.forEach(e=>{
+    if(e.isIntersecting){e.target.style.opacity='1';imgObs.unobserve(e.target)}
+  }),{threshold:.1});
+  document.querySelectorAll('.dc-photo img').forEach(img=>{img.style.opacity='0';img.style.transition='opacity .6s ease';imgObs.observe(img)});
+})();
 </script>
 </body>
 </html>

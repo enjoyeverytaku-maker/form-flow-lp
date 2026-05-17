@@ -1,146 +1,287 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQF63CGRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-NWQF63CGRL');
-  </script>
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>お知らせ｜Form Flow</title>
-  <meta name="description" content="Form Flowのサービスに関するお知らせ・更新情報を掲載しています。">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/news.html">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/news.html">
-  <meta property="og:title" content="お知らせ｜Form Flow">
-  <meta property="og:description" content="Form Flowのサービスに関するお知らせ・更新情報を掲載しています。">
-  <meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
-  <meta property="og:site_name" content="Form Flow">
-  <meta property="og:locale" content="ja_JP">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --green:#06C755; --green-d:#04a344; --navy:#0F172A; --text:#1E293B; --sub:#64748B; --border:rgba(0,0,0,.09); --off:#F8FAFC; }
-    body { font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',sans-serif; background:var(--off); color:var(--text); line-height:1.8; font-size:15px; -webkit-font-smoothing:antialiased; }
-    a { color:var(--green); text-decoration:none; }
-    a:hover { text-decoration:underline; }
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQF63CGRL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NWQF63CGRL');</script>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お知らせ｜Form Flow</title>
+<meta name="description" content="Form Flowのサービスに関するお知らせ・更新情報を掲載しています。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/news.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/news.html">
+<meta property="og:title" content="お知らせ｜Form Flow">
+<meta property="og:description" content="Form Flowのサービスに関するお知らせ・更新情報を掲載しています。">
+<meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
+<meta property="og:site_name" content="Form Flow">
+<meta property="og:locale" content="ja_JP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#06C755;--gd:#04a344;--gl:rgba(6,199,85,.12);
+  --navy:#05101e;--navy2:#0c1a2e;
+  --text:#111827;--body:#374151;--sub:#6B7280;
+  --border:rgba(0,0,0,.08);--off:#F9FAFB;--off2:#F3F4F6;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--navy);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
 
-    nav { background:rgba(255,255,255,.97); border-bottom:1px solid var(--border); padding:0 40px; height:64px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; }
-    .nav-logo { font-size:18px; font-weight:800; color:var(--navy); text-decoration:none; }
-    .nav-logo span { color:var(--green); }
-    .nav-links { display:flex; align-items:center; gap:28px; }
-    .nav-links a { font-size:14px; color:var(--sub); }
-    .nav-links a:hover { color:var(--navy); text-decoration:none; }
-    .nav-links a.active { color:var(--green); font-weight:600; }
-    .nav-cta { background:var(--green); color:#fff !important; font-weight:700; font-size:13px; padding:8px 20px; border-radius:6px; transition:background .2s; }
-    .nav-cta:hover { background:var(--green-d) !important; }
-    .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
-    .hamburger span { display:block; width:22px; height:2px; background:var(--navy); border-radius:2px; transition:all .25s; }
-    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity:0; }
-    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
-    .mobile-menu { display:none; position:fixed; top:64px; left:0; right:0; background:#fff; border-bottom:1px solid var(--border); flex-direction:column; padding:8px 24px 20px; z-index:99; box-shadow:0 4px 16px rgba(0,0,0,.08); }
-    .mobile-menu.open { display:flex; }
-    .mobile-menu a { font-size:15px; color:var(--text); padding:14px 0; border-bottom:1px solid var(--border); text-decoration:none; font-weight:500; }
-    .mobile-menu a:last-child { border-bottom:none; }
-    .mobile-menu a.m-cta { margin-top:12px; background:var(--green); color:#fff; text-align:center; padding:13px; border-radius:8px; font-weight:700; border-bottom:none; }
+/* ── SCROLL PROGRESS ── */
+#sp{position:fixed;top:0;left:0;height:2px;background:var(--g);z-index:9999;width:0%;pointer-events:none;transition:width .08s}
 
-    .page-hero { background:linear-gradient(135deg,#F0FDF4,#EFF6FF); border-bottom:1px solid var(--border); padding:52px 40px; text-align:center; }
-    .page-hero h1 { font-size:28px; font-weight:800; color:var(--navy); margin-bottom:8px; }
-    .page-hero p { font-size:14px; color:var(--sub); }
+/* ── CURSOR GLOW ── */
+#cg{position:fixed;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(6,199,85,.055) 0%,transparent 68%);pointer-events:none;transform:translate(-50%,-50%);z-index:0;left:-600px;top:-600px;transition:left .25s ease,top .25s ease}
 
-    .container { max-width:760px; margin:0 auto; padding:52px 24px 80px; }
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;transition:background .4s,box-shadow .4s}
+nav.sc{background:rgba(255,255,255,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.nlogo{font-size:20px;font-weight:900;color:#fff;letter-spacing:.01em;transition:color .3s;font-family:'Inter',sans-serif}
+.nlogo em{color:var(--g);font-style:normal}
+nav.sc .nlogo{color:var(--navy)}
+.nlinks{display:flex;gap:32px;align-items:center}
+.nlinks a{font-size:13px;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s}
+nav.sc .nlinks a{color:var(--sub)}
+.nlinks a:hover{color:#fff}
+nav.sc .nlinks a:hover{color:var(--navy)}
+.nlinks a.active{color:var(--g)!important;font-weight:600}
+.ncta{background:var(--g)!important;color:#fff!important;padding:9px 22px;border-radius:8px;font-weight:700!important;font-size:13px;transition:background .2s,transform .15s!important}
+.ncta:hover{background:var(--gd)!important;transform:translateY(-1px)!important}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;transition:all .25s}
+nav.sc .hamburger span{background:var(--navy)}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mmenu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(5,16,30,.97);backdrop-filter:blur(20px);flex-direction:column;padding:8px 28px 28px;z-index:400;border-bottom:1px solid rgba(255,255,255,.07)}
+.mmenu.open{display:flex}
+.mmenu a{font-size:15px;color:rgba(255,255,255,.75);padding:15px 0;border-bottom:1px solid rgba(255,255,255,.06);font-weight:500}
+.mmenu a:last-child{border-bottom:none}
+.mmenu a.mc{margin-top:14px;background:var(--g);color:#fff;text-align:center;padding:13px;border-radius:10px;font-weight:700;border-bottom:none}
 
-    .news-list { display:flex; flex-direction:column; gap:0; }
-    .news-item { background:#fff; border:1px solid var(--border); border-radius:12px; padding:28px 32px; margin-bottom:16px; scroll-margin-top:80px; }
-    .news-item:target { border-color:var(--green); box-shadow:0 0 0 3px rgba(6,199,85,.15); }
-    .news-meta { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
-    .news-date { font-size:13px; color:var(--sub); }
-    .news-badge { font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; }
-    .badge-info    { background:rgba(6,199,85,.12); color:var(--green); border:1px solid rgba(6,199,85,.2); }
-    .badge-update  { background:rgba(58,130,246,.12); color:#3B82F6; border:1px solid rgba(58,130,246,.2); }
-    .badge-notice  { background:rgba(245,158,11,.12); color:#D97706; border:1px solid rgba(245,158,11,.2); }
-    .news-title { font-size:18px; font-weight:800; color:var(--navy); margin-bottom:12px; line-height:1.5; }
-    .news-body { font-size:14px; color:var(--text); line-height:1.9; }
-    .news-body p { margin-bottom:12px; }
-    .news-body p:last-child { margin-bottom:0; }
+/* ── PAGE HERO ── */
+.page-hero{background:var(--navy);padding:140px 52px 80px;text-align:center;position:relative;overflow:hidden}
+.phgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:72px 72px;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;will-change:transform}
+.pb1{width:420px;height:420px;background:rgba(6,199,85,.12);top:-15%;left:-5%;animation:bm 13s ease-in-out infinite}
+.pb2{width:340px;height:340px;background:rgba(79,70,229,.1);top:5%;right:-5%;animation:bm 10s ease-in-out infinite reverse;animation-delay:-5s}
+@keyframes bm{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(32px,-24px) scale(1.06)}66%{transform:translate(-22px,18px) scale(.94)}}
+.page-hero-inner{position:relative;z-index:1}
+.page-hero-label{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--g);text-transform:uppercase;margin-bottom:16px}
+.page-hero h1{font-size:clamp(32px,5vw,52px);font-weight:900;color:#fff;line-height:1.18;margin-bottom:18px;letter-spacing:-.03em}
+.page-hero-sub{font-size:16px;color:rgba(255,255,255,.5);max-width:540px;margin:0 auto;line-height:1.9}
 
-    .empty { text-align:center; padding:80px 24px; color:var(--sub); font-size:14px; }
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 
-    footer { background:#fff; border-top:1px solid var(--border); text-align:center; padding:28px 24px; font-size:13px; color:var(--sub); }
-    .footer-logo { font-size:16px; font-weight:800; color:var(--text); margin-bottom:6px; }
-    .footer-logo span { color:var(--green); }
+/* ── NEWS SECTION ── */
+.news-section{padding:80px 52px 108px;background:var(--navy);position:relative}
+.news-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent)}
+.container{max-width:760px;margin:0 auto}
+.eyebrow{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--g);text-transform:uppercase;margin-bottom:14px}
+.section-title{font-size:clamp(24px,3vw,36px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:40px;letter-spacing:-.03em}
 
-    @media (max-width:640px) { nav { padding:0 20px; } .nav-links { display:none; } .hamburger { display:flex; } .page-hero { padding:40px 24px; } .news-item { padding:20px; } }
-  </style>
+/* ── NEWS ITEMS ── */
+.news-list{display:flex;flex-direction:column;gap:16px}
+
+.news-item{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:32px 36px;
+  scroll-margin-top:80px;
+  transition:border-color .3s,box-shadow .3s,background .3s;
+}
+.news-item:hover{
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.14);
+  box-shadow:0 8px 40px rgba(0,0,0,.3);
+}
+.news-item:target{
+  border-color:var(--g);
+  box-shadow:0 0 0 3px rgba(6,199,85,.15),0 8px 40px rgba(0,0,0,.3);
+}
+
+.news-meta{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.news-date{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,.4);font-weight:500;letter-spacing:.03em}
+
+.news-badge{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;font-family:'Inter',sans-serif;letter-spacing:.04em}
+.badge-start{background:rgba(6,199,85,.18);color:var(--g);border:1px solid rgba(6,199,85,.3)}
+.badge-update{background:rgba(58,130,246,.15);color:#60a5fa;border:1px solid rgba(58,130,246,.25)}
+.badge-notice{background:rgba(245,158,11,.15);color:#fbbf24;border:1px solid rgba(245,158,11,.25)}
+.badge-info{background:rgba(6,199,85,.18);color:var(--g);border:1px solid rgba(6,199,85,.3)}
+
+.news-title{font-size:20px;font-weight:800;color:#fff;margin-bottom:14px;line-height:1.5;letter-spacing:-.02em}
+.news-body{font-size:14px;color:rgba(255,255,255,.65);line-height:1.95}
+.news-body p{margin-bottom:12px}
+.news-body p:last-child{margin-bottom:0}
+.news-body a{color:var(--g);text-decoration:underline;text-underline-offset:3px;transition:opacity .2s}
+.news-body a:hover{opacity:.75}
+
+/* Empty state */
+.news-empty{text-align:center;padding:80px 24px;color:rgba(255,255,255,.25);font-size:14px}
+
+/* ── FOOTER ── */
+footer{background:#040a14;border-top:1px solid rgba(255,255,255,.05);padding:44px 52px}
+.footer-inner{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.fl{font-family:'Inter',sans-serif;font-size:18px;font-weight:900;color:#fff}
+.fl em{color:var(--g);font-style:normal}
+.flinks{display:flex;gap:24px;flex-wrap:wrap}
+.flinks a{font-size:12px;color:rgba(255,255,255,.3);transition:color .2s}
+.flinks a:hover{color:rgba(255,255,255,.65)}
+.fcopy{font-size:12px;color:rgba(255,255,255,.2);font-family:'Inter',sans-serif}
+
+.magnetic{transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  nav{padding:0 20px}
+  .nlinks{display:none}
+  .hamburger{display:flex}
+  .page-hero{padding:120px 24px 64px}
+  .page-hero-sub{font-size:14px}
+  .news-section{padding:60px 20px 80px}
+  .news-item{padding:22px 20px}
+  .news-title{font-size:17px}
+  footer{padding:36px 20px}
+  .footer-inner{flex-direction:column;text-align:center;gap:16px}
+  .flinks{justify-content:center}
+}
+</style>
 </head>
 <body>
-<nav>
-  <a href="./index.html" class="nav-logo">Form <span>Flow</span></a>
-  <div class="nav-links">
-    <a href="./service.html">サービス詳細</a>
+
+<div id="sp"></div>
+<div id="cg"></div>
+
+<nav id="nav">
+  <a href="./index.html" class="nlogo">Form <em>Flow</em></a>
+  <div class="nlinks">
+    <a href="./index.html#features">サービス内容</a>
     <a href="./cases.html">構築例</a>
     <a href="./demo.html">デモ体験</a>
     <a href="./column.html">コラム</a>
     <a href="./news.html" class="active">お知らせ</a>
-    <a href="./index.html#contact" class="nav-cta">無料相談</a>
+    <a href="./index.html#cta" class="ncta magnetic">無料相談</a>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+  <button class="hamburger" id="hbtn"><span></span><span></span><span></span></button>
 </nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="./service.html">サービス詳細</a>
+<div class="mmenu" id="mmenu">
+  <a href="./index.html#features">サービス内容</a>
   <a href="./cases.html">構築例</a>
   <a href="./demo.html">デモ体験</a>
   <a href="./column.html">コラム</a>
   <a href="./news.html">お知らせ</a>
-  <a href="./index.html#contact" class="m-cta">無料相談</a>
+  <a href="./index.html#cta" class="mc">無料相談する</a>
 </div>
 
-<div class="page-hero">
-  <h1>お知らせ</h1>
-  <p>サービスに関する更新情報・重要なお知らせを掲載しています。</p>
-</div>
-
-<div class="container">
-  <div class="news-list">
-
-    <!-- news-001 -->
-    <div class="news-item" id="news-001">
-      <div class="news-meta">
-        <span class="news-date">2026年5月17日</span>
-        <span class="news-badge badge-info">サービス開始</span>
-      </div>
-      <div class="news-title">Form Flow サービス提供を開始しました</div>
-      <div class="news-body">
-        <p>LINE公式アカウントの構築サービス「Form Flow」の提供を開始しました。</p>
-        <p>有料ツール不要・GASを活用した自動化構築を、モニター価格でご提供しています。ステップ配信・自動返信・スプレッドシート連携など、ご要望に合わせてご相談ください。</p>
-        <p>詳細は<a href="./service.html">サービスページ</a>をご覧ください。</p>
-      </div>
-    </div>
-
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="phgrid"></div>
+  <div class="blob pb1"></div>
+  <div class="blob pb2"></div>
+  <div class="page-hero-inner rv">
+    <div class="page-hero-label">News</div>
+    <h1>お知らせ</h1>
+    <p class="page-hero-sub">サービスに関する更新情報・重要なお知らせを掲載しています。</p>
   </div>
-</div>
+</section>
 
+<!-- NEWS LIST -->
+<section class="news-section">
+  <div class="container">
+    <div class="eyebrow rv">Latest Updates</div>
+    <h2 class="section-title rv d1">更新情報</h2>
+
+    <div class="news-list">
+
+      <!-- news-001 -->
+      <div class="news-item rv d2" id="news-001">
+        <div class="news-meta">
+          <span class="news-date">2026年5月17日</span>
+          <span class="news-badge badge-start">サービス開始</span>
+        </div>
+        <div class="news-title">Form Flow サービス提供を開始しました</div>
+        <div class="news-body">
+          <p>LINE公式アカウントの構築サービス「Form Flow」の提供を開始しました。</p>
+          <p>有料ツール不要・GASを活用した自動化構築を、モニター価格でご提供しています。ステップ配信・自動返信・スプレッドシート連携など、ご要望に合わせてご相談ください。</p>
+          <p>詳細は<a href="./index.html#features">サービスページ</a>をご覧ください。</p>
+        </div>
+      </div>
+
+      <!-- news-002 -->
+      <div class="news-item rv d1" id="news-002">
+        <div class="news-meta">
+          <span class="news-date">2026年5月16日</span>
+          <span class="news-badge badge-notice">お知らせ</span>
+        </div>
+        <div class="news-title">モニター価格での受付について</div>
+        <div class="news-body">
+          <p>現在、サービス開始を記念してモニター価格での受付を行っています。通常価格の約40〜50%オフでご提供中です。</p>
+          <p>ご検討中の方はお早めにご相談ください。受付件数に限りがあります。詳しくは<a href="./service.html">料金ページ</a>をご覧ください。</p>
+        </div>
+      </div>
+
+      <!-- news-003 -->
+      <div class="news-item rv d2" id="news-003">
+        <div class="news-meta">
+          <span class="news-date">2026年5月15日</span>
+          <span class="news-badge badge-update">アップデート</span>
+        </div>
+        <div class="news-title">コラム記事を公開しました</div>
+        <div class="news-body">
+          <p>LINE公式アカウントの自動化に関するコラム記事を7本公開しました。</p>
+          <p>GAS連携の基礎からリッチメニュー設計、ステップ配信の実践的な手順まで幅広くカバーしています。<a href="./column.html">コラム一覧</a>からぜひご覧ください。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Form <span>Flow</span></div>
-  <p style="margin-top:10px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
-    <a href="./privacy.html" style="color:var(--sub);font-size:12px;">プライバシーポリシー</a>
-    <a href="./terms.html" style="color:var(--sub);font-size:12px;">利用規約</a>
-    <a href="./tokushoho.html" style="color:var(--sub);font-size:12px;">特定商取引法に基づく表記</a>
-  </p>
-  <p style="margin-top:12px;">© 2026 Form Flow. All rights reserved.</p>
+  <div class="footer-inner">
+    <div class="fl">Form <em>Flow</em></div>
+    <div class="flinks">
+      <a href="./privacy.html">プライバシーポリシー</a>
+      <a href="./terms.html">利用規約</a>
+      <a href="./tokushoho.html">特定商取引法</a>
+      <a href="./news.html">お知らせ</a>
+    </div>
+    <div class="fcopy">© 2026 Form Flow.</div>
+  </div>
 </footer>
+
 <script>
-  const hbtn = document.getElementById('hamburger');
-  const hmenu = document.getElementById('mobile-menu');
-  hbtn.addEventListener('click', () => {
-    hbtn.classList.toggle('open');
-    hmenu.classList.toggle('open');
+(function(){
+  const cg=document.getElementById('cg');
+  document.addEventListener('mousemove',e=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px'},{passive:true});
+  const sp=document.getElementById('sp');
+  function onScroll(){
+    const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+    sp.style.width=p+'%';
+    document.getElementById('nav').classList.toggle('sc',window.scrollY>60);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  const hbtn=document.getElementById('hbtn'),mm=document.getElementById('mmenu');
+  hbtn.addEventListener('click',()=>{hbtn.classList.toggle('open');mm.classList.toggle('open')});
+  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hbtn.classList.remove('open');mm.classList.remove('open')}));
+  const rvObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.1});
+  document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+  document.querySelectorAll('.magnetic').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)*.28,y=(e.clientY-r.top-r.height/2)*.28;btn.style.transform=`translate(${x}px,${y}px)`;});
+    btn.addEventListener('mouseleave',()=>{btn.style.transform=''});
   });
+})();
 </script>
 </body>
 </html>

@@ -1,401 +1,410 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" prefix="og: https://ogp.me/ns#">
 <head>
-  <meta charset="UTF-8">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQF63CGRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-NWQF63CGRL');
-  </script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>構築デモを体験する｜税理士法人向けLINE公式アカウント｜Form Flow</title>
-  <meta name="description" content="Form Flowが構築したLINE公式アカウントのデモを実際に体験できます。税理士法人向けのリッチメニュー・自動返信・ステップ配信を確認ください。">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/demo.html">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/demo.html">
-  <meta property="og:title" content="構築デモを体験する｜税理士法人向けLINE公式アカウント｜Form Flow">
-  <meta property="og:description" content="Form Flowが構築したLINE公式アカウントのデモを実際に体験できます。">
-  <meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
-  <meta property="og:site_name" content="Form Flow">
-  <meta property="og:locale" content="ja_JP">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --green:  #06C755;
-      --green-d:#04a344;
-      --navy:   #0F172A;
-      --text:   #1E293B;
-      --sub:    #64748B;
-      --border: rgba(0,0,0,.09);
-      --off:    #F8FAFC;
-    }
-    body {
-      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
-      background: var(--off);
-      color: var(--text);
-      line-height: 1.8;
-      font-size: 15px;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: var(--green); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+<meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQF63CGRL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NWQF63CGRL');</script>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>デモ体験｜LINEの自動化を今すぐ体験｜Form Flow</title>
+<meta name="description" content="Form Flowが構築したLINE公式アカウントのデモを実際に体験できます。QRコードから友だち追加して、リッチメニュー・自動返信・キーワード返信の動作をご確認ください。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/demo.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/demo.html">
+<meta property="og:title" content="デモ体験｜LINEの自動化を今すぐ体験｜Form Flow">
+<meta property="og:description" content="Form Flowが構築したLINE公式アカウントのデモを実際に体験できます。">
+<meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
+<meta property="og:site_name" content="Form Flow">
+<meta property="og:locale" content="ja_JP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#06C755;--gd:#04a344;
+  --navy:#05101e;--navy2:#0c1a2e;
+  --text:#111827;--body:#374151;--sub:#6B7280;
+  --border:rgba(0,0,0,.08);--off:#F9FAFB;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
 
-    nav {
-      background: rgba(255,255,255,.97);
-      border-bottom: 1px solid var(--border);
-      padding: 0 40px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-logo { font-size: 18px; font-weight: 800; color: var(--navy); text-decoration: none; }
-    .nav-logo span { color: var(--green); }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-links a { font-size: 14px; color: var(--sub); }
-    .nav-links a:hover { color: var(--text); text-decoration: none; }
-    .nav-links a.active { color: var(--green); font-weight: 600; }
-    .nav-cta {
-      background: var(--green); color: #fff !important;
-      font-weight: 700; font-size: 13px;
-      padding: 8px 20px; border-radius: 6px;
-      transition: background .2s;
-    }
-    .nav-cta:hover { background: var(--green-d) !important; }
+/* ── SCROLL PROGRESS ── */
+#sp{position:fixed;top:0;left:0;height:2px;background:var(--g);z-index:9999;width:0%;pointer-events:none;transition:width .08s}
 
-    .page-hero {
-      background: linear-gradient(135deg, #F0FDF4 0%, #EFF6FF 55%, #F8FAFC 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 60px 40px;
-      text-align: center;
-    }
-    .hero-badge {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--green);
-      background: rgba(6,199,85,.1);
-      border: 1px solid rgba(6,199,85,.25);
-      padding: 4px 14px;
-      border-radius: 20px;
-      margin-bottom: 16px;
-    }
-    .page-hero h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 800; margin-bottom: 14px; }
-    .page-hero p { font-size: 15px; color: var(--sub); max-width: 520px; margin: 0 auto; }
+/* ── CURSOR GLOW ── */
+#cg{position:fixed;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(6,199,85,.055) 0%,transparent 68%);pointer-events:none;transform:translate(-50%,-50%);z-index:0;left:-600px;top:-600px;transition:left .25s ease,top .25s ease}
 
-    .container { max-width: 860px; margin: 0 auto; padding: 60px 24px 80px; }
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;transition:background .4s,box-shadow .4s}
+nav.sc{background:rgba(255,255,255,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.nlogo{font-size:20px;font-weight:900;color:#fff;letter-spacing:.01em;transition:color .3s;font-family:'Inter',sans-serif}
+.nlogo em{color:var(--g);font-style:normal}
+nav.sc .nlogo{color:var(--navy)}
+.nlinks{display:flex;gap:32px;align-items:center}
+.nlinks a{font-size:13px;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s}
+nav.sc .nlinks a{color:var(--sub)}
+.nlinks a:hover{color:#fff}
+nav.sc .nlinks a:hover{color:var(--navy)}
+.nlinks a.active{color:var(--g)!important;font-weight:700}
+.ncta{background:var(--g)!important;color:#fff!important;padding:9px 22px;border-radius:8px;font-weight:700!important;font-size:13px;transition:background .2s,transform .15s!important}
+.ncta:hover{background:var(--gd)!important;transform:translateY(-1px)!important}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;transition:all .25s}
+nav.sc .hamburger span{background:var(--navy)}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mmenu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(5,16,30,.97);backdrop-filter:blur(20px);flex-direction:column;padding:8px 28px 28px;z-index:400;border-bottom:1px solid rgba(255,255,255,.07)}
+.mmenu.open{display:flex}
+.mmenu a{font-size:15px;color:rgba(255,255,255,.75);padding:15px 0;border-bottom:1px solid rgba(255,255,255,.06);font-weight:500}
+.mmenu a:last-child{border-bottom:none}
+.mmenu a.mc{margin-top:14px;background:var(--g);color:#fff;text-align:center;padding:13px;border-radius:10px;font-weight:700;border-bottom:none}
 
-    /* Demo card */
-    .demo-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-    .demo-info { padding: 48px 40px; }
-    .demo-badge {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--green);
-      background: rgba(6,199,85,.1);
-      border: 1px solid rgba(6,199,85,.2);
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-bottom: 16px;
-    }
-    .demo-info h2 { font-size: 22px; font-weight: 800; line-height: 1.5; margin-bottom: 12px; }
-    .demo-info p { font-size: 14px; color: var(--sub); line-height: 1.8; margin-bottom: 28px; }
+/* ── PAGE HERO ── */
+#page-hero{min-height:340px;background:var(--navy);display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 52px 80px;position:relative;overflow:hidden}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:72px 72px;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+.b1{width:420px;height:420px;background:rgba(6,199,85,.15);top:-20%;left:-10%;animation:bm 13s ease-in-out infinite}
+.b2{width:360px;height:360px;background:rgba(79,70,229,.13);bottom:-10%;right:-5%;animation:bm 10s ease-in-out infinite reverse;animation-delay:-5s}
+@keyframes bm{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(32px,-24px) scale(1.06)}66%{transform:translate(-22px,18px) scale(.94)}}
+.ph-label{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;color:rgba(6,199,85,.75);text-transform:uppercase;margin-bottom:14px}
+.ph-title{font-size:clamp(32px,5vw,56px);font-weight:900;color:#fff;line-height:1.18;margin-bottom:18px;letter-spacing:-.03em}
+.ph-sub{font-size:16px;color:rgba(255,255,255,.5);line-height:1.9;max-width:640px;margin:0 auto}
 
-    .feature-list { list-style: none; margin-bottom: 32px; }
-    .feature-list li {
-      font-size: 14px;
-      padding: 8px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .feature-list li:last-child { border-bottom: none; }
-    .feature-list li::before {
-      content: '✓';
-      color: var(--green);
-      font-weight: 700;
-      flex-shrink: 0;
-    }
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-    .btn-line-demo {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--green); color: #fff;
-      font-weight: 700; font-size: 15px;
-      padding: 14px 28px; border-radius: 8px;
-      text-decoration: none; transition: background .2s;
-    }
-    .btn-line-demo:hover { background: var(--green-d); text-decoration: none; }
+/* ── SECTION ── */
+.section{padding:96px 52px}
+.container{max-width:1160px;margin:0 auto}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--g);text-transform:uppercase;margin-bottom:14px;font-family:'Inter',sans-serif}
+.stitle{font-size:clamp(28px,3.5vw,44px);font-weight:900;color:var(--navy);line-height:1.2;margin-bottom:16px;letter-spacing:-.03em}
+.ssub{font-size:16px;color:var(--sub);line-height:1.95;margin-bottom:52px}
 
-    .demo-qr {
-      background: linear-gradient(135deg, #F0FDF4, #EFF6FF);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 48px 32px;
-      gap: 20px;
-      border-left: 1px solid var(--border);
-    }
-    .qr-label {
-      font-size: 12px;
-      color: var(--sub);
-      text-align: center;
-      font-weight: 600;
-    }
-    .qr-wrap {
-      background: #fff;
-      border-radius: 12px;
-      padding: 16px;
-      border: 1px solid var(--border);
-    }
-    .qr-wrap img { display: block; width: 160px; height: 160px; }
-    .qr-note {
-      font-size: 11px;
-      color: var(--sub);
-      text-align: center;
-      line-height: 1.7;
-    }
+/* ── DEMO CARD ── */
+.demo-card{background:#fff;border:1px solid var(--border);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1fr 460px;box-shadow:0 20px 80px rgba(0,0,0,.08)}
+.demo-info{padding:60px 52px;display:flex;flex-direction:column;justify-content:center}
+.demo-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(6,199,85,.1);border:1px solid rgba(6,199,85,.25);color:var(--g);font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:24px;letter-spacing:.07em;font-family:'Inter',sans-serif}
+.demo-badge-dot{width:6px;height:6px;background:var(--g);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.demo-info h2{font-size:clamp(22px,2.5vw,32px);font-weight:900;color:var(--navy);line-height:1.4;margin-bottom:16px;letter-spacing:-.02em}
+.demo-info p{font-size:15px;color:var(--sub);line-height:1.9;margin-bottom:32px}
+.demo-features{list-style:none;margin-bottom:36px;display:flex;flex-direction:column;gap:10px}
+.demo-features li{font-size:14px;color:var(--body);display:flex;align-items:center;gap:12px}
+.demo-features li::before{content:'';width:20px;height:20px;background:var(--g) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/11px no-repeat;border-radius:50%;flex-shrink:0}
+.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--g);color:#fff;font-weight:700;font-size:15px;padding:15px 30px;border-radius:10px;position:relative;overflow:hidden;transition:background .25s,transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;box-shadow:0 4px 24px rgba(6,199,85,.38)}
+.btn-p::after{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.26),transparent);transform:skewX(-15deg);transition:left .5s ease}
+.btn-p:hover{background:var(--gd);transform:translateY(-2px);box-shadow:0 8px 36px rgba(6,199,85,.5)}
+.btn-p:hover::after{left:160%}
 
-    /* Notice */
-    .demo-notice {
-      margin-top: 20px;
-      background: #FFFBEB;
-      border: 1px solid #FDE68A;
-      border-radius: 10px;
-      padding: 14px 18px;
-      font-size: 13px;
-      color: #92400E;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      overflow-wrap: break-word;
-      word-break: break-word;
-    }
-    .demo-notice span:first-child { flex-shrink: 0; }
-    .demo-notice span:last-child { min-width: 0; }
+/* QR side */
+.demo-qr-side{background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:52px 40px;gap:24px;position:relative;overflow:hidden}
+.demo-qr-side::before{content:'';position:absolute;top:-80px;right:-80px;width:260px;height:260px;background:radial-gradient(circle,rgba(6,199,85,.12) 0%,transparent 70%);pointer-events:none}
+.demo-qr-side::after{content:'';position:absolute;bottom:-60px;left:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(79,70,229,.12) 0%,transparent 70%);pointer-events:none}
+.qr-label{font-size:11px;font-weight:700;letter-spacing:.12em;color:rgba(6,199,85,.75);text-transform:uppercase;font-family:'Inter',sans-serif;position:relative;z-index:1}
+.qr-box{width:200px;height:200px;background:#fff;border-radius:18px;border:3px solid var(--g);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;position:relative;z-index:1;box-shadow:0 0 0 6px rgba(6,199,85,.15),0 20px 60px rgba(0,0,0,.4)}
+.qr-box span{font-size:13px;font-weight:600;color:var(--sub);text-align:center;line-height:1.5}
+.qr-icon{font-size:32px;opacity:.3}
+.qr-note{font-size:12px;color:rgba(255,255,255,.4);text-align:center;line-height:1.8;position:relative;z-index:1}
+.demo-add-btn{display:inline-flex;align-items:center;gap:9px;background:var(--g);color:#fff;font-weight:700;font-size:14px;padding:13px 24px;border-radius:10px;position:relative;z-index:1;transition:background .2s,transform .2s;box-shadow:0 4px 20px rgba(6,199,85,.35)}
+.demo-add-btn:hover{background:var(--gd);transform:translateY(-2px)}
 
-    /* Steps */
-    .section-title {
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 8px;
-      margin-top: 60px;
-    }
-    .section-sub { font-size: 14px; color: var(--sub); margin-bottom: 28px; }
+/* ── EXPERIENCE CARDS ── */
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.exp-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:36px 28px;transition:box-shadow .3s,transform .3s cubic-bezier(.34,1.56,.64,1)}
+.exp-card:hover{box-shadow:0 16px 50px rgba(0,0,0,.1);transform:translateY(-4px)}
+.exp-num{width:44px;height:44px;background:linear-gradient(135deg,rgba(6,199,85,.16),rgba(6,199,85,.04));border:1px solid rgba(6,199,85,.2);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-family:'Inter',sans-serif;font-size:18px;font-weight:900;color:var(--g)}
+.exp-card h3{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:10px}
+.exp-card p{font-size:13px;color:var(--sub);line-height:1.8}
 
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .step-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px 20px;
-      text-align: center;
-    }
-    .step-num {
-      width: 36px; height: 36px;
-      background: var(--green);
-      color: #fff;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 15px;
-      margin: 0 auto 14px;
-    }
-    .step-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
-    .step-card p { font-size: 13px; color: var(--sub); line-height: 1.7; }
+/* ── USE CASE CARDS ── */
+.uc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.uc{background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:box-shadow .3s cubic-bezier(.34,1.56,.64,1),transform .3s cubic-bezier(.34,1.56,.64,1)}
+.uc:hover{box-shadow:0 16px 50px rgba(0,0,0,.1);transform:translateY(-5px)}
+.uc-photo{height:180px;overflow:hidden;position:relative}
+.uc-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.uc:hover .uc-photo img{transform:scale(1.05)}
+.uc-photo-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(5,16,30,.6) 100%)}
+.uc-tag{position:absolute;bottom:12px;left:14px;display:inline-flex;align-items:center;background:rgba(6,199,85,.22);backdrop-filter:blur(8px);border:1px solid rgba(6,199,85,.35);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px}
+.uc-body{padding:22px}
+.uc h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.uc p{font-size:13px;color:var(--sub);line-height:1.78}
 
-    /* CTA */
-    .cta-banner {
-      margin-top: 60px;
-      background: linear-gradient(135deg, #F0FDF4, #EFF6FF);
-      border: 1px solid rgba(6,199,85,.35);
-      border-radius: 16px;
-      padding: 48px 40px;
-      text-align: center;
-    }
-    .cta-banner h2 { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
-    .cta-banner p { font-size: 14px; color: var(--sub); margin-bottom: 28px; }
-    .btn-wrap { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: var(--text);
-      font-weight: 600; font-size: 15px;
-      padding: 14px 28px; border-radius: 8px;
-      border: 1px solid var(--border);
-      text-decoration: none; transition: border-color .2s, color .2s;
-    }
-    .btn-outline:hover { border-color: var(--green); color: var(--green); text-decoration: none; }
+/* ── STEPS ── */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative}
+.steps-grid::before{content:'';position:absolute;top:36px;left:calc(16.67% + 28px);right:calc(16.67% + 28px);height:2px;background:linear-gradient(90deg,var(--g),rgba(6,199,85,.3),var(--g));pointer-events:none}
+.step-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:36px 28px;text-align:center;position:relative;z-index:1;transition:box-shadow .3s,transform .3s cubic-bezier(.34,1.56,.64,1)}
+.step-card:hover{box-shadow:0 16px 50px rgba(0,0,0,.1);transform:translateY(-4px)}
+.step-num{width:44px;height:44px;border-radius:50%;background:var(--g);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;margin:0 auto 20px;font-family:'Inter',sans-serif;box-shadow:0 4px 16px rgba(6,199,85,.4)}
+.step-card h3{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px}
+.step-card p{font-size:13px;color:var(--sub);line-height:1.8}
 
-    footer {
-      background: #fff;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      padding: 28px 24px;
-      font-size: 13px;
-      color: var(--sub);
-    }
-    .footer-logo { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
-    .footer-logo span { color: var(--green); }
-    .footer-links { display: flex; gap: 20px; justify-content: center; margin-bottom: 12px; flex-wrap: wrap; }
-    .footer-links a { color: var(--sub); font-size: 12px; }
+/* ── CTA ── */
+#cta{background:var(--navy);padding:100px 52px;text-align:center;position:relative;overflow:hidden}
+.cta-b1,.cta-b2{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+.cta-b1{width:440px;height:440px;background:rgba(6,199,85,.1);top:-100px;left:-60px;animation:bm 12s ease-in-out infinite}
+.cta-b2{width:380px;height:380px;background:rgba(79,70,229,.1);bottom:-80px;right:-40px;animation:bm 10s ease-in-out infinite reverse;animation-delay:-5s}
+.magnetic{transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
 
-    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all .25s; }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); flex-direction: column; padding: 8px 24px 20px; z-index: 99; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { font-size: 15px; color: var(--text); padding: 14px 0; border-bottom: 1px solid var(--border); text-decoration: none; font-weight: 500; }
-    .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a.m-cta { margin-top: 12px; background: var(--green); color: #fff; text-align: center; padding: 13px; border-radius: 8px; font-weight: 700; border-bottom: none; }
-    @media (max-width: 640px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .page-hero { padding: 48px 20px; }
-      .demo-card { grid-template-columns: 1fr; }
-      .demo-info { padding: 32px 24px; }
-      .demo-qr { border-left: none; border-top: 1px solid var(--border); padding: 32px 24px; }
-      .steps { grid-template-columns: 1fr; }
-      .cta-banner { padding: 36px 20px; }
-      .container { padding: 40px 20px 60px; }
-    }
-  </style>
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .demo-card{grid-template-columns:1fr}
+  .demo-qr-side{border-top:1px solid rgba(255,255,255,.08);padding:48px 40px}
+  .exp-grid,.uc-grid,.steps-grid{grid-template-columns:1fr 1fr}
+  .steps-grid::before{display:none}
+  .step-card:nth-child(3){grid-column:1/-1;max-width:380px;margin:0 auto;width:100%}
+}
+@media(max-width:700px){
+  nav{padding:0 20px}
+  .nlinks{display:none}
+  .hamburger{display:flex}
+  #page-hero{padding:120px 24px 60px}
+  .section{padding:64px 24px}
+  .demo-info{padding:40px 28px}
+  .demo-qr-side{padding:40px 28px}
+  .exp-grid,.uc-grid,.steps-grid{grid-template-columns:1fr}
+  .steps-grid::before{display:none}
+  .step-card:nth-child(3){max-width:none;grid-column:auto}
+  #cta{padding:72px 24px}
+  footer{padding:36px 24px}
+}
+</style>
 </head>
 <body>
 
-<nav>
-  <a href="./index.html" class="nav-logo">Form <span>Flow</span></a>
-  <div class="nav-links">
-    <a href="./service.html">サービス詳細</a>
+<div id="cg"></div>
+<div id="sp"></div>
+<nav id="nav">
+  <a href="./index.html" class="nlogo">Form <em>Flow</em></a>
+  <div class="nlinks">
+    <a href="./index.html#features">サービス内容</a>
     <a href="./cases.html">構築例</a>
     <a href="./demo.html" class="active">デモ体験</a>
     <a href="./column.html">コラム</a>
     <a href="./news.html">お知らせ</a>
-    <a href="./index.html#contact" class="nav-cta">無料相談</a>
+    <a href="./index.html#cta" class="ncta magnetic">無料相談</a>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="メニューを開く">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" id="hbtn"><span></span><span></span><span></span></button>
 </nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="./service.html">サービス詳細</a>
+<div class="mmenu" id="mmenu">
+  <a href="./index.html#features">サービス内容</a>
   <a href="./cases.html">構築例</a>
   <a href="./demo.html">デモ体験</a>
   <a href="./column.html">コラム</a>
   <a href="./news.html">お知らせ</a>
-  <a href="./index.html#contact" class="m-cta">無料相談</a>
+  <a href="./index.html#cta" class="mc">無料相談する</a>
 </div>
 
-<div class="page-hero">
-  <div class="hero-badge">LIVE DEMO</div>
-  <h1>構築デモを実際に体験する</h1>
-  <p>Form Flowが構築したLINE公式アカウントを、スマートフォンで今すぐ体験できます。リッチメニュー・自動返信・ステップ配信がどのように動くかをご確認ください。</p>
-</div>
+<section id="page-hero">
+  <div class="hgrid"></div>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div style="position:relative;z-index:1">
+    <p class="ph-label">Demo</p>
+    <h1 class="ph-title">デモ体験</h1>
+    <p class="ph-sub">実際の動作をLINEで体験できます。QRコードから友だち追加してみてください。</p>
+  </div>
+</section>
 
-<div class="container">
-
-  <div class="demo-card">
-    <div class="demo-info">
-      <div class="demo-badge">税理士法人向けデモ</div>
-      <h2>税理士法人 サンプル事務所<br>LINE公式アカウント</h2>
-      <p>確定申告・税務相談・顧問契約の問い合わせ受付を想定した構成です。GASを使って月額ツール代0円で動いています。</p>
-
-      <ul class="feature-list">
-        <li>リッチメニュー（6分割・導線設計済み）</li>
-        <li>友だち追加時の自動あいさつメッセージ</li>
-        <li>キーワード自動返信（「相談」「料金」「確定申告」など）</li>
-        <li>ステップ配信（登録〜相談誘導の5ステップ）</li>
-        <li>GAS連携・月額ツール代0円</li>
-      </ul>
-
-      <a href="https://lin.ee/8qG8V8b" target="_blank" rel="noopener" class="btn-line-demo">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-        デモアカウントを追加する
-      </a>
-    </div>
-
-    <div class="demo-qr">
-      <div class="qr-label">QRコードで追加</div>
-      <div class="qr-wrap">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://lin.ee/8qG8V8b&margin=0&color=0F172A" alt="デモLINEアカウント QRコード">
+<!-- ── DEMO MAIN ── -->
+<section class="section" style="background:var(--off)">
+  <div class="container">
+    <div class="demo-card rv">
+      <div class="demo-info">
+        <div class="demo-badge">
+          <span class="demo-badge-dot"></span>
+          LIVE DEMO — 今すぐ体験できます
+        </div>
+        <h2>Form Flow デモアカウント</h2>
+        <p>実際に構築したLINE公式アカウントをそのまま体験できます。友だち追加後すぐに自動メッセージが届き、リッチメニューの操作感・キーワード返信の精度をご確認いただけます。</p>
+        <ul class="demo-features">
+          <li>友だち追加後の自動あいさつメッセージ</li>
+          <li>キーワード自動返信（「相談」「料金」など）</li>
+          <li>リッチメニュー（タップ型メニュー）</li>
+          <li>GAS連携・月額ツール代0円で動作</li>
+        </ul>
+        <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-p magnetic" style="align-self:flex-start">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          LINEで友だち追加して体験する
+        </a>
+        <p style="font-size:12px;color:var(--sub);margin-top:14px">※ このアカウントはデモ用です。実際のご相談は<a href="https://lin.ee/SD2HKgtW" style="color:var(--g)">こちら</a>から。</p>
       </div>
-      <div class="qr-note">スマートフォンのカメラで<br>読み取ってください</div>
+
+      <div class="demo-qr-side">
+        <p class="qr-label">QRコードで友だち追加</p>
+        <div class="qr-box">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="#06C755" style="margin-bottom:12px"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          <div style="font-size:13px;color:var(--sub);font-weight:600;margin-bottom:4px">LINEアプリで読み取り</div>
+          <div style="font-size:11px;color:#9ca3af">実際のQRコードはこちらに表示されます</div>
+        </div>
+        <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="demo-add-btn magnetic">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          LINEで直接追加する
+        </a>
+        <p class="qr-note">上のボタンまたはQRコードで<br>友だち追加後すぐに体験できます</p>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="demo-notice">
-    <span>⚠️</span>
-    <span>このアカウントはデモ用です。実際のご相談・お問い合わせは<a href="./index.html#contact">こちら</a>からお願いします。</span>
-  </div>
-
-  <h2 class="section-title">体験できること</h2>
-  <p class="section-sub">友だち追加後、以下の流れで自動的に動作を確認できます</p>
-
-  <div class="steps">
-    <div class="step-card">
-      <div class="step-num">1</div>
-      <h3>友だち追加直後</h3>
-      <p>ウェルカムメッセージが自動送信されます。事務所の紹介と次のステップへの案内が届きます。</p>
+<!-- ── 体験できること ── -->
+<section class="section" style="background:#fff">
+  <div class="container">
+    <div class="rv" style="text-align:center;margin-bottom:60px">
+      <p class="eyebrow">Experience</p>
+      <h2 class="stitle">体験できること</h2>
+      <p class="ssub" style="margin-bottom:0">友だち追加後、以下の3つの機能を実際に動作確認できます。</p>
     </div>
-    <div class="step-card">
-      <div class="step-num">2</div>
-      <h3>キーワードを送る</h3>
-      <p>「相談」「料金」「確定申告」などのキーワードを送ると、自動で返信が届きます。</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">3</div>
-      <h3>リッチメニューを操作</h3>
-      <p>画面下部のメニューから各導線を確認できます。ボタン配置と文言の設計をご覧ください。</p>
-    </div>
-  </div>
-
-  <div class="cta-banner">
-    <h2>同じ仕組みをあなたの事務所・事業に</h2>
-    <p>業種・規模・目的に合わせてカスタマイズして構築します。まずはお気軽にご相談ください。</p>
-    <div class="btn-wrap">
-      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-line-demo">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-        LINEで無料相談する
-      </a>
-      <a href="./index.html#contact" class="btn-outline">お問い合わせフォーム</a>
+    <div class="exp-grid">
+      <div class="exp-card rv d1">
+        <div class="exp-num">01</div>
+        <h3>友だち追加後の自動返信</h3>
+        <p>友だち追加した瞬間、自動あいさつメッセージが届きます。サービス紹介と次のアクションへの案内が自動送信されます。</p>
+      </div>
+      <div class="exp-card rv d2">
+        <div class="exp-num">02</div>
+        <h3>キーワード返信テスト</h3>
+        <p>「相談」「料金」などのキーワードを送ると、自動で案内メッセージが届きます。GASが瞬時に判定して返信します。</p>
+      </div>
+      <div class="exp-card rv d3">
+        <div class="exp-num">03</div>
+        <h3>リッチメニュー操作</h3>
+        <p>画面下部のタップ型メニューを操作できます。ボタン配置・文言設計の実際の使い心地をご確認ください。</p>
+      </div>
     </div>
   </div>
+</section>
 
-</div>
-
-<footer>
-  <div class="footer-logo">Form <span>Flow</span></div>
-  <div class="footer-links">
-    <a href="./privacy.html">プライバシーポリシー</a>
-    <a href="./terms.html">利用規約</a>
-    <a href="./tokushoho.html">特定商取引法に基づく表記</a>
+<!-- ── 実際の構築例 ── -->
+<section class="section" style="background:var(--off)">
+  <div class="container">
+    <div class="rv" style="text-align:center;margin-bottom:60px">
+      <p class="eyebrow">Use Cases</p>
+      <h2 class="stitle">実際の構築例</h2>
+      <p class="ssub" style="margin-bottom:0">業種・目的に応じてカスタマイズして構築します。</p>
+    </div>
+    <div class="uc-grid">
+      <div class="uc rv d1">
+        <div class="uc-photo">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80" alt="整体院・サロン向け" loading="lazy">
+          <div class="uc-photo-overlay"></div>
+          <span class="uc-tag">整体院・サロン</span>
+        </div>
+        <div class="uc-body">
+          <h3>予約リマインド・休眠顧客の掘り起こし</h3>
+          <p>来院前日の自動リマインド・来院後のフォロー・休眠顧客への一斉配信まで自動化。</p>
+        </div>
+      </div>
+      <div class="uc rv d2">
+        <div class="uc-photo">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="コンサルタント・士業向け" loading="lazy">
+          <div class="uc-photo-overlay"></div>
+          <span class="uc-tag">コンサル・士業</span>
+        </div>
+        <div class="uc-body">
+          <h3>問い合わせ受付・日程調整の自動化</h3>
+          <p>フォーム送信後にLINEへ即時通知。Googleカレンダー連携でMeet URLを自動生成。</p>
+        </div>
+      </div>
+      <div class="uc rv d3">
+        <div class="uc-photo">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80" alt="EC・ショップ向け" loading="lazy">
+          <div class="uc-photo-overlay"></div>
+          <span class="uc-tag">EC・ショップ</span>
+        </div>
+        <div class="uc-body">
+          <h3>購入後フォロー・セール通知の配信</h3>
+          <p>購入後の自動お礼メッセージ・顧客属性に合わせたセール通知を自動配信。</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <p>© 2026 Form Flow. All rights reserved.</p>
+</section>
+
+<!-- ── 次のステップ ── -->
+<section class="section" style="background:#fff">
+  <div class="container">
+    <div class="rv" style="text-align:center;margin-bottom:64px">
+      <p class="eyebrow">Next Steps</p>
+      <h2 class="stitle">デモ体験の後は</h2>
+      <p class="ssub" style="margin-bottom:0">気に入ったら、そのままご相談いただけます。</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card rv d1">
+        <div class="step-num">1</div>
+        <h3>デモを体験する</h3>
+        <p>QRコードから友だち追加して、実際の動作を確認してください。数分で体験できます。</p>
+      </div>
+      <div class="step-card rv d2">
+        <div class="step-num">2</div>
+        <h3>相談・見積もりを依頼する</h3>
+        <p>「自分のビジネスに合う形にしたい」と思ったら、LINEで無料相談。当日中に返信します。</p>
+      </div>
+      <div class="step-card rv d3">
+        <div class="step-num">3</div>
+        <h3>構築・納品</h3>
+        <p>ご要望をヒアリングして構築開始。最短3営業日で操作マニュアル付きで納品します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="cta-b1"></div><div class="cta-b2"></div>
+  <div style="position:relative;z-index:1;max-width:800px;margin:0 auto" class="rv">
+    <p style="font-size:11px;font-weight:700;letter-spacing:.16em;color:rgba(6,199,85,.75);text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif">GET STARTED</p>
+    <h2 style="font-size:clamp(28px,4vw,48px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:20px;letter-spacing:-.03em">まず、無料で相談してみてください。</h2>
+    <p style="font-size:16px;color:rgba(255,255,255,.5);margin-bottom:44px;line-height:1.9">「何から始めればいいか分からない」という段階からでも大丈夫です。</p>
+    <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-p magnetic" style="display:inline-flex;align-items:center;gap:10px">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      LINEで無料相談する
+    </a>
+    <p style="font-size:12px;color:rgba(255,255,255,.28);margin-top:20px">相談・見積もり無料 ・ 秘密厳守 ・ 返信は数時間以内</p>
+  </div>
+</section>
+
+<footer style="background:#040a14;border-top:1px solid rgba(255,255,255,.05);padding:44px 52px">
+  <div style="max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px">
+    <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:900;color:#fff">Form <span style="color:var(--g)">Flow</span></div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+      <a href="./privacy.html" style="font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s">プライバシーポリシー</a>
+      <a href="./terms.html" style="font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s">利用規約</a>
+      <a href="./tokushoho.html" style="font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s">特定商取引法</a>
+      <a href="./news.html" style="font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s">お知らせ</a>
+    </div>
+    <div style="font-size:12px;color:rgba(255,255,255,.2);font-family:'Inter',sans-serif">© 2026 Form Flow.</div>
+  </div>
 </footer>
+
 <script>
-  const hbtn = document.getElementById('hamburger');
-  const hmenu = document.getElementById('mobile-menu');
-  hbtn.addEventListener('click', () => {
-    hbtn.classList.toggle('open');
-    hmenu.classList.toggle('open');
+(function(){
+  const cg=document.getElementById('cg');
+  document.addEventListener('mousemove',e=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px'},{passive:true});
+  const sp=document.getElementById('sp');
+  function onScroll(){
+    const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+    sp.style.width=p+'%';
+    document.getElementById('nav').classList.toggle('sc',window.scrollY>60);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+  const hbtn=document.getElementById('hbtn'),mm=document.getElementById('mmenu');
+  hbtn.addEventListener('click',()=>{hbtn.classList.toggle('open');mm.classList.toggle('open')});
+  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hbtn.classList.remove('open');mm.classList.remove('open')}));
+  const rvObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.1});
+  document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+  document.querySelectorAll('.magnetic').forEach(btn=>{
+    btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)*.28,y=(e.clientY-r.top-r.height/2)*.28;btn.style.transform=`translate(${x}px,${y}px)`;});
+    btn.addEventListener('mouseleave',()=>{btn.style.transform=''});
   });
+})();
 </script>
 </body>
 </html>
