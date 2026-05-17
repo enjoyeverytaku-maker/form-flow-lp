@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>業務委託契約書｜Form Flow</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#06C755;
+  --text:#1a1a2a;
+  --sub:#64748b;
+  --border:#e2e8f0;
+  --bg:#f8fafc;
+}
+body{
+  font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',sans-serif;
+  color:var(--text);
+  background:#fff;
+  font-size:13px;
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── HEADER ── */
+.doc-header{
+  padding:40px 60px 28px;
+  border-bottom:2px solid var(--text);
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+}
+.brand{font-size:18px;font-weight:900;letter-spacing:.02em}
+.brand em{color:var(--g);font-style:normal}
+.doc-meta{text-align:right;font-size:12px;color:var(--sub);line-height:1.7}
+.doc-meta strong{color:var(--text);font-weight:700}
+
+/* ── TITLE ── */
+.doc-title{text-align:center;padding:36px 60px 20px}
+.doc-title h1{font-size:22px;font-weight:900;letter-spacing:.12em;margin-bottom:10px}
+.doc-title p{font-size:12px;color:var(--sub)}
+
+/* ── PREAMBLE ── */
+.preamble{
+  margin:0 60px 32px;
+  padding:20px 24px;
+  background:var(--bg);
+  border-left:3px solid var(--g);
+  border-radius:0 8px 8px 0;
+  font-size:12.5px;
+  line-height:1.9;
+}
+.preamble .blank{
+  display:inline-block;
+  border-bottom:1px solid var(--text);
+  min-width:120px;
+  text-align:center;
+  font-weight:700;
+}
+
+/* ── PARTIES ── */
+.parties{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin:0 60px 32px;
+}
+.party-box{
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:20px;
+}
+.party-box h3{
+  font-size:11px;
+  font-weight:700;
+  color:var(--sub);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--border);
+}
+.party-row{
+  display:flex;
+  gap:8px;
+  margin-bottom:8px;
+  font-size:12.5px;
+}
+.party-key{color:var(--sub);white-space:nowrap;min-width:56px;font-size:11.5px}
+.party-val{font-weight:600;border-bottom:1px solid var(--border);flex:1;padding-bottom:2px;min-height:20px}
+
+/* ── ARTICLES ── */
+.articles{margin:0 60px;padding-bottom:48px}
+.article{margin-bottom:28px}
+.article-title{
+  font-size:14px;
+  font-weight:900;
+  padding:8px 14px;
+  background:var(--bg);
+  border-left:3px solid var(--g);
+  margin-bottom:10px;
+  border-radius:0 6px 6px 0;
+}
+.article-body{padding:0 6px;font-size:12.5px;line-height:1.95}
+.article-body p{margin-bottom:6px}
+.item-list{list-style:none;padding-left:4px}
+.item-list li{
+  padding:5px 0 5px 20px;
+  position:relative;
+  border-bottom:1px dashed var(--border);
+  font-size:12.5px;
+}
+.item-list li:last-child{border-bottom:none}
+.item-list li::before{
+  content:'';
+  position:absolute;
+  left:4px;
+  top:50%;
+  transform:translateY(-50%);
+  width:6px;
+  height:6px;
+  background:var(--g);
+  border-radius:50%;
+}
+.note{
+  margin-top:8px;
+  padding:10px 14px;
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  border-radius:6px;
+  font-size:11.5px;
+  color:#9a3412;
+}
+
+/* ── PRICE TABLE ── */
+.price-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12.5px}
+.price-table th,.price-table td{border:1px solid var(--border);padding:9px 12px;text-align:left}
+.price-table th{background:var(--bg);font-weight:700;font-size:11.5px;color:var(--sub)}
+.price-table .amount{text-align:right;font-weight:700;font-family:'Inter',monospace}
+.price-table .total{background:var(--bg);font-weight:900}
+
+/* ── SIGN ── */
+.sign-section{
+  margin:40px 60px 0;
+  padding-top:28px;
+  border-top:1px solid var(--border);
+}
+.sign-section h3{
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:20px;
+  text-align:center;
+}
+.sign-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.sign-box{border:1px solid var(--border);border-radius:10px;padding:20px}
+.sign-box h4{font-size:11px;color:var(--sub);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;font-weight:700}
+.sign-row{display:flex;gap:8px;margin-bottom:10px;align-items:flex-end}
+.sign-key{font-size:11.5px;color:var(--sub);white-space:nowrap;min-width:56px}
+.sign-val{border-bottom:1px solid var(--text);flex:1;min-height:22px}
+.sign-stamp{
+  margin-top:16px;
+  width:72px;
+  height:72px;
+  border:1px dashed var(--border);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:10px;
+  color:var(--sub);
+  margin-left:auto;
+}
+
+/* ── FOOTER ── */
+.doc-footer{
+  background:var(--bg);
+  border-top:1px solid var(--border);
+  padding:14px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:11px;
+  color:var(--sub);
+}
+.page-num::after{content:'1 / 1'}
+
+/* ── PRINT ── */
+@media print{
+  body{font-size:12px}
+  .doc-header,.sign-section,.doc-footer{break-inside:avoid}
+  .article{break-inside:avoid}
+  @page{margin:15mm 18mm}
+}
+
+/* ── SCREEN helpers ── */
+@media screen{
+  body{max-width:860px;margin:0 auto;box-shadow:0 0 40px rgba(0,0,0,.1)}
+  .print-btn{
+    position:fixed;
+    bottom:28px;
+    right:28px;
+    background:var(--g);
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    padding:12px 22px;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 4px 20px rgba(6,199,85,.4);
+    font-family:inherit;
+  }
+  .print-btn:hover{background:#04a344}
+}
+@media print{.print-btn{display:none}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="doc-header">
+  <div class="brand">Form <em>Flow</em></div>
+  <div class="doc-meta">
+    <div>契約書番号：<strong>FF-<span id="docNo">2026-001</span></strong></div>
+    <div>作成日：<strong id="docDate"></strong></div>
+  </div>
+</div>
+
+<!-- TITLE -->
+<div class="doc-title">
+  <h1>業 務 委 託 契 約 書</h1>
+  <p>LINE公式アカウント構築サービス（Form Flow）</p>
+</div>
+
+<!-- PREAMBLE -->
+<div class="preamble">
+  下記の委託者（以下「甲」）と受託者（以下「乙」）は、LINE公式アカウントの構築に関する業務委託契約を以下のとおり締結します。
+</div>
+
+<!-- PARTIES -->
+<div class="parties">
+  <div class="party-box">
+    <h3>委託者（甲）</h3>
+    <div class="party-row"><span class="party-key">氏名／社名</span><span class="party-val"></span></div>
+    <div class="party-row"><span class="party-key">住所</span><span class="party-val"></span></div>
+    <div class="party-row"><span class="party-key">電話</span><span class="party-val"></span></div>
+    <div class="party-row"><span class="party-key">メール</span><span class="party-val"></span></div>
+  </div>
+  <div class="party-box">
+    <h3>受託者（乙）</h3>
+    <div class="party-row"><span class="party-key">氏名</span><span class="party-val">宇都宮 拓</span></div>
+    <div class="party-row"><span class="party-key">屋号</span><span class="party-val">Form Flow</span></div>
+    <div class="party-row"><span class="party-key">連絡先</span><span class="party-val">lineform.works@gmail.com</span></div>
+    <div class="party-row"><span class="party-key">所在地</span><span class="party-val">請求により開示</span></div>
+  </div>
+</div>
+
+<!-- ARTICLES -->
+<div class="articles">
+
+  <!-- 第1条 -->
+  <div class="article">
+    <div class="article-title">第1条（委託業務の内容）</div>
+    <div class="article-body">
+      <p>乙は甲に対し、以下の業務を行います。</p>
+      <ul class="item-list">
+        <li>LINE公式アカウントの初期設定・各種設定変更</li>
+        <li>リッチメニューのデザイン作成および設定</li>
+        <li>キーワード自動返信の設定（契約プランに定める件数）</li>
+        <li>Google Apps Script（GAS）を用いた自動化処理の実装</li>
+        <li>その他、甲乙間で別途合意した項目</li>
+      </ul>
+      <div class="note">※具体的な実装範囲は本契約書末尾の「作業仕様書」または乙からの見積書に記載された内容を基準とします。</div>
+    </div>
+  </div>
+
+  <!-- 第2条 -->
+  <div class="article">
+    <div class="article-title">第2条（契約期間・納期）</div>
+    <div class="article-body">
+      <p>乙は、甲から着手金の入金確認後、下記の期日までに成果物を納品します。</p>
+      <ul class="item-list">
+        <li>納品予定日：入金確認から <strong>　　　　</strong> 営業日以内</li>
+        <li>具体的な日付：<strong>　　　　年　　月　　日</strong> を目安とする</li>
+      </ul>
+      <p>甲の都合（資料不提供・承認遅延等）による遅延については、乙は責任を負いません。</p>
+    </div>
+  </div>
+
+  <!-- 第3条 -->
+  <div class="article">
+    <div class="article-title">第3条（報酬・支払い）</div>
+    <div class="article-body">
+      <table class="price-table">
+        <tr>
+          <th>項目</th>
+          <th>内容</th>
+          <th style="text-align:right">金額（税込）</th>
+        </tr>
+        <tr>
+          <td>委託料</td>
+          <td>　　　　プラン / 構築費用</td>
+          <td class="amount">¥　　　　,000</td>
+        </tr>
+        <tr>
+          <td>オプション</td>
+          <td>（追加作業がある場合に記載）</td>
+          <td class="amount">¥　　　　,000</td>
+        </tr>
+        <tr class="total">
+          <td colspan="2">合計（税込）</td>
+          <td class="amount">¥　　　　,000</td>
+        </tr>
+      </table>
+      <br>
+      <ul class="item-list">
+        <li>支払い方法：銀行振込（口座情報は別途ご連絡します）</li>
+        <li>支払い時期：着手前に全額 または 着手前50%・納品後50%（甲乙間で合意した方法に従う）</li>
+        <li>振込手数料：甲のご負担とします</li>
+        <li>当事業者はインボイス（適格請求書）発行事業者に登録していません</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 第4条 -->
+  <div class="article">
+    <div class="article-title">第4条（成果物の著作権・帰属）</div>
+    <div class="article-body">
+      <p>本契約により乙が作成した成果物（リッチメニュー画像・設定内容等）の著作権は、委託料の全額支払い完了をもって甲に帰属します。</p>
+      <p>ただし、乙が本業務に使用した汎用的なGASコードのベーステンプレートの著作権は乙に留保されます。乙は、甲の同意を得ることなく当該テンプレートを他の顧客に再利用できるものとします。</p>
+    </div>
+  </div>
+
+  <!-- 第5条 -->
+  <div class="article">
+    <div class="article-title">第5条（キャンセル・返金）</div>
+    <div class="article-body">
+      <ul class="item-list">
+        <li><strong>着手前のキャンセル：</strong>入金済みの委託料を全額返金します（振込手数料を除く）</li>
+        <li><strong>着手後のキャンセル：</strong>作業の進捗割合に応じた費用を申し受け、残額を返金します</li>
+        <li><strong>納品後：</strong>成果物の性質上、完成・納品後の返金には応じられません</li>
+        <li><strong>乙都合のキャンセル：</strong>乙の事由によりキャンセルとなった場合、受領済みの委託料を全額返金します</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 第6条 -->
+  <div class="article">
+    <div class="article-title">第6条（納品後サポート・保証）</div>
+    <div class="article-body">
+      <ul class="item-list">
+        <li>納品後 <strong>7日間</strong> は、乙の実装に起因する不具合について無償で修正対応します</li>
+        <li>甲が設定を変更した後の不具合、LINE公式アカウント側の仕様変更による不具合は保証対象外です</li>
+        <li>保証期間後の追加修正・機能追加は、別途お見積もりとなります</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 第7条 -->
+  <div class="article">
+    <div class="article-title">第7条（秘密保持）</div>
+    <div class="article-body">
+      <p>甲および乙は、本契約の履行に際して知り得た相手方の業務上の情報・個人情報を、第三者に開示・漏洩してはなりません。この義務は本契約終了後も 3年間 存続します。</p>
+      <p>ただし、以下の情報はこの限りではありません。</p>
+      <ul class="item-list">
+        <li>開示を受けた時点で既に公知であった情報</li>
+        <li>法令または裁判所・行政機関の命令に基づき開示が必要な情報</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 第8条 -->
+  <div class="article">
+    <div class="article-title">第8条（免責）</div>
+    <div class="article-body">
+      <ul class="item-list">
+        <li>LINE株式会社の利用規約変更・仕様変更・サービス停止による影響について、乙は責任を負いません</li>
+        <li>甲のLINE公式アカウントの運用（投稿内容・集客結果等）について、乙は一切保証しません</li>
+        <li>天災・通信障害等の不可抗力による納品遅延について、乙は責任を負いません</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 第9条 -->
+  <div class="article">
+    <div class="article-title">第9条（禁止事項）</div>
+    <div class="article-body">
+      <p>甲は、本契約による成果物を以下の目的に使用してはなりません。</p>
+      <ul class="item-list">
+        <li>LINE株式会社の利用規約に違反する用途</li>
+        <li>詐欺・誹謗中傷・違法行為への利用</li>
+        <li>乙の許可なく第三者に転売・再配布すること</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 第10条 -->
+  <div class="article">
+    <div class="article-title">第10条（契約解除）</div>
+    <div class="article-body">
+      <p>甲または乙が以下のいずれかに該当した場合、相手方は通知なく本契約を解除できます。</p>
+      <ul class="item-list">
+        <li>本契約の条項に重大な違反があり、相当期間内に是正されない場合</li>
+        <li>支払いを不当に拒否した場合</li>
+        <li>反社会的勢力であることが判明した場合</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 第11条 -->
+  <div class="article">
+    <div class="article-title">第11条（協議・準拠法・管轄）</div>
+    <div class="article-body">
+      <p>本契約に定めのない事項が生じた場合、甲乙は誠意をもって協議し解決します。本契約は日本法に準拠し、訴訟が必要な場合は乙の住所地を管轄する裁判所を合意管轄とします。</p>
+    </div>
+  </div>
+
+</div><!-- /articles -->
+
+<!-- SIGN -->
+<div class="sign-section">
+  <h3>上記の内容に合意し、本契約書を締結します</h3>
+  <div class="sign-grid">
+    <div class="sign-box">
+      <h4>委託者（甲）</h4>
+      <div class="sign-row"><span class="sign-key">日付</span><span class="sign-val"></span></div>
+      <div class="sign-row"><span class="sign-key">氏名</span><span class="sign-val"></span></div>
+      <div class="sign-row"><span class="sign-key">住所</span><span class="sign-val"></span></div>
+      <div class="sign-stamp">印</div>
+    </div>
+    <div class="sign-box">
+      <h4>受託者（乙）</h4>
+      <div class="sign-row"><span class="sign-key">日付</span><span class="sign-val"></span></div>
+      <div class="sign-row"><span class="sign-key">氏名</span><span class="sign-val">宇都宮 拓</span></div>
+      <div class="sign-row"><span class="sign-key">屋号</span><span class="sign-val">Form Flow</span></div>
+      <div class="sign-stamp">印</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div>Form Flow — lineform.works@gmail.com</div>
+  <div class="page-num"></div>
+</div>
+
+<button class="print-btn" onclick="window.print()">印刷 / PDF保存</button>
+
+<script>
+  // 今日の日付をセット
+  const d = new Date();
+  const y = d.getFullYear(), m = String(d.getMonth()+1).padStart(2,'0'), day = String(d.getDate()).padStart(2,'0');
+  document.getElementById('docDate').textContent = `${y}年${m}月${day}日`;
+  // 連番（手動で変更可）
+  document.getElementById('docNo').textContent = `${y}-001`;
+</script>
+</body>
+</html>
