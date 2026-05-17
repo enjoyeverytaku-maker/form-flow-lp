@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQF63CGRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NWQF63CGRL');
+  </script>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お知らせ｜Form Flow</title>
+  <meta name="description" content="Form Flowのサービスに関するお知らせ・更新情報を掲載しています。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/news.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/news.html">
+  <meta property="og:title" content="お知らせ｜Form Flow">
+  <meta property="og:description" content="Form Flowのサービスに関するお知らせ・更新情報を掲載しています。">
+  <meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
+  <meta property="og:site_name" content="Form Flow">
+  <meta property="og:locale" content="ja_JP">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --green:#06C755; --green-d:#04a344; --navy:#0F172A; --text:#1E293B; --sub:#64748B; --border:rgba(0,0,0,.09); --off:#F8FAFC; }
+    body { font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',sans-serif; background:var(--off); color:var(--text); line-height:1.8; font-size:15px; -webkit-font-smoothing:antialiased; }
+    a { color:var(--green); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    nav { background:rgba(255,255,255,.97); border-bottom:1px solid var(--border); padding:0 40px; height:64px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; }
+    .nav-logo { font-size:18px; font-weight:800; color:var(--navy); text-decoration:none; }
+    .nav-logo span { color:var(--green); }
+    .nav-links { display:flex; align-items:center; gap:28px; }
+    .nav-links a { font-size:14px; color:var(--sub); }
+    .nav-links a:hover { color:var(--navy); text-decoration:none; }
+    .nav-links a.active { color:var(--green); font-weight:600; }
+    .nav-cta { background:var(--green); color:#fff !important; font-weight:700; font-size:13px; padding:8px 20px; border-radius:6px; transition:background .2s; }
+    .nav-cta:hover { background:var(--green-d) !important; }
+    .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+    .hamburger span { display:block; width:22px; height:2px; background:var(--navy); border-radius:2px; transition:all .25s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display:none; position:fixed; top:64px; left:0; right:0; background:#fff; border-bottom:1px solid var(--border); flex-direction:column; padding:8px 24px 20px; z-index:99; box-shadow:0 4px 16px rgba(0,0,0,.08); }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu a { font-size:15px; color:var(--text); padding:14px 0; border-bottom:1px solid var(--border); text-decoration:none; font-weight:500; }
+    .mobile-menu a:last-child { border-bottom:none; }
+    .mobile-menu a.m-cta { margin-top:12px; background:var(--green); color:#fff; text-align:center; padding:13px; border-radius:8px; font-weight:700; border-bottom:none; }
+
+    .page-hero { background:linear-gradient(135deg,#F0FDF4,#EFF6FF); border-bottom:1px solid var(--border); padding:52px 40px; text-align:center; }
+    .page-hero h1 { font-size:28px; font-weight:800; color:var(--navy); margin-bottom:8px; }
+    .page-hero p { font-size:14px; color:var(--sub); }
+
+    .container { max-width:760px; margin:0 auto; padding:52px 24px 80px; }
+
+    .news-list { display:flex; flex-direction:column; gap:0; }
+    .news-item { background:#fff; border:1px solid var(--border); border-radius:12px; padding:28px 32px; margin-bottom:16px; scroll-margin-top:80px; }
+    .news-item:target { border-color:var(--green); box-shadow:0 0 0 3px rgba(6,199,85,.15); }
+    .news-meta { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+    .news-date { font-size:13px; color:var(--sub); }
+    .news-badge { font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; }
+    .badge-info    { background:rgba(6,199,85,.12); color:var(--green); border:1px solid rgba(6,199,85,.2); }
+    .badge-update  { background:rgba(58,130,246,.12); color:#3B82F6; border:1px solid rgba(58,130,246,.2); }
+    .badge-notice  { background:rgba(245,158,11,.12); color:#D97706; border:1px solid rgba(245,158,11,.2); }
+    .news-title { font-size:18px; font-weight:800; color:var(--navy); margin-bottom:12px; line-height:1.5; }
+    .news-body { font-size:14px; color:var(--text); line-height:1.9; }
+    .news-body p { margin-bottom:12px; }
+    .news-body p:last-child { margin-bottom:0; }
+
+    .empty { text-align:center; padding:80px 24px; color:var(--sub); font-size:14px; }
+
+    footer { background:#fff; border-top:1px solid var(--border); text-align:center; padding:28px 24px; font-size:13px; color:var(--sub); }
+    .footer-logo { font-size:16px; font-weight:800; color:var(--text); margin-bottom:6px; }
+    .footer-logo span { color:var(--green); }
+
+    @media (max-width:640px) { nav { padding:0 20px; } .nav-links { display:none; } .hamburger { display:flex; } .page-hero { padding:40px 24px; } .news-item { padding:20px; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="./index.html" class="nav-logo">Form <span>Flow</span></a>
+  <div class="nav-links">
+    <a href="./service.html">サービス詳細</a>
+    <a href="./cases.html">構築例</a>
+    <a href="./demo.html">デモ体験</a>
+    <a href="./column.html">コラム</a>
+    <a href="./news.html" class="active">お知らせ</a>
+    <a href="./index.html#contact" class="nav-cta">無料相談</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="./service.html">サービス詳細</a>
+  <a href="./cases.html">構築例</a>
+  <a href="./demo.html">デモ体験</a>
+  <a href="./column.html">コラム</a>
+  <a href="./news.html">お知らせ</a>
+  <a href="./index.html#contact" class="m-cta">無料相談</a>
+</div>
+
+<div class="page-hero">
+  <h1>お知らせ</h1>
+  <p>サービスに関する更新情報・重要なお知らせを掲載しています。</p>
+</div>
+
+<div class="container">
+  <div class="news-list">
+
+    <!-- news-001 -->
+    <div class="news-item" id="news-001">
+      <div class="news-meta">
+        <span class="news-date">2026年5月17日</span>
+        <span class="news-badge badge-info">サービス開始</span>
+      </div>
+      <div class="news-title">Form Flow サービス提供を開始しました</div>
+      <div class="news-body">
+        <p>LINE公式アカウントの構築サービス「Form Flow」の提供を開始しました。</p>
+        <p>有料ツール不要・GASを活用した自動化構築を、モニター価格でご提供しています。ステップ配信・自動返信・スプレッドシート連携など、ご要望に合わせてご相談ください。</p>
+        <p>詳細は<a href="./service.html">サービスページ</a>をご覧ください。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Form <span>Flow</span></div>
+  <p style="margin-top:10px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+    <a href="./privacy.html" style="color:var(--sub);font-size:12px;">プライバシーポリシー</a>
+    <a href="./terms.html" style="color:var(--sub);font-size:12px;">利用規約</a>
+    <a href="./tokushoho.html" style="color:var(--sub);font-size:12px;">特定商取引法に基づく表記</a>
+  </p>
+  <p style="margin-top:12px;">© 2026 Form Flow. All rights reserved.</p>
+</footer>
+<script>
+  const hbtn = document.getElementById('hamburger');
+  const hmenu = document.getElementById('mobile-menu');
+  hbtn.addEventListener('click', () => {
+    hbtn.classList.toggle('open');
+    hmenu.classList.toggle('open');
+  });
+</script>
+</body>
+</html>
