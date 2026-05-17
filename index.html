@@ -131,18 +131,26 @@ h1.htitle{font-size:clamp(44px,5.8vw,76px);font-weight:900;color:#fff;line-heigh
 
 /* phone floating cards */
 .phone-float{position:absolute;z-index:2}
-.pf1{top:30px;right:-60px;animation:bf 3.8s ease-in-out infinite}
-.pf2{bottom:100px;left:-64px;animation:bf 4.4s ease-in-out infinite .7s}
-.pf3{top:210px;right:-68px;animation:bf 3.2s ease-in-out infinite 1.2s}
+.pf1{top:20px;right:-108px;animation:bf 3.8s ease-in-out infinite}
+.pf2{bottom:80px;left:-96px;animation:bf 4.4s ease-in-out infinite .7s}
+.pf3{top:230px;right:-112px;animation:bf 3.2s ease-in-out infinite 1.2s}
 @keyframes bf{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.pfloat-card{background:rgba(10,18,32,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:12px 16px;color:#fff;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04)}
-.pf-num{font-family:'Inter',sans-serif;font-size:22px;font-weight:800;color:#fff;line-height:1.1}
-.pf-label{font-size:10px;color:rgba(255,255,255,.45);margin-top:3px;letter-spacing:.02em}
-.pf-row{display:flex;align-items:center;gap:7px}
-.pf-dot{width:7px;height:7px;background:var(--g);border-radius:50%;animation:pulse 2s ease-in-out infinite;box-shadow:0 0 8px var(--g)}
-.pf-txt{font-size:11px;font-weight:600;color:#fff}
-.pf-icon{font-size:18px;margin-bottom:4px}
-.pf-badge{display:inline-block;background:rgba(6,199,85,.2);color:var(--g);font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;margin-top:4px;font-family:'Inter',sans-serif;border:1px solid rgba(6,199,85,.3)}
+.pfloat-card{background:rgba(6,13,26,.92);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border:1px solid rgba(255,255,255,.13);border-radius:20px;padding:16px 20px;color:#fff;white-space:nowrap;box-shadow:0 16px 48px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.05);min-width:168px}
+/* stat card */
+.pf-label{font-size:10px;font-weight:600;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:6px}
+.pf-num{font-family:'Inter',sans-serif;font-size:38px;font-weight:900;color:#fff;line-height:1;letter-spacing:-.03em}
+.pf-num.green{color:var(--g);text-shadow:0 0 24px rgba(6,199,85,.4)}
+.pf-unit{font-size:.36em;font-weight:700;color:rgba(255,255,255,.45);letter-spacing:0}
+.pf-sub{font-size:11px;color:var(--g);margin-top:6px;font-weight:600;font-family:'Inter',sans-serif}
+/* notification card */
+.pfloat-notif{min-width:190px}
+.pf-notif-hd{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.pf-notif-ico{width:22px;height:22px;background:var(--g);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 10px rgba(6,199,85,.5)}
+.pf-notif-app{font-size:11px;font-weight:700;color:#fff;flex:1;font-family:'Inter',sans-serif}
+.pf-notif-time{font-size:10px;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif}
+.pf-notif-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:3px}
+.pf-notif-body{font-size:11px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px}
+.pf-check{width:14px;height:14px;background:rgba(6,199,85,.2);border:1px solid rgba(6,199,85,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--g);flex-shrink:0}
 
 /* ── BUTTONS ── */
 .btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--g);color:#fff;font-weight:700;font-size:15px;padding:15px 32px;border-radius:10px;position:relative;overflow:hidden;transition:background .25s,transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;box-shadow:0 4px 30px rgba(6,199,85,.4)}
@@ -427,31 +435,38 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
       <!-- background glow -->
       <div class="phone-glow"></div>
 
-      <!-- floating card: speed -->
+      <!-- floating card: notification -->
       <div class="phone-float pf1">
-        <div class="pfloat-card">
-          <div class="pf-icon">⚡</div>
-          <div class="pf-num">3<span style="font-size:.55em;opacity:.7">営業日〜</span></div>
-          <div class="pf-label">最短納品</div>
-        </div>
-      </div>
-
-      <!-- floating card: auto reply status -->
-      <div class="phone-float pf2">
-        <div class="pfloat-card">
-          <div class="pf-row" style="margin-bottom:5px">
-            <div class="pf-dot"></div>
-            <div class="pf-txt">自動返信 稼働中</div>
+        <div class="pfloat-card pfloat-notif">
+          <div class="pf-notif-hd">
+            <div class="pf-notif-ico">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+            </div>
+            <div class="pf-notif-app">Form Flow</div>
+            <div class="pf-notif-time">たった今</div>
           </div>
-          <div class="pf-badge">24h 対応</div>
+          <div class="pf-notif-title">自動返信 送信完了</div>
+          <div class="pf-notif-body">
+            <div class="pf-check">✓</div>
+            24時間・365日 即時対応
+          </div>
         </div>
       </div>
 
       <!-- floating card: cost -->
+      <div class="phone-float pf2">
+        <div class="pfloat-card">
+          <div class="pf-label">月額ツール維持費</div>
+          <div class="pf-num green">¥0</div>
+          <div class="pf-sub">Lステップ比 −¥33,000/月</div>
+        </div>
+      </div>
+
+      <!-- floating card: speed -->
       <div class="phone-float pf3">
         <div class="pfloat-card">
-          <div class="pf-num" style="color:var(--g)">¥0<span style="font-size:.45em;color:rgba(255,255,255,.5)">/月</span></div>
-          <div class="pf-label">ツール維持費</div>
+          <div class="pf-label">最短納品</div>
+          <div class="pf-num">3<span class="pf-unit">営業日〜</span></div>
         </div>
       </div>
 
