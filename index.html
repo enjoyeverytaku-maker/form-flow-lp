@@ -279,6 +279,18 @@ section{padding:112px 52px}
 .pbtn-o:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff}
 .pbtn-f{background:var(--g);color:#fff;box-shadow:0 4px 24px rgba(6,199,85,.35)}
 .pbtn-f:hover{background:var(--gd);box-shadow:0 8px 32px rgba(6,199,85,.5);transform:translateY(-1px)}
+.p-option{margin-top:32px;padding:28px 32px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(255,255,255,.02);display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.p-opt-badge{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:4px 10px;flex-shrink:0}
+.p-opt-body{flex:1;min-width:200px}
+.p-opt-name{font-size:15px;font-weight:700;color:rgba(255,255,255,.85);display:block;margin-bottom:6px}
+.p-opt-items{list-style:none;display:flex;flex-wrap:wrap;gap:6px 20px;margin-bottom:0}
+.p-opt-items li{font-size:12px;color:rgba(255,255,255,.45)}
+.p-opt-items li::before{content:'・'}
+.p-opt-price-wrap{text-align:right;flex-shrink:0}
+.p-opt-price{font-family:'Inter',sans-serif;font-size:32px;font-weight:800;color:#fff;line-height:1;letter-spacing:-.03em}
+.p-opt-price small{font-size:13px;font-weight:400;color:rgba(255,255,255,.4);font-family:'Noto Sans JP',sans-serif;letter-spacing:0}
+.p-opt-note{font-size:11px;color:rgba(255,255,255,.3);margin-top:4px;white-space:nowrap}
+@media(max-width:640px){.p-option{flex-direction:column;gap:16px}.p-opt-price-wrap{text-align:left}.p-opt-note{white-space:normal}}
 
 
 /* ── FAQ ── */
@@ -1141,6 +1153,21 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
           <li>継続サポート（別途）</li>
         </ul>
         <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="pbtn pbtn-o">相談・見積もり（無料）</a>
+      </div>
+    </div>
+    <div class="p-option rv">
+      <span class="p-opt-badge">Option</span>
+      <div class="p-opt-body">
+        <span class="p-opt-name">保守・サポートプラン</span>
+        <ul class="p-opt-items">
+          <li>GASスクリプトの軽微な修正・調整</li>
+          <li>文言・キーワードの変更対応</li>
+          <li>月次動作確認レポート</li>
+        </ul>
+      </div>
+      <div class="p-opt-price-wrap">
+        <div class="p-opt-price">¥3,000<small>/月（税込）</small></div>
+        <div class="p-opt-note">※ 任意。納品後にご選択いただけます</div>
       </div>
     </div>
   </div>
