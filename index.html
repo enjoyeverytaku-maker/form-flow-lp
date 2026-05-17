@@ -259,17 +259,6 @@ section{padding:112px 52px}
 .pbtn-f{background:var(--g);color:#fff;box-shadow:0 4px 24px rgba(6,199,85,.35)}
 .pbtn-f:hover{background:var(--gd);box-shadow:0 8px 32px rgba(6,199,85,.5);transform:translateY(-1px)}
 
-/* ── TESTIMONIALS ── */
-#testimonials{background:var(--navy)}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.tcard{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:32px 28px;transition:background .3s,transform .3s cubic-bezier(.34,1.56,.64,1)}
-.tcard:hover{background:rgba(255,255,255,.07);transform:translateY(-4px)}
-.tcard-stars{color:var(--g);font-size:14px;margin-bottom:16px;letter-spacing:2px}
-.tcard p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.9;margin-bottom:20px}
-.tcard-author{display:flex;align-items:center;gap:12px}
-.tcard-av{width:36px;height:36px;background:rgba(6,199,85,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;border:1px solid rgba(6,199,85,.3)}
-.tcard-name{font-size:13px;font-weight:700;color:#fff}
-.tcard-role{font-size:11px;color:rgba(255,255,255,.35);margin-top:1px}
 
 /* ── FAQ ── */
 #faq{background:var(--navy2)}
@@ -315,7 +304,7 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
   .hero-btns{justify-content:center}
   .hero-note{justify-content:center}
   .hero-sub{max-width:100%}
-  .pain-grid,.demo-grid,.pgrid,.testi-grid{grid-template-columns:1fr 1fr}
+  .pain-grid,.demo-grid,.pgrid{grid-template-columns:1fr 1fr}
   .bento{grid-template-columns:repeat(4,1fr)}
   .bc.c4{grid-column:span 4}.bc.c3{grid-column:span 2}.bc.c2{grid-column:span 2}
   .proc-grid{grid-template-columns:1fr 1fr}.proc-line{display:none}
@@ -330,7 +319,7 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
   section{padding:72px 24px}
   #stats{padding:48px 24px}
   #marquee{display:none}
-  .pain-grid,.demo-grid,.pgrid,.testi-grid{grid-template-columns:1fr}
+  .pain-grid,.demo-grid,.pgrid{grid-template-columns:1fr}
   .bento{grid-template-columns:1fr}.bc.c2,.bc.c3,.bc.c4{grid-column:span 1}.bc.tall{grid-row:span 1}
   .proc-grid{grid-template-columns:1fr}
   #cta{padding:80px 24px}
@@ -438,8 +427,8 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
       </div>
       <div class="phone-float pf3">
         <div class="pfloat-card">
-          <div class="pf-num">★ 5.0</div>
-          <div class="pf-label">クライアント評価</div>
+          <div class="pf-num">10<span style="font-size:.6em">+</span></div>
+          <div class="pf-label">対応業種</div>
         </div>
       </div>
       <div class="phone">
@@ -804,52 +793,6 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
           <li>継続サポート（別途）</li>
         </ul>
         <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="pbtn pbtn-o">相談・見積もり（無料）</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── TESTIMONIALS ── -->
-<section id="testimonials">
-  <div class="container">
-    <div class="rv" style="text-align:center;margin-bottom:60px">
-      <p class="eyebrow">Testimonials</p>
-      <h2 class="stitle">お客様の声</h2>
-      <p class="ssub" style="margin-bottom:0">実際に構築した方からの声をご紹介します。</p>
-    </div>
-    <div class="testi-grid">
-      <div class="tcard rv d1">
-        <div class="tcard-stars">★★★★★</div>
-        <p>「設定が難しくて止まっていたリッチメニューを、こちらの要望通りに作っていただきました。マニュアルも丁寧で、今は自分で更新できています。」</p>
-        <div class="tcard-author">
-          <div class="tcard-av">🌸</div>
-          <div>
-            <div class="tcard-name">A.M. さん</div>
-            <div class="tcard-role">サロンオーナー・東京</div>
-          </div>
-        </div>
-      </div>
-      <div class="tcard rv d2">
-        <div class="tcard-stars">★★★★★</div>
-        <p>「Lステップの月額が負担になっていたところ、GASで同じことができると知って依頼しました。移行後は月額費用がゼロになり、満足しています。」</p>
-        <div class="tcard-author">
-          <div class="tcard-av">💼</div>
-          <div>
-            <div class="tcard-name">T.K. さん</div>
-            <div class="tcard-role">整体院経営・大阪</div>
-          </div>
-        </div>
-      </div>
-      <div class="tcard rv d3">
-        <div class="tcard-stars">★★★★★</div>
-        <p>「問い合わせのたびに手で返信していた作業が自動化されました。スプレッドシートに記録も残るので、顧客管理がとても楽になりました。」</p>
-        <div class="tcard-author">
-          <div class="tcard-av">📊</div>
-          <div>
-            <div class="tcard-name">Y.S. さん</div>
-            <div class="tcard-role">コンサルタント・福岡</div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
