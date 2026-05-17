@@ -136,6 +136,8 @@ nav.sc{background:rgba(4,13,26,.94);backdrop-filter:blur(24px);-webkit-backdrop-
 .share-btn:active{transform:scale(.95)}
 .share-line{background:var(--g);color:#fff}
 .share-x{background:#000;color:#fff;border:1px solid rgba(255,255,255,.15)}
+.share-fb{background:#1877f2;color:#fff}
+.share-ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff}
 .share-copy{background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1)}
 .share-copy.copied{background:rgba(6,199,85,.12);color:var(--g);border-color:rgba(6,199,85,.25)}
 
@@ -249,6 +251,8 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.05);padding:44p
           <div class="share-btns">
             <button class="share-btn share-line">LINE</button>
             <button class="share-btn share-x">X</button>
+            <button class="share-btn share-fb">FB</button>
+            <button class="share-btn share-ig">IG</button>
             <button class="share-btn share-copy">リンク</button>
           </div>
         </div>
@@ -274,6 +278,8 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.05);padding:44p
           <div class="share-btns">
             <button class="share-btn share-line">LINE</button>
             <button class="share-btn share-x">X</button>
+            <button class="share-btn share-fb">FB</button>
+            <button class="share-btn share-ig">IG</button>
             <button class="share-btn share-copy">リンク</button>
           </div>
         </div>
@@ -299,6 +305,8 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.05);padding:44p
           <div class="share-btns">
             <button class="share-btn share-line">LINE</button>
             <button class="share-btn share-x">X</button>
+            <button class="share-btn share-fb">FB</button>
+            <button class="share-btn share-ig">IG</button>
             <button class="share-btn share-copy">リンク</button>
           </div>
         </div>
@@ -324,6 +332,8 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.05);padding:44p
           <div class="share-btns">
             <button class="share-btn share-line">LINE</button>
             <button class="share-btn share-x">X</button>
+            <button class="share-btn share-fb">FB</button>
+            <button class="share-btn share-ig">IG</button>
             <button class="share-btn share-copy">リンク</button>
           </div>
         </div>
@@ -349,6 +359,8 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.05);padding:44p
           <div class="share-btns">
             <button class="share-btn share-line">LINE</button>
             <button class="share-btn share-x">X</button>
+            <button class="share-btn share-fb">FB</button>
+            <button class="share-btn share-ig">IG</button>
             <button class="share-btn share-copy">リンク</button>
           </div>
         </div>
@@ -374,6 +386,8 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.05);padding:44p
           <div class="share-btns">
             <button class="share-btn share-line">LINE</button>
             <button class="share-btn share-x">X</button>
+            <button class="share-btn share-fb">FB</button>
+            <button class="share-btn share-ig">IG</button>
             <button class="share-btn share-copy">リンク</button>
           </div>
         </div>
@@ -399,6 +413,8 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.05);padding:44p
           <div class="share-btns">
             <button class="share-btn share-line">LINE</button>
             <button class="share-btn share-x">X</button>
+            <button class="share-btn share-fb">FB</button>
+            <button class="share-btn share-ig">IG</button>
             <button class="share-btn share-copy">リンク</button>
           </div>
         </div>
@@ -539,6 +555,24 @@ async function incrementLike(slug){
     actions.querySelector('.share-x').addEventListener('click', e => {
       e.stopPropagation();
       window.open('https://x.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title + ' | Form Flow'), '_blank');
+    });
+
+    actions.querySelector('.share-fb').addEventListener('click', e => {
+      e.stopPropagation();
+      window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url), '_blank');
+    });
+
+    actions.querySelector('.share-ig').addEventListener('click', async e => {
+      e.stopPropagation();
+      if(navigator.share){
+        try { await navigator.share({ title: title + ' | Form Flow', url }); } catch(_){}
+      } else {
+        await navigator.clipboard.writeText(url);
+        const btn = actions.querySelector('.share-ig');
+        const orig = btn.textContent;
+        btn.textContent = 'コピー!';
+        setTimeout(() => btn.textContent = orig, 2000);
+      }
     });
 
     const copyBtn = actions.querySelector('.share-copy');
