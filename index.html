@@ -97,39 +97,52 @@ h1.htitle{font-size:clamp(44px,5.8vw,76px);font-weight:900;color:#fff;line-heigh
 
 /* ── PHONE MOCKUP ── */
 .phone-wrap{position:relative;opacity:0;animation:fu 1s ease forwards .6s}
-.phone{width:280px;height:580px;background:#0d1117;border-radius:44px;border:2px solid rgba(255,255,255,.15);box-shadow:0 60px 120px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.05),inset 0 1px 0 rgba(255,255,255,.08);position:relative;margin:0 auto;overflow:hidden;flex-shrink:0}
-.phone::before{content:'';position:absolute;top:14px;left:50%;transform:translateX(-50%);width:80px;height:5px;background:rgba(255,255,255,.25);border-radius:4px;z-index:10}
-.phone-screen{height:100%;display:flex;flex-direction:column;padding-top:36px}
-.phone-status{display:flex;align-items:center;justify-content:space-between;padding:0 20px 10px;font-size:9px;color:rgba(255,255,255,.4);font-family:'Inter',sans-serif}
-.phone-header{background:#1a1a2e;padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.06)}
-.ph-avatar{width:34px;height:34px;background:var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;font-family:'Inter',sans-serif;flex-shrink:0}
-.ph-info{flex:1}
-.ph-name{font-size:12px;font-weight:700;color:#fff}
-.ph-status{font-size:9px;color:var(--g);margin-top:1px}
-.phone-body{flex:1;padding:14px 12px;display:flex;flex-direction:column;gap:9px;overflow:hidden}
+.phone-glow{position:absolute;inset:-80px;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(6,199,85,.15) 0%,transparent 70%);pointer-events:none;z-index:0}
+.phone{width:300px;height:624px;background:linear-gradient(160deg,#141e2e 0%,#090f1a 100%);border-radius:50px;border:1.5px solid rgba(255,255,255,.14);box-shadow:0 0 0 1px rgba(255,255,255,.04),0 50px 100px rgba(0,0,0,.85),0 0 80px rgba(6,199,85,.1);position:relative;margin:0 auto;overflow:hidden;flex-shrink:0;z-index:1}
+/* Dynamic Island */
+.phone::before{content:'';position:absolute;top:14px;left:50%;transform:translateX(-50%);width:100px;height:30px;background:#000;border-radius:20px;z-index:10}
+/* Top edge highlight */
+.phone::after{content:'';position:absolute;top:0;left:12%;right:12%;height:1.5px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);z-index:10}
+.phone-screen{height:100%;display:flex;flex-direction:column;padding-top:52px}
+.phone-status{display:flex;align-items:center;justify-content:space-between;padding:0 22px 8px;font-size:9px;color:rgba(255,255,255,.4);font-family:'Inter',sans-serif;font-weight:600}
+.phone-header{background:rgba(255,255,255,.04);padding:10px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:blur(8px)}
+.ph-avatar{width:36px;height:36px;background:var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 12px rgba(6,199,85,.5)}
+.ph-info{flex:1;min-width:0}
+.ph-name{font-size:12px;font-weight:700;color:#fff;letter-spacing:.01em}
+.ph-status{font-size:9px;color:var(--g);margin-top:2px;display:flex;align-items:center;gap:4px}
+.ph-status-dot{width:5px;height:5px;background:var(--g);border-radius:50%;animation:pulse 2s ease-in-out infinite;box-shadow:0 0 6px var(--g)}
+.ph-verified{margin-left:auto;background:rgba(6,199,85,.15);border:1px solid rgba(6,199,85,.3);border-radius:4px;font-size:8px;color:var(--g);padding:2px 6px;font-weight:700;font-family:'Inter',sans-serif}
+.phone-body{flex:1;padding:12px 12px 6px;display:flex;flex-direction:column;gap:8px;overflow:hidden;background:linear-gradient(180deg,rgba(6,199,85,.03) 0%,transparent 40%)}
 .msg{display:flex;flex-direction:column;gap:3px}
-.bubble{font-size:10px;line-height:1.55;padding:8px 11px;border-radius:16px;max-width:78%;color:#fff;position:relative}
-.bubble.in{background:rgba(255,255,255,.1);align-self:flex-start;border-bottom-left-radius:4px}
-.bubble.out{background:var(--g);align-self:flex-end;border-bottom-right-radius:4px;color:#fff}
-.bubble.auto{background:rgba(6,199,85,.15);border:1px solid rgba(6,199,85,.3);color:rgba(255,255,255,.75);font-size:9px;align-self:flex-start;border-radius:10px;max-width:90%}
-.msg-time{font-size:8px;color:rgba(255,255,255,.3);padding:0 4px;font-family:'Inter',sans-serif}
+.bubble{font-size:10px;line-height:1.6;padding:9px 12px;border-radius:18px;max-width:80%;color:#fff;position:relative}
+.bubble.in{background:rgba(255,255,255,.1);align-self:flex-start;border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.bubble.out{background:linear-gradient(135deg,var(--g),var(--gd));align-self:flex-end;border-bottom-right-radius:4px;box-shadow:0 4px 14px rgba(6,199,85,.35)}
+.bubble.auto{background:rgba(6,199,85,.12);border:1px solid rgba(6,199,85,.25);color:rgba(255,255,255,.8);font-size:9.5px;align-self:flex-start;border-radius:12px;max-width:92%;padding:10px 12px}
+.msg-time{font-size:8px;color:rgba(255,255,255,.28);padding:0 4px;font-family:'Inter',sans-serif}
 .msg-time.right{text-align:right}
-.phone-input{background:rgba(255,255,255,.05);margin:8px 12px 12px;border-radius:20px;padding:8px 14px;font-size:10px;color:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between}
-.phone-input-ico{width:20px;height:20px;background:var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.typing-dots{display:flex;align-items:center;gap:4px;padding:10px 12px;background:rgba(255,255,255,.08);border-radius:18px;border-bottom-left-radius:4px;width:fit-content;align-self:flex-start}
+.typing-dots span{width:5px;height:5px;background:rgba(255,255,255,.5);border-radius:50%;animation:td .9s ease-in-out infinite}
+.typing-dots span:nth-child(2){animation-delay:.18s}
+.typing-dots span:nth-child(3){animation-delay:.36s}
+@keyframes td{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+.phone-input{background:rgba(255,255,255,.05);margin:6px 12px 10px;border-radius:24px;padding:9px 14px;font-size:10px;color:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between}
+.phone-input-ico{width:22px;height:22px;background:var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 8px rgba(6,199,85,.4)}
 .msg-animate{opacity:0;transform:translateY(10px)}
 
-/* phone floating bubbles */
-.phone-float{position:absolute}
-.pf1{top:40px;right:-48px;animation:bf 3.8s ease-in-out infinite}
-.pf2{bottom:120px;left:-48px;animation:bf 4.4s ease-in-out infinite .7s}
-.pf3{top:200px;right:-52px;animation:bf 3.2s ease-in-out infinite 1.2s}
-@keyframes bf{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.pfloat-card{background:rgba(255,255,255,.08);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:12px 16px;color:#fff;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.3)}
-.pf-num{font-family:'Inter',sans-serif;font-size:22px;font-weight:800;color:#fff;line-height:1}
-.pf-label{font-size:10px;color:rgba(255,255,255,.5);margin-top:2px}
+/* phone floating cards */
+.phone-float{position:absolute;z-index:2}
+.pf1{top:30px;right:-60px;animation:bf 3.8s ease-in-out infinite}
+.pf2{bottom:100px;left:-64px;animation:bf 4.4s ease-in-out infinite .7s}
+.pf3{top:210px;right:-68px;animation:bf 3.2s ease-in-out infinite 1.2s}
+@keyframes bf{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.pfloat-card{background:rgba(10,18,32,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:12px 16px;color:#fff;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04)}
+.pf-num{font-family:'Inter',sans-serif;font-size:22px;font-weight:800;color:#fff;line-height:1.1}
+.pf-label{font-size:10px;color:rgba(255,255,255,.45);margin-top:3px;letter-spacing:.02em}
 .pf-row{display:flex;align-items:center;gap:7px}
-.pf-dot{width:7px;height:7px;background:var(--g);border-radius:50%;box-shadow:0 0 8px var(--g)}
-.pf-txt{font-size:11px;font-weight:600}
+.pf-dot{width:7px;height:7px;background:var(--g);border-radius:50%;animation:pulse 2s ease-in-out infinite;box-shadow:0 0 8px var(--g)}
+.pf-txt{font-size:11px;font-weight:600;color:#fff}
+.pf-icon{font-size:18px;margin-bottom:4px}
+.pf-badge{display:inline-block;background:rgba(6,199,85,.2);color:var(--g);font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;margin-top:4px;font-family:'Inter',sans-serif;border:1px solid rgba(6,199,85,.3)}
 
 /* ── BUTTONS ── */
 .btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--g);color:#fff;font-weight:700;font-size:15px;padding:15px 32px;border-radius:10px;position:relative;overflow:hidden;transition:background .25s,transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;box-shadow:0 4px 30px rgba(6,199,85,.4)}
@@ -411,59 +424,80 @@ footer{background:#020810;border-top:1px solid rgba(255,255,255,.04);padding:48p
 
     <!-- PHONE MOCKUP -->
     <div class="phone-wrap">
+      <!-- background glow -->
+      <div class="phone-glow"></div>
+
+      <!-- floating card: speed -->
       <div class="phone-float pf1">
         <div class="pfloat-card">
-          <div class="pf-num">¥0</div>
-          <div class="pf-label">月額ツール維持費</div>
+          <div class="pf-icon">⚡</div>
+          <div class="pf-num">3<span style="font-size:.55em;opacity:.7">営業日〜</span></div>
+          <div class="pf-label">最短納品</div>
         </div>
       </div>
+
+      <!-- floating card: auto reply status -->
       <div class="phone-float pf2">
         <div class="pfloat-card">
-          <div class="pf-row">
+          <div class="pf-row" style="margin-bottom:5px">
             <div class="pf-dot"></div>
-            <div class="pf-txt">月額ツール代 ¥0</div>
+            <div class="pf-txt">自動返信 稼働中</div>
           </div>
+          <div class="pf-badge">24h 対応</div>
         </div>
       </div>
+
+      <!-- floating card: cost -->
       <div class="phone-float pf3">
         <div class="pfloat-card">
-          <div class="pf-num">10<span style="font-size:.6em">+</span></div>
-          <div class="pf-label">対応業種</div>
+          <div class="pf-num" style="color:var(--g)">¥0<span style="font-size:.45em;color:rgba(255,255,255,.5)">/月</span></div>
+          <div class="pf-label">ツール維持費</div>
         </div>
       </div>
+
       <div class="phone">
         <div class="phone-screen">
+          <!-- status bar -->
           <div class="phone-status">
-            <span>9:41</span>
-            <span style="display:flex;gap:4px;align-items:center">
-              <svg width="12" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 8.5L12 2l10.5 6.5"/></svg>
+            <span style="font-weight:700">9:41</span>
+            <span style="display:flex;gap:5px;align-items:center;font-size:10px">
+              <svg width="11" height="9" viewBox="0 0 18 14" fill="currentColor"><path d="M9 0C5.64 0 2.61 1.35.38 3.53L2.5 5.64A8.5 8.5 0 019 3a8.5 8.5 0 016.5 2.64l2.12-2.11A11.97 11.97 0 009 0zm0 4c-2.21 0-4.2.9-5.66 2.34L5.46 8.46A5.5 5.5 0 019 7a5.5 5.5 0 013.54 1.46l2.12-2.12A8.97 8.97 0 009 4zm0 4a3 3 0 00-2.12.88L9 11l2.12-2.12A3 3 0 009 8z"/></svg>
               ▌▌▌▌
             </span>
           </div>
+          <!-- header -->
           <div class="phone-header">
-            <div class="ph-avatar">FF</div>
-            <div class="ph-info">
-              <div class="ph-name">Form Flow デモ</div>
-              <div class="ph-status">● オンライン</div>
+            <div class="ph-avatar">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
             </div>
+            <div class="ph-info">
+              <div class="ph-name">Form Flow</div>
+              <div class="ph-status"><span class="ph-status-dot"></span>自動返信 オン</div>
+            </div>
+            <div class="ph-verified">公式</div>
           </div>
+          <!-- chat body -->
           <div class="phone-body" id="chatBody">
             <div class="msg msg-animate" id="msg1">
-              <div class="bubble in">こんにちは！友だち追加ありがとうございます🎉</div>
+              <div class="bubble in">ご登録ありがとうございます！🎉<br>Form Flow 公式アカウントです。</div>
               <div class="msg-time">09:41</div>
             </div>
             <div class="msg msg-animate" id="msg2">
-              <div class="bubble auto">📋 メニューからお選びください：<br>① 料金を見る<br>② デモを体験<br>③ 無料相談</div>
+              <div class="bubble auto">📋 以下からお選びください<br><br>① 料金を確認する<br>② デモを体験する<br>③ 無料相談する</div>
             </div>
             <div class="msg msg-animate" id="msg3">
               <div class="bubble out">料金</div>
               <div class="msg-time right">09:42</div>
             </div>
             <div class="msg msg-animate" id="msg4">
-              <div class="bubble in">💰 ライトプランは<br><strong>¥19,800</strong>（税込）です。<br>最短3営業日で納品します！</div>
+              <div class="bubble in">💰 <strong>ライトプラン ¥19,800</strong>（税込）<br>最短3営業日で納品します。<br><br>詳しくはこちら → 料金ページ</div>
               <div class="msg-time">09:42</div>
             </div>
+            <div class="msg msg-animate" id="msg5">
+              <div class="typing-dots"><span></span><span></span><span></span></div>
+            </div>
           </div>
+          <!-- input bar -->
           <div class="phone-input">
             <span>メッセージを入力…</span>
             <div class="phone-input-ico">
