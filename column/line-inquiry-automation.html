@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQF63CGRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NWQF63CGRL');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LINE公式の問い合わせ対応を自動化する方法——キーワード返信からGAS連携まで｜Form Flow</title>
+  <meta name="description" content="LINE公式アカウントの問い合わせ対応を自動化する方法を解説。キーワード自動返信の設定から、GASを使った高度な自動応答まで順番に説明します。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-inquiry-automation.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-inquiry-automation.html">
+  <meta property="og:title" content="LINE公式の問い合わせ対応を自動化する方法——キーワード返信からGAS連携まで">
+  <meta property="og:description" content="LINE公式アカウントの問い合わせ対応を自動化する方法を解説。キーワード自動返信の設定から、GASを使った高度な自動応答まで順番に説明します。">
+  <meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
+  <meta property="og:site_name" content="Form Flow">
+  <meta property="og:locale" content="ja_JP">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "LINE公式の問い合わせ対応を自動化する方法——キーワード返信からGAS連携まで",
+    "author": { "@type": "Organization", "name": "Form Flow" },
+    "publisher": { "@type": "Organization", "name": "Form Flow", "url": "https://enjoyeverytaku-maker.github.io/form-flow-lp/" },
+    "datePublished": "2026-05-20",
+    "dateModified": "2026-05-20"
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --g: #06C755;
+      --gd: #059942;
+      --gbg: #EFF9F4;
+      --text: #111827;
+      --body: #374151;
+      --sub: #6B7280;
+      --muted: #9CA3AF;
+      --border: #E5E7EB;
+      --bg: #FAFAF8;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.07), 0 2px 8px rgba(0,0,0,.04);
+      --radius: 12px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      color: var(--body);
+      background-color: #FAFAF8;
+      background-image: radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px);
+      background-size: 22px 22px;
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 64px;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow .2s;
+    }
+    #nav.sc { box-shadow: 0 2px 16px rgba(0,0,0,.06); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .nav-logo { font-size: 19px; font-weight: 700; color: var(--text); letter-spacing: -.01em; }
+    .nav-back { font-size: 14px; color: var(--sub); transition: color .15s; }
+    .nav-back:hover { color: var(--text); }
+    .article-hero {
+      margin-top: 64px;
+      background: #fff;
+      padding: 60px 0 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .article-hero-inner { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .cat-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--g);
+      background: var(--gbg);
+      border: 1px solid rgba(6,199,85,.2);
+      border-radius: 100px;
+      padding: 4px 12px;
+      margin-bottom: 16px;
+      letter-spacing: .04em;
+    }
+    .article-hero h1 { font-size: 28px; font-weight: 800; color: var(--text); line-height: 1.45; }
+    .article-date { font-size: 13px; color: var(--sub); margin-top: 10px; }
+    .article-wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px 80px; }
+    .article-grid { display: grid; grid-template-columns: 1fr 300px; gap: 40px; padding-top: 48px; }
+    .article-body {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
+    }
+    .article-body h2 { font-size: 20px; font-weight: 700; color: var(--text); margin: 40px 0 16px; border-left: 3px solid var(--g); padding-left: 12px; }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body h3 { font-size: 17px; font-weight: 700; color: var(--text); margin: 28px 0 12px; }
+    .article-body p { margin-bottom: 16px; line-height: 1.85; color: var(--body); }
+    .article-body ul, .article-body ol { margin: 12px 0 20px 20px; }
+    .article-body li { margin-bottom: 8px; line-height: 1.7; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    .article-body th { background: var(--gbg); padding: 10px 14px; font-size: 14px; border: 1px solid var(--border); font-weight: 600; text-align: left; color: var(--text); }
+    .article-body td { padding: 10px 14px; font-size: 14px; border: 1px solid var(--border); color: var(--body); vertical-align: top; }
+    .article-body hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+    .article-body strong { color: var(--text); font-weight: 700; }
+    .article-body blockquote { border-left: 3px solid var(--g); padding: 8px 0 8px 16px; margin: 20px 0; color: var(--sub); font-size: 15px; line-height: 1.8; }
+    .step-box {
+      background: var(--gbg);
+      border: 1px solid rgba(6,199,85,.2);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .step-box strong { color: var(--text); }
+    .step-box ul, .step-box ol { margin-top: 10px; }
+    .point-box {
+      background: var(--gbg);
+      border: 1px solid rgba(6,199,85,.2);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+    .point-box p { color: var(--body); margin-bottom: 0; }
+    aside {
+      position: sticky;
+      top: 80px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      height: fit-content;
+    }
+    .aside-logo { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .aside-logo span { color: var(--g); }
+    .aside-desc { font-size: 13px; color: var(--sub); line-height: 1.7; margin-bottom: 18px; }
+    .aside-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 99px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-align: center;
+      transition: background .2s, transform .15s;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+    .aside-btn:hover { transform: translateY(-1px); }
+    .aside-btn-primary { background: var(--g); color: #fff; box-shadow: 0 4px 14px rgba(6,199,85,.25); }
+    .aside-btn-primary:hover { background: var(--gd); }
+    .aside-btn-outline { background: transparent; color: var(--text); border: 2px solid var(--border) !important; }
+    .aside-btn-outline:hover { border-color: #9CA3AF !important; background: rgba(0,0,0,.02); }
+    footer { background: #fff; border-top: 1px solid var(--border); text-align: center; padding: 24px; font-size: 13px; color: var(--sub); }
+    .footer-logo { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .footer-logo span { color: var(--g); }
+    @media (max-width: 768px) {
+      .article-hero h1 { font-size: 22px; }
+      .article-grid { grid-template-columns: 1fr; }
+      aside { position: static; }
+      .article-body { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Form <span style="color:var(--g)">Flow</span></div>
+    <a href="../column.html" class="nav-back">← コラム一覧へ</a>
+  </div>
+</nav>
+
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <div><span class="cat-tag">問い合わせ自動化</span> <span class="cat-tag">キーワード返信</span> <span class="cat-tag">GAS連携</span></div>
+    <h1>LINE公式の問い合わせ対応を自動化する方法<br>——キーワード返信からGAS連携まで</h1>
+    <p class="article-date">2026年5月20日</p>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <div class="article-grid">
+    <main class="article-body">
+
+      <p>「LINEの問い合わせ対応に時間を取られている」「夜中にメッセージが来て翌朝まで返せない」——こうした悩みは、個人事業主やスモールビジネスのオーナーによく聞きます。LINE公式アカウントには問い合わせ対応を自動化する機能が備わっており、設定次第で手動対応の大部分を減らすことができます。</p>
+
+      <p>シンプルなキーワード自動返信から、GASを使った高度な連携まで、段階別に解説します。</p>
+
+      <h2>① キーワード自動返信の基本設定</h2>
+
+      <p>LINE公式の管理画面には「応答メッセージ」という機能があります。特定のキーワードをユーザーが送信したとき、あらかじめ設定したメッセージを自動で返信する仕組みです。追加費用なし、プログラミング不要で設定できます。</p>
+
+      <div class="step-box">
+        <strong>設定手順</strong>
+        <ol>
+          <li>LINE公式アカウントマネージャーにログイン</li>
+          <li>「応答」→「応答メッセージ」を選択</li>
+          <li>「作成」→ キーワードと返信内容を入力</li>
+          <li>「保存」で即日有効化</li>
+        </ol>
+      </div>
+
+      <p>1つのキーワードに対して最大5パターンの返信を設定でき、ランダムで返信する設定も可能です。</p>
+
+      <h2>② よくある質問をキーワードで自動化する</h2>
+
+      <p>どのビジネスにも「よく聞かれること」があります。それをキーワードに設定しておくだけで、同じ質問に何度も手動で返す手間がなくなります。</p>
+
+      <table>
+        <tr>
+          <th>キーワード例</th>
+          <th>返信内容の例</th>
+        </tr>
+        <tr>
+          <td>料金 / 値段 / いくら</td>
+          <td>料金表ページのURL＋「ご不明点はお気軽にどうぞ」</td>
+        </tr>
+        <tr>
+          <td>予約 / 申込み</td>
+          <td>予約フォームへのリンク</td>
+        </tr>
+        <tr>
+          <td>場所 / アクセス</td>
+          <td>住所・地図リンク・最寄り駅案内</td>
+        </tr>
+        <tr>
+          <td>営業時間 / 何時</td>
+          <td>営業時間と定休日の案内</td>
+        </tr>
+        <tr>
+          <td>キャンセル / 変更</td>
+          <td>キャンセルポリシーと連絡先</td>
+        </tr>
+      </table>
+
+      <p>「完全一致」だけでなく「部分一致」にも対応しているため、「予約したい」「予約できますか」など表現が異なるメッセージにも反応させられます。</p>
+
+      <h2>③ Googleフォーム連携で情報収集を自動化する</h2>
+
+      <p>問い合わせの初動を自動返信でカバーしたら、次は「情報収集」の自動化です。キーワード返信のメッセージにGoogleフォームへのリンクを入れておくことで、ユーザーが自分で必要事項を記入→管理者に通知が届く流れを作れます。</p>
+
+      <div class="point-box">
+        <p>Googleフォームは無料で作成でき、回答はスプレッドシートに自動で蓄積されます。「問い合わせが来るたびにメモする」という作業がなくなります。</p>
+      </div>
+
+      <p>フォームには名前・連絡先・問い合わせ内容の他、「希望の対応方法（LINE / 電話 / メール）」を入れておくと、その後のやり取りがスムーズになります。</p>
+
+      <h2>④ GASを使った高度な自動返信</h2>
+
+      <p>キーワード自動返信だけでは対応しきれない複雑な要件には、GAS（Google Apps Script）との連携が有効です。GASを使うと、LINE公式の標準機能では実現できない自動化が可能になります。</p>
+
+      <div class="step-box">
+        <strong>GAS連携でできること（例）</strong>
+        <ul>
+          <li>フォームに回答があったタイミングで、自動でLINEに確認メッセージを送信</li>
+          <li>スプレッドシートに登録された顧客情報をもとに、個別メッセージを自動送信</li>
+          <li>予約日時の前日に自動でリマインドメッセージを送信</li>
+          <li>問い合わせ内容に応じてメッセージの内容を分岐させる</li>
+        </ul>
+      </div>
+
+      <blockquote>GASはGoogleが提供するプログラミング環境です。設定には技術的な知識が必要なため、自動化の範囲が広い場合は専門家への依頼も選択肢になります。</blockquote>
+
+      <h2>まとめ——自動化のステップ</h2>
+
+      <p>問い合わせ対応の自動化は、難易度の低いところから順番に整えていくのが効率的です。</p>
+
+      <ol>
+        <li><strong>キーワード自動返信</strong>：管理画面から設定。追加費用なし、即日対応可能</li>
+        <li><strong>Googleフォーム連携</strong>：リンクを貼るだけ。情報収集と管理が自動化</li>
+        <li><strong>GAS連携</strong>：技術的なカスタマイズが必要。本格的な自動化に対応</li>
+      </ol>
+
+      <p>まずステップ1のキーワード自動返信だけでも設定すると、夜間・休日の問い合わせへの即時対応が実現します。「全部まとめて自動化したい」という方は、構築を専門家に依頼するのが最短ルートです。</p>
+
+    </main>
+
+    <aside>
+      <div class="aside-logo">Form <span>Flow</span></div>
+      <p class="aside-desc">LINE公式アカウントの構築代行サービスです。GAS・Lステップに対応しています。</p>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="aside-btn aside-btn-primary">LINEで無料相談</a>
+      <a href="../index.html#contact" class="aside-btn aside-btn-outline">フォームで問い合わせ</a>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Form <span>Flow</span></div>
+  <p>© 2026 Form Flow. All rights reserved.</p>
+</footer>
+
+<script>
+(()=>{
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('sc', window.scrollY > 60);
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
