@@ -844,7 +844,7 @@
 
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       margin-top: 48px;
     }
@@ -1217,7 +1217,7 @@
 
       .deliverables-grid { grid-template-columns: 1fr; }
       .compare-grid { grid-template-columns: 1fr; }
-      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
       .options-grid { grid-template-columns: repeat(2, 1fr); }
       .contact-grid { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
@@ -1913,18 +1913,19 @@
           <div>
             <p class="plan-price">¥29,800<span>〜（税込）</span></p>
           </div>
-          <span style="display:inline-block;font-size:11px;color:var(--sub);margin:8px 0 16px;">スモールスタート向け</span>
+          <span style="display:inline-block;font-size:11px;color:var(--sub);margin:8px 0 16px;">保守 ¥5,000〜/月</span>
           <div class="plan-divider"></div>
-          <p class="plan-desc">LINEの基本設定を整えてスタートしたい方向け。シンプルな構成でまず動かしたい方に最適です。</p>
+          <p class="plan-desc">まずLINEを動かしたい方向け。リッチメニューと自動返信の基本構成を整えます。</p>
           <ul class="plan-items">
             <li>リッチメニュー制作（デザイン込み）</li>
             <li>キーワード自動返信（3パターン）</li>
+            <li>あいさつメッセージ設定</li>
             <li>Googleフォーム連携</li>
             <li>操作マニュアル付き</li>
             <li>動作確認レポート</li>
             <li class="dim">ステップ配信設計</li>
             <li class="dim">スプレッドシート顧客管理</li>
-            <li class="dim">予約リマインド自動送信</li>
+            <li class="dim">GAS自動化・Webhook連携</li>
           </ul>
           <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn btn-outline plan-btn">このプランで相談する</a>
         </div>
@@ -1935,38 +1936,60 @@
           <div>
             <p class="plan-price">¥79,800<span>〜（税込）</span></p>
           </div>
-          <span style="display:inline-block;font-size:11px;color:var(--g);background:var(--gbg);padding:3px 10px;border-radius:100px;margin:8px 0 16px;">フル機能構成</span>
+          <span style="display:inline-block;font-size:11px;color:var(--g);background:var(--gbg);padding:3px 10px;border-radius:100px;margin:8px 0 16px;">保守 ¥11,000〜/月</span>
           <div class="plan-divider"></div>
-          <p class="plan-desc">フル機能で自動化環境を構築したい方向け。ステップ配信まで含め、顧客育成の仕組みをまるごと整えます。</p>
+          <p class="plan-desc">ステップ配信・自動返信・顧客管理をまとめて整えたい方向け。LINE公式の主要機能をフル活用します。</p>
           <ul class="plan-items">
             <li>リッチメニュー制作（デザイン込み）</li>
             <li>キーワード自動返信（5パターン）</li>
+            <li>あいさつメッセージ設定</li>
+            <li>ステップ配信設計（5通まで）</li>
             <li>Googleフォーム連携</li>
             <li>操作マニュアル付き</li>
             <li>動作確認レポート</li>
-            <li>ステップ配信設計（5通まで）</li>
-            <li>スプレッドシート顧客管理</li>
-            <li>予約リマインド自動送信</li>
+            <li class="dim">スプレッドシート顧客管理（GAS）</li>
+            <li class="dim">予約リマインド自動送信</li>
           </ul>
           <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn btn-primary plan-btn">このプランで相談する</a>
         </div>
 
-        <!-- Custom Plan -->
+        <!-- Premium Plan -->
         <div class="plan-card rv rv-d3">
+          <p class="plan-name">Premium</p>
+          <div>
+            <p class="plan-price">¥198,000<span>〜（税込）</span></p>
+          </div>
+          <span style="display:inline-block;font-size:11px;color:var(--sub);margin:8px 0 16px;">保守 ¥19,000〜/月</span>
+          <div class="plan-divider"></div>
+          <p class="plan-desc">スプレッドシート連携・GAS自動化まで含めた本格構成。業務フローへの組み込みを想定した方向け。</p>
+          <ul class="plan-items">
+            <li>スタンダードの全機能</li>
+            <li>スプレッドシート顧客管理（GAS連携）</li>
+            <li>予約リマインド自動送信</li>
+            <li>Webhook・外部API連携</li>
+            <li>Googleカレンダー連携</li>
+            <li>GASカスタムスクリプト開発</li>
+            <li>複雑なステップシナリオ設計</li>
+          </ul>
+          <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn btn-outline plan-btn">このプランで相談する</a>
+        </div>
+
+        <!-- Custom Plan -->
+        <div class="plan-card rv rv-d4">
           <p class="plan-name">Custom</p>
           <div>
             <p class="plan-price" style="font-size:22px;line-height:1.3;">¥150,000<span>〜（税込）</span></p>
           </div>
           <span style="display:inline-block;font-size:11px;color:var(--sub);margin:8px 0 16px;">要件により変動・要お見積もり</span>
           <div class="plan-divider"></div>
-          <p class="plan-desc">複数店舗・複雑なシナリオ・API連携など、標準プランに収まらない要件をお持ちの方へ。Lステップなど外部ツールとの連携構成も対応します。</p>
+          <p class="plan-desc">複数店舗・Lステップなど外部ツール連携・特殊なシナリオ設計など、標準プランに収まらない要件をお持ちの方へ。</p>
           <ul class="plan-items">
-            <li>スタンダードの全機能</li>
-            <li>追加キーワード設定</li>
+            <li>要件ヒアリングのうえ個別設計</li>
+            <li>複数店舗・複数アカウント対応</li>
+            <li>Lステップ等ツールでの構築も対応</li>
             <li>複数リッチメニュー切り替え</li>
-            <li>外部API・Webhook連携</li>
-            <li>複雑なステップシナリオ設計</li>
-            <li>複数スタッフ対応設計</li>
+            <li>複数スタッフ・権限管理設計</li>
+            <li>その他・特殊要件</li>
           </ul>
           <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn btn-outline plan-btn">要件を相談する</a>
         </div>
