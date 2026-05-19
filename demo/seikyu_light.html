@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>請求書 - LINE公式アカウント構築・保守</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    font-size: 13px;
+    color: #1E293B;
+    background: #f0f0f0;
+    line-height: 1.6;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 10mm auto;
+    padding: 15mm 18mm;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,.12);
+    box-sizing: border-box;
+  }
+
+  /* ── ヘッダー ── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #06C755;
+  }
+  .doc-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #0F172A;
+    letter-spacing: .05em;
+  }
+  .brand { text-align: right; }
+  .brand-name { font-size: 16px; font-weight: 800; color: #0F172A; }
+  .brand-name span { color: #06C755; }
+  .brand p { font-size: 11px; color: #64748B; margin-top: 4px; }
+
+  /* ── メタ情報 ── */
+  .meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+  .meta-to .label { font-size: 11px; color: #64748B; margin-bottom: 4px; }
+  .meta-to .company { font-size: 17px; font-weight: 800; color: #0F172A; }
+  .meta-to .sub { font-size: 12px; color: #64748B; margin-top: 2px; }
+  .meta-info { text-align: right; }
+  .meta-info table { margin-left: auto; border-collapse: collapse; }
+  .meta-info td { padding: 3px 8px; font-size: 12px; }
+  .meta-info td:first-child { color: #64748B; }
+  .meta-info td:last-child { font-weight: 600; color: #0F172A; }
+
+  /* ── 合計金額 ── */
+  .total-box {
+    background: #F0FDF4;
+    border: 2px solid #06C755;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin-bottom: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .total-box .label { font-size: 13px; font-weight: 700; color: #064E3B; }
+  .total-box .amount { font-size: 28px; font-weight: 900; color: #0F172A; }
+  .total-box .amount span { font-size: 14px; font-weight: 500; color: #64748B; margin-left: 4px; }
+
+  /* ── テーブル ── */
+  table.items {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 8px;
+  }
+  table.items th {
+    background: #0F172A;
+    color: #fff;
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+  }
+  table.items th:last-child,
+  table.items th:nth-last-child(2),
+  table.items th:nth-last-child(3) { text-align: right; }
+  table.items td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #E2E8F0;
+    font-size: 12px;
+    vertical-align: top;
+  }
+  table.items td:last-child,
+  table.items td:nth-last-child(2) { text-align: right; white-space: nowrap; }
+  table.items tr:nth-child(even) { background: #F8FAFC; }
+
+  .item-name { font-weight: 600; color: #0F172A; }
+  .item-desc { font-size: 11px; color: #64748B; margin-top: 2px; }
+
+  /* ── 合計セクション ── */
+  .summary {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+    margin-bottom: 28px;
+  }
+  .summary table { border-collapse: collapse; min-width: 280px; }
+  .summary td { padding: 6px 12px; font-size: 13px; }
+  .summary td:last-child { text-align: right; font-weight: 600; white-space: nowrap; }
+  .summary .subtotal td { border-top: 1px solid #E2E8F0; }
+  .summary .discount td { color: #DC2626; }
+  .summary .tax td { color: #64748B; font-size: 12px; }
+  .summary .grand td {
+    background: #0F172A;
+    color: #fff;
+    font-weight: 800;
+    font-size: 15px;
+  }
+
+  /* ── セクション区切り ── */
+  .section-head {
+    background: #EFF6FF;
+    color: #1E40AF;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    letter-spacing: .05em;
+  }
+
+  /* ── 保守費 ── */
+  .maintenance {
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    background: #F8FAFC;
+  }
+  .maintenance h3 { font-size: 13px; font-weight: 700; color: #0F172A; margin-bottom: 10px; }
+  .maintenance table { width: 100%; border-collapse: collapse; }
+  .maintenance td { padding: 5px 8px; font-size: 12px; border-bottom: 1px solid #E2E8F0; }
+  .maintenance td:last-child { text-align: right; font-weight: 600; }
+  .maintenance .total-row td { font-weight: 800; font-size: 13px; background: #EFF6FF; }
+
+  /* ── 備考 ── */
+  .notes {
+    border-left: 3px solid #06C755;
+    padding: 12px 16px;
+    background: #F0FDF4;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 24px;
+  }
+  .notes h3 { font-size: 12px; font-weight: 700; color: #064E3B; margin-bottom: 8px; }
+  .notes ul { padding-left: 16px; }
+  .notes li { font-size: 12px; color: #334155; margin-bottom: 4px; }
+
+  /* ── 振込先 ── */
+  .bank {
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 14px 20px;
+    background: #fff;
+    margin-bottom: 24px;
+  }
+  .bank h3 { font-size: 12px; font-weight: 700; color: #0F172A; margin-bottom: 8px; }
+  .bank p { font-size: 12px; color: #334155; line-height: 1.8; }
+
+  /* ── 印鑑欄 ── */
+  .stamp-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .stamp-box {
+    border: 1px solid #CBD5E1;
+    border-radius: 4px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 6px;
+  }
+  .stamp-box span { font-size: 10px; color: #94A3B8; }
+
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; padding: 12mm 15mm; box-shadow: none; width: 100%; min-height: auto; }
+    .no-print { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ヘッダー -->
+<div class="header">
+  <div class="doc-title">請 求 書</div>
+  <div class="brand">
+    <div class="brand-name">Form <span>Flow</span></div>
+    <p>LINE公式アカウント構築サービス</p>
+    <p>lineform.works@gmail.com</p>
+  </div>
+</div>
+
+<!-- メタ情報 -->
+<div class="meta">
+  <div class="meta-to">
+    <div class="label">請求先</div>
+    <div class="company">あおば税理士法人　御中</div>
+    <div class="sub">担当者様</div>
+  </div>
+  <div class="meta-info">
+    <table>
+      <tr><td>請求書番号</td><td>FF-2026-002</td></tr>
+      <tr><td>発行日</td><td>2026年5月17日</td></tr>
+      <tr><td>お支払い期限</td><td>2026年6月17日</td></tr>
+      <tr><td>お支払い条件</td><td>着手時50% / 納品時50%</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 合計金額 -->
+<div class="total-box">
+  <div>
+    <div class="label">ご請求金額（税込）</div>
+    <div style="font-size:11px;color:#64748B;margin-top:2px;">構築費一括 ＋ 初月保守費込み</div>
+  </div>
+  <div class="amount">¥359,700<span>（税込）</span></div>
+</div>
+
+<!-- 構築費 -->
+<table class="items">
+  <thead>
+    <tr>
+      <th style="width:44%">品名・内容</th>
+      <th style="width:8%;text-align:right">数量</th>
+      <th style="width:18%;text-align:right">単価（税別）</th>
+      <th style="width:18%;text-align:right">金額（税別）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td colspan="4" class="section-head">■ 初期構築費</td></tr>
+    <tr>
+      <td>
+        <div class="item-name">LINE Webhookシステム構築</div>
+        <div class="item-desc">キーワード自動返信（10件）・Flexメッセージ・友だち追加時挨拶</div>
+      </td>
+      <td>1</td>
+      <td>¥80,000</td>
+      <td>¥80,000</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="item-name">スプレッドシート自動記録システム</div>
+        <div class="item-desc">新規問い合わせ・トークン管理シートへの自動記録</div>
+      </td>
+      <td>1</td>
+      <td>¥20,000</td>
+      <td>¥20,000</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="item-name">無料相談フォーム作成・トークン認証連携</div>
+        <div class="item-desc">Googleフォーム自動生成・6桁トークンによるLINE紐付け</div>
+      </td>
+      <td>1</td>
+      <td>¥40,000</td>
+      <td>¥40,000</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="item-name">Googleカレンダー連携・Meet URL自動生成</div>
+        <div class="item-desc">フォーム申込み→カレンダー登録→Meet URL生成→LINE自動返信</div>
+      </td>
+      <td>1</td>
+      <td>¥80,000</td>
+      <td>¥80,000</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="item-name">月次一斉送信システム構築</div>
+        <div class="item-desc">税務カレンダー（毎月1日）・書類提出リマインダー（毎月10日）自動配信</div>
+      </td>
+      <td>1</td>
+      <td>¥60,000</td>
+      <td>¥60,000</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="item-name">顧問先属性別パーソナライズ配信</div>
+        <div class="item-desc">納期の特例・消費税・予定納税・決算月に応じた個別メッセージ生成</div>
+      </td>
+      <td>1</td>
+      <td>¥40,000</td>
+      <td>¥40,000</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="item-name">リッチメニュー設定（6ボタン）</div>
+        <div class="item-desc">無料相談予約・顧問サービス案内・創業法人化・書類提出・アクセス・税務カレンダー</div>
+      </td>
+      <td>1</td>
+      <td>¥20,000</td>
+      <td>¥20,000</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="item-name">プロフィール・カバー画像制作</div>
+        <div class="item-desc">ブランドロゴ・カバーバナー画像のデザイン・設定</div>
+      </td>
+      <td>1</td>
+      <td>¥20,000</td>
+      <td>¥20,000</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="item-name">操作マニュアル作成・納品後レクチャー</div>
+        <div class="item-desc">PDF操作マニュアル・オンラインレクチャー30分</div>
+      </td>
+      <td>1</td>
+      <td>¥30,000</td>
+      <td>¥30,000</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 合計 -->
+<div class="summary">
+  <table>
+    <tr class="subtotal">
+      <td>小計（税別）</td>
+      <td>¥390,000</td>
+    </tr>
+    <tr class="discount">
+      <td>モニター割引（20%OFF）</td>
+      <td>－¥78,000</td>
+    </tr>
+    <tr>
+      <td>構築費合計（税別）</td>
+      <td>¥312,000</td>
+    </tr>
+    <tr class="tax">
+      <td>消費税（10%）</td>
+      <td>¥31,200</td>
+    </tr>
+    <tr class="grand">
+      <td>構築費合計（税込）</td>
+      <td>¥343,200</td>
+    </tr>
+  </table>
+</div>
+
+<!-- 月額保守費 -->
+<div class="maintenance">
+  <h3>月額保守費（初月分）</h3>
+  <table>
+    <tr>
+      <td>システム監視・障害対応</td>
+      <td>¥5,000</td>
+    </tr>
+    <tr>
+      <td>キーワード追加・文言修正（月2件まで）</td>
+      <td>¥5,000</td>
+    </tr>
+    <tr>
+      <td>税務カレンダー内容更新（年次法令改正対応）</td>
+      <td>¥5,000</td>
+    </tr>
+    <tr class="total-row">
+      <td>月額保守費合計（税別）</td>
+      <td>¥15,000</td>
+    </tr>
+    <tr class="total-row">
+      <td>月額保守費合計（税込）</td>
+      <td>¥16,500</td>
+    </tr>
+    <tr>
+      <td style="color:#64748B;font-size:11px;padding-top:10px;">【オプション】月次動作確認レポート<br><span style="font-size:10px;">友だち数・送信件数・申込み件数・システム状態を毎月1枚にまとめてご報告</span></td>
+      <td style="color:#64748B;font-size:11px;padding-top:10px;text-align:right;">¥3,000/月<br><span style="font-size:10px;">（税込¥3,300）</span></td>
+    </tr>
+  </table>
+</div>
+
+<!-- ご請求合計 -->
+<div class="summary">
+  <table>
+    <tr class="subtotal">
+      <td>構築費（税込）</td>
+      <td>¥343,200</td>
+    </tr>
+    <tr>
+      <td>初月保守費（税込）</td>
+      <td>¥16,500</td>
+    </tr>
+    <tr class="grand">
+      <td>ご請求合計（税込）</td>
+      <td>¥359,700</td>
+    </tr>
+  </table>
+</div>
+
+<!-- 備考 -->
+<div class="notes">
+  <h3>備考・条件</h3>
+  <ul>
+    <li>本請求はモニター価格（20%割引）での提供です。導入事例としてサービス名・機能概要のポートフォリオ掲載にご協力いただくことが条件となります。</li>
+    <li>会社名・担当者名・実際のトーク内容は一切公開しません。</li>
+    <li>LINE公式アカウントの月額費用（LINE側）は別途クライアント様負担となります。</li>
+    <li>月1,000通以内は無料プランでご利用いただけます。</li>
+    <li>お支払いは着手時50%・納品確認後50%の2回払いとなります。</li>
+    <li>保守費は納品月翌月より発生します。最低契約期間は3ヶ月です。</li>
+    <li>お支払い期限までに下記口座へお振込みをお願いします。振込手数料はご負担ください。</li>
+  </ul>
+</div>
+
+<!-- 振込先 -->
+<div class="bank">
+  <h3>お振込先</h3>
+  <p>
+    銀行名：＿＿＿銀行　＿＿＿支店<br>
+    口座種別：普通　口座番号：＿＿＿＿＿＿＿<br>
+    口座名義：＿＿＿＿＿＿＿＿＿＿
+  </p>
+</div>
+
+<!-- 印鑑欄 -->
+<div class="stamp-row">
+  <div class="stamp-box"><span>担当</span></div>
+  <div class="stamp-box"><span>確認</span></div>
+  <div class="stamp-box"><span>承認</span></div>
+</div>
+
+</div>
+</body>
+</html>

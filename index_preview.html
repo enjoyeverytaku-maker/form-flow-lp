@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【プレビュー】未来感・透明感デザイン｜Form Flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#06C755;
+  --sky:#0EA5E9;
+  --sky2:#38BDF8;
+  --indigo:#6366F1;
+  --mint:#10B981;
+  --text:#0A1628;
+  --body:#364B62;
+  --sub:#6B82A0;
+  --border:rgba(14,165,233,.15);
+  --glass:rgba(255,255,255,.65);
+  --glass2:rgba(255,255,255,.45);
+  --bg:#F4F9FF;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.8;
+  font-size:15px;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+
+/* ─── AURORA BACKGROUND ─── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 10%, rgba(14,165,233,.10) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 90%, rgba(99,102,241,.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 70% 20%, rgba(6,199,85,.07) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 30% 80%, rgba(56,189,248,.07) 0%, transparent 55%),
+    #F4F9FF;
+}
+/* dot grid */
+body::after{
+  content:'';position:fixed;inset:0;z-index:-1;
+  background-image:radial-gradient(circle,rgba(14,165,233,.18) 1px,transparent 1px);
+  background-size:32px 32px;
+  opacity:.5;
+}
+
+/* ─── GLASS UTIL ─── */
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.8);
+  box-shadow:0 4px 32px rgba(14,165,233,.08), inset 0 1px 0 rgba(255,255,255,.9);
+}
+.glass-dark{
+  background:rgba(10,22,40,.7);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border:1px solid rgba(255,255,255,.10);
+}
+
+/* ─── NAV ─── */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(244,249,255,.82);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+}
+.header-inner{
+  max-width:1140px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 32px;height:68px;
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-mark{
+  width:34px;height:34px;border-radius:9px;
+  background:linear-gradient(135deg,var(--sky),var(--g));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Inter',sans-serif;font-weight:900;font-size:13px;color:#fff;
+  box-shadow:0 4px 14px rgba(14,165,233,.35);
+}
+.logo-name{font-family:'Inter',sans-serif;font-weight:800;font-size:18px;
+  background:linear-gradient(90deg,var(--sky),var(--indigo));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.gnav{display:flex;align-items:center;gap:0}
+.gnav a{
+  padding:0 16px;height:68px;display:flex;align-items:center;
+  font-size:13px;font-weight:500;color:var(--body);
+  position:relative;transition:color .2s;
+}
+.gnav a::after{
+  content:'';position:absolute;bottom:0;left:16px;right:16px;
+  height:2px;background:linear-gradient(90deg,var(--sky),var(--indigo));
+  transform:scaleX(0);transform-origin:left;transition:transform .25s;border-radius:2px;
+}
+.gnav a:hover{color:var(--sky)}
+.gnav a:hover::after{transform:scaleX(1)}
+.header-cta{
+  background:linear-gradient(135deg,var(--sky),var(--indigo));
+  color:#fff;padding:9px 22px;border-radius:99px;
+  font-size:13px;font-weight:700;margin-left:12px;
+  box-shadow:0 4px 16px rgba(14,165,233,.3);
+  transition:opacity .2s,transform .15s;white-space:nowrap;
+}
+.header-cta:hover{opacity:.9;transform:translateY(-1px)}
+
+/* ─── HERO ─── */
+.hero{
+  padding:96px 32px 80px;
+  position:relative;
+  min-height:92vh;
+  display:flex;align-items:center;
+}
+/* large decorative kanji */
+.hero-kj{
+  position:absolute;right:5%;top:50%;transform:translateY(-50%);
+  font-size:clamp(200px,22vw,340px);font-weight:900;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(14,165,233,.07);
+  line-height:1;pointer-events:none;user-select:none;
+  font-family:'Noto Sans JP',sans-serif;
+  letter-spacing:-.05em;
+}
+.hero-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 460px;align-items:center;gap:64px;width:100%}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(14,165,233,.08);
+  border:1px solid rgba(14,165,233,.2);
+  color:var(--sky);font-size:11px;font-weight:700;
+  padding:5px 14px 5px 8px;border-radius:99px;margin-bottom:24px;
+  letter-spacing:.06em;
+}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--sky);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{
+  font-size:clamp(36px,4.5vw,64px);font-weight:900;line-height:1.2;
+  letter-spacing:-.03em;margin-bottom:24px;
+}
+.hero h1 .grad{
+  background:linear-gradient(90deg,var(--sky) 0%,var(--indigo) 60%,var(--g) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{font-size:16px;color:var(--body);line-height:1.9;margin-bottom:40px;font-weight:300}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-grad{
+  background:linear-gradient(135deg,var(--sky),var(--indigo));
+  color:#fff;padding:13px 34px;border-radius:99px;
+  font-size:14px;font-weight:700;
+  box-shadow:0 6px 24px rgba(14,165,233,.35);
+  transition:opacity .2s,transform .15s,box-shadow .2s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-grad:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 10px 32px rgba(14,165,233,.4)}
+.btn-outline{
+  background:var(--glass);
+  border:1px solid var(--border);
+  color:var(--body);padding:13px 34px;border-radius:99px;
+  font-size:14px;font-weight:600;
+  backdrop-filter:blur(10px);
+  transition:background .2s,border-color .2s;
+}
+.btn-outline:hover{background:rgba(255,255,255,.9);border-color:var(--sky);color:var(--sky)}
+
+/* phone mockup */
+.phone-wrap{position:relative}
+.phone-glow{
+  position:absolute;inset:-30px;
+  background:radial-gradient(ellipse at center,rgba(14,165,233,.18) 0%,transparent 70%);
+  border-radius:50%;filter:blur(20px);pointer-events:none;
+}
+.phone-card{
+  border-radius:24px;padding:20px;
+  position:relative;z-index:1;
+}
+.phone-body{
+  background:#0A1628;border-radius:40px;
+  padding:16px 14px;border:6px solid #1a2e48;
+  box-shadow:0 40px 80px rgba(10,22,40,.5);
+  max-width:260px;margin:0 auto;
+}
+.phone-notch{
+  width:70px;height:5px;background:#1a2e48;border-radius:3px;
+  margin:0 auto 14px;
+}
+.chat-list{display:flex;flex-direction:column;gap:7px}
+.chat-sys{
+  text-align:center;font-size:10px;color:rgba(255,255,255,.35);
+  margin:4px 0;
+}
+.chat-r,.chat-l{
+  padding:8px 12px;border-radius:3px 16px 16px 16px;
+  font-size:11px;color:#fff;max-width:82%;
+  line-height:1.5;
+}
+.chat-r{
+  background:linear-gradient(135deg,var(--sky),var(--indigo));
+  margin-left:0;
+}
+.chat-l{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px 3px 16px 16px;align-self:flex-end;
+}
+.chat-auto-tag{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:9px;color:rgba(14,165,233,.8);margin-top:3px;
+  font-weight:600;letter-spacing:.04em;
+}
+
+/* floating stat chips */
+.stat-chips{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.chip{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;border-radius:12px;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.06);
+}
+.chip-val{font-family:'Inter',sans-serif;font-size:22px;font-weight:900;color:#fff;line-height:1}
+.chip-val .unit{font-size:12px;font-weight:500;opacity:.6}
+.chip-label{font-size:11px;color:rgba(255,255,255,.55)}
+.chip-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ─── TRUST STRIP ─── */
+.trust-strip{padding:20px 32px}
+.trust-inner{
+  max-width:1140px;margin:0 auto;
+  display:flex;align-items:center;justify-content:center;gap:0;
+  border-radius:16px;overflow:hidden;
+}
+.trust-item{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:16px 12px;font-size:12px;color:var(--sub);font-weight:500;
+  border-right:1px solid var(--border);
+  background:var(--glass);
+  backdrop-filter:blur(12px);
+}
+.trust-item:first-child{border-radius:16px 0 0 16px}
+.trust-item:last-child{border-right:none;border-radius:0 16px 16px 0}
+.trust-icon{font-size:18px}
+
+/* ─── SECTION ─── */
+.section{padding:96px 32px}
+.section-inner{max-width:1140px;margin:0 auto}
+.sec-head{text-align:center;margin-bottom:64px}
+.sec-en{
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.18em;color:var(--sky);margin-bottom:10px;
+  display:block;
+}
+.sec-title{
+  font-size:clamp(24px,2.8vw,36px);font-weight:900;
+  color:var(--text);line-height:1.3;letter-spacing:-.02em;
+}
+.sec-title .grad{
+  background:linear-gradient(90deg,var(--sky),var(--indigo));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.sec-desc{font-size:14px;color:var(--sub);margin-top:12px;font-weight:300;line-height:1.9}
+.sec-line{
+  width:40px;height:2px;margin:16px auto 0;
+  background:linear-gradient(90deg,var(--sky),var(--indigo));border-radius:2px;
+}
+
+/* ─── PROBLEM ─── */
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.problem-card{
+  border-radius:20px;padding:32px 28px;
+  position:relative;overflow:hidden;
+}
+.problem-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--sky),var(--indigo));
+}
+.prob-num{
+  font-family:'Inter',sans-serif;font-size:48px;font-weight:900;
+  background:linear-gradient(135deg,rgba(14,165,233,.15),rgba(99,102,241,.1));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1;margin-bottom:16px;
+}
+.prob-title{font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px}
+.prob-text{font-size:13px;color:var(--sub);line-height:1.8;font-weight:300}
+
+/* ─── FEATURES ─── */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feat-card{
+  border-radius:20px;padding:36px 28px;
+  transition:transform .25s,box-shadow .25s;
+}
+.feat-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 20px 60px rgba(14,165,233,.12);
+}
+.feat-icon-wrap{
+  width:56px;height:56px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;margin-bottom:22px;
+  position:relative;
+}
+.feat-icon-wrap::before{
+  content:'';position:absolute;inset:0;border-radius:14px;
+  background:linear-gradient(135deg,rgba(14,165,233,.15),rgba(99,102,241,.1));
+}
+.feat-title{font-size:18px;font-weight:700;color:var(--text);margin-bottom:10px}
+.feat-text{font-size:13px;color:var(--sub);line-height:1.9;font-weight:300}
+.feat-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:18px}
+.feat-tag{
+  font-size:10px;
+  background:rgba(14,165,233,.08);
+  color:var(--sky);padding:3px 10px;border-radius:99px;
+  border:1px solid rgba(14,165,233,.15);font-weight:600;letter-spacing:.04em;
+}
+
+/* ─── FLOW ─── */
+.flow-bg{
+  background:linear-gradient(135deg,#0A1628 0%,#0F2447 60%,#0A1E3D 100%);
+  position:relative;overflow:hidden;
+}
+.flow-bg::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 80% at 0% 50%,rgba(14,165,233,.12) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 60% at 100% 30%,rgba(99,102,241,.10) 0%,transparent 60%);
+}
+.flow-bg .sec-en{color:rgba(14,165,233,.8)}
+.flow-bg .sec-title{color:#fff}
+.flow-bg .sec-desc{color:rgba(255,255,255,.5)}
+.flow-bg .sec-line{opacity:.6}
+.flow-steps{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:0;position:relative;z-index:1;
+}
+.flow-steps::before{
+  content:'';position:absolute;top:32px;left:12%;width:76%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(14,165,233,.4),rgba(99,102,241,.4),transparent);
+}
+.flow-step{text-align:center;padding:0 8px;position:relative;z-index:1}
+.step-circle{
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(14,165,233,.08);
+  border:1px solid rgba(14,165,233,.3);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;
+  font-family:'Inter',sans-serif;font-size:18px;font-weight:900;
+  color:var(--sky);
+  box-shadow:0 0 20px rgba(14,165,233,.15);
+  backdrop-filter:blur(10px);
+}
+.step-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:6px}
+.step-desc{font-size:11px;color:rgba(255,255,255,.45);line-height:1.6;font-weight:300}
+
+/* ─── PRICE ─── */
+.price-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.price-card{
+  border-radius:24px;padding:36px 28px;
+  position:relative;overflow:hidden;
+  transition:transform .25s;
+}
+.price-card:hover{transform:translateY(-4px)}
+.price-card.featured{
+  background:linear-gradient(145deg,rgba(14,165,233,.12) 0%,rgba(99,102,241,.1) 100%);
+  border-color:rgba(14,165,233,.3) !important;
+}
+.featured-badge{
+  position:absolute;top:20px;right:20px;
+  background:linear-gradient(135deg,var(--sky),var(--indigo));
+  color:#fff;font-size:10px;font-weight:700;padding:4px 12px;
+  border-radius:99px;letter-spacing:.06em;
+}
+.price-plan{font-size:13px;font-weight:700;color:var(--sky);letter-spacing:.08em;margin-bottom:12px}
+.price-amount{
+  font-family:'Inter',sans-serif;font-size:42px;font-weight:900;
+  color:var(--text);line-height:1;margin-bottom:4px;letter-spacing:-.03em;
+}
+.price-amount .tax{font-size:13px;font-weight:400;color:var(--sub)}
+.price-running{
+  font-size:12px;color:var(--mint);font-weight:700;margin-bottom:24px;
+  display:flex;align-items:center;gap:4px;
+}
+.price-divider{height:1px;background:var(--border);margin:20px 0}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:10px}
+.price-features li{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:13px;color:var(--body);font-weight:300;
+}
+.price-features li::before{content:'✓';color:var(--sky);font-weight:700;flex-shrink:0}
+.price-features li.off{color:var(--sub)}
+.price-features li.off::before{content:'–';color:var(--border)}
+.price-cta{
+  margin-top:28px;width:100%;padding:12px;border-radius:99px;
+  font-size:14px;font-weight:700;text-align:center;
+  border:1px solid var(--border);color:var(--body);
+  background:var(--glass);backdrop-filter:blur(10px);
+  transition:background .2s,color .2s,border-color .2s;cursor:pointer;
+  font-family:inherit;
+}
+.price-card.featured .price-cta{
+  background:linear-gradient(135deg,var(--sky),var(--indigo));
+  color:#fff;border:none;
+  box-shadow:0 6px 20px rgba(14,165,233,.3);
+}
+.price-cta:hover{border-color:var(--sky);color:var(--sky)}
+.price-card.featured .price-cta:hover{opacity:.9}
+.price-note{font-size:12px;color:var(--sub);margin-top:24px;text-align:center;line-height:1.8;font-weight:300}
+
+/* ─── FAQ ─── */
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-item{
+  border-radius:16px;overflow:hidden;
+}
+.faq-q{
+  display:flex;align-items:center;gap:14px;padding:20px 24px;
+  cursor:pointer;font-weight:600;font-size:14px;
+  user-select:none;transition:background .15s;
+  background:var(--glass);backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.7);
+}
+.faq-q:hover{background:rgba(255,255,255,.85)}
+.faq-qmark{
+  flex-shrink:0;width:26px;height:26px;border-radius:8px;
+  background:linear-gradient(135deg,var(--sky),var(--indigo));
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-family:'Inter',sans-serif;font-size:12px;font-weight:800;
+  box-shadow:0 3px 10px rgba(14,165,233,.25);
+}
+.faq-text{flex:1}
+.faq-arrow{
+  width:24px;height:24px;border-radius:50%;
+  background:rgba(14,165,233,.08);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:var(--sky);transition:transform .2s;flex-shrink:0;
+}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{
+  display:none;padding:16px 24px 20px 64px;
+  font-size:13px;color:var(--sub);line-height:1.9;
+  font-weight:300;
+  background:rgba(255,255,255,.5);
+  border:1px solid rgba(255,255,255,.7);
+  border-top:none;
+  border-radius:0 0 16px 16px;
+}
+.faq-item.open .faq-a{display:block}
+
+/* ─── CONTACT ─── */
+.contact-card{
+  border-radius:28px;padding:56px;
+  max-width:740px;margin:0 auto;
+}
+.contact-card h3{
+  font-size:26px;font-weight:900;
+  background:linear-gradient(90deg,var(--sky),var(--indigo));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:8px;letter-spacing:-.02em;
+}
+.contact-sub{font-size:14px;color:var(--sub);margin-bottom:36px;font-weight:300;line-height:1.8}
+.form-row{margin-bottom:18px}
+.form-row label{display:block;font-size:12px;font-weight:700;color:var(--body);margin-bottom:6px;letter-spacing:.04em}
+.form-row .req{color:#F43F5E;font-size:10px;margin-left:4px}
+.form-row input,.form-row textarea,.form-row select{
+  width:100%;padding:12px 16px;
+  border:1px solid rgba(14,165,233,.2);
+  border-radius:10px;
+  font-size:14px;font-family:inherit;color:var(--text);
+  background:rgba(255,255,255,.7);
+  backdrop-filter:blur(8px);
+  transition:border-color .2s,box-shadow .2s;outline:none;
+  font-weight:300;
+}
+.form-row input:focus,.form-row textarea:focus,.form-row select:focus{
+  border-color:var(--sky);
+  box-shadow:0 0 0 4px rgba(14,165,233,.08);
+  background:rgba(255,255,255,.95);
+}
+.form-row textarea{height:120px;resize:vertical}
+.form-2col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit{
+  width:100%;padding:14px;
+  background:linear-gradient(135deg,var(--sky),var(--indigo));
+  color:#fff;border:none;border-radius:99px;
+  font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;
+  box-shadow:0 6px 24px rgba(14,165,233,.3);
+  transition:opacity .2s,transform .15s;
+}
+.form-submit:hover{opacity:.9;transform:translateY(-1px)}
+.form-note{font-size:11px;color:var(--sub);text-align:center;margin-top:12px;line-height:1.7;font-weight:300}
+.success-msg{
+  display:none;
+  background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.3);
+  border-radius:10px;padding:12px 16px;font-size:13px;color:var(--mint);
+  font-weight:700;margin-top:12px;
+}
+
+/* ─── FOOTER ─── */
+.site-footer{
+  background:linear-gradient(145deg,#060E1E 0%,#0A1628 100%);
+  color:rgba(255,255,255,.7);padding:64px 32px 28px;
+  position:relative;overflow:hidden;
+}
+.site-footer::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 0% 0%,rgba(14,165,233,.07) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 40% at 100% 100%,rgba(99,102,241,.06) 0%,transparent 60%);
+}
+.footer-inner{max-width:1140px;margin:0 auto;position:relative;z-index:1}
+.footer-top{
+  display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:48px;
+  margin-bottom:48px;padding-bottom:48px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.footer-logo-name{
+  font-family:'Inter',sans-serif;font-weight:900;font-size:20px;
+  background:linear-gradient(90deg,var(--sky),var(--indigo));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.footer-tagline{font-size:12px;color:rgba(255,255,255,.35);margin-top:10px;line-height:1.8;font-weight:300}
+.footer-col h4{
+  font-size:11px;font-weight:700;color:rgba(255,255,255,.5);
+  margin-bottom:16px;letter-spacing:.1em;
+}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);margin-bottom:10px;transition:color .2s;font-weight:300}
+.footer-col a:hover{color:rgba(255,255,255,.9)}
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:11px;color:rgba(255,255,255,.25);
+}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:rgba(255,255,255,.25);transition:color .2s;font-weight:300}
+.footer-links a:hover{color:rgba(255,255,255,.6)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1000px){
+  .hero-inner{grid-template-columns:1fr;max-width:640px}
+  .phone-wrap{display:none}
+  .hero-kj{display:none}
+  .features-grid,.problem-grid,.price-cards{grid-template-columns:1fr 1fr}
+  .flow-steps{grid-template-columns:1fr 1fr;gap:24px}
+  .flow-steps::before{display:none}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .contact-card{padding:36px 28px}
+}
+@media(max-width:640px){
+  .header-inner{padding:0 20px}
+  .gnav{display:none}
+  .hero{padding:60px 20px}
+  .section{padding:64px 20px}
+  .features-grid,.problem-grid,.price-cards{grid-template-columns:1fr}
+  .form-2col{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .trust-inner{border-radius:12px;flex-wrap:wrap}
+  .trust-item{flex:calc(50% - 1px);border-bottom:1px solid var(--border)}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">FF</div>
+      <span class="logo-name">Form Flow</span>
+    </a>
+    <nav class="gnav">
+      <a href="#features">サービス</a>
+      <a href="#flow">導入の流れ</a>
+      <a href="#price">料金</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+    <a href="#contact" class="header-cta">無料相談</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-kj">自動</div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        LINE公式アカウント 構築・設定代行
+      </div>
+      <h1>
+        LINEで、<br>
+        <span class="grad">つながりを</span><br>
+        自動化する。
+      </h1>
+      <p class="hero-sub">
+        GASを活用した独自実装で、Lステップ等の<br>
+        月額ツール不要。初期費用¥19,800〜、<br>
+        最短3営業日で自動返信・予約連携を実現します。
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-grad">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          無料相談・お見積もり
+        </a>
+        <a href="#price" class="btn-outline">料金を見る</a>
+      </div>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-glow"></div>
+      <div class="phone-card glass-dark">
+        <div class="phone-body">
+          <div class="phone-notch"></div>
+          <div class="chat-list">
+            <div class="chat-sys">LINE公式アカウント</div>
+            <div class="chat-r">こんにちは！<br>ご予約・お問い合わせはこちらからどうぞ。</div>
+            <div class="chat-l">予約を取りたいです</div>
+            <div class="chat-r">ご希望の日時をお知らせください。<br>空き状況を自動確認します。</div>
+            <div class="chat-auto-tag">⚡ 自動返信 — 24h 対応</div>
+          </div>
+        </div>
+        <div class="stat-chips">
+          <div class="chip">
+            <div class="chip-dot" style="background:var(--sky)"></div>
+            <div>
+              <div class="chip-val">¥0<span class="unit">/月</span></div>
+              <div class="chip-label">ランニングコスト</div>
+            </div>
+          </div>
+          <div class="chip">
+            <div class="chip-dot" style="background:var(--g)"></div>
+            <div>
+              <div class="chip-val">3<span class="unit">営業日〜</span></div>
+              <div class="chip-label">最短納品</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <span class="trust-icon">✦</span>完全リモート対応
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">⚡</span>最短3営業日納品
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">◎</span>月額ツール不要
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">∞</span>GAS月額¥0運用
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">◈</span>業種問わず対応
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="section" id="problem">
+  <div class="section-inner">
+    <div class="sec-head">
+      <span class="sec-en">PROBLEM</span>
+      <h2 class="sec-title">こんなお悩み、<span class="grad">ありませんか？</span></h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card glass">
+        <div class="prob-num">01</div>
+        <div class="prob-title">月額費用が高くて手が出せない</div>
+        <div class="prob-text">Lステップなどの自動化ツールは月額8,000円〜33,000円。中小事業者には継続的な負担が大きい。</div>
+      </div>
+      <div class="problem-card glass">
+        <div class="prob-num">02</div>
+        <div class="prob-title">設定が複雑で自分でできない</div>
+        <div class="prob-text">リッチメニュー・自動返信・シナリオ配信の設定方法がわからず、導入を先送りにしている。</div>
+      </div>
+      <div class="problem-card glass">
+        <div class="prob-num">03</div>
+        <div class="prob-title">問い合わせ対応に時間が奪われる</div>
+        <div class="prob-text">毎日同じ質問に個別返信しており、本来の業務に集中できていない状態が続いている。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features" style="background:rgba(14,165,233,.03)">
+  <div class="section-inner">
+    <div class="sec-head">
+      <span class="sec-en">SERVICE</span>
+      <h2 class="sec-title">Form Flow が選ばれる<br><span class="grad">3つの理由</span></h2>
+      <p class="sec-desc">月額ゼロ・最短3営業日・完全リモートの三拍子で、LINE運用を次のステージへ。</p>
+      <div class="sec-line"></div>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card glass">
+        <div class="feat-icon-wrap"><span>💰</span></div>
+        <div class="feat-title">ランニングコスト¥0</div>
+        <div class="feat-text">Google Apps Script（GAS）を活用した独自実装のため、Lステップ等の月額ツール不要。LINE公式アカウントの無料プランのみで自動化が完結します。</div>
+        <div class="feat-tags"><span class="feat-tag">GAS活用</span><span class="feat-tag">月額ゼロ</span></div>
+      </div>
+      <div class="feat-card glass">
+        <div class="feat-icon-wrap"><span>⚡</span></div>
+        <div class="feat-title">最短3営業日で納品</div>
+        <div class="feat-text">ヒアリングシート記入後、最短3〜10営業日で納品。進捗報告もメール・チャットでリアルタイムにお伝えします。</div>
+        <div class="feat-tags"><span class="feat-tag">スピード対応</span><span class="feat-tag">進捗報告</span></div>
+      </div>
+      <div class="feat-card glass">
+        <div class="feat-icon-wrap"><span>🔧</span></div>
+        <div class="feat-title">柔軟なフルカスタム</div>
+        <div class="feat-text">リッチメニュー・キーワード自動返信・予約フォーム連携・一斉送信など業種に合わせてカスタマイズ。整体院・サロン・士業・コンサルタントに幅広く対応。</div>
+        <div class="feat-tags"><span class="feat-tag">フルカスタム</span><span class="feat-tag">業種問わず</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="section flow-bg" id="flow">
+  <div class="section-inner">
+    <div class="sec-head">
+      <span class="sec-en">FLOW</span>
+      <h2 class="sec-title">ご依頼から納品まで</h2>
+      <p class="sec-desc">すべてリモートで完結。最短3営業日で稼働します。</p>
+      <div class="sec-line"></div>
+    </div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-circle">01</div>
+        <div class="step-title">お問い合わせ</div>
+        <div class="step-desc">フォームからご相談内容を送信</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-circle">02</div>
+        <div class="step-title">ヒアリング</div>
+        <div class="step-desc">業種・ご要望をメールで確認</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-circle">03</div>
+        <div class="step-title">お見積もり</div>
+        <div class="step-desc">プランと費用をご提示・ご確認</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-circle">04</div>
+        <div class="step-title">制作・設定</div>
+        <div class="step-desc">GAS実装・メニュー・自動返信</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-circle">05</div>
+        <div class="step-title">納品</div>
+        <div class="step-desc">マニュアル込みで引き渡し完了</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="section" id="price">
+  <div class="section-inner">
+    <div class="sec-head">
+      <span class="sec-en">PRICE</span>
+      <h2 class="sec-title"><span class="grad">透明な</span>料金プラン</h2>
+      <p class="sec-desc">すべて税込・完全リモート。月額ランニングコスト¥0でご利用いただけます。</p>
+      <div class="sec-line"></div>
+    </div>
+    <div class="price-cards">
+      <div class="price-card glass">
+        <div class="price-plan">LIGHT</div>
+        <div class="price-amount">¥19,800<span class="tax"> 税込</span></div>
+        <div class="price-running">✦ 月額¥0で運用</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>リッチメニュー設定（基本）</li>
+          <li>キーワード自動返信 3件</li>
+          <li>操作マニュアル付き</li>
+          <li class="off">フォーム・予約連携</li>
+          <li class="off">一斉送信設定</li>
+        </ul>
+        <button class="price-cta" onclick="location.href='#contact'">このプランで相談する</button>
+      </div>
+      <div class="price-card glass featured">
+        <div class="featured-badge">人気</div>
+        <div class="price-plan">STANDARD</div>
+        <div class="price-amount">¥34,800<span class="tax"> 税込</span></div>
+        <div class="price-running">✦ 月額¥0で運用</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>リッチメニュー設定（フル対応）</li>
+          <li>キーワード自動返信 10件</li>
+          <li>フォーム・予約連携（GAS）</li>
+          <li>一斉送信設定</li>
+          <li>操作マニュアル付き</li>
+        </ul>
+        <button class="price-cta" onclick="location.href='#contact'">このプランで相談する</button>
+      </div>
+      <div class="price-card glass">
+        <div class="price-plan">CUSTOM</div>
+        <div class="price-amount" style="font-size:28px">要お見積もり</div>
+        <div class="price-running">✦ 要件に応じて対応</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>スタンダード全機能</li>
+          <li>キーワード自動返信 無制限</li>
+          <li>複雑なシナリオ対応</li>
+          <li>複数アカウント対応</li>
+          <li>専用GASシステム構築</li>
+        </ul>
+        <button class="price-cta" onclick="location.href='#contact'">詳細をご相談</button>
+      </div>
+    </div>
+    <p class="price-note">
+      ※ 現在モニター価格でご提供中です　※ LINE公式アカウント（無料プラン以上）のご用意が必要です<br>
+      ※ 着手前全額 or 着手前50%・納品後50%（銀行振込）
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" style="background:rgba(99,102,241,.03)">
+  <div class="section-inner">
+    <div class="sec-head">
+      <span class="sec-en">FAQ</span>
+      <h2 class="sec-title">よくある<span class="grad">ご質問</span></h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">
+          <div class="faq-qmark">Q</div>
+          <span class="faq-text">LINE公式アカウントをまだ持っていなくても依頼できますか？</span>
+          <div class="faq-arrow">▾</div>
+        </div>
+        <div class="faq-a">はい、問題ありません。アカウントの開設方法からご案内しております。ご依頼前のご相談もお気軽にどうぞ。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <div class="faq-qmark">Q</div>
+          <span class="faq-text">Lステップなどの有料ツールは使いますか？</span>
+          <div class="faq-arrow">▾</div>
+        </div>
+        <div class="faq-a">使用しません。Google Apps Script（GAS）を活用した独自実装のため、外部ツールの月額費用は一切かかりません。LINE公式アカウントの無料プランのみでご利用いただけます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <div class="faq-qmark">Q</div>
+          <span class="faq-text">納品後に自分で内容を修正できますか？</span>
+          <div class="faq-arrow">▾</div>
+        </div>
+        <div class="faq-a">はい、操作マニュアルをお渡しします。簡単な文章変更やメニューの差し替えはマニュアルを見ながらご自身で行っていただけます。追加改修はご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <div class="faq-qmark">Q</div>
+          <span class="faq-text">対面での打ち合わせは必要ですか？</span>
+          <div class="faq-arrow">▾</div>
+        </div>
+        <div class="faq-a">不要です。全工程をメール・チャットで完結します。全国どこからでもご依頼いただけます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <div class="faq-qmark">Q</div>
+          <span class="faq-text">キャンセルはできますか？</span>
+          <div class="faq-arrow">▾</div>
+        </div>
+        <div class="faq-a">着手前のキャンセルは全額返金いたします。着手後は作業進捗に応じた費用を申し受けます。詳細は特定商取引法に基づく表記をご確認ください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="sec-head">
+      <span class="sec-en">CONTACT</span>
+      <h2 class="sec-title">お問い合わせ・<span class="grad">無料相談</span></h2>
+      <p class="sec-desc">1営業日以内にご返信いたします。見積もりのみのご相談も歓迎です。</p>
+      <div class="sec-line"></div>
+    </div>
+    <div class="contact-card glass">
+      <h3>まずはお気軽に</h3>
+      <p class="contact-sub">ご依頼前のご質問・お見積もりのみのご相談も歓迎しております。</p>
+      <form id="contactForm" action="https://formspree.io/f/xbjndpwq" method="POST">
+        <div class="form-2col">
+          <div class="form-row">
+            <label>お名前<span class="req">必須</span></label>
+            <input type="text" name="name" required placeholder="山田 太郎">
+          </div>
+          <div class="form-row">
+            <label>業種</label>
+            <select name="industry">
+              <option value="">選択してください</option>
+              <option>整体院・接骨院</option>
+              <option>美容サロン・エステ</option>
+              <option>士業（税理士・行政書士など）</option>
+              <option>コンサルタント</option>
+              <option>飲食店</option>
+              <option>その他</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <label>メールアドレス<span class="req">必須</span></label>
+          <input type="email" name="email" required placeholder="example@gmail.com">
+        </div>
+        <div class="form-row">
+          <label>ご相談内容<span class="req">必須</span></label>
+          <textarea name="message" required placeholder="現在のLINE運用の状況、お困りの点、ご希望の機能などをご記入ください。"></textarea>
+        </div>
+        <button type="submit" class="form-submit">送信する</button>
+        <div id="successMsg" class="success-msg">✓ 送信しました。1営業日以内にご連絡します。</div>
+        <p class="form-note">
+          送信情報はお問い合わせ対応以外に使用しません。
+          <a href="./tokushoho.html" style="color:var(--sky)">特定商取引法に基づく表記</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo-name">Form Flow</div>
+        <p class="footer-tagline">LINE公式アカウント 構築・設定代行<br>GAS活用でランニングコスト¥0を実現</p>
+      </div>
+      <div class="footer-col">
+        <h4>SERVICE</h4>
+        <a href="#features">サービス概要</a>
+        <a href="#price">料金プラン</a>
+        <a href="#flow">導入の流れ</a>
+      </div>
+      <div class="footer-col">
+        <h4>CONTENT</h4>
+        <a href="./column.html">お役立ちコラム</a>
+        <a href="#faq">よくある質問</a>
+      </div>
+      <div class="footer-col">
+        <h4>SUPPORT</h4>
+        <a href="#contact">お問い合わせ</a>
+        <a href="./tokushoho.html">特定商取引法に基づく表記</a>
+        <a href="./privacy.html">プライバシーポリシー</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Form Flow. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="./tokushoho.html">特商法表記</a>
+        <a href="./privacy.html">プライバシーポリシー</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>q.closest('.faq-item').classList.toggle('open'));
+});
+const form=document.getElementById('contactForm');
+if(form){
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const btn=form.querySelector('.form-submit');
+    btn.textContent='送信中...';btn.disabled=true;
+    try{
+      const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+      if(res.ok){document.getElementById('successMsg').style.display='block';form.reset();}
+      else btn.textContent='エラーが発生しました。再度お試しください。';
+    }catch{btn.textContent='エラーが発生しました。再度お試しください。';}
+    btn.disabled=false;
+    if(btn.textContent==='送信中...')btn.textContent='送信する';
+  });
+}
+</script>
+</body>
+</html>

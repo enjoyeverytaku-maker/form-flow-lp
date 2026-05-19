@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>操作マニュアル｜LINE公式アカウント ライトプラン</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    color: #1E293B;
+    background: #fff;
+    line-height: 1.75;
+  }
+
+  /* 表紙 */
+  .cover {
+    background: linear-gradient(135deg, #F0FDF4 0%, #EFF6FF 60%, #F8FAFC 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    page-break-after: always;
+  }
+  .cover-badge {
+    display: inline-block;
+    background: #06C755;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    letter-spacing: .1em;
+  }
+  .cover h1 {
+    font-size: 32px;
+    font-weight: 900;
+    color: #0F172A;
+    line-height: 1.35;
+    margin-bottom: 16px;
+  }
+  .cover h1 span { color: #06C755; }
+  .cover .sub { font-size: 16px; color: #64748B; margin-bottom: 48px; }
+  .cover-info { text-align: left; background: #fff; border-radius: 12px; padding: 24px 32px; min-width: 320px; box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+  .cover-info table { width: 100%; border-collapse: collapse; }
+  .cover-info td { padding: 6px 0; font-size: 13px; border-bottom: 1px solid #E2E8F0; }
+  .cover-info td:first-child { color: #64748B; width: 40%; }
+  .cover-info td:last-child { font-weight: 600; }
+  .brand { margin-top: 48px; font-size: 14px; font-weight: 800; color: #0F172A; }
+  .brand span { color: #06C755; }
+
+  /* 本文 */
+  .content { max-width: 760px; margin: 0 auto; padding: 48px 40px; }
+
+  /* 目次 */
+  .toc {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    page-break-after: always;
+  }
+  .toc h2 { font-size: 16px; font-weight: 800; color: #0F172A; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #06C755; }
+  .toc ol { padding-left: 20px; }
+  .toc li { padding: 5px 0; font-size: 14px; color: #334155; }
+  .toc li span { color: #94A3B8; font-size: 12px; margin-left: 8px; }
+
+  /* セクション */
+  .section { margin-bottom: 56px; }
+  .section-num {
+    display: inline-block;
+    background: #0F172A;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    letter-spacing: .1em;
+  }
+  .section h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 6px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #06C755;
+  }
+  .section .intro { font-size: 13px; color: #64748B; margin-bottom: 24px; margin-top: 8px; }
+
+  /* 手順 */
+  .steps { display: flex; flex-direction: column; gap: 16px; }
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: #06C755;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .step-body h4 { font-size: 14px; font-weight: 700; color: #0F172A; margin-bottom: 4px; }
+  .step-body p { font-size: 13px; color: #334155; }
+  .step-body .path {
+    display: inline-block;
+    background: #F1F5F9;
+    border: 1px solid #CBD5E1;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: monospace;
+    color: #0F172A;
+    margin: 4px 0;
+  }
+
+  /* ヒントボックス */
+  .tip {
+    background: #EFF6FF;
+    border-left: 4px solid #3B82F6;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 13px;
+    color: #1E40AF;
+  }
+  .tip strong { display: block; margin-bottom: 4px; }
+  .warn {
+    background: #FFF7ED;
+    border-left: 4px solid #F59E0B;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 13px;
+    color: #92400E;
+  }
+  .warn strong { display: block; margin-bottom: 4px; }
+
+  /* テーブル */
+  table.info {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+  table.info th {
+    background: #0F172A;
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 12px;
+  }
+  table.info td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #E2E8F0;
+  }
+  table.info tr:nth-child(even) { background: #F8FAFC; }
+
+  /* FAQ */
+  .faq { display: flex; flex-direction: column; gap: 16px; }
+  .faq-item { border: 1px solid #E2E8F0; border-radius: 8px; overflow: hidden; }
+  .faq-q {
+    background: #F1F5F9;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0F172A;
+  }
+  .faq-q::before { content: 'Q. '; color: #06C755; }
+  .faq-a {
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #334155;
+  }
+  .faq-a::before { content: 'A. '; color: #64748B; font-weight: 700; }
+
+  /* フッター */
+  footer {
+    background: #0F172A;
+    color: rgba(255,255,255,.6);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    margin-top: 60px;
+  }
+  footer strong { color: #06C755; }
+
+  @media print {
+    .cover { min-height: auto; padding: 40px; }
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 表紙 -->
+<div class="cover">
+  <div class="cover-badge">LIGHT PLAN</div>
+  <h1>LINE公式アカウント<br><span>操作マニュアル</span></h1>
+  <p class="sub">設定から日常運用まで、この1冊でわかります</p>
+  <div class="cover-info">
+    <table>
+      <tr><td>お客様名</td><td>＿＿＿＿＿＿＿＿＿＿　様</td></tr>
+      <tr><td>アカウント名</td><td>＿＿＿＿＿＿＿＿＿＿</td></tr>
+      <tr><td>納品日</td><td>　　　年　　月　　日</td></tr>
+      <tr><td>担当</td><td>Form Flow</td></tr>
+      <tr><td>お問い合わせ</td><td>lineform.works@gmail.com</td></tr>
+    </table>
+  </div>
+  <div class="brand">Form <span>Flow</span></div>
+</div>
+
+<div class="content">
+
+<!-- 目次 -->
+<div class="toc">
+  <h2>目次</h2>
+  <ol>
+    <li>LINE Official Account Managerへのログイン <span>p.2</span></li>
+    <li>プロフィール情報の確認・変更 <span>p.3</span></li>
+    <li>あいさつメッセージの確認・変更 <span>p.4</span></li>
+    <li>リッチメニューの確認 <span>p.5</span></li>
+    <li>友だち一覧・統計の確認 <span>p.6</span></li>
+    <li>メッセージの手動配信 <span>p.7</span></li>
+    <li>よくあるトラブルと対処法 <span>p.8</span></li>
+    <li>サポート連絡先 <span>p.9</span></li>
+  </ol>
+</div>
+
+<!-- 1. ログイン -->
+<div class="section">
+  <div class="section-num">SECTION 01</div>
+  <h2>LINE Official Account Managerへのログイン</h2>
+  <p class="intro">LINEアカウントの管理はすべてブラウザ上の管理画面（Official Account Manager）から行います。</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>ブラウザでアクセス</h4>
+        <p>Google Chrome などのブラウザで以下のURLを開きます。</p>
+        <span class="path">https://manager.line.biz/</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>LINEアカウントでログイン</h4>
+        <p>「LINEでログイン」をクリックし、アカウント作成時に登録したメールアドレス・パスワードを入力します。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h4>アカウントを選択</h4>
+        <p>ログイン後、管理するアカウント名をクリックすると管理画面に入れます。</p>
+      </div>
+    </div>
+  </div>
+  <div class="tip">
+    <strong>💡 ブックマーク推奨</strong>
+    manager.line.biz をブラウザのブックマークに追加しておくと毎回検索する手間が省けます。
+  </div>
+</div>
+
+<!-- 2. プロフィール -->
+<div class="section">
+  <div class="section-num">SECTION 02</div>
+  <h2>プロフィール情報の確認・変更</h2>
+  <p class="intro">アイコン画像・アカウント名・ステータスメッセージはいつでも変更できます。</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>「アカウント設定」を開く</h4>
+        <p>管理画面左メニューの <span class="path">アカウント設定</span> をクリックします。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>「プロフィール」タブを選択</h4>
+        <p>上部タブから <span class="path">プロフィール</span> を選択します。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h4>各項目を編集して保存</h4>
+        <p>アイコン画像・アカウント名・ステータスメッセージを編集し、「保存」をクリックします。</p>
+      </div>
+    </div>
+  </div>
+  <table class="info">
+    <tr><th>項目</th><th>推奨サイズ・文字数</th><th>備考</th></tr>
+    <tr><td>プロフィール画像</td><td>640×640px（正方形）</td><td>JPG / PNG 推奨</td></tr>
+    <tr><td>カバー画像</td><td>1080×878px（横長）</td><td>プロフィール画面上部に表示</td></tr>
+    <tr><td>ステータスメッセージ</td><td>最大500文字</td><td>営業時間・特徴を記載</td></tr>
+  </table>
+</div>
+
+<!-- 3. あいさつメッセージ -->
+<div class="section">
+  <div class="section-num">SECTION 03</div>
+  <h2>あいさつメッセージの確認・変更</h2>
+  <p class="intro">友だち追加時に自動で送られるメッセージです。内容を変更したい場合は以下の手順で行います。</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>「応答メッセージ」を開く</h4>
+        <p>左メニューの <span class="path">応答 → 応答メッセージ</span> をクリックします。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>「あいさつメッセージ」を選択</h4>
+        <p>一覧から「あいさつメッセージ」を選んで「編集」をクリックします。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h4>テキストを編集して保存</h4>
+        <p>メッセージ本文を書き換えて「保存」をクリックします。すぐに反映されます。</p>
+      </div>
+    </div>
+  </div>
+  <div class="warn">
+    <strong>⚠️ 文字数に注意</strong>
+    1通のテキストメッセージは最大5,000文字です。長すぎると読まれにくいため、300〜500文字程度が目安です。
+  </div>
+</div>
+
+<!-- 4. リッチメニュー -->
+<div class="section">
+  <div class="section-num">SECTION 04</div>
+  <h2>リッチメニューの確認</h2>
+  <p class="intro">トーク画面下部に表示されるメニューです。納品時に設定済みです。内容の変更が必要な場合はForm Flowまでご連絡ください。</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>「リッチメニュー」を開く</h4>
+        <p>左メニューの <span class="path">トークルーム管理 → リッチメニュー</span> をクリックします。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>設定内容を確認</h4>
+        <p>「公開中」となっているメニューの内容を確認できます。表示期間・ボタン設定も確認できます。</p>
+      </div>
+    </div>
+  </div>
+  <div class="tip">
+    <strong>💡 ボタンの動作テスト</strong>
+    スマートフォンのLINEアプリで実際にボタンをタップして、正しく動作するか定期的にご確認ください。
+  </div>
+</div>
+
+<!-- 5. 友だち一覧 -->
+<div class="section">
+  <div class="section-num">SECTION 05</div>
+  <h2>友だち一覧・統計の確認</h2>
+  <p class="intro">友だちの増減や、メッセージの開封状況を確認できます。</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>「分析」メニューを開く</h4>
+        <p>左メニューの <span class="path">分析</span> をクリックします。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>確認したい項目を選ぶ</h4>
+        <p>「友だち」「メッセージ」「リッチメニュー」のタブで各統計を確認できます。</p>
+      </div>
+    </div>
+  </div>
+  <table class="info">
+    <tr><th>確認できる指標</th><th>内容</th></tr>
+    <tr><td>友だち数の推移</td><td>日別・月別の友だち追加・ブロック数</td></tr>
+    <tr><td>メッセージ開封率</td><td>配信したメッセージが開封された割合</td></tr>
+    <tr><td>リッチメニュークリック率</td><td>各ボタンのタップ数</td></tr>
+  </table>
+</div>
+
+<!-- 6. 手動配信 -->
+<div class="section">
+  <div class="section-num">SECTION 06</div>
+  <h2>メッセージの手動配信</h2>
+  <p class="intro">お知らせやキャンペーン情報を全友だちへ一斉送信できます。</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>「メッセージ配信」を開く</h4>
+        <p>左メニューの <span class="path">メッセージ配信</span> をクリックします。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>「作成」をクリック</h4>
+        <p>右上の「作成」ボタンをクリックして新規メッセージを作成します。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h4>メッセージを入力</h4>
+        <p>テキスト・画像・クーポンなど送りたいコンテンツを追加します。「プレビュー」で確認できます。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h4>配信先・日時を設定して送信</h4>
+        <p>「今すぐ配信」または日時を指定して予約配信ができます。確認後「配信」をクリックします。</p>
+      </div>
+    </div>
+  </div>
+  <div class="warn">
+    <strong>⚠️ 無料プランのメッセージ通数に注意</strong>
+    無料プランは月1,000通まで無料です。友だちが200人いて1通送ると200通消費します。上限を超えると翌月まで送れなくなります。
+  </div>
+</div>
+
+<!-- 7. トラブル -->
+<div class="section">
+  <div class="section-num">SECTION 07</div>
+  <h2>よくあるトラブルと対処法</h2>
+  <div class="faq">
+    <div class="faq-item">
+      <div class="faq-q">あいさつメッセージが届かない</div>
+      <div class="faq-a">管理画面の「応答設定」でチャットが「OFF」になっているか確認してください。また、一度ブロックして再度友だち追加した場合はあいさつメッセージは届きません。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">リッチメニューが表示されない</div>
+      <div class="faq-a">リッチメニューの「表示期間」が正しく設定されているか確認してください。期間外の場合は表示されません。また、スマートフォンのLINEアプリを最新版にアップデートしてください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">メッセージ配信がエラーになる</div>
+      <div class="faq-a">無料プランの月1,000通上限に達している可能性があります。「分析 → メッセージ」で当月の配信数を確認してください。上限を超えた場合は翌月1日にリセットされます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">管理画面にログインできない</div>
+      <div class="faq-a">パスワードを忘れた場合は manager.line.biz のログイン画面から「パスワードを忘れた場合」をクリックしてリセットできます。メールアドレスが必要です。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">友だちからのメッセージに返信したい</div>
+      <div class="faq-a">管理画面の「チャット」メニューから個別にメッセージを送ることができます。または「LINE Official Account」スマートフォンアプリからも対応できます。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 8. サポート -->
+<div class="section">
+  <div class="section-num">SECTION 08</div>
+  <h2>サポート連絡先</h2>
+  <p class="intro">操作でわからないことがあればお気軽にご連絡ください。納品後7日以内の軽微な修正は1回まで無償対応します。</p>
+  <table class="info">
+    <tr><th>連絡方法</th><th>連絡先</th><th>対応時間</th></tr>
+    <tr><td>LINE（推奨）</td><td>Form Flow 公式LINE</td><td>平日 10:00〜18:00</td></tr>
+    <tr><td>メール</td><td>lineform.works@gmail.com</td><td>24時間受付・返信は翌営業日</td></tr>
+  </table>
+  <div class="tip">
+    <strong>💡 お問い合わせの際はこちらをお伝えください</strong>
+    ① アカウント名　② 問題の内容（スクリーンショットがあると助かります）　③ いつから発生しているか
+  </div>
+</div>
+
+</div><!-- /content -->
+
+<footer>
+  <strong>Form Flow</strong> — LINE公式アカウント構築サービス<br>
+  lineform.works@gmail.com ｜ © 2026 Form Flow
+</footer>
+
+</body>
+</html>

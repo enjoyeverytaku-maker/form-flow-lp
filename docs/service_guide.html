@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Flow サービスガイド</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+      color: #1E293B;
+      background: #fff;
+      font-size: 13px;
+      line-height: 1.75;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    /* ══ P1：表紙 ══════════════════════════════════════ */
+    .cover {
+      background: linear-gradient(160deg, #0F172A 0%, #1E3A5F 100%);
+      padding: 18mm 16mm 14mm;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(6,199,85,.25) 0%, transparent 70%);
+    }
+    .cover-logo { font-size: 15px; font-weight: 900; color: rgba(255,255,255,.6); margin-bottom: 28px; letter-spacing: .05em; }
+    .cover-logo span { color: #06C755; }
+    .cover-eyebrow {
+      display: inline-block;
+      background: #06C755;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      letter-spacing: .05em;
+    }
+    .cover h1 {
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1.4;
+      margin-bottom: 16px;
+      letter-spacing: -.01em;
+    }
+    .cover h1 em { color: #06C755; font-style: normal; }
+    .cover-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,.7);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    .cover-stats {
+      display: flex;
+      gap: 20px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.15);
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 22px; font-weight: 900; color: #06C755; line-height: 1; }
+    .stat-label { font-size: 10px; color: rgba(255,255,255,.6); margin-top: 3px; }
+
+    /* ══ セクション共通 ══════════════════════════════════ */
+    .section { padding: 14mm 16mm; }
+    .section + .section { padding-top: 0; }
+
+    .sec-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      color: #06C755;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    h2 {
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 1.4;
+      margin-bottom: 14px;
+      color: #0F172A;
+    }
+    h2 em { color: #06C755; font-style: normal; }
+    h3 {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #0F172A;
+    }
+
+    /* ══ 課題セクション ══════════════════════════════════ */
+    .problems {
+      background: #FEF2F2;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .problem-list { list-style: none; }
+    .problem-list li {
+      font-size: 12px;
+      padding: 6px 0;
+      border-bottom: 1px dashed #FECACA;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .problem-list li:last-child { border-bottom: none; }
+    .problem-list .icon { color: #EF4444; flex-shrink: 0; font-weight: 700; }
+
+    .arrow-block {
+      text-align: center;
+      font-size: 22px;
+      color: #06C755;
+      margin: 10px 0;
+      font-weight: 900;
+    }
+
+    .solution-box {
+      background: #F0FDF4;
+      border: 1.5px solid #86EFAC;
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .solution-box p {
+      font-size: 13px;
+      font-weight: 700;
+      color: #166534;
+      line-height: 1.7;
+    }
+
+    /* ══ Before/After ══════════════════════════════════ */
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .ba-card { border-radius: 8px; overflow: hidden; }
+    .ba-header {
+      padding: 8px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .ba-before .ba-header { background: #F1F5F9; color: #64748B; }
+    .ba-after  .ba-header { background: #06C755; color: #fff; }
+    .ba-items { padding: 10px 12px; background: #F8FAFC; }
+    .ba-after .ba-items { background: #F0FDF4; }
+    .ba-item {
+      font-size: 11px;
+      padding: 4px 0;
+      border-bottom: 1px dashed #E2E8F0;
+      display: flex;
+      gap: 6px;
+    }
+    .ba-item:last-child { border-bottom: none; }
+    .ba-before .ba-item .mark { color: #EF4444; }
+    .ba-after  .ba-item .mark { color: #06C755; }
+
+    /* ══ できること ══════════════════════════════════════ */
+    .can-do-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .can-do-card {
+      background: #F8FAFC;
+      border-left: 3px solid #06C755;
+      border-radius: 0 8px 8px 0;
+      padding: 10px 12px;
+    }
+    .can-do-card .title { font-size: 12px; font-weight: 700; margin-bottom: 3px; }
+    .can-do-card .desc  { font-size: 11px; color: #64748B; }
+
+    /* ══ プラン ══════════════════════════════════════════ */
+    .plan-wrap { background: #F8FAFC; border-radius: 10px; padding: 14px; margin-bottom: 14px; }
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .plan-card {
+      background: #fff;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .plan-card.rec { border-color: #06C755; box-shadow: 0 0 0 3px rgba(6,199,85,.1); }
+    .plan-head { padding: 10px 12px; text-align: center; background: #F8FAFC; }
+    .plan-card.rec .plan-head { background: #06C755; }
+    .plan-name { font-size: 12px; font-weight: 900; }
+    .plan-card.rec .plan-name { color: #fff; }
+    .plan-badge {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 10px;
+      margin-top: 3px;
+      background: #DCFCE7;
+      color: #166534;
+    }
+    .plan-card.rec .plan-badge { background: rgba(255,255,255,.25); color: #fff; }
+    .plan-price { padding: 10px 12px; text-align: center; border-bottom: 1px solid #F1F5F9; }
+    .p-amount { font-size: 19px; font-weight: 900; color: #06C755; }
+    .p-unit   { font-size: 10px; color: #94A3B8; }
+    .plan-body { padding: 10px 12px; }
+    .plan-item { font-size: 11px; color: #475569; padding: 3px 0; border-bottom: 1px dashed #F1F5F9; }
+    .plan-item:last-child { border-bottom: none; }
+    .plan-item::before { content: '✓ '; color: #06C755; font-weight: 700; }
+
+    .plan-note {
+      margin-top: 10px;
+      font-size: 10px;
+      color: #64748B;
+      text-align: center;
+      padding: 6px;
+      background: #FEF3C7;
+      border-radius: 6px;
+    }
+
+    /* ══ 対応業種 ══════════════════════════════════════ */
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+    .ind-card { background: #F8FAFC; border-radius: 7px; padding: 9px 11px; }
+    .ind-name { font-size: 12px; font-weight: 700; margin-bottom: 3px; }
+    .ind-tags { font-size: 10px; color: #64748B; }
+
+    /* ══ 導入の流れ ══════════════════════════════════════ */
+    .flow {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      margin-bottom: 14px;
+    }
+    .flow-step { flex: 1; text-align: center; position: relative; }
+    .flow-step::after {
+      content: '▶';
+      position: absolute;
+      right: -7px; top: 10px;
+      color: #06C755;
+      font-size: 11px;
+    }
+    .flow-step:last-child::after { display: none; }
+    .flow-num {
+      width: 28px; height: 28px;
+      background: #06C755;
+      border-radius: 50%;
+      color: #fff; font-weight: 900; font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 5px;
+    }
+    .flow-label { font-size: 10px; font-weight: 700; }
+    .flow-sub   { font-size: 9px; color: #64748B; margin-top: 2px; }
+
+    /* ══ よくある質問 ══════════════════════════════════ */
+    .faq-list { margin-bottom: 14px; }
+    .faq { border-bottom: 1px solid #F1F5F9; padding: 9px 0; }
+    .faq:first-child { padding-top: 0; }
+    .faq-q { font-size: 12px; font-weight: 700; color: #0F172A; margin-bottom: 4px; display: flex; gap: 7px; }
+    .faq-q::before { content: 'Q.'; color: #06C755; flex-shrink: 0; }
+    .faq-a { font-size: 11px; color: #475569; display: flex; gap: 7px; }
+    .faq-a::before { content: 'A.'; color: #94A3B8; flex-shrink: 0; }
+
+    /* ══ CTA ══════════════════════════════════════════ */
+    .cta {
+      background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%);
+      border-radius: 12px;
+      padding: 18px 20px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .cta-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .cta h3 { font-size: 15px; font-weight: 900; margin-bottom: 5px; }
+    .cta h3 em { color: #06C755; font-style: normal; }
+    .cta p { font-size: 11px; color: rgba(255,255,255,.7); }
+    .cta-badge {
+      background: #06C755;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 6px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .cta-contacts {
+      display: flex;
+      gap: 16px;
+    }
+    .contact-item { flex: 1; }
+    .contact-label { font-size: 10px; color: rgba(255,255,255,.5); margin-bottom: 3px; }
+    .contact-val { font-size: 12px; color: #06C755; font-weight: 700; }
+    .contact-note { font-size: 10px; color: rgba(255,255,255,.5); margin-top: 2px; }
+
+    /* ══ フッター ══════════════════════════════════════ */
+    .footer {
+      text-align: center;
+      padding: 10px 16mm;
+      font-size: 10px;
+      color: #94A3B8;
+      border-top: 1px solid #F1F5F9;
+    }
+
+    @media print {
+      .page { margin: 0; }
+      .cover { padding: 15mm 15mm 12mm; }
+      .section { padding: 10mm 15mm; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 表紙 -->
+  <div class="cover">
+    <div class="cover-logo">Form <span>Flow</span></div>
+    <div class="cover-eyebrow">LINE公式アカウント 構築・設定代行</div>
+    <h1>LINE1本で、<em>集客・予約・フォロー</em>を<br>自動化する。</h1>
+    <p class="cover-sub">
+      月額ツール不要・GAS連携・最短3営業日納品。<br>
+      整体院・サロン・コンサル・士業など幅広い業種の<br>
+      業務効率化をLINEでまるごとサポートします。
+    </p>
+    <div class="cover-stats">
+      <div class="stat">
+        <div class="stat-num">¥0</div>
+        <div class="stat-label">月額ツール代</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3日〜</div>
+        <div class="stat-label">最短納品日数</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7業種</div>
+        <div class="stat-label">対応業種数</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">無料</div>
+        <div class="stat-label">初回相談・見積もり</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 課題 -->
+  <div class="section">
+    <div class="sec-eyebrow">PROBLEM</div>
+    <h2>こんなお悩み、<em>ありませんか？</em></h2>
+
+    <div class="problems">
+      <ul class="problem-list">
+        <li><span class="icon">✗</span>予約・問い合わせの対応に毎日時間を取られ、本業に集中できない</li>
+        <li><span class="icon">✗</span>せっかく来た客が次回につながらず、リピーターが増えない</li>
+        <li><span class="icon">✗</span>Lステップなどのツール費用が月1〜3万円かかり続けている</li>
+        <li><span class="icon">✗</span>LINEを開設したが、自動返信しか使えておらずもったいない</li>
+        <li><span class="icon">✗</span>自分でやろうとしたが、設定が複雑で途中で諦めた</li>
+      </ul>
+    </div>
+
+    <div class="arrow-block">↓</div>
+
+    <div class="solution-box">
+      <p>Form Flowは、<strong>月額ツールなし・GAS活用</strong>で、これらをまるごと解決します。<br>
+      一度構築すれば、24時間自動で集客・予約・フォローが動き続けます。</p>
+    </div>
+  </div>
+
+  <!-- Before/After -->
+  <div class="section">
+    <div class="sec-eyebrow">BEFORE / AFTER</div>
+    <h2>導入前後の<em>変化</em></h2>
+    <div class="ba-grid">
+      <div class="ba-card ba-before">
+        <div class="ba-header">❌ 導入前</div>
+        <div class="ba-items">
+          <div class="ba-item"><span class="mark">✗</span>問い合わせに1件ずつ手動返信</div>
+          <div class="ba-item"><span class="mark">✗</span>予約管理はLINEのトークを遡る</div>
+          <div class="ba-item"><span class="mark">✗</span>来店後のフォローが続かない</div>
+          <div class="ba-item"><span class="mark">✗</span>月額ツール代が固定費に</div>
+          <div class="ba-item"><span class="mark">✗</span>営業時間外は対応できない</div>
+        </div>
+      </div>
+      <div class="ba-card ba-after">
+        <div class="ba-header">✅ 導入後</div>
+        <div class="ba-items">
+          <div class="ba-item"><span class="mark">✓</span>よくある質問は自動で即回答</div>
+          <div class="ba-item"><span class="mark">✓</span>予約受付〜確認がLINEで完結</div>
+          <div class="ba-item"><span class="mark">✓</span>フォローメッセージが自動送信</div>
+          <div class="ba-item"><span class="mark">✓</span>月額ツール代ゼロで運用継続</div>
+          <div class="ba-item"><span class="mark">✓</span>24時間・365日自動対応</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- できること -->
+  <div class="section">
+    <div class="sec-eyebrow">FEATURES</div>
+    <h2>LINEで<em>実現できること</em></h2>
+    <div class="can-do-grid">
+      <div class="can-do-card">
+        <div class="title">📩 問い合わせの自動受付</div>
+        <div class="desc">キーワードに合わせた自動返信・FAQ対応で、対応工数を大幅削減</div>
+      </div>
+      <div class="can-do-card">
+        <div class="title">📅 予約・日程調整の自動化</div>
+        <div class="desc">Googleフォームと連携して予約を自動受付。リマインドも自動送信</div>
+      </div>
+      <div class="can-do-card">
+        <div class="title">📊 顧客情報のスプレッドシート記録</div>
+        <div class="desc">GAS連携でLINEの回答をシートに自動保存。顧客管理を効率化</div>
+      </div>
+      <div class="can-do-card">
+        <div class="title">📬 ステップ配信で見込み客育成</div>
+        <div class="desc">友だち追加後に段階的にコンテンツを配信し、信頼関係を自動構築</div>
+      </div>
+      <div class="can-do-card">
+        <div class="title">🔁 来店後のリピート促進</div>
+        <div class="desc">施術・購入後のフォローメッセージでリピーターへ自然につなげる</div>
+      </div>
+      <div class="can-do-card">
+        <div class="title">🗂 リッチメニューで導線を最適化</div>
+        <div class="desc">タップするだけで予約・相談・情報収集が完結する設計を実現</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- プラン -->
+  <div class="section">
+    <div class="sec-eyebrow">PRICING</div>
+    <h2>料金プラン</h2>
+    <div class="plan-wrap">
+      <div class="plans">
+        <div class="plan-card">
+          <div class="plan-head">
+            <div class="plan-name">ライトプラン</div>
+            <div class="plan-badge">まず試したい方へ</div>
+          </div>
+          <div class="plan-price">
+            <div class="p-amount">¥49,800<small style="font-size:11px">〜</small></div>
+            <div class="p-unit">税別 / 一括</div>
+          </div>
+          <div class="plan-body">
+            <div class="plan-item">リッチメニュー設計・作成</div>
+            <div class="plan-item">自動返信メッセージ設定</div>
+            <div class="plan-item">あいさつメッセージ</div>
+            <div class="plan-item">キーワード応答設定</div>
+            <div class="plan-item">納品後1週間サポート</div>
+          </div>
+        </div>
+        <div class="plan-card rec">
+          <div class="plan-head">
+            <div class="plan-name">スタンダードプラン</div>
+            <div class="plan-badge">人気No.1</div>
+          </div>
+          <div class="plan-price">
+            <div class="p-amount">¥150,000<small style="font-size:11px">〜</small></div>
+            <div class="p-unit">税別 / 一括</div>
+          </div>
+          <div class="plan-body">
+            <div class="plan-item">ライトの全内容</div>
+            <div class="plan-item">ステップ配信設計・設定</div>
+            <div class="plan-item">Googleフォーム連携</div>
+            <div class="plan-item">スプレッドシート自動記録</div>
+            <div class="plan-item">GAS基本自動化</div>
+          </div>
+        </div>
+        <div class="plan-card">
+          <div class="plan-head">
+            <div class="plan-name">プレミアムプラン</div>
+            <div class="plan-badge">本格自動化に</div>
+          </div>
+          <div class="plan-price">
+            <div class="p-amount">¥390,000<small style="font-size:11px">〜</small></div>
+            <div class="p-unit">税別 / 一括</div>
+          </div>
+          <div class="plan-body">
+            <div class="plan-item">スタンダードの全内容</div>
+            <div class="plan-item">高度なGAS・API連携</div>
+            <div class="plan-item">顧客管理システム構築</div>
+            <div class="plan-item">複数シナリオ設計</div>
+            <div class="plan-item">月次レポート・改善提案</div>
+          </div>
+        </div>
+      </div>
+      <div class="plan-note">⚡ 現在モニター価格でご提供中。正式リリース後は価格改定予定です。</div>
+    </div>
+  </div>
+
+  <!-- 対応業種 -->
+  <div class="section">
+    <div class="sec-eyebrow">INDUSTRY</div>
+    <h2>対応業種</h2>
+    <div class="industry-grid">
+      <div class="ind-card">
+        <div class="ind-name">🏥 整体院・治療院</div>
+        <div class="ind-tags">予約自動化・問診票・リピート促進</div>
+      </div>
+      <div class="ind-card">
+        <div class="ind-name">💇 美容室・サロン</div>
+        <div class="ind-tags">リマインド・アフターケア・空き枠通知</div>
+      </div>
+      <div class="ind-card">
+        <div class="ind-name">📊 コンサル・コーチング</div>
+        <div class="ind-tags">相談受付・ステップ配信・セミナー管理</div>
+      </div>
+      <div class="ind-card">
+        <div class="ind-name">⚖️ 士業・専門職</div>
+        <div class="ind-tags">初回相談受付・FAQ自動回答・進捗管理</div>
+      </div>
+      <div class="ind-card">
+        <div class="ind-name">🛒 EC・物販</div>
+        <div class="ind-tags">発送通知・再入荷案内・購入後フォロー</div>
+      </div>
+      <div class="ind-card">
+        <div class="ind-name">🍽 飲食店・その他</div>
+        <div class="ind-tags">予約受付・クーポン配信・キャンセル待ち</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 導入の流れ -->
+  <div class="section">
+    <div class="sec-eyebrow">PROCESS</div>
+    <h2>導入の流れ</h2>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div class="flow-label">無料相談</div>
+        <div class="flow-sub">LINEまたはメール</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div class="flow-label">ヒアリング</div>
+        <div class="flow-sub">要件・業務フロー確認</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div class="flow-label">お見積もり</div>
+        <div class="flow-sub">プラン・金額をご提案</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div class="flow-label">構築・設定</div>
+        <div class="flow-sub">3〜10営業日</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">5</div>
+        <div class="flow-label">納品・引き渡し</div>
+        <div class="flow-sub">操作説明書付き</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- よくある質問 -->
+  <div class="section">
+    <div class="sec-eyebrow">FAQ</div>
+    <h2>よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq">
+        <div class="faq-q">Lステップと何が違うのですか？</div>
+        <div class="faq-a">LステップはSaaSで月額1万円〜かかります。Form FlowはGASを活用するため月額ツール代が不要です。カスタマイズ性も高く、業務フローに合わせた独自の仕組みを構築できます。</div>
+      </div>
+      <div class="faq">
+        <div class="faq-q">LINE公式アカウントをまだ持っていなくても大丈夫ですか？</div>
+        <div class="faq-a">はい、開設から設定まで一貫してサポートします。必要なのはLINEアカウントとメールアドレスのみです。</div>
+      </div>
+      <div class="faq">
+        <div class="faq-q">納品後に自分で操作・修正できますか？</div>
+        <div class="faq-a">はい。操作説明書を付けてお渡しします。追加の修正・機能追加は別途ご相談ください。</div>
+      </div>
+      <div class="faq">
+        <div class="faq-q">キャンセル・返金はできますか？</div>
+        <div class="faq-a">着手前のキャンセルは全額返金します。着手後は進捗に応じた費用をご負担いただきます。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="section">
+    <div class="cta">
+      <div class="cta-top">
+        <div>
+          <h3>まずは<em>無料相談</em>からはじめましょう</h3>
+          <p>「何ができるか知りたい」だけでも大歓迎。<br>業種・課題をお聞きした上で、最適な活用方法をご提案します。</p>
+        </div>
+        <div class="cta-badge">相談・見積もり無料</div>
+      </div>
+      <div class="cta-contacts">
+        <div class="contact-item">
+          <div class="contact-label">📧 メール</div>
+          <div class="contact-val">lineform.works@gmail.com</div>
+          <div class="contact-note">1営業日以内にご返信</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">💬 LINE公式アカウント</div>
+          <div class="contact-val">Form Flow で友だち追加</div>
+          <div class="contact-note">数時間以内にご返信</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">© 2026 Form Flow（販売者：宇都宮拓）　特定商取引法に基づく表記あり　本資料の無断転載を禁じます</div>
+
+</div>
+</body>
+</html>
