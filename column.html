@@ -239,6 +239,9 @@ img{display:block;max-width:100%}
 .col-card { background: #fff; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; transition: box-shadow .2s, transform .2s; overflow: hidden; }
 .col-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
 .col-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+.col-thumb { height: 180px; overflow: hidden; background: var(--bg-green); }
+.col-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; display: block; }
+.col-card:hover .col-thumb img { transform: scale(1.05); }
 .col-cat { display: inline-block; font-size: 11px; font-weight: 700; color: var(--g); background: var(--gbg); border-radius: 99px; padding: 3px 10px; margin-bottom: 12px; }
 .col-card h3 { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.55; margin-bottom: 10px; }
 .col-card p { font-size: 13px; color: var(--sub); line-height: 1.8; flex: 1; }
@@ -376,6 +379,7 @@ footer {
 
       <!-- 1. 集客・友だち増加 -->
       <a href="./column/line-friends-increase.html" class="col-card rv d1">
+        <div class="col-thumb"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="LINE友だち追加を増やす施策" loading="lazy"></div>
         <div class="col-card-body">
           <span class="col-cat">集客・友だち増加</span>
           <h3>LINE友だちを増やす7つの施策</h3>
@@ -386,6 +390,7 @@ footer {
 
       <!-- 2. ツール比較 -->
       <a href="./column/lstep-vs-gas.html" class="col-card rv d2">
+        <div class="col-thumb"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="LステップとGASの比較" loading="lazy"></div>
         <div class="col-card-body">
           <span class="col-cat">ツール比較</span>
           <h3>Lステップ vs GAS——コスト・機能・難易度を徹底比較</h3>
@@ -396,6 +401,7 @@ footer {
 
       <!-- 3. 活用Tips -->
       <a href="./column/line-step-delivery-scenario.html" class="col-card rv d3">
+        <div class="col-thumb"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="ステップ配信シナリオ設計" loading="lazy"></div>
         <div class="col-card-body">
           <span class="col-cat">活用Tips</span>
           <h3>ステップ配信シナリオ設計——登録〜成約までの5ステップ</h3>
@@ -406,6 +412,7 @@ footer {
 
       <!-- 4. 業種別活用 -->
       <a href="./column/seitai-line-katsuyo.html" class="col-card rv d1">
+        <div class="col-thumb"><img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80" alt="整体院のLINE活用術" loading="lazy"></div>
         <div class="col-card-body">
           <span class="col-cat">業種別活用</span>
           <h3>整体院・接骨院のLINE活用術——予約リマインドから休眠顧客掘り起こしまで</h3>
@@ -416,6 +423,7 @@ footer {
 
       <!-- 5. 技術解説：GAS -->
       <a href="./column/line-gas-automation-guide.html" class="col-card rv d2">
+        <div class="col-thumb"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="GASで自動化完全ガイド" loading="lazy"></div>
         <div class="col-card-body">
           <span class="col-cat">技術解説</span>
           <h3>GASで自動化完全ガイド【Lステップなし・月額0円】</h3>
@@ -426,6 +434,7 @@ footer {
 
       <!-- 6. 技術解説：Webhook -->
       <a href="./column/line-webhook-gas.html" class="col-card rv d3">
+        <div class="col-thumb"><img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" alt="WebhookとGASの仕組み" loading="lazy"></div>
         <div class="col-card-body">
           <span class="col-cat">技術解説</span>
           <h3>Webhookとは何か——GASとの組み合わせをコードなしで理解する</h3>
@@ -436,6 +445,7 @@ footer {
 
       <!-- 7. 基礎知識 -->
       <a href="./column/line-pricing-plan-2026.html" class="col-card rv d1">
+        <div class="col-thumb"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80" alt="LINE公式料金プラン解説" loading="lazy"></div>
         <div class="col-card-body">
           <span class="col-cat">基礎知識</span>
           <h3>LINE公式アカウント料金プラン解説2026——どのプランを選ぶべきか</h3>
@@ -446,6 +456,7 @@ footer {
 
       <!-- 8. デザイン -->
       <a href="./column/richmenu-design.html" class="col-card rv d2">
+        <div class="col-thumb"><img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&w=600&q=80" alt="リッチメニューのデザイン設計" loading="lazy"></div>
         <div class="col-card-body">
           <span class="col-cat">デザイン</span>
           <h3>リッチメニュー設計術——業種別テンプレートで解説</h3>
@@ -455,6 +466,7 @@ footer {
       </a>
 
       <a href="./column/salon-line-katsuyo.html" class="col-card rv d3">
+        <div class="col-thumb"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="美容サロンのLINE活用術" loading="lazy"></div>
         <div class="col-card-body">
           <span class="col-cat">美容サロン・ネイル</span>
           <h3>美容サロン・ネイル・エステのLINE公式活用術——リピーター獲得から予約自動化まで</h3>
@@ -464,6 +476,7 @@ footer {
       </a>
 
       <a href="./column/line-hajimeru-mae.html" class="col-card rv d1">
+        <div class="col-thumb"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80" alt="個人事業主のLINE公式入門" loading="lazy"></div>
         <div class="col-card-body">
           <span class="col-cat">LINE入門</span>
           <h3>個人事業主がLINE公式を始める前に知っておくべきこと——費用・機能・失敗パターン</h3>
@@ -473,6 +486,7 @@ footer {
       </a>
 
       <a href="./column/consultant-line-katsuyo.html" class="col-card rv d2">
+        <div class="col-thumb"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80" alt="コンサルタント向けLINE活用術" loading="lazy"></div>
         <div class="col-card-body">
           <span class="col-cat">コンサルタント・士業</span>
           <h3>コンサルタント・コーチ向けLINE公式活用術——問い合わせ自動化からセミナー集客まで</h3>
@@ -482,6 +496,7 @@ footer {
       </a>
 
       <a href="./column/line-inquiry-automation.html" class="col-card rv d3">
+        <div class="col-thumb"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="LINE問い合わせ対応の自動化" loading="lazy"></div>
         <div class="col-card-body">
           <span class="col-cat">自動化</span>
           <h3>LINE公式の問い合わせ対応を自動化する方法——キーワード返信からGAS連携まで</h3>
