@@ -242,6 +242,12 @@ img{display:block;max-width:100%}
 .col-thumb { height: 180px; overflow: hidden; background: var(--bg-green); }
 .col-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; display: block; }
 .col-card:hover .col-thumb img { transform: scale(1.05); }
+.search-wrap { margin-bottom: 8px; }
+.search-box { display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 12px 18px; max-width: 480px; transition: border-color .2s; box-shadow: var(--shadow-sm); }
+.search-box:focus-within { border-color: rgba(6,199,85,.5); }
+.search-box input { background: none; border: none; outline: none; font-size: 14px; color: var(--text); width: 100%; font-family: inherit; }
+.search-box input::placeholder { color: var(--muted); }
+.no-results { grid-column: 1/-1; text-align: center; padding: 60px 0; color: var(--sub); font-size: 15px; }
 .col-cat { display: inline-block; font-size: 11px; font-weight: 700; color: var(--g); background: var(--gbg); border-radius: 99px; padding: 3px 10px; margin-bottom: 12px; }
 .col-card h3 { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.55; margin-bottom: 10px; }
 .col-card p { font-size: 13px; color: var(--sub); line-height: 1.8; flex: 1; }
@@ -375,6 +381,13 @@ footer {
 <section class="articles-section">
   <div class="container">
     <div class="section-label rv">Articles</div>
+    <div class="search-wrap rv">
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" placeholder="記事を検索…" autocomplete="off">
+        <span id="searchCount" style="font-size:11px;color:var(--muted);white-space:nowrap;"></span>
+      </div>
+    </div>
     <div class="col-grid" id="articleGrid">
 
       <!-- 1. 集客・友だち増加 -->
@@ -546,6 +559,31 @@ footer {
   mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbtn.classList.remove('open'); mm.classList.remove('open'); }));
   const rvObs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); rvObs.unobserve(e.target); } }), {threshold: .1});
   document.querySelectorAll('.rv').forEach(el => rvObs.observe(el));
+  // search
+  const searchInput = document.getElementById('searchInput');
+  const articleGrid = document.getElementById('articleGrid');
+  const countEl = document.getElementById('searchCount');
+  if(searchInput && articleGrid){
+    const cards = Array.from(articleGrid.querySelectorAll('.col-card'));
+    countEl.textContent = cards.length + '件';
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim().toLowerCase();
+      articleGrid.querySelectorAll('.no-results').forEach(el => el.remove());
+      let shown = 0;
+      cards.forEach(card => {
+        const match = !q || card.textContent.toLowerCase().includes(q);
+        card.style.display = match ? '' : 'none';
+        if(match) shown++;
+      });
+      countEl.textContent = (q ? shown : cards.length) + '件';
+      if(shown === 0){
+        const p = document.createElement('p');
+        p.className = 'no-results';
+        p.textContent = '「' + searchInput.value + '」に一致する記事が見つかりませんでした';
+        articleGrid.appendChild(p);
+      }
+    });
+  }
 })();
 </script>
 </body>
