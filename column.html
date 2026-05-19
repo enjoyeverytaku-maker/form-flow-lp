@@ -17,573 +17,484 @@
 <meta property="og:image" content="https://enjoyeverytaku-maker.github.io/form-flow-lp/ogp.png">
 <meta property="og:site_name" content="Form Flow">
 <meta property="og:locale" content="ja_JP">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --g:#06C755;--gd:#04a344;--g2:#00e0b0;
-  --navy:#040d1a;--navy2:#0b1829;
-  --border-card:rgba(255,255,255,.08);
+
+:root {
+  --g: #06C755;
+  --gd: #059942;
+  --gbg: #EFF9F4;
+  --text: #111827;
+  --body: #374151;
+  --sub: #6B7280;
+  --muted: #9CA3AF;
+  --border: #E5E7EB;
+  --bg: #FAFAF8;
+  --bg-white: #FFFFFF;
+  --bg-green: #F2F7F4;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.07), 0 2px 8px rgba(0,0,0,.04);
+  --shadow: 0 4px 20px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+  --radius: 12px;
 }
+
 html{scroll-behavior:smooth}
-body{font-family:'Noto Sans JP',sans-serif;color:#fff;background:var(--navy);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  color: var(--body);
+  background-color: #FAFAF8;
+  background-image: radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px);
+  background-size: 22px 22px;
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
 a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
 
-/* ── SCROLL PROGRESS ── */
-#sp{position:fixed;top:0;left:0;height:2px;background:var(--g);z-index:9999;width:0%;pointer-events:none;transition:width .08s}
-
-/* ── CUSTOM CURSOR ── */
-#cur,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
-#cur{width:8px;height:8px;background:var(--g);transition:background .2s}
-#cur-ring{width:32px;height:32px;border:1.5px solid rgba(6,199,85,.5);transition:border-color .2s}
-
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;transition:background .4s,box-shadow .4s}
-nav.sc{background:rgba(4,13,26,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
-.nlogo{font-size:20px;font-weight:900;color:#fff;letter-spacing:.01em;transition:color .3s;font-family:'Inter',sans-serif}
-.nlogo em{color:var(--g);font-style:normal}
-.nlinks{display:flex;gap:32px;align-items:center}
-.nlinks a{font-size:13px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
-.nlinks a:hover{color:#fff}
-.nlinks a.active{color:var(--g)!important;font-weight:700}
-.ncta{background:var(--g)!important;color:#fff!important;padding:9px 22px;border-radius:8px;font-weight:700!important;font-size:13px;transition:background .2s,transform .15s!important}
-.ncta:hover{background:var(--gd)!important;transform:translateY(-1px)!important}
-.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
-.hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;transition:all .25s}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mmenu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(4,13,26,.97);backdrop-filter:blur(20px);flex-direction:column;padding:8px 28px 28px;z-index:400;border-bottom:1px solid rgba(255,255,255,.07)}
-.mmenu.open{display:flex}
-.mmenu a{font-size:15px;color:rgba(255,255,255,.75);padding:15px 0;border-bottom:1px solid rgba(255,255,255,.06);font-weight:500}
-.mmenu a:last-child{border-bottom:none}
-.mmenu a.mc{margin-top:14px;background:var(--g);color:#fff;text-align:center;padding:13px;border-radius:10px;font-weight:700;border-bottom:none}
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 64px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow .2s;
+}
+#nav.sc { box-shadow: 0 2px 16px rgba(0,0,0,.06); }
 
-/* ── HERO ── */
-#page-hero{min-height:380px;background:var(--navy);display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 52px 90px;position:relative;overflow:hidden}
-.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:72px 72px;pointer-events:none}
-.blob{position:absolute;border-radius:50%;filter:blur(110px);pointer-events:none}
-.b1{width:500px;height:500px;background:rgba(6,199,85,.13);top:-15%;left:-8%;animation:bm 13s ease-in-out infinite}
-.b2{width:420px;height:420px;background:rgba(0,224,176,.1);bottom:-12%;right:-6%;animation:bm 10s ease-in-out infinite reverse;animation-delay:-5s}
-@keyframes bm{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(32px,-24px) scale(1.06)}66%{transform:translate(-22px,18px) scale(.94)}}
-.ph-label{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;color:rgba(6,199,85,.8);text-transform:uppercase;margin-bottom:16px}
-.ph-title{font-size:clamp(36px,5.5vw,60px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:20px;letter-spacing:-.03em}
-.ph-sub{font-size:16px;color:rgba(255,255,255,.5);line-height:1.95;max-width:600px;margin:0 auto}
+.nav-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav-logo {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-logo-icon {
+  width: 28px; height: 28px;
+  background: var(--g);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-logo-icon svg { width: 16px; height: 16px; fill: #fff; }
+.nav-logo-flow { color: var(--g); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sub);
+  transition: color .15s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a.active { color: var(--g); font-weight: 600; }
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--g);
+  color: #fff;
+  border: 2px solid var(--g);
+  box-shadow: 0 4px 14px rgba(6,199,85,.25);
+  transition: background .2s, border-color .2s, box-shadow .2s, transform .15s;
+  white-space: nowrap;
+  margin-left: 4px;
+}
+.nav-cta:hover { background: var(--gd); border-color: var(--gd); box-shadow: 0 6px 18px rgba(6,199,85,.35); transform: translateY(-1px); }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  cursor: pointer;
+  background: none; border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 20px 24px 24px;
+  z-index: 99;
+  box-shadow: var(--shadow);
+}
+.mobile-menu.open { display: block; }
+.mobile-menu a {
+  display: block;
+  padding: 12px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--body);
+  border-bottom: 1px solid var(--border);
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu .mc {
+  margin-top: 16px;
+  display: block;
+  text-align: center;
+  background: var(--g);
+  color: #fff;
+  padding: 13px;
+  border-radius: 10px;
+  font-weight: 700;
+  border-bottom: none;
+}
 
 /* ── REVEAL ── */
-.rv{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
 .rv.on{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}.d6{transition-delay:.48s}
+.d1{transition-delay:.1s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}.d6{transition-delay:.48s}
+
+/* ── CONTAINER ── */
+.container{max-width:1120px;margin:0 auto;padding:0 48px}
+
+/* ── PAGE HERO ── */
+.page-hero {
+  padding: 128px 48px 72px;
+  text-align: center;
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border);
+}
+.eyebrow-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--g);
+  margin-bottom: 12px;
+}
+.page-hero h1 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+.page-hero-sub {
+  font-size: 16px;
+  color: var(--sub);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
 
 /* ── ARTICLES SECTION ── */
-#articles-section{padding:96px 52px;background:var(--navy2)}
-.container{max-width:1160px;margin:0 auto}
+.articles-section {
+  padding: 80px 0 104px;
+  background: var(--bg);
+}
 
-/* ── ARTICLE GRID ── */
-.search-wrap{margin-bottom:36px}
-.search-box{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px 18px;max-width:480px;transition:border-color .2s}
-.search-box:focus-within{border-color:rgba(6,199,85,.4)}
-.search-box input{background:none;border:none;outline:none;font-size:14px;color:#fff;width:100%;font-family:'Noto Sans JP',sans-serif}
-.search-box input::placeholder{color:rgba(255,255,255,.3)}
-.no-results{grid-column:1/-1;text-align:center;padding:60px 20px;color:rgba(255,255,255,.35);font-size:15px}
-.articles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.section-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--g);
+  margin-bottom: 10px;
+}
 
-/* ── ARTICLE CARD ── */
-.article-card-wrap{border:1px solid var(--border-card);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .35s cubic-bezier(.34,1.56,.64,1),transform .35s cubic-bezier(.34,1.56,.64,1)}
-.article-card-wrap:hover{box-shadow:0 20px 60px rgba(0,0,0,.3);transform:translateY(-4px)}
-.article-card{background:rgba(255,255,255,.04);display:flex;flex-direction:column;flex:1}
-
-/* ── THUMB ── */
-.article-thumb{height:220px;overflow:hidden;position:relative}
-.article-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .65s ease,filter .65s ease;filter:brightness(.8)}
-.article-card-wrap:hover .article-thumb img{transform:scale(1.07);filter:brightness(1)}
-.thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,13,26,.7) 0%,transparent 60%);pointer-events:none}
-
-/* ── CARD BODY ── */
-.article-body{padding:22px;flex:1;display:flex;flex-direction:column;gap:0}
-
-/* ── TAGS ── */
-.article-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
-.tag{font-size:11px;font-weight:700;padding:3px 11px;border-radius:20px;background:rgba(6,199,85,.15);color:var(--g);border:1px solid rgba(6,199,85,.25);font-family:'Inter',sans-serif;letter-spacing:.04em}
-
-/* ── DATE ── */
-.article-date{font-size:11px;color:rgba(255,255,255,.35);font-family:'Inter',sans-serif;margin-bottom:10px}
-
-/* ── TITLE ── */
-.article-body h2{font-size:15px;font-weight:800;line-height:1.65;margin-bottom:10px;color:#fff}
-
-/* ── EXCERPT ── */
-.article-body p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.85;flex:1}
-
-/* ── READ MORE ── */
-.article-link{margin-top:16px;font-size:13px;font-weight:700;color:var(--g);display:inline-flex;align-items:center;gap:5px;transition:gap .2s,color .2s;align-self:flex-start}
-.article-link:hover{gap:9px;color:var(--g2)}
-
-/* ── CARD ACTIONS ── */
-.card-actions{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-top:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02)}
-.like-btn{display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.4);font-size:12px;font-family:'Noto Sans JP',sans-serif;padding:5px 10px;border-radius:20px;transition:color .2s,background .2s}
-.like-btn:hover{color:#ff8080;background:rgba(255,100,100,.08)}
-.like-btn.liked{color:#ff6b6b}
-.like-btn svg{transition:transform .3s cubic-bezier(.34,1.56,.64,1),fill .2s,stroke .2s}
-.like-btn.liked svg{fill:#ff6b6b;stroke:#ff6b6b;transform:scale(1.2)}
-.like-count{font-size:12px;font-weight:700;font-family:'Inter',sans-serif;min-width:14px}
-.share-btns{display:flex;gap:6px}
-.share-btn{display:inline-flex;align-items:center;gap:4px;padding:5px 11px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;border:none;font-family:'Noto Sans JP',sans-serif;transition:opacity .2s,transform .15s}
-.share-btn:hover{opacity:.8;transform:translateY(-1px)}
-.share-btn:active{transform:scale(.95)}
-.share-line{background:var(--g);color:#fff}
-.share-x{background:#000;color:#fff;border:1px solid rgba(255,255,255,.15)}
-.share-fb{background:#1877f2;color:#fff}
-.share-ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff}
-.share-copy{background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1)}
-.share-copy.copied{background:rgba(6,199,85,.12);color:var(--g);border-color:rgba(6,199,85,.25)}
+/* ── COLUMN GRID ── */
+.col-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.col-card { background: #fff; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; transition: box-shadow .2s, transform .2s; overflow: hidden; }
+.col-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.col-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+.col-cat { display: inline-block; font-size: 11px; font-weight: 700; color: var(--g); background: var(--gbg); border-radius: 99px; padding: 3px 10px; margin-bottom: 12px; }
+.col-card h3 { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.55; margin-bottom: 10px; }
+.col-card p { font-size: 13px; color: var(--sub); line-height: 1.8; flex: 1; }
+.col-read { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 600; color: var(--g); margin-top: 16px; }
+@media (max-width: 768px) { .col-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .col-grid { grid-template-columns: 1fr; } }
 
 /* ── CTA ── */
-#cta{background:var(--navy);padding:100px 52px;text-align:center;position:relative;overflow:hidden}
-.cta-b1,.cta-b2{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
-.cta-b1{width:480px;height:480px;background:rgba(6,199,85,.09);top:-120px;left:-80px;animation:bm 12s ease-in-out infinite}
-.cta-b2{width:400px;height:400px;background:rgba(0,224,176,.08);bottom:-100px;right:-60px;animation:bm 10s ease-in-out infinite reverse;animation-delay:-5s}
-.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--g);color:#fff;font-weight:700;font-size:15px;padding:15px 30px;border-radius:10px;position:relative;overflow:hidden;transition:background .25s,transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;box-shadow:0 4px 24px rgba(6,199,85,.38)}
-.btn-p::after{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.26),transparent);transform:skewX(-15deg);transition:left .5s ease}
-.btn-p:hover{background:var(--gd);transform:translateY(-2px);box-shadow:0 8px 36px rgba(6,199,85,.5)}
-.btn-p:hover::after{left:160%}
-.magnetic{transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
+.cta-section {
+  background: var(--bg-green);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 96px 48px;
+}
+.cta-section h2 {
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+.cta-section p {
+  font-size: 15px;
+  color: var(--sub);
+  margin-bottom: 44px;
+  line-height: 1.9;
+}
+.btn-p {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--g);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 36px;
+  border-radius: 99px;
+  transition: background .2s, transform .15s, box-shadow .2s;
+  box-shadow: 0 4px 20px rgba(6,199,85,.3);
+}
+.btn-p:hover { background: var(--gd); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(6,199,85,.4); }
+.cta-note { font-size: 12px; color: var(--muted); margin-top: 16px; }
 
 /* ── FOOTER ── */
-footer{background:#020810;border-top:1px solid rgba(255,255,255,.05);padding:44px 52px}
-.footer-inner{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
-.fl{font-family:'Inter',sans-serif;font-size:18px;font-weight:900;color:#fff}
-.fl em{color:var(--g);font-style:normal}
-.flinks{display:flex;gap:24px;flex-wrap:wrap}
-.flinks a{font-size:12px;color:rgba(255,255,255,.3);transition:color .2s}
-.flinks a:hover{color:rgba(255,255,255,.7)}
-.fcopy{font-size:12px;color:rgba(255,255,255,.2);font-family:'Inter',sans-serif}
+footer {
+  background: var(--bg-white);
+  border-top: 1px solid var(--border);
+  padding: 40px 48px;
+}
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-logo {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+.footer-logo span { color: var(--g); }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 12px;
+  color: var(--sub);
+  transition: color .15s;
+}
+.footer-links a:hover { color: var(--text); }
+.footer-copy { font-size: 12px; color: var(--muted); }
 
 /* ── RESPONSIVE ── */
-@media(max-width:1024px){
-  .articles{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:700px){
-  nav{padding:0 20px}
-  .nlinks{display:none}
-  .hamburger{display:flex}
-  #page-hero{padding:120px 24px 64px}
-  #articles-section{padding:64px 24px}
-  .articles{grid-template-columns:1fr}
-  #cta{padding:72px 24px}
-  footer{padding:36px 24px}
-  .footer-inner{flex-direction:column;align-items:flex-start;gap:16px}
+@media(max-width:640px){
+  .nav-inner { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .page-hero { padding: 100px 24px 52px; }
+  .articles-section { padding: 56px 0 72px; }
+  .container { padding: 0 20px; }
+  .cta-section { padding: 72px 20px; }
+  footer { padding: 32px 20px; }
+  .footer-inner { flex-direction: column; text-align: center; gap: 16px; }
+  .footer-links { justify-content: center; }
 }
 </style>
 </head>
 <body>
 
-<div id="sp"></div>
-<div id="cur"></div>
-<div id="cur-ring"></div>
-
 <nav id="nav">
-  <a href="./index.html" class="nlogo">Form <em>Flow</em></a>
-  <div class="nlinks">
-    <a href="./index.html#features">サービス内容</a>
-    <a href="./cases.html">構築例</a>
-    <a href="./demo.html">デモ体験</a>
-    <a href="./column.html" class="active">コラム</a>
-    <a href="./news.html">お知らせ</a>
-    <a href="./index.html#cta" class="ncta magnetic">無料相談</a>
+  <div class="nav-inner">
+    <a href="./index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H18.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H18.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H5.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629"/></svg>
+      </div>
+      Form <span class="nav-logo-flow">Flow</span>
+    </a>
+    <div class="nav-links">
+      <a href="./cases.html">構築例</a>
+      <a href="./demo.html">デモ体験</a>
+      <a href="./index.html#features">できること</a>
+      <a href="./index.html#pricing">料金</a>
+      <a href="./index.html#faq">よくある質問</a>
+      <a href="./column.html" class="active">コラム</a>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="nav-cta">無料相談・お問い合わせ</a>
+    </div>
+    <button class="hamburger" id="hbtn"><span></span><span></span><span></span></button>
   </div>
-  <button class="hamburger" id="hbtn"><span></span><span></span><span></span></button>
 </nav>
-<div class="mmenu" id="mmenu">
-  <a href="./index.html#features">サービス内容</a>
+<div class="mobile-menu" id="mmenu">
   <a href="./cases.html">構築例</a>
   <a href="./demo.html">デモ体験</a>
+  <a href="./index.html#features">できること</a>
+  <a href="./index.html#pricing">料金</a>
+  <a href="./index.html#faq">よくある質問</a>
   <a href="./column.html">コラム</a>
-  <a href="./news.html">お知らせ</a>
-  <a href="./index.html#cta" class="mc">無料相談する</a>
+  <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="mc">無料相談・お問い合わせ</a>
 </div>
 
-<!-- HERO -->
-<section id="page-hero">
-  <div class="hgrid"></div>
-  <div class="blob b1"></div>
-  <div class="blob b2"></div>
-  <div style="position:relative;z-index:1">
-    <p class="ph-label rv">Column</p>
-    <h1 class="ph-title rv d1">コラム</h1>
-    <p class="ph-sub rv d2">LINE公式アカウントの活用ノウハウを発信しています</p>
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="rv">
+    <div class="eyebrow-label">Column</div>
+    <h1>コラム</h1>
+    <p class="page-hero-sub">LINE公式アカウントの活用ノウハウを発信しています</p>
   </div>
 </section>
 
-<!-- ARTICLE GRID -->
-<section id="articles-section">
+<!-- ARTICLES -->
+<section class="articles-section">
   <div class="container">
-    <!-- 検索欄 -->
-    <div class="search-wrap rv">
-      <div class="search-box">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:rgba(255,255,255,.35);flex-shrink:0"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="searchInput" placeholder="記事を検索…" autocomplete="off">
-        <span id="searchCount" style="font-size:11px;color:rgba(255,255,255,.3);white-space:nowrap;font-family:'Inter',sans-serif"></span>
-      </div>
-    </div>
-    <div class="articles" id="articleGrid">
+    <div class="section-label rv">Articles</div>
+    <div class="col-grid" id="articleGrid">
 
-      <!-- 1 -->
-      <div class="article-card-wrap rv d1">
-        <a href="./column/line-friends-increase.html" class="article-card">
-          <div class="article-thumb">
-            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="LINE友だち追加を増やす7つの施策" loading="lazy">
-            <div class="thumb-overlay"></div>
-          </div>
-          <div class="article-body">
-            <div class="article-tags"><span class="tag">集客</span><span class="tag">友だち追加</span></div>
-            <p class="article-date">2026年5月17日</p>
-            <h2>LINE友だち追加を増やす7つの施策——整体院・サロン・コンサルタント向け</h2>
-            <p>QRコード設置場所・登録特典・SNS誘導など、LINE友だちを増やすための7つの施策を構築現場の視点から解説します。</p>
-            <span class="article-link">続きを読む →</span>
-          </div>
-        </a>
-        <div class="card-actions" data-slug="line-friends-increase" data-title="LINE友だち追加を増やす7つの施策">
-          <button class="like-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="like-count">–</span></button>
-          <div class="share-btns">
-            <button class="share-btn share-line">LINE</button>
-            <button class="share-btn share-x">X</button>
-            <button class="share-btn share-fb">FB</button>
-            <button class="share-btn share-ig">IG</button>
-            <button class="share-btn share-copy">リンク</button>
-          </div>
+      <!-- 1. 集客・友だち増加 -->
+      <a href="./column/line-friends-increase.html" class="col-card rv d1">
+        <div class="col-card-body">
+          <span class="col-cat">集客・友だち増加</span>
+          <h3>LINE友だちを増やす7つの施策</h3>
+          <p>QRコード設置場所・登録特典・SNS誘導など、LINE友だちを増やすための7つの施策を構築現場の視点から解説します。</p>
+          <span class="col-read">続きを読む →</span>
         </div>
-      </div>
+      </a>
 
-      <!-- 2 -->
-      <div class="article-card-wrap rv d2">
-        <a href="./column/seitai-line-katsuyo.html" class="article-card">
-          <div class="article-thumb">
-            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80" alt="整体院・接骨院のLINE公式活用術" loading="lazy">
-            <div class="thumb-overlay"></div>
-          </div>
-          <div class="article-body">
-            <div class="article-tags"><span class="tag">整体院</span><span class="tag">予約管理</span></div>
-            <p class="article-date">2026年5月17日</p>
-            <h2>整体院・接骨院のLINE公式活用術——予約リマインドから休眠顧客掘り起こしまで</h2>
-            <p>ステップ配信・予約リマインド・休眠顧客への一斉配信の3軸でLINEを活用する方法を解説します。</p>
-            <span class="article-link">続きを読む →</span>
-          </div>
-        </a>
-        <div class="card-actions" data-slug="seitai-line-katsuyo" data-title="整体院・接骨院のLINE公式活用術">
-          <button class="like-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="like-count">–</span></button>
-          <div class="share-btns">
-            <button class="share-btn share-line">LINE</button>
-            <button class="share-btn share-x">X</button>
-            <button class="share-btn share-fb">FB</button>
-            <button class="share-btn share-ig">IG</button>
-            <button class="share-btn share-copy">リンク</button>
-          </div>
+      <!-- 2. ツール比較 -->
+      <a href="./column/lstep-vs-gas.html" class="col-card rv d2">
+        <div class="col-card-body">
+          <span class="col-cat">ツール比較</span>
+          <h3>Lステップ vs GAS——コスト・機能・難易度を徹底比較</h3>
+          <p>月額数万円のLステップと、無料のGASで何が違うのか。機能・コスト・難易度を現場目線で比較します。</p>
+          <span class="col-read">続きを読む →</span>
         </div>
-      </div>
+      </a>
 
-      <!-- 3 -->
-      <div class="article-card-wrap rv d3">
-        <a href="./column/lstep-vs-gas.html" class="article-card">
-          <div class="article-thumb">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Lステップ vs GAS連携" loading="lazy">
-            <div class="thumb-overlay"></div>
-          </div>
-          <div class="article-body">
-            <div class="article-tags"><span class="tag">比較</span><span class="tag">GAS</span></div>
-            <p class="article-date">2026年5月10日</p>
-            <h2>Lステップ vs GAS連携——コスト・機能・難易度を徹底比較【2026年版】</h2>
-            <p>月額数万円のLステップと、無料のGASで何が違うのか。機能・コスト・難易度を現場目線で比較します。</p>
-            <span class="article-link">続きを読む →</span>
-          </div>
-        </a>
-        <div class="card-actions" data-slug="lstep-vs-gas" data-title="Lステップ vs GAS連携——徹底比較【2026年版】">
-          <button class="like-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="like-count">–</span></button>
-          <div class="share-btns">
-            <button class="share-btn share-line">LINE</button>
-            <button class="share-btn share-x">X</button>
-            <button class="share-btn share-fb">FB</button>
-            <button class="share-btn share-ig">IG</button>
-            <button class="share-btn share-copy">リンク</button>
-          </div>
+      <!-- 3. 活用Tips -->
+      <a href="./column/line-step-delivery-scenario.html" class="col-card rv d3">
+        <div class="col-card-body">
+          <span class="col-cat">活用Tips</span>
+          <h3>ステップ配信シナリオ設計——登録〜成約までの5ステップ</h3>
+          <p>友だち追加から成約まで、自動で育てるシナリオの作り方を5ステップで解説します。</p>
+          <span class="col-read">続きを読む →</span>
         </div>
-      </div>
+      </a>
 
-      <!-- 4 -->
-      <div class="article-card-wrap rv d4">
-        <a href="./column/line-step-delivery-scenario.html" class="article-card">
-          <div class="article-thumb">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="ステップ配信で売上が変わる" loading="lazy">
-            <div class="thumb-overlay"></div>
-          </div>
-          <div class="article-body">
-            <div class="article-tags"><span class="tag">ステップ配信</span><span class="tag">自動化</span></div>
-            <p class="article-date">2026年5月5日</p>
-            <h2>ステップ配信で売上が変わる——登録〜成約までのシナリオ設計5ステップ</h2>
-            <p>友だち追加から成約まで、自動で育てるシナリオの作り方を5ステップで解説します。</p>
-            <span class="article-link">続きを読む →</span>
-          </div>
-        </a>
-        <div class="card-actions" data-slug="line-step-delivery-scenario" data-title="ステップ配信で売上が変わる——シナリオ設計5ステップ">
-          <button class="like-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="like-count">–</span></button>
-          <div class="share-btns">
-            <button class="share-btn share-line">LINE</button>
-            <button class="share-btn share-x">X</button>
-            <button class="share-btn share-fb">FB</button>
-            <button class="share-btn share-ig">IG</button>
-            <button class="share-btn share-copy">リンク</button>
-          </div>
+      <!-- 4. 業種別活用 -->
+      <a href="./column/seitai-line-katsuyo.html" class="col-card rv d1">
+        <div class="col-card-body">
+          <span class="col-cat">業種別活用</span>
+          <h3>整体院・接骨院のLINE活用術——予約リマインドから休眠顧客掘り起こしまで</h3>
+          <p>ステップ配信・予約リマインド・休眠顧客への一斉配信の3軸でLINEを活用する方法を解説します。</p>
+          <span class="col-read">続きを読む →</span>
         </div>
-      </div>
+      </a>
 
-      <!-- 5 -->
-      <div class="article-card-wrap rv d5">
-        <a href="./column/line-webhook-gas.html" class="article-card">
-          <div class="article-thumb">
-            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" alt="WebhookとGASでLINEを考えられるようにする仕組み" loading="lazy">
-            <div class="thumb-overlay"></div>
-          </div>
-          <div class="article-body">
-            <div class="article-tags"><span class="tag">GAS</span><span class="tag">Webhook</span></div>
-            <p class="article-date">2026年4月28日</p>
-            <h2>WebhookとGASでLINEを「考えられる」ようにする仕組み</h2>
-            <p>Webhookとは何か、GASとどう組み合わせるかを、コードなしで理解できるように解説します。</p>
-            <span class="article-link">続きを読む →</span>
-          </div>
-        </a>
-        <div class="card-actions" data-slug="line-webhook-gas" data-title="WebhookとGASでLINEを「考えられる」ようにする仕組み">
-          <button class="like-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="like-count">–</span></button>
-          <div class="share-btns">
-            <button class="share-btn share-line">LINE</button>
-            <button class="share-btn share-x">X</button>
-            <button class="share-btn share-fb">FB</button>
-            <button class="share-btn share-ig">IG</button>
-            <button class="share-btn share-copy">リンク</button>
-          </div>
+      <!-- 5. 技術解説：GAS -->
+      <a href="./column/line-gas-automation-guide.html" class="col-card rv d2">
+        <div class="col-card-body">
+          <span class="col-cat">技術解説</span>
+          <h3>GASで自動化完全ガイド【Lステップなし・月額0円】</h3>
+          <p>アカウント開設からGAS連携による自動返信・顧客管理の設定まで、月額0円で実現する手順を解説します。</p>
+          <span class="col-read">続きを読む →</span>
         </div>
-      </div>
+      </a>
 
-      <!-- 6 -->
-      <div class="article-card-wrap rv d6">
-        <a href="./column/richmenu-design.html" class="article-card">
-          <div class="article-thumb">
-            <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&w=600&q=80" alt="リッチメニューのデザインと設定" loading="lazy">
-            <div class="thumb-overlay"></div>
-          </div>
-          <div class="article-body">
-            <div class="article-tags"><span class="tag">リッチメニュー</span><span class="tag">デザイン</span></div>
-            <p class="article-date">2026年4月20日</p>
-            <h2>リッチメニューのデザインと設定——業種別テンプレートで解説</h2>
-            <p>トーク画面下のリッチメニューを最大限活用するデザイン設計と設定手順を解説します。</p>
-            <span class="article-link">続きを読む →</span>
-          </div>
-        </a>
-        <div class="card-actions" data-slug="richmenu-design" data-title="リッチメニューのデザインと設定——業種別テンプレートで解説">
-          <button class="like-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="like-count">–</span></button>
-          <div class="share-btns">
-            <button class="share-btn share-line">LINE</button>
-            <button class="share-btn share-x">X</button>
-            <button class="share-btn share-fb">FB</button>
-            <button class="share-btn share-ig">IG</button>
-            <button class="share-btn share-copy">リンク</button>
-          </div>
+      <!-- 6. 技術解説：Webhook -->
+      <a href="./column/line-webhook-gas.html" class="col-card rv d3">
+        <div class="col-card-body">
+          <span class="col-cat">技術解説</span>
+          <h3>Webhookとは何か——GASとの組み合わせをコードなしで理解する</h3>
+          <p>Webhookとは何か、GASとどう組み合わせるかを、コードなしで理解できるように解説します。</p>
+          <span class="col-read">続きを読む →</span>
         </div>
-      </div>
+      </a>
 
-      <!-- 7 -->
-      <div class="article-card-wrap rv d1">
-        <a href="./column/line-gas-automation-guide.html" class="article-card">
-          <div class="article-thumb">
-            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="LINE公式アカウントの初期設定からGASで自動化する完全ガイド" loading="lazy">
-            <div class="thumb-overlay"></div>
-          </div>
-          <div class="article-body">
-            <div class="article-tags"><span class="tag">GAS</span><span class="tag">初期設定</span></div>
-            <p class="article-date">2026年4月10日</p>
-            <h2>LINE公式アカウントの初期設定からGASで自動化する完全ガイド【Lステップなし】</h2>
-            <p>アカウント開設からGAS連携による自動返信・顧客管理の設定まで、月額0円で実現する手順を解説します。</p>
-            <span class="article-link">続きを読む →</span>
-          </div>
-        </a>
-        <div class="card-actions" data-slug="line-gas-automation-guide" data-title="LINE公式アカウント初期設定からGASで自動化する完全ガイド">
-          <button class="like-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="like-count">–</span></button>
-          <div class="share-btns">
-            <button class="share-btn share-line">LINE</button>
-            <button class="share-btn share-x">X</button>
-            <button class="share-btn share-fb">FB</button>
-            <button class="share-btn share-ig">IG</button>
-            <button class="share-btn share-copy">リンク</button>
-          </div>
+      <!-- 7. 基礎知識 -->
+      <a href="./column/line-pricing-plan-2026.html" class="col-card rv d1">
+        <div class="col-card-body">
+          <span class="col-cat">基礎知識</span>
+          <h3>LINE公式アカウント料金プラン解説2026——どのプランを選ぶべきか</h3>
+          <p>フリー・ライト・スタンダードの違い、メッセージ数上限と追加料金、GAS活用でのコスト最適化を解説します。</p>
+          <span class="col-read">続きを読む →</span>
         </div>
-      </div>
+      </a>
+
+      <!-- 8. デザイン -->
+      <a href="./column/richmenu-design.html" class="col-card rv d2">
+        <div class="col-card-body">
+          <span class="col-cat">デザイン</span>
+          <h3>リッチメニュー設計術——業種別テンプレートで解説</h3>
+          <p>トーク画面下のリッチメニューを最大限活用するデザイン設計と設定手順を業種別テンプレートで解説します。</p>
+          <span class="col-read">続きを読む →</span>
+        </div>
+      </a>
 
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section id="cta">
-  <div class="cta-b1"></div><div class="cta-b2"></div>
-  <div style="position:relative;z-index:1;max-width:800px;margin:0 auto" class="rv">
-    <p style="font-size:11px;font-weight:700;letter-spacing:.18em;color:rgba(6,199,85,.8);text-transform:uppercase;margin-bottom:16px;font-family:'Inter',sans-serif">GET STARTED</p>
-    <h2 style="font-size:clamp(28px,4vw,48px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:20px;letter-spacing:-.03em">Form Flow に相談する</h2>
-    <p style="font-size:16px;color:rgba(255,255,255,.5);margin-bottom:44px;line-height:1.9">「何から始めればいいか分からない」という段階からでも大丈夫です。</p>
-    <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-p magnetic">
+<section class="cta-section">
+  <div class="rv" style="max-width:640px;margin:0 auto">
+    <div class="eyebrow-label">Get Started</div>
+    <h2>Form Flow に相談する</h2>
+    <p>「何から始めればいいか分からない」という段階からでも大丈夫です。<br>相談・見積もりはすべて無料です。</p>
+    <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-p">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
       LINEで無料相談する
     </a>
-    <p style="font-size:12px;color:rgba(255,255,255,.28);margin-top:20px">相談・見積もり無料 ・ 秘密厳守 ・ 返信は数時間以内</p>
+    <div class="cta-note">相談・見積もり無料 ・ 秘密厳守 ・ 返信は数時間以内</div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="fl">Form <em>Flow</em></div>
-    <div class="flinks">
+    <div class="footer-logo">Form <span>Flow</span></div>
+    <div class="footer-links">
       <a href="./privacy.html">プライバシーポリシー</a>
       <a href="./terms.html">利用規約</a>
       <a href="./tokushoho.html">特定商取引法</a>
-      <a href="./news.html">お知らせ</a>
-      <a href="./column.html">コラム</a>
     </div>
-    <div class="fcopy">© 2026 Form Flow.</div>
+    <div class="footer-copy">© 2026 Form Flow. All rights reserved.</div>
   </div>
 </footer>
 
 <script>
 (function(){
-  const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
-  let mx=-100,my=-100,rx=-100,ry=-100;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY},{passive:true});
-  (function a(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a)})();
-  const sp=document.getElementById('sp'),nav=document.getElementById('nav');
-  function onScroll(){sp.style.width=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100)+'%';nav.classList.toggle('sc',window.scrollY>60);}
-  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
-  const hbtn=document.getElementById('hbtn'),mm=document.getElementById('mmenu');
-  hbtn.addEventListener('click',()=>{hbtn.classList.toggle('open');mm.classList.toggle('open')});
-  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hbtn.classList.remove('open');mm.classList.remove('open')}));
-  const rvObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');rvObs.unobserve(e.target)}}),{threshold:.1});
-  document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
-  document.querySelectorAll('.magnetic').forEach(btn=>{
-    btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.3}px,${(e.clientY-r.top-r.height/2)*.3}px)`});
-    btn.addEventListener('mouseleave',()=>{btn.style.transform=''});
-  });
-  /* ── SEARCH ── */
-  const searchInput = document.getElementById('searchInput');
-  const articleGrid = document.getElementById('articleGrid');
-  const countEl = document.getElementById('searchCount');
-  if(searchInput && articleGrid){
-    const wraps = Array.from(articleGrid.querySelectorAll('.article-card-wrap'));
-    countEl.textContent = wraps.length + '件';
-    searchInput.addEventListener('input', () => {
-      const q = searchInput.value.trim().toLowerCase();
-      articleGrid.querySelectorAll('.no-results').forEach(el => el.remove());
-      let shown = 0;
-      wraps.forEach(wrap => {
-        const match = !q || wrap.textContent.toLowerCase().includes(q);
-        wrap.style.display = match ? '' : 'none';
-        if(match) shown++;
-      });
-      countEl.textContent = (q ? shown : wraps.length) + '件';
-      if(shown === 0){
-        const p = document.createElement('p');
-        p.className = 'no-results';
-        p.textContent = `「${searchInput.value}」に一致する記事が見つかりませんでした`;
-        articleGrid.appendChild(p);
-      }
-    });
-  }
-})();
-
-/* ── SUPABASE LIKES & SHARE ── */
-const SB_URL = 'https://dxerzoqxaupzclohdiis.supabase.co';
-const SB_KEY = 'sb_publishable_5iTgXF1XKOVIpLoAR0MYlQ_woZTy6V1';
-const BASE = 'https://enjoyeverytaku-maker.github.io/form-flow-lp/column/';
-
-async function sbFetch(path, opts = {}){
-  const res = await fetch(SB_URL + path, {
-    headers:{ apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY, 'Content-Type':'application/json', ...opts.headers },
-    ...opts
-  });
-  return res.ok ? res.json() : null;
-}
-
-async function loadLikes(){
-  const data = await sbFetch('/rest/v1/article_likes?select=slug,count');
-  if(!data) return {};
-  return Object.fromEntries(data.map(r => [r.slug, r.count]));
-}
-
-async function incrementLike(slug){
-  const data = await sbFetch('/rest/v1/rpc/increment_likes', {
-    method:'POST',
-    body: JSON.stringify({ article_slug: slug })
-  });
-  return typeof data === 'number' ? data : null;
-}
-
-(async () => {
-  const counts = await loadLikes();
-  document.querySelectorAll('.card-actions').forEach(actions => {
-    const slug = actions.dataset.slug;
-    const title = actions.dataset.title;
-    const url = BASE + slug + '.html';
-    const likeBtn = actions.querySelector('.like-btn');
-    const likeCount = actions.querySelector('.like-count');
-    const liked = localStorage.getItem('liked_' + slug) === '1';
-
-    likeCount.textContent = counts[slug] ?? 0;
-    if(liked){ likeBtn.classList.add('liked'); }
-
-    likeBtn.addEventListener('click', async e => {
-      e.stopPropagation();
-      if(likeBtn.classList.contains('liked')) return;
-      likeBtn.classList.add('liked');
-      localStorage.setItem('liked_' + slug, '1');
-      const newCount = await incrementLike(slug);
-      if(newCount !== null) likeCount.textContent = newCount;
-    });
-
-    actions.querySelector('.share-line').addEventListener('click', e => {
-      e.stopPropagation();
-      window.open('https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent(url), '_blank');
-    });
-
-    actions.querySelector('.share-x').addEventListener('click', e => {
-      e.stopPropagation();
-      window.open('https://x.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title + ' | Form Flow'), '_blank');
-    });
-
-    actions.querySelector('.share-fb').addEventListener('click', e => {
-      e.stopPropagation();
-      window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url), '_blank');
-    });
-
-    actions.querySelector('.share-ig').addEventListener('click', async e => {
-      e.stopPropagation();
-      if(navigator.share){
-        try { await navigator.share({ title: title + ' | Form Flow', url }); } catch(_){}
-      } else {
-        await navigator.clipboard.writeText(url);
-        const btn = actions.querySelector('.share-ig');
-        const orig = btn.textContent;
-        btn.textContent = 'コピー!';
-        setTimeout(() => btn.textContent = orig, 2000);
-      }
-    });
-
-    const copyBtn = actions.querySelector('.share-copy');
-    copyBtn.addEventListener('click', async e => {
-      e.stopPropagation();
-      await navigator.clipboard.writeText(url);
-      copyBtn.textContent = 'コピー完了!';
-      copyBtn.classList.add('copied');
-      setTimeout(() => { copyBtn.textContent = 'リンク'; copyBtn.classList.remove('copied'); }, 2000);
-    });
-  });
+  const nav = document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('sc', window.scrollY > 60); }
+  window.addEventListener('scroll', onScroll, {passive: true}); onScroll();
+  const hbtn = document.getElementById('hbtn'), mm = document.getElementById('mmenu');
+  hbtn.addEventListener('click', () => { hbtn.classList.toggle('open'); mm.classList.toggle('open'); });
+  mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbtn.classList.remove('open'); mm.classList.remove('open'); }));
+  const rvObs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); rvObs.unobserve(e.target); } }), {threshold: .1});
+  document.querySelectorAll('.rv').forEach(el => rvObs.observe(el));
 })();
 </script>
 </body>
