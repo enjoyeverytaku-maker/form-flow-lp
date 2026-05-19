@@ -792,16 +792,7 @@
       border-color: var(--g);
       border-width: 2px;
     }
-    .compare-badge {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      color: #fff;
-      background: var(--g);
-      padding: 3px 12px;
-      border-radius: 100px;
-      margin-bottom: 12px;
-    }
+    .compare-badge { display: none; }
     .compare-card h3 { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
     .compare-tagline { font-size: 13px; color: var(--sub); margin-bottom: 18px; }
     .compare-row {
@@ -830,8 +821,8 @@
     .compare-card--neutral .compare-note { background: #fff; }
     .saving-banner {
       margin-top: 28px;
-      background: var(--gbg);
-      border: 1px solid rgba(6,199,85,.2);
+      background: #FAFAF8;
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 20px 28px;
       display: flex;
@@ -840,9 +831,9 @@
       gap: 20px;
       flex-wrap: wrap;
     }
-    .saving-banner p { font-size: 14px; color: var(--body); }
+    .saving-banner p { font-size: 14px; color: var(--sub); line-height: 1.75; }
     .saving-banner strong { color: var(--text); }
-    .saving-amount { font-size: 22px; font-weight: 700; color: var(--g); white-space: nowrap; }
+    .saving-amount { font-size: 20px; font-weight: 700; color: var(--text); white-space: nowrap; }
 
     /* ══════════════════════════════
        PRICING
@@ -1417,8 +1408,8 @@
       <div class="hero-left">
         <div class="hero-eyebrow rv">LINE公式アカウント 構築代行</div>
         <h1 class="hero-h1 rv rv-d1">小規模事業者のための<br>LINE公式アカウント<br>構築サービス</h1>
-        <p class="hero-tagline rv rv-d1">必要な機能を、必要な分だけ。ムダなく、カンタンに。</p>
-        <p class="hero-body rv rv-d2">Form Flowは、LINE公式アカウントの構築・連携・自動化を通じて、業務の効率化と売上アップをサポートします。</p>
+        <p class="hero-tagline rv rv-d1">必要な機能を、必要な分だけ。丁寧に設計します。</p>
+        <p class="hero-body rv rv-d2">Form Flowは、LINE公式アカウントの構築・設定・自動化を通じて、小規模事業者の業務負担を軽減するお手伝いをしています。</p>
         <div class="hero-btns rv rv-d2">
           <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
@@ -1431,19 +1422,19 @@
             <div class="hero-stat-icon">
               <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             </div>
-            <span><strong>¥0円</strong> 月額ツール費</span>
+            <span>月額ツール費 <strong>¥0〜</strong>（GAS活用時）</span>
           </div>
           <div class="hero-stat">
             <div class="hero-stat-icon">
               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
-            <span><strong>最短3営業日</strong>で納品</span>
+            <span>納品目安 <strong>3〜10営業日</strong></span>
           </div>
           <div class="hero-stat">
             <div class="hero-stat-icon">
               <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
-            <span><strong>業種問わず</strong>幅広く対応</span>
+            <span>業種・規模を問わず<strong>幅広く対応</strong></span>
           </div>
         </div>
       </div>
@@ -1458,12 +1449,12 @@
     <div class="container">
       <div class="trust-stats">
         <div class="trust-stat rv">
-          <div class="trust-stat-num"><em>¥0</em>/月</div>
-          <div class="trust-stat-label">ツール費（GAS活用）</div>
+          <div class="trust-stat-num"><em>¥0</em>〜/月</div>
+          <div class="trust-stat-label">ツール費（GAS活用時）</div>
         </div>
         <div class="trust-stat rv rv-d1">
-          <div class="trust-stat-num">3<em>営業日〜</em></div>
-          <div class="trust-stat-label">最短納品</div>
+          <div class="trust-stat-num">3〜10<em>営業日</em></div>
+          <div class="trust-stat-label">納品目安</div>
         </div>
         <div class="trust-stat rv rv-d2">
           <div class="trust-stat-num">10<em>+</em></div>
@@ -1609,7 +1600,7 @@
         <span class="section-label">できること</span>
         <h2 class="section-heading">Form Flow でできること</h2>
         <span class="heading-accent--center heading-accent"></span>
-        <p class="section-sub">LINEの仕組みと Google Apps Script を組み合わせて、コストをかけずに業務を自動化します。</p>
+        <p class="section-sub">LINEの仕組みとGoogle Apps Scriptを組み合わせて、業務の自動化・効率化を支援します。LステップなどのLINEマーケティングツールを使った構成にも対応しています。</p>
       </div>
       <div class="features-grid">
         <div class="feat-card rv rv-d1">
@@ -1737,7 +1728,7 @@
               <div class="about-profile-role">Form Flow 運営・制作</div>
             </div>
           </div>
-          <p class="about-bio">はじめまして、Form Flowの宇都宮です。<br><br>整体院・サロン・士業の方から「Lステップが高くて続けられない」「設定が複雑で諦めた」という声を何度も聞きました。GASを使えば月額ゼロで同等の自動化ができる。その可能性を広く届けたいと思い、Form Flowを立ち上げました。<br><br>構築して終わりではなく、導入後のサポートまでしっかり伴走しますので、ご安心ください。</p>
+          <p class="about-bio">はじめまして、Form Flowの宇都宮です。<br><br>整体院・サロン・士業など、さまざまな業種のお客さまからLINE公式アカウントの設定・運用についてご相談を受けてきました。「作ったけど使いこなせていない」「設定がよくわからず止まっている」そうした状況を、ひとつひとつ整理するお手伝いをしています。<br><br>構築内容はお客さまのご要望に合わせて設計します。GASを活用したコスト重視の構成も、LステップなどのツールをつかったUI重視の構成も、どちらにも対応しています。</p>
         </div>
         <!-- Center: photo -->
         <div class="about-center-col rv rv-d1">
@@ -1820,12 +1811,12 @@
         <span class="section-label">費用比較</span>
         <h2 class="section-heading">費用の目安を比べてみる</h2>
         <span class="heading-accent--center heading-accent"></span>
-        <p class="section-sub">高額ツールを使い続けるより、初期費用を抑えた方が長期的にコストが小さくなります。</p>
+        <p class="section-sub">初期投資とその後の運用コストを、継続的にツールを使う場合と比べています。GAS活用時は月額ツール費がかからないため、長期的な差が大きくなります。</p>
       </div>
       <div class="compare-grid">
         <div class="compare-card compare-card--neutral rv rv-d1">
           <h3>Lステップ</h3>
-          <p class="compare-tagline">主要自動化ツールの場合</p>
+          <p class="compare-tagline">主要LINEマーケティングツールの場合</p>
           <div class="compare-row">
             <span class="compare-row-label">初期費用</span>
             <span class="compare-row-val">¥0〜</span>
@@ -1836,61 +1827,72 @@
           </div>
           <div class="compare-row">
             <span class="compare-row-label">1年間の合計</span>
-            <span class="compare-row-val dim">約¥66,000〜</span>
+            <span class="compare-row-val dim">約¥66,000〜¥261,000</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">設定の手間</span>
-            <span class="compare-row-val dim">自社対応が必要</span>
+            <span class="compare-row-label">2年間の合計</span>
+            <span class="compare-row-val dim">約¥132,000〜¥523,000</span>
           </div>
-          <div class="compare-note">月額費用が継続的にかかるため、売上が安定しない時期に負担になりやすい。</div>
+          <div class="compare-row">
+            <span class="compare-row-label">3年間の合計</span>
+            <span class="compare-row-val dim">約¥198,000〜¥784,000</span>
+          </div>
+          <div class="compare-note">高機能なUI・細かい行動分岐が強み。月額費用が継続的にかかる点はご考慮ください。</div>
         </div>
         <div class="compare-card rv rv-d2">
           <h3>ライトプラン</h3>
-          <p class="compare-tagline">Form Flow スモールスタート</p>
+          <p class="compare-tagline">Form Flow / GAS構成</p>
           <div class="compare-row">
             <span class="compare-row-label">初期費用</span>
-            <span class="compare-row-val">¥19,800（モニター価格）</span>
+            <span class="compare-row-val">¥19,800</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">月額費用</span>
+            <span class="compare-row-label">月額ツール費</span>
             <span class="compare-row-val hi">¥0（GAS活用）</span>
           </div>
           <div class="compare-row">
             <span class="compare-row-label">1年間の合計</span>
-            <span class="compare-row-val hi">¥19,800のみ</span>
+            <span class="compare-row-val hi">¥19,800</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">マニュアル</span>
-            <span class="compare-row-val hi">付属</span>
+            <span class="compare-row-label">2年間の合計</span>
+            <span class="compare-row-val hi">¥19,800</span>
           </div>
-          <div class="compare-note"><strong>適している方：</strong>まずLINE自動返信とリッチメニューを整えたい方。</div>
+          <div class="compare-row">
+            <span class="compare-row-label">3年間の合計</span>
+            <span class="compare-row-val hi">¥19,800</span>
+          </div>
+          <div class="compare-note"><strong>向いている方：</strong>まずLINE自動返信・リッチメニューを整えたい方。</div>
         </div>
         <div class="compare-card compare-card--featured rv rv-d3">
-          <div class="compare-badge">おすすめ</div>
           <h3>スタンダードプラン</h3>
-          <p class="compare-tagline">Form Flow フル活用</p>
+          <p class="compare-tagline">Form Flow / GAS構成（フル）</p>
           <div class="compare-row">
             <span class="compare-row-label">初期費用</span>
-            <span class="compare-row-val">¥34,800（モニター価格）</span>
+            <span class="compare-row-val">¥34,800</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">月額費用</span>
+            <span class="compare-row-label">月額ツール費</span>
             <span class="compare-row-val hi">¥0（GAS活用）</span>
           </div>
           <div class="compare-row">
             <span class="compare-row-label">1年間の合計</span>
-            <span class="compare-row-val hi">¥34,800のみ</span>
+            <span class="compare-row-val hi">¥34,800</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">ステップ配信設計</span>
-            <span class="compare-row-val hi">込み</span>
+            <span class="compare-row-label">2年間の合計</span>
+            <span class="compare-row-val hi">¥34,800</span>
           </div>
-          <div class="compare-note"><strong>適している方：</strong>ステップ配信まで設計して、顧客育成の仕組みをまるごと作りたい方。</div>
+          <div class="compare-row">
+            <span class="compare-row-label">3年間の合計</span>
+            <span class="compare-row-val hi">¥34,800</span>
+          </div>
+          <div class="compare-note"><strong>向いている方：</strong>ステップ配信・顧客管理まで含めてまるごと整えたい方。</div>
         </div>
       </div>
       <div class="saving-banner rv">
-        <p><strong>Lステップと比べると</strong>、スタンダードプランなら1年間で<strong>約3万円以上</strong>のコスト削減になります。</p>
-        <div class="saving-amount">年間約 ¥31,200〜 の節約</div>
+        <p>Lステップ スタンダードプラン（月額¥12,980）と比較した場合、<strong>3年間の累計差額は約¥43万円</strong>になります。<br><small style="font-weight:400;color:var(--sub);">※保守オプション（¥3,000〜/月）を利用した場合でも、3年間合計はLステップを大幅に下回ります。</small></p>
+        <div class="saving-amount">3年累計 約 ¥433,000 の差</div>
       </div>
     </div>
   </section>
@@ -1902,17 +1904,16 @@
         <span class="section-label">料金プラン</span>
         <h2 class="section-heading">シンプルな料金体系</h2>
         <span class="heading-accent--center heading-accent"></span>
-        <p class="section-sub">現在はモニター価格でご提供中です。実績構築のため特別価格にて受付しています。</p>
+        <p class="section-sub">ご要件やご予算に合わせてプランをお選びください。不明な点はお気軽にご相談ください。</p>
       </div>
       <div class="pricing-grid">
         <!-- Light Plan -->
         <div class="plan-card rv rv-d1">
           <p class="plan-name">Light</p>
           <div>
-            <p class="plan-original">通常価格 ¥29,800</p>
             <p class="plan-price">¥19,800<span>（税込）</span></p>
           </div>
-          <span class="plan-monitor">モニター価格</span>
+          <span style="display:inline-block;font-size:11px;color:var(--sub);margin:8px 0 16px;">スモールスタート向け</span>
           <div class="plan-divider"></div>
           <p class="plan-desc">LINEの基本設定を整えてスタートしたい方向け。シンプルな構成でまず動かしたい方に最適です。</p>
           <ul class="plan-items">
@@ -1930,13 +1931,11 @@
 
         <!-- Standard Plan -->
         <div class="plan-card plan-card--featured rv rv-d2">
-          <div class="plan-badge">人気 No.1</div>
           <p class="plan-name">Standard</p>
           <div>
-            <p class="plan-original">通常価格 ¥49,800</p>
             <p class="plan-price">¥34,800<span>（税込）</span></p>
           </div>
-          <span class="plan-monitor">モニター価格</span>
+          <span style="display:inline-block;font-size:11px;color:var(--g);background:var(--gbg);padding:3px 10px;border-radius:100px;margin:8px 0 16px;">フル機能構成</span>
           <div class="plan-divider"></div>
           <p class="plan-desc">フル機能で自動化環境を構築したい方向け。ステップ配信まで含め、顧客育成の仕組みをまるごと整えます。</p>
           <ul class="plan-items">
@@ -1956,12 +1955,11 @@
         <div class="plan-card rv rv-d3">
           <p class="plan-name">Custom</p>
           <div>
-            <p class="plan-original">&nbsp;</p>
-            <p class="plan-price" style="font-size:22px;">オーダーメイド</p>
+            <p class="plan-price" style="font-size:22px;line-height:1.3;">¥80,000〜<span>（税込・目安）</span></p>
           </div>
-          <span class="plan-monitor" style="background:#F3F4F6;color:var(--sub);">要お見積もり</span>
+          <span style="display:inline-block;font-size:11px;color:var(--sub);margin:8px 0 16px;">要件により変動（〜¥300,000程度）</span>
           <div class="plan-divider"></div>
-          <p class="plan-desc">複数店舗・複雑なシナリオ・API連携など、標準プランに収まらない要件をお持ちの方へ。</p>
+          <p class="plan-desc">複数店舗・複雑なシナリオ・API連携など、標準プランに収まらない要件をお持ちの方へ。Lステップなど外部ツールとの連携構成も対応します。</p>
           <ul class="plan-items">
             <li>スタンダードの全機能</li>
             <li>追加キーワード設定</li>
@@ -2224,7 +2222,7 @@
           <p style="font-size:15px;color:var(--sub);line-height:1.8;margin-bottom:22px;">「どんなことができるか知りたい」「見積もりだけ聞きたい」といったご相談も大歓迎です。押し売りは一切しておりません。</p>
           <ul class="contact-checks">
             <li>相談・見積もり無料</li>
-            <li>当日〜翌営業日以内に返信</li>
+            <li>通常1営業日以内に返信</li>
             <li>強引な勧誘・押し売りなし</li>
             <li>業種・規模を問わず対応</li>
           </ul>
