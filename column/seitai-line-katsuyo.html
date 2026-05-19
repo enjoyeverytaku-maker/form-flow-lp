@@ -204,6 +204,25 @@
       aside { position: static; }
       .article-body { padding: 24px 20px; }
     }
+
+    /* SHARE & LIKE */
+    .share-section { margin-top: 48px; padding: 28px 32px; background: var(--gbg); border: 1px solid rgba(6,199,85,.2); border-radius: 12px; text-align: center; }
+    .share-label { font-size: 12px; font-weight: 700; color: var(--sub); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 20px; }
+    .like-area { margin-bottom: 20px; }
+    .art-like-btn { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--border); color: var(--sub); font-size: 13px; font-weight: 700; padding: 10px 22px; border-radius: 20px; cursor: pointer; transition: all .2s; font-family: inherit; }
+    .art-like-btn:hover { border-color: #fca5a5; color: #ef4444; background: #fef2f2; }
+    .art-like-btn.liked { border-color: #ef4444; color: #ef4444; background: #fef2f2; }
+    .art-like-btn.liked svg { fill: #ef4444; stroke: #ef4444; }
+    .art-like-count { font-weight: 800; }
+    .share-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 4px; }
+    .sbtn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: opacity .2s, transform .15s; text-decoration: none; font-family: inherit; }
+    .sbtn:hover { opacity: .85; transform: translateY(-1px); }
+    .sbtn-line { background: var(--g); color: #fff; }
+    .sbtn-x { background: #000; color: #fff; }
+    .sbtn-fb { background: #1877f2; color: #fff; }
+    .sbtn-ig { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: #fff; }
+    .sbtn-copy { background: #fff; color: var(--text); border: 1px solid var(--border) !important; }
+    .sbtn-copy.copied { background: var(--gbg); color: var(--g); border-color: rgba(6,199,85,.3) !important; }
   </style>
 </head>
 <body>
@@ -290,6 +309,23 @@
 
       <p>「どこから手をつければいいかわからない」という方は、まず友だち登録の入口を整えることと、あいさつメッセージを設定することから始めてみてください。</p>
 
+      <div class="share-section">
+        <p class="share-label">この記事をシェアする</p>
+        <div class="like-area">
+          <button class="art-like-btn" id="likeBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            いいね <span class="art-like-count" id="likeCount">–</span>
+          </button>
+        </div>
+        <div class="share-row">
+          <button class="sbtn sbtn-line" id="shareLine">LINEでシェア</button>
+          <button class="sbtn sbtn-x" id="shareX">Xでシェア</button>
+          <button class="sbtn sbtn-fb" id="shareFb">Facebook</button>
+          <button class="sbtn sbtn-ig" id="shareIg">Instagram</button>
+          <button class="sbtn sbtn-copy" id="shareCopy">URLコピー</button>
+        </div>
+      </div>
+
     </main>
 
     <aside>
@@ -313,6 +349,29 @@
     nav.classList.toggle('sc', window.scrollY > 60);
   }, { passive: true });
 })();
+  // share & like
+  const SLUG='seitai-line-katsuyo';
+  const SHARE_TITLE='整体院・接骨院のLINE公式活用術——予約リマインドから休眠顧客掘り起こしまで';
+  const SHARE_URL='https://enjoyeverytaku-maker.github.io/form-flow-lp/column/seitai-line-katsuyo.html';
+  const SB_URL='https://dxerzoqxaupzclohdiis.supabase.co';
+  const SB_KEY='sb_publishable_5iTgXF1XKOVIpLoAR0MYlQ_woZTy6V1';
+  const likeBtn=document.getElementById('likeBtn');
+  const likeCount=document.getElementById('likeCount');
+  if(localStorage.getItem('liked_'+SLUG)==='1')likeBtn.classList.add('liked');
+  fetch(SB_URL+'/rest/v1/article_likes?slug=eq.'+SLUG+'&select=count',{headers:{apikey:SB_KEY,Authorization:'Bearer '+SB_KEY}})
+    .then(r=>r.json()).then(d=>{likeCount.textContent=d[0]?.count??0;}).catch(()=>{likeCount.textContent='–';});
+  likeBtn.addEventListener('click',async()=>{
+    if(likeBtn.classList.contains('liked'))return;
+    likeBtn.classList.add('liked');
+    localStorage.setItem('liked_'+SLUG,'1');
+    try{const r=await fetch(SB_URL+'/rest/v1/rpc/increment_likes',{method:'POST',headers:{apikey:SB_KEY,Authorization:'Bearer '+SB_KEY,'Content-Type':'application/json'},body:JSON.stringify({article_slug:SLUG})});const n=await r.json();if(typeof n==='number')likeCount.textContent=n;}catch(_){}
+  });
+  document.getElementById('shareLine').addEventListener('click',()=>window.open('https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(SHARE_URL),'_blank'));
+  document.getElementById('shareX').addEventListener('click',()=>window.open('https://x.com/intent/tweet?url='+encodeURIComponent(SHARE_URL)+'&text='+encodeURIComponent(SHARE_TITLE+' | Form Flow'),'_blank'));
+  document.getElementById('shareFb').addEventListener('click',()=>window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(SHARE_URL),'_blank'));
+  document.getElementById('shareIg').addEventListener('click',async()=>{if(navigator.share){try{await navigator.share({title:SHARE_TITLE+' | Form Flow',url:SHARE_URL});}catch(_){}}else{await navigator.clipboard.writeText(SHARE_URL);const b=document.getElementById('shareIg');const o=b.textContent;b.textContent='コピー!';setTimeout(()=>b.textContent=o,2000);}});
+  document.getElementById('shareCopy').addEventListener('click',async()=>{await navigator.clipboard.writeText(SHARE_URL);const b=document.getElementById('shareCopy');b.textContent='コピーしました!';b.classList.add('copied');setTimeout(()=>{b.textContent='URLコピー';b.classList.remove('copied');},2000);});
+
 </script>
 </body>
 </html>
