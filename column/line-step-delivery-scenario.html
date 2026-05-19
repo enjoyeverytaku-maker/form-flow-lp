@@ -33,251 +33,285 @@
     "dateModified": "2026-05-17"
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --g:#06C755;--gd:#04a344;--g2:#00e0b0;
-  --navy:#040d1a;--navy2:#0b1829;
-  --border-card:rgba(255,255,255,.08);
-}
-html{scroll-behavior:smooth}
-body{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;color:#fff;background:var(--navy);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.9}
-a{text-decoration:none;color:inherit}
-img{display:block;max-width:100%}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* SCROLL PROGRESS */
-#sp{position:fixed;top:0;left:0;height:2px;background:var(--g);z-index:9999;width:0%;pointer-events:none}
+    :root {
+      --g: #06C755;
+      --gd: #059942;
+      --gbg: #EFF9F4;
+      --text: #111827;
+      --body: #374151;
+      --sub: #6B7280;
+      --muted: #9CA3AF;
+      --border: #E5E7EB;
+      --bg: #FAFAF8;
+      --bg-white: #FFFFFF;
+      --bg-green: #F2F7F4;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.07), 0 2px 8px rgba(0,0,0,.04);
+      --shadow: 0 4px 20px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+      --radius: 12px;
+    }
 
-/* CURSOR */
-#cur,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
-#cur{width:8px;height:8px;background:var(--g)}
-#cur-ring{width:32px;height:32px;border:1.5px solid rgba(6,199,85,.5)}
+    html { scroll-behavior: smooth; }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;transition:background .4s,box-shadow .4s}
-nav.sc{background:rgba(4,13,26,.94);backdrop-filter:blur(24px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
-.nlogo{font-size:20px;font-weight:900;color:#fff;letter-spacing:.01em;font-family:'Inter',sans-serif}
-.nlogo em{color:var(--g);font-style:normal}
-.nlinks{display:flex;gap:32px;align-items:center}
-.nlinks a{font-size:13px;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s}
-.nlinks a:hover,.nlinks a.active{color:#fff}
-.nbtn{font-size:12px;font-weight:700;background:var(--g);color:#fff;padding:8px 20px;border-radius:8px;transition:background .2s}
-.nbtn:hover{background:var(--gd)}
-.hbtn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
-.hbtn span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s}
-#mmenu{display:none;position:fixed;inset:0;background:rgba(4,13,26,.97);z-index:400;flex-direction:column;align-items:center;justify-content:center;gap:32px}
-#mmenu.open{display:flex}
-#mmenu a{font-size:20px;font-weight:700;color:#fff}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      color: var(--body);
+      background-color: #FAFAF8;
+      background-image: radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px);
+      background-size: 22px 22px;
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* ARTICLE HERO */
-.art-hero{padding:120px 24px 56px;background:linear-gradient(160deg,var(--navy2) 0%,var(--navy) 100%);border-bottom:1px solid rgba(255,255,255,.06);position:relative;overflow:hidden}
-.art-hero::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(6,199,85,.07) 0%,transparent 70%);top:-200px;right:-100px;pointer-events:none}
-.art-hero-inner{max-width:760px;margin:0 auto}
-.art-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-.tag{font-size:11px;font-weight:700;padding:4px 13px;border-radius:20px;background:rgba(6,199,85,.15);color:var(--g);border:1px solid rgba(6,199,85,.25);font-family:'Inter',sans-serif;letter-spacing:.04em}
-.art-hero h1{font-size:clamp(22px,3.5vw,32px);font-weight:900;line-height:1.45;margin-bottom:18px;letter-spacing:-.02em}
-.art-meta{font-size:12px;color:rgba(255,255,255,.38);font-family:'Inter',sans-serif;display:flex;align-items:center;gap:16px}
-.art-meta-dot{width:3px;height:3px;background:rgba(255,255,255,.3);border-radius:50%}
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
-/* ARTICLE LAYOUT */
-.art-wrap{max-width:760px;margin:0 auto;padding:48px 24px 80px}
-.art-card{background:rgba(255,255,255,.03);border:1px solid var(--border-card);border-radius:20px;padding:48px 52px}
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 64px;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow .2s;
+    }
+    #nav.sc { box-shadow: 0 2px 16px rgba(0,0,0,.06); }
 
-/* TYPOGRAPHY */
-.art-card p{font-size:15px;color:rgba(255,255,255,.72);line-height:2.05;margin-bottom:22px}
-.art-card h2{font-size:20px;font-weight:900;color:#fff;margin:48px 0 16px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:10px;letter-spacing:-.01em}
-.art-card h2::before{content:'';display:block;width:4px;height:20px;background:var(--g);border-radius:2px;flex-shrink:0;box-shadow:0 0 8px rgba(6,199,85,.4)}
-.art-card h3{font-size:16px;font-weight:800;color:#fff;margin:28px 0 12px}
-.art-card ul,.art-card ol{padding-left:22px;margin-bottom:22px}
-.art-card li{font-size:15px;color:rgba(255,255,255,.68);line-height:1.9;margin-bottom:8px}
-.art-card blockquote{border-left:3px solid var(--g);padding:6px 0 6px 20px;margin:28px 0;color:rgba(255,255,255,.5);font-size:14px;line-height:1.9}
-.art-card strong{color:#fff;font-weight:700}
-.art-card a{color:var(--g)}
-.art-card a:hover{text-decoration:underline}
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-/* STEP BOX */
-.step-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:24px 28px;margin:24px 0;font-family:'Inter','Noto Sans JP',monospace;font-size:14px;line-height:2.0;white-space:pre-line;color:rgba(255,255,255,.72)}
-.step-box h3,.step-box strong{color:#fff}
-.step-box p{margin-bottom:8px}
-.step-box p:last-child{margin-bottom:0}
+    .nav-logo { font-size: 19px; font-weight: 700; color: var(--text); letter-spacing: -.01em; }
+    .nav-back { font-size: 14px; color: var(--sub); transition: color .15s; }
+    .nav-back:hover { color: var(--text); }
 
-/* POINT BOX */
-.point-box{background:rgba(6,199,85,.07);border:1px solid rgba(6,199,85,.2);border-radius:12px;padding:20px 24px;margin:24px 0}
-.point-box p{color:rgba(255,255,255,.8);margin-bottom:0}
+    .article-hero {
+      margin-top: 64px;
+      background: #fff;
+      padding: 60px 0 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .article-hero-inner { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .cat-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--g);
+      background: var(--gbg);
+      border: 1px solid rgba(6,199,85,.2);
+      border-radius: 100px;
+      padding: 4px 12px;
+      margin-bottom: 16px;
+      letter-spacing: .04em;
+    }
+    .article-hero h1 { font-size: 28px; font-weight: 800; color: var(--text); line-height: 1.45; }
+    .article-date { font-size: 13px; color: var(--sub); margin-top: 10px; }
 
-/* TEMPLATE BOX */
-.template-box{background:rgba(6,199,85,.06);border:1px solid rgba(6,199,85,.15);border-radius:10px;padding:20px 24px;margin:20px 0;font-size:14px;line-height:2.0;white-space:pre-line;color:rgba(255,255,255,.72)}
-.template-label{font-size:12px;font-weight:700;color:var(--g);margin-bottom:10px;display:block;font-family:'Inter',sans-serif;letter-spacing:.04em}
+    .article-wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px 80px; }
+    .article-grid { display: grid; grid-template-columns: 1fr 300px; gap: 40px; padding-top: 48px; }
 
-/* CAUTION BOX */
-.caution-box{background:rgba(245,158,11,.07);border-left:4px solid #F59E0B;padding:16px 20px;margin:28px 0;font-size:15px;border-radius:0 8px 8px 0;color:rgba(255,255,255,.72)}
+    .article-body {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
+    }
+    .article-body h2 { font-size: 20px; font-weight: 700; color: var(--text); margin: 40px 0 16px; border-left: 3px solid var(--g); padding-left: 12px; }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body h3 { font-size: 17px; font-weight: 700; color: var(--text); margin: 28px 0 12px; }
+    .article-body p { margin-bottom: 16px; line-height: 1.85; color: var(--body); }
+    .article-body ul, .article-body ol { margin: 12px 0 20px 20px; }
+    .article-body li { margin-bottom: 8px; line-height: 1.7; }
+    .article-body hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+    .article-body strong { color: var(--text); font-weight: 700; }
+    .article-body blockquote { border-left: 3px solid var(--g); padding: 8px 0 8px 16px; margin: 20px 0; color: var(--sub); font-size: 15px; line-height: 1.8; }
+    .article-body pre { background: #F1F5F9; border-radius: 6px; padding: 16px; overflow-x: auto; margin: 16px 0; font-family: monospace; font-size: 13px; line-height: 1.8; white-space: pre-line; color: var(--body); }
 
-/* SHARE SECTION */
-.share-section{margin-top:52px;padding:32px;background:rgba(255,255,255,.04);border:1px solid var(--border-card);border-radius:16px;text-align:center}
-.share-label{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.1em;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:20px}
-.like-area{margin-bottom:24px}
-.art-like-btn{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);font-size:13px;font-weight:700;padding:10px 22px;border-radius:20px;cursor:pointer;transition:all .2s;font-family:'Noto Sans JP',sans-serif}
-.art-like-btn:hover{border-color:rgba(255,100,100,.4);color:#ff8080;background:rgba(255,100,100,.06)}
-.art-like-btn.liked{border-color:#ff6b6b;color:#ff6b6b;background:rgba(255,107,107,.1)}
-.art-like-btn.liked svg{fill:#ff6b6b;stroke:#ff6b6b}
-.art-like-count{font-family:'Inter',sans-serif;font-weight:800}
-.share-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.sbtn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:'Noto Sans JP',sans-serif;transition:opacity .2s,transform .15s;text-decoration:none}
-.sbtn:hover{opacity:.85;transform:translateY(-1px)}
-.sbtn-line{background:var(--g);color:#fff}
-.sbtn-x{background:#000;color:#fff;border:1px solid rgba(255,255,255,.2)}
-.sbtn-fb{background:#1877f2;color:#fff}
-.sbtn-ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff}
-.sbtn-copy{background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.1)}
-.sbtn-copy.copied{background:rgba(6,199,85,.12);color:var(--g);border-color:rgba(6,199,85,.25)}
+    .step-box {
+      background: #F1F5F9;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-family: monospace;
+      font-size: 14px;
+      line-height: 2.0;
+      white-space: pre-line;
+      color: var(--body);
+    }
 
-/* BACK LINK */
-.art-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,.45);margin-top:40px;transition:color .2s}
-.art-back:hover{color:#fff}
+    .template-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--g);
+      margin-bottom: 8px;
+      display: block;
+      letter-spacing: .04em;
+    }
+    .template-box {
+      background: var(--gbg);
+      border: 1px solid rgba(6,199,85,.15);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 8px 0 20px;
+      font-size: 14px;
+      line-height: 2.0;
+      white-space: pre-line;
+      color: var(--body);
+    }
 
-/* CTA */
-.art-cta{margin-top:56px;padding:40px;background:linear-gradient(135deg,rgba(6,199,85,.12),rgba(6,199,85,.04));border:1px solid rgba(6,199,85,.2);border-radius:20px;text-align:center}
-.art-cta h3{font-size:20px;font-weight:900;margin-bottom:10px}
-.art-cta p{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:24px}
-.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--g);color:#fff;font-weight:700;font-size:15px;padding:14px 30px;border-radius:10px;transition:background .25s;box-shadow:0 4px 24px rgba(6,199,85,.35)}
-.btn-p:hover{background:var(--gd)}
+    .caution-box {
+      background: #FFFBEB;
+      border-left: 4px solid #F59E0B;
+      padding: 14px 18px;
+      margin: 24px 0;
+      font-size: 15px;
+      border-radius: 0 8px 8px 0;
+      color: var(--body);
+    }
 
-/* FOOTER */
-footer{background:#030a14;border-top:1px solid rgba(255,255,255,.05);padding:32px 52px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.fl{font-size:16px;font-weight:900;color:#fff;font-family:'Inter',sans-serif}
-.fl em{color:var(--g);font-style:normal}
-.flinks{display:flex;gap:24px}
-.flinks a{font-size:12px;color:rgba(255,255,255,.38);transition:color .2s}
-.flinks a:hover{color:#fff}
-.fcopy{font-size:11px;color:rgba(255,255,255,.25)}
+    aside {
+      position: sticky;
+      top: 80px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      height: fit-content;
+    }
+    .aside-logo { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .aside-logo span { color: var(--g); }
+    .aside-desc { font-size: 13px; color: var(--sub); line-height: 1.7; margin-bottom: 18px; }
+    .aside-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 99px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-align: center;
+      transition: background .2s, transform .15s;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+    .aside-btn:hover { transform: translateY(-1px); }
+    .aside-btn-primary { background: var(--g); color: #fff; box-shadow: 0 4px 14px rgba(6,199,85,.25); }
+    .aside-btn-primary:hover { background: var(--gd); }
+    .aside-btn-outline { background: transparent; color: var(--text); border: 2px solid var(--border) !important; }
+    .aside-btn-outline:hover { border-color: #9CA3AF !important; background: rgba(0,0,0,.02); }
 
-/* RESPONSIVE */
-@media(max-width:768px){
-  nav{padding:0 20px}
-  .nlinks{display:none}
-  .hbtn{display:flex}
-  .art-hero{padding:100px 20px 40px}
-  .art-wrap{padding:32px 16px 60px}
-  .art-card{padding:28px 22px}
-  .art-card h2{font-size:17px}
-  footer{padding:24px 20px;flex-direction:column;align-items:flex-start}
-  .share-row{gap:8px}
-  .sbtn{padding:8px 14px;font-size:12px}
-  .step-box,.template-box{padding:16px}
-}
+    footer { background: #fff; border-top: 1px solid var(--border); text-align: center; padding: 24px; font-size: 13px; color: var(--sub); }
+    .footer-logo { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .footer-logo span { color: var(--g); }
+
+    @media (max-width: 768px) {
+      .article-hero h1 { font-size: 22px; }
+      .article-grid { grid-template-columns: 1fr; }
+      aside { position: static; }
+      .article-body { padding: 24px 20px; }
+      .step-box, .template-box { padding: 12px 14px; }
+    }
   </style>
 </head>
 <body>
 
-<div id="sp"></div>
-<div id="cur"></div>
-<div id="cur-ring"></div>
 <nav id="nav">
-  <a href="../index.html" class="nlogo">Form <em>Flow</em></a>
-  <div class="nlinks">
-    <a href="../index.html">ホーム</a>
-    <a href="../cases.html">構築例</a>
-    <a href="../column.html" class="active">コラム</a>
-    <a href="../demo.html">デモ</a>
-    <a href="../index.html#contact" class="nbtn">無料相談</a>
+  <div class="nav-inner">
+    <div class="nav-logo">Form <span style="color:var(--g)">Flow</span></div>
+    <a href="../index_v2.html#columns" class="nav-back">← コラム一覧へ</a>
   </div>
-  <button class="hbtn" id="hbtn" aria-label="メニュー">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-<div id="mmenu">
-  <a href="../index.html">ホーム</a>
-  <a href="../cases.html">構築例</a>
-  <a href="../column.html">コラム</a>
-  <a href="../demo.html">デモ</a>
-  <a href="../index.html#contact" class="nbtn">無料相談</a>
-</div>
 
-<!-- HERO -->
-<section class="art-hero">
-  <div class="art-hero-inner">
-    <div class="art-tags">
-      <span class="tag">ステップ配信</span>
-      <span class="tag">シナリオ設計</span>
-    </div>
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <div><span class="cat-tag">ステップ配信</span> <span class="cat-tag">シナリオ設計</span></div>
     <h1>ステップ配信で売上が変わる<br>——登録〜成約までのシナリオ設計5ステップ</h1>
-    <div class="art-meta">
-      <span>Form Flow</span>
-      <span class="art-meta-dot"></span>
-      <span>2026年5月17日</span>
-    </div>
+    <p class="article-date">2026年5月17日</p>
   </div>
 </section>
 
-<!-- CONTENT -->
-<div class="art-wrap">
-  <div class="art-card">
+<div class="article-wrap">
+  <div class="article-grid">
+    <main class="article-body">
 
-    <p>友だち追加した瞬間から、自動でフォローが始まる。それがLINEのステップ配信です。設計次第で、営業担当が不在の時間帯にも関係構築が進み、問い合わせや予約につながる仕組みができあがります。</p>
+      <p>友だち追加した瞬間から、自動でフォローが始まる。それがLINEのステップ配信です。設計次第で、営業担当が不在の時間帯にも関係構築が進み、問い合わせや予約につながる仕組みができあがります。</p>
 
-    <p>ただ、「なんとなく設定した」だけでは開封すらされないまま終わることも多い。Form Flowがお客さまのアカウントを構築してきた経験をもとに、登録から成約までのシナリオ設計を5つのステップで整理しました。</p>
+      <p>ただ、「なんとなく設定した」だけでは開封すらされないまま終わることも多い。Form Flowがお客さまのアカウントを構築してきた経験をもとに、登録から成約までのシナリオ設計を5つのステップで整理しました。</p>
 
-    <h2>「あいさつメッセージだけ」では、機会損失になっている</h2>
+      <h2>「あいさつメッセージだけ」では、機会損失になっている</h2>
 
-    <p>LINE公式アカウントを開設したとき、多くの方がまず「あいさつメッセージ」と「キーワード自動返信」を設定します。それだけで終わっているケースが、実際にはとても多い。</p>
+      <p>LINE公式アカウントを開設したとき、多くの方がまず「あいさつメッセージ」と「キーワード自動返信」を設定します。それだけで終わっているケースが、実際にはとても多い。</p>
 
-    <ul>
-      <li>友だち追加の直後が、最も関心の高いタイミング</li>
-      <li>そこで何も届かないと、次第に存在を忘れられる</li>
-      <li>思い出したときだけ一斉送信しても、開封率は上がりにくい</li>
-    </ul>
+      <ul>
+        <li>友だち追加の直後が、最も関心の高いタイミング</li>
+        <li>そこで何も届かないと、次第に存在を忘れられる</li>
+        <li>思い出したときだけ一斉送信しても、開封率は上がりにくい</li>
+      </ul>
 
-    <p>ステップ配信は、この「登録直後の熱量」を逃さないための仕組みです。配信のタイミングと内容を設計することで、自然な流れで信頼関係を育て、成約へとつなげていくことができます。</p>
+      <p>ステップ配信は、この「登録直後の熱量」を逃さないための仕組みです。配信のタイミングと内容を設計することで、自然な流れで信頼関係を育て、成約へとつなげていくことができます。</p>
 
-    <h2>全体像——5ステップのシナリオ</h2>
+      <h2>全体像——5ステップのシナリオ</h2>
 
-    <p>登録から成約までを、以下の5段階で設計します。</p>
+      <p>登録から成約までを、以下の5段階で設計します。</p>
 
-    <div class="step-box">Step 1: ウェルカムメッセージ（登録直後）
+      <div class="step-box">Step 1: ウェルカムメッセージ（登録直後）
 Step 2: 価値提供（1〜3日後）
 Step 3: 信頼構築（3〜7日後）
 Step 4: 課題の掘り起こし（7〜10日後）
 Step 5: オファー提示（10〜14日後）</div>
 
-    <p>各ステップのポイントを順に解説します。</p>
+      <p>各ステップのポイントを順に解説します。</p>
 
-    <h2>Step 1：ウェルカムメッセージ（登録直後）</h2>
+      <h2>Step 1：ウェルカムメッセージ（登録直後）</h2>
 
-    <p>登録直後のメッセージで最優先すべきは、「来てよかった」と感じてもらうことです。</p>
+      <p>登録直後のメッセージで最優先すべきは、「来てよかった」と感じてもらうことです。</p>
 
-    <h3>設計のポイント</h3>
-    <ul>
-      <li>誰が運営しているアカウントかを一言で伝える</li>
-      <li>登録のお礼と、特典がある場合はその案内</li>
-      <li>次のステップへの期待感を持たせる一文（「明日、○○をお届けします」）</li>
-    </ul>
+      <h3>設計のポイント</h3>
+      <ul>
+        <li>誰が運営しているアカウントかを一言で伝える</li>
+        <li>登録のお礼と、特典がある場合はその案内</li>
+        <li>次のステップへの期待感を持たせる一文（「明日、○○をお届けします」）</li>
+      </ul>
 
-    <span class="template-label">メッセージ例</span>
-    <div class="template-box">友だち追加ありがとうございます！
+      <span class="template-label">メッセージ例</span>
+      <div class="template-box">友だち追加ありがとうございます！
 
 このLINEでは、○○に役立つ情報を定期的にお届けしています。
 
 明日は「よくある失敗3選」をお送りします。
 ぜひ確認してみてください。</div>
 
-    <p>「次に何が届くか」を予告することで、次のメッセージへの開封率が高まります。</p>
+      <p>「次に何が届くか」を予告することで、次のメッセージへの開封率が高まります。</p>
 
-    <h2>Step 2：価値提供（1〜3日後）</h2>
+      <h2>Step 2：価値提供（1〜3日後）</h2>
 
-    <p>この段階では、まだ何も売ろうとしないことが重要です。相手に役立つ情報だけを届けます。</p>
+      <p>この段階では、まだ何も売ろうとしないことが重要です。相手に役立つ情報だけを届けます。</p>
 
-    <h3>コンテンツの選び方</h3>
-    <ul>
-      <li>ターゲットが「気になっているが調べていないこと」</li>
-      <li>よくある失敗談・誤解の解消</li>
-      <li>短時間で読める実用的なTips</li>
-    </ul>
+      <h3>コンテンツの選び方</h3>
+      <ul>
+        <li>ターゲットが「気になっているが調べていないこと」</li>
+        <li>よくある失敗談・誤解の解消</li>
+        <li>短時間で読める実用的なTips</li>
+      </ul>
 
-    <span class="template-label">メッセージ例</span>
-    <div class="template-box">昨日は登録ありがとうございました。
+      <span class="template-label">メッセージ例</span>
+      <div class="template-box">昨日は登録ありがとうございました。
 
 今日は「○○でよくある失敗3選」をご紹介します。
 
@@ -292,26 +326,26 @@ Step 5: オファー提示（10〜14日後）</div>
 
 明日はより具体的な解決策をお送りします。</div>
 
-    <p>1通あたりの読了時間は1〜2分を目安にしてください。</p>
+      <p>1通あたりの読了時間は1〜2分を目安にしてください。</p>
 
-    <h2>Step 3：信頼構築（3〜7日後）</h2>
+      <h2>Step 3：信頼構築（3〜7日後）</h2>
 
-    <p>ここで初めて、運営者自身のことを少し話します。実績・経験・失敗談など、人柄が伝わるエピソードが効果的です。</p>
+      <p>ここで初めて、運営者自身のことを少し話します。実績・経験・失敗談など、人柄が伝わるエピソードが効果的です。</p>
 
-    <ul>
-      <li>なぜこのサービスや活動をしているのか</li>
-      <li>過去の失敗から学んだこと</li>
-      <li>お客さまの声（匿名・許可取得のうえで）</li>
-    </ul>
+      <ul>
+        <li>なぜこのサービスや活動をしているのか</li>
+        <li>過去の失敗から学んだこと</li>
+        <li>お客さまの声（匿名・許可取得のうえで）</li>
+      </ul>
 
-    <p>売り込みは一切入れません。「この人（このサービス）なら信頼できそう」と感じてもらえれば、このステップは成功です。</p>
+      <p>売り込みは一切入れません。「この人（このサービス）なら信頼できそう」と感じてもらえれば、このステップは成功です。</p>
 
-    <h2>Step 4：課題の掘り起こし（7〜10日後）</h2>
+      <h2>Step 4：課題の掘り起こし（7〜10日後）</h2>
 
-    <p>読者が「これは自分ごとだ」と感じる悩みを言語化するフェーズです。</p>
+      <p>読者が「これは自分ごとだ」と感じる悩みを言語化するフェーズです。</p>
 
-    <span class="template-label">メッセージ例</span>
-    <div class="template-box">少しうかがってもいいですか？
+      <span class="template-label">メッセージ例</span>
+      <div class="template-box">少しうかがってもいいですか？
 
 ○○をするとき、こんなことはありませんか？
 
@@ -324,21 +358,21 @@ Step 5: オファー提示（10〜14日後）</div>
 もし当てはまることがあれば、ぜひ返信してみてください。
 個別にお答えします。</div>
 
-    <p>返信を促すことで双方向のやりとりが生まれ、次のオファーが刺さりやすくなります。</p>
+      <p>返信を促すことで双方向のやりとりが生まれ、次のオファーが刺さりやすくなります。</p>
 
-    <h2>Step 5：オファー提示（10〜14日後）</h2>
+      <h2>Step 5：オファー提示（10〜14日後）</h2>
 
-    <p>ここで初めて、サービスや商品を案内します。</p>
+      <p>ここで初めて、サービスや商品を案内します。</p>
 
-    <h3>設計のポイント</h3>
-    <ul>
-      <li>「売る」よりも「解決策を提案する」トーンで書く</li>
-      <li>期間・人数などの限定要素を入れる</li>
-      <li>次のアクション（相談・購入）への導線を明確にする</li>
-    </ul>
+      <h3>設計のポイント</h3>
+      <ul>
+        <li>「売る」よりも「解決策を提案する」トーンで書く</li>
+        <li>期間・人数などの限定要素を入れる</li>
+        <li>次のアクション（相談・購入）への導線を明確にする</li>
+      </ul>
 
-    <span class="template-label">メッセージ例</span>
-    <div class="template-box">先日のメッセージに、多くの方からご返信をいただきました。
+      <span class="template-label">メッセージ例</span>
+      <div class="template-box">先日のメッセージに、多くの方からご返信をいただきました。
 
 そういった方に向けて、今月だけ無料相談を受け付けています。
 
@@ -350,136 +384,57 @@ Step 5: オファー提示（10〜14日後）</div>
 
 先着5名となっていますので、お早めにどうぞ。</div>
 
-    <h2>よくあるつまずきポイント</h2>
+      <h2>よくあるつまずきポイント</h2>
 
-    <div class="caution-box">
-      <strong>① メッセージが長すぎる</strong><br>
-      1通に情報を詰め込みすぎると読まれません。スマートフォンで読みやすい量（300〜400文字）を意識してください。
-    </div>
+      <div class="caution-box">
+        <strong>① メッセージが長すぎる</strong><br>
+        1通に情報を詰め込みすぎると読まれません。スマートフォンで読みやすい量（300〜400文字）を意識してください。
+      </div>
 
-    <div class="caution-box">
-      <strong>② 配信間隔が短すぎる</strong><br>
-      毎日届くとブロックされやすくなります。2〜3日に1通程度がちょうどいいペースです。
-    </div>
+      <div class="caution-box">
+        <strong>② 配信間隔が短すぎる</strong><br>
+        毎日届くとブロックされやすくなります。2〜3日に1通程度がちょうどいいペースです。
+      </div>
 
-    <div class="caution-box">
-      <strong>③ 一方的な「お知らせ」になっている</strong><br>
-      問いかけや「いかがでしたか？」の一言があるだけで、読者との距離感が変わります。対話のある設計を意識してください。
-    </div>
+      <div class="caution-box">
+        <strong>③ 一方的な「お知らせ」になっている</strong><br>
+        問いかけや「いかがでしたか？」の一言があるだけで、読者との距離感が変わります。対話のある設計を意識してください。
+      </div>
 
-    <h2>まとめ</h2>
+      <h2>まとめ</h2>
 
-    <p>ステップ配信は一度設計してしまえば、あとは自動で動き続けます。最初の設計に時間をかけることが、長期的な集客・成約の安定につながります。</p>
+      <p>ステップ配信は一度設計してしまえば、あとは自動で動き続けます。最初の設計に時間をかけることが、長期的な集客・成約の安定につながります。</p>
 
-    <ul>
-      <li><strong>Step 1 ウェルカム</strong>——登録のお礼と次への期待感</li>
-      <li><strong>Step 2 価値提供</strong>——役立つ情報を先に届ける</li>
-      <li><strong>Step 3 信頼構築</strong>——運営者の人柄を見せる</li>
-      <li><strong>Step 4 課題の掘り起こし</strong>——読者に自分ごととして捉えてもらう</li>
-      <li><strong>Step 5 オファー</strong>——解決策として自然に提案する</li>
-    </ul>
+      <ul>
+        <li><strong>Step 1 ウェルカム</strong>——登録のお礼と次への期待感</li>
+        <li><strong>Step 2 価値提供</strong>——役立つ情報を先に届ける</li>
+        <li><strong>Step 3 信頼構築</strong>——運営者の人柄を見せる</li>
+        <li><strong>Step 4 課題の掘り起こし</strong>——読者に自分ごととして捉えてもらう</li>
+        <li><strong>Step 5 オファー</strong>——解決策として自然に提案する</li>
+      </ul>
 
-  </div>
+    </main>
 
-  <!-- SHARE -->
-  <div class="share-section">
-    <p class="share-label">この記事をシェアする</p>
-    <div class="like-area">
-      <button class="art-like-btn" id="likeBtn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        いいね <span class="art-like-count" id="likeCount">–</span>
-      </button>
-    </div>
-    <div class="share-row">
-      <button class="sbtn sbtn-line" id="shareLine">LINEでシェア</button>
-      <button class="sbtn sbtn-x" id="shareX">Xでシェア</button>
-      <button class="sbtn sbtn-fb" id="shareFb">Facebook</button>
-      <button class="sbtn sbtn-ig" id="shareIg">Instagram</button>
-      <button class="sbtn sbtn-copy" id="shareCopy">URLコピー</button>
-    </div>
-  </div>
-
-  <!-- BACK -->
-  <a href="../column.html" class="art-back">← コラム一覧へ戻る</a>
-
-  <!-- CTA -->
-  <div class="art-cta">
-    <h3>LINE公式アカウントを構築してみませんか？</h3>
-    <p>GAS活用で月額ツール代¥0。最短3営業日で納品します。</p>
-    <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-p">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-      LINEで無料相談する
-    </a>
+    <aside>
+      <div class="aside-logo">Form <span>Flow</span></div>
+      <p class="aside-desc">LINE公式アカウントの構築代行サービスです。GAS・Lステップに対応しています。</p>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="aside-btn aside-btn-primary">LINEで無料相談</a>
+      <a href="../index_v2.html#contact" class="aside-btn aside-btn-outline">フォームで問い合わせ</a>
+    </aside>
   </div>
 </div>
 
 <footer>
-  <div class="fl">Form <em>Flow</em></div>
-  <div class="flinks">
-    <a href="../privacy.html">プライバシーポリシー</a>
-    <a href="../terms.html">利用規約</a>
-    <a href="../tokushoho.html">特定商取引法</a>
-    <a href="../column.html">コラム</a>
-  </div>
-  <div class="fcopy">© 2026 Form Flow.</div>
+  <div class="footer-logo">Form <span>Flow</span></div>
+  <p>© 2026 Form Flow. All rights reserved.</p>
 </footer>
 
 <script>
 (()=>{
-  // scroll progress & nav
-  const sp=document.getElementById('sp'),nav=document.getElementById('nav');
-  window.addEventListener('scroll',()=>{
-    sp.style.width=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100)+'%';
-    nav.classList.toggle('sc',window.scrollY>60);
-  },{passive:true});
-  // cursor
-  const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
-  let mx=0,my=0,rx=0,ry=0;
-  window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-  (function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
-  // mobile menu
-  const hbtn=document.getElementById('hbtn'),mm=document.getElementById('mmenu');
-  hbtn.addEventListener('click',()=>mm.classList.toggle('open'));
-  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
-  // share & like
-  const SLUG = 'line-step-delivery-scenario';
-  const TITLE = 'ステップ配信で売上が変わる——シナリオ設計5ステップ';
-  const URL = 'https://enjoyeverytaku-maker.github.io/form-flow-lp/column/' + SLUG + '.html';
-  const SB_URL = 'https://dxerzoqxaupzclohdiis.supabase.co';
-  const SB_KEY = 'sb_publishable_5iTgXF1XKOVIpLoAR0MYlQ_woZTy6V1';
-
-  // like button
-  const likeBtn=document.getElementById('likeBtn');
-  const likeCount=document.getElementById('likeCount');
-  const liked=localStorage.getItem('liked_'+SLUG)==='1';
-  if(liked)likeBtn.classList.add('liked');
-
-  fetch(SB_URL+'/rest/v1/article_likes?slug=eq.'+SLUG+'&select=count',{headers:{apikey:SB_KEY,Authorization:'Bearer '+SB_KEY}})
-    .then(r=>r.json()).then(d=>{ likeCount.textContent = d[0]?.count ?? 0; });
-
-  likeBtn.addEventListener('click',async()=>{
-    if(likeBtn.classList.contains('liked'))return;
-    likeBtn.classList.add('liked');
-    localStorage.setItem('liked_'+SLUG,'1');
-    const r=await fetch(SB_URL+'/rest/v1/rpc/increment_likes',{method:'POST',headers:{apikey:SB_KEY,Authorization:'Bearer '+SB_KEY,'Content-Type':'application/json'},body:JSON.stringify({article_slug:SLUG})});
-    const n=await r.json();
-    if(typeof n==='number')likeCount.textContent=n;
-  });
-
-  // share buttons
-  document.getElementById('shareLine').addEventListener('click',()=>window.open('https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(URL),'_blank'));
-  document.getElementById('shareX').addEventListener('click',()=>window.open('https://x.com/intent/tweet?url='+encodeURIComponent(URL)+'&text='+encodeURIComponent(TITLE+' | Form Flow'),'_blank'));
-  document.getElementById('shareFb').addEventListener('click',()=>window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(URL),'_blank'));
-  document.getElementById('shareIg').addEventListener('click',async()=>{
-    if(navigator.share){try{await navigator.share({title:TITLE+' | Form Flow',url:URL});}catch(_){}}
-    else{await navigator.clipboard.writeText(URL);const b=document.getElementById('shareIg');const o=b.textContent;b.textContent='コピー!';setTimeout(()=>b.textContent=o,2000);}
-  });
-  const copyBtn=document.getElementById('shareCopy');
-  copyBtn.addEventListener('click',async()=>{
-    await navigator.clipboard.writeText(URL);
-    copyBtn.textContent='コピー完了!';copyBtn.classList.add('copied');
-    setTimeout(()=>{copyBtn.textContent='URLコピー';copyBtn.classList.remove('copied');},2000);
-  });
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('sc', window.scrollY > 60);
+  }, { passive: true });
 })();
 </script>
 </body>
