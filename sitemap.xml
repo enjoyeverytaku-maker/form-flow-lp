@@ -2,80 +2,104 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/service.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/cases.html</loc>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/cases.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/demo.html</loc>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column.html</loc>
-    <lastmod>2026-05-16</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/richmenu-design.html</loc>
-    <lastmod>2026-05-16</lastmod>
+    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/news.html</loc>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-gas-automation-guide.html</loc>
-    <lastmod>2026-05-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/demo.html</loc>
-    <lastmod>2026-05-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-step-delivery-scenario.html</loc>
-    <lastmod>2026-05-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/lstep-vs-gas.html</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-friends-increase.html</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-webhook-gas.html</loc>
-    <lastmod>2026-05-17</lastmod>
+    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-step-delivery-scenario.html</loc>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/seitai-line-katsuyo.html</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/news.html</loc>
-    <lastmod>2026-05-17</lastmod>
+    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-gas-automation-guide.html</loc>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-webhook-gas.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/richmenu-design.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-pricing-plan-2026.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/salon-line-katsuyo.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-hajimeru-mae.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/consultant-line-katsuyo.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://enjoyeverytaku-maker.github.io/form-flow-lp/column/line-inquiry-automation.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
