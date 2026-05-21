@@ -928,42 +928,49 @@
     .plan-items li.dim { color: var(--muted); }
     .plan-btn { width: 100%; }
 
-    /* Maintenance */
-    .maintenance-section {
-      margin-top: 64px;
-      padding-top: 48px;
-      border-top: 1px solid var(--border);
+    .plan-monthly {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--border);
     }
-    .maintenance-base {
-      background: var(--gbg);
-      border: 1px solid rgba(6,199,85,.2);
-      border-radius: var(--radius);
-      padding: 22px 28px;
-      margin-bottom: 28px;
+    .plan-monthly-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--sub);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 14px;
+      gap: 6px;
     }
-    .maintenance-base-left h3 { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-    .maintenance-base-left p { font-size: 13px; color: var(--sub); }
-    .maintenance-base-price { font-size: 26px; font-weight: 700; color: var(--text); }
-    .maintenance-base-price span { font-size: 13px; color: var(--sub); font-weight: 500; }
-    .options-heading { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 14px; }
-    .options-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+    .plan-monthly-label::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: var(--g);
+      border-radius: 50%;
+      flex-shrink: 0;
     }
-    .option-card {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 14px;
-      background: #fff;
+    .plan-monthly ul {
+      list-style: none;
+      margin: 0 0 16px;
+      padding: 0;
     }
-    .option-card h4 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 5px; line-height: 1.4; }
-    .option-price { font-size: 13px; font-weight: 700; color: var(--g); }
+    .plan-monthly ul li {
+      font-size: 12px;
+      color: var(--sub);
+      padding: 3px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      line-height: 1.5;
+    }
+    .plan-monthly ul li::before {
+      content: '–';
+      color: var(--muted);
+      flex-shrink: 0;
+    }
 
     /* ══════════════════════════════
        FAQ
@@ -1504,7 +1511,7 @@
             <div class="hero-stat-icon">
               <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             </div>
-            <span>月額ツール費 <strong>¥0〜</strong>（GAS活用時）</span>
+            <span>GAS活用で<strong>ツール費ゼロ</strong>の構成に対応</span>
           </div>
           <div class="hero-stat">
             <div class="hero-stat-icon">
@@ -1531,8 +1538,8 @@
     <div class="container">
       <div class="trust-stats">
         <div class="trust-stat rv">
-          <div class="trust-stat-num"><em>¥0</em>〜/月</div>
-          <div class="trust-stat-label">ツール費（GAS活用時）</div>
+          <div class="trust-stat-num">4<em>プラン</em></div>
+          <div class="trust-stat-label">保守のみ〜フル運用まで</div>
         </div>
         <div class="trust-stat rv rv-d1">
           <div class="trust-stat-num">3〜10<em>営業日</em></div>
@@ -1837,14 +1844,14 @@
     <div class="container">
       <div class="rv" style="text-align:center;">
         <span class="section-label">費用比較</span>
-        <h2 class="section-heading">費用の目安を比べてみる</h2>
+        <h2 class="section-heading">何が含まれるかで比べる</h2>
         <span class="heading-accent--center heading-accent"></span>
-        <p class="section-sub">初期投資とその後の運用コストを、継続的にツールを使う場合と比べています。GAS活用時は月額ツール費がかからないため、長期的な差が大きくなります。</p>
+        <p class="section-sub">ツールを入れるだけと、運用まで任せるのでは、必要な費用も得られる成果も変わります。</p>
       </div>
       <div class="compare-grid">
         <div class="compare-card compare-card--neutral rv rv-d1">
           <h3>Lステップ</h3>
-          <p class="compare-tagline">主要LINEマーケティングツールの場合</p>
+          <p class="compare-tagline">ツール導入のみ</p>
           <div class="compare-row">
             <span class="compare-row-label">初期費用</span>
             <span class="compare-row-val">¥0〜</span>
@@ -1854,73 +1861,72 @@
             <span class="compare-row-val dim">¥5,500〜¥21,780</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">1年間の合計</span>
-            <span class="compare-row-val dim">約¥66,000〜¥261,000</span>
+            <span class="compare-row-label">GAS自動化</span>
+            <span class="compare-row-val dim">別途開発費が必要</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">2年間の合計</span>
-            <span class="compare-row-val dim">約¥132,000〜¥523,000</span>
+            <span class="compare-row-label">配信・文言作成</span>
+            <span class="compare-row-val dim">自分で行う</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">3年間の合計</span>
-            <span class="compare-row-val dim">約¥198,000〜¥784,000</span>
+            <span class="compare-row-label">月次レポート</span>
+            <span class="compare-row-val dim">自分で確認</span>
           </div>
-          <div class="compare-note">高機能なUI・細かい行動分岐が強み。月額費用が継続的にかかる点はご考慮ください。</div>
+          <div class="compare-note">ツール費のみ。設定・運用・配信はすべて自社で対応する必要があります。</div>
         </div>
         <div class="compare-card rv rv-d2">
-          <h3>ライトプラン</h3>
-          <p class="compare-tagline">Form Flow / GAS構成</p>
+          <h3>Form Flow スーパーライト</h3>
+          <p class="compare-tagline">構築だけ任せて自己運用</p>
           <div class="compare-row">
             <span class="compare-row-label">初期費用</span>
-            <span class="compare-row-val">¥29,800〜</span>
+            <span class="compare-row-val hi">¥49,800</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">月額ツール費</span>
-            <span class="compare-row-val hi">¥0（GAS活用）</span>
+            <span class="compare-row-label">月額費用</span>
+            <span class="compare-row-val hi">¥5,000（保守）</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">1年間の合計</span>
-            <span class="compare-row-val hi">¥29,800〜</span>
+            <span class="compare-row-label">GAS自動化</span>
+            <span class="compare-row-val hi">初期構築に含む</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">2年間の合計</span>
-            <span class="compare-row-val hi">¥29,800〜</span>
+            <span class="compare-row-label">配信・文言作成</span>
+            <span class="compare-row-val dim">自分で行う</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">3年間の合計</span>
-            <span class="compare-row-val hi">¥29,800〜</span>
+            <span class="compare-row-label">月次レポート</span>
+            <span class="compare-row-val dim">なし</span>
           </div>
-          <div class="compare-note"><strong>向いている方：</strong>まずLINE自動返信・リッチメニューを整えたい方。</div>
+          <div class="compare-note"><strong>向いている方：</strong>構築は任せたい。配信・運用は自分でできる方。</div>
         </div>
         <div class="compare-card compare-card--featured rv rv-d3">
-          <h3>スタンダードプラン</h3>
-          <p class="compare-tagline">Form Flow / GAS構成（フル）</p>
+          <h3>Form Flow スタンダード</h3>
+          <p class="compare-tagline">設計・構築・運用まで全込み</p>
           <div class="compare-row">
             <span class="compare-row-label">初期費用</span>
-            <span class="compare-row-val">¥79,800〜</span>
+            <span class="compare-row-val hi">¥150,000</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">月額ツール費</span>
-            <span class="compare-row-val hi">¥0（GAS活用）</span>
+            <span class="compare-row-label">月額費用</span>
+            <span class="compare-row-val hi">¥50,000（運用込み）</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">1年間の合計</span>
-            <span class="compare-row-val hi">¥79,800〜</span>
+            <span class="compare-row-label">GAS自動化</span>
+            <span class="compare-row-val hi">初期構築に含む</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">2年間の合計</span>
-            <span class="compare-row-val hi">¥79,800〜</span>
+            <span class="compare-row-label">配信・文言作成</span>
+            <span class="compare-row-val hi">月2〜4回作成・送信</span>
           </div>
           <div class="compare-row">
-            <span class="compare-row-label">3年間の合計</span>
-            <span class="compare-row-val hi">¥79,800〜</span>
+            <span class="compare-row-label">月次レポート</span>
+            <span class="compare-row-val hi">毎月提出</span>
           </div>
-          <div class="compare-note"><strong>向いている方：</strong>ステップ配信・顧客管理まで含めてまるごと整えたい方。</div>
+          <div class="compare-note"><strong>向いている方：</strong>予約・再来店・追客の改善を、設計から運用まで任せたい方。</div>
         </div>
       </div>
       <div class="saving-banner rv">
-        <p>Lステップ スタンダードプラン（月額¥12,980）と比較した場合、<strong>3年間の累計差額は約¥39万円</strong>になります。<br><small style="font-weight:400;color:var(--sub);">※保守オプション（¥3,000〜/月）を利用した場合でも、3年間合計はLステップを大幅に下回ります。</small></p>
-        <div class="saving-amount">3年累計 約 ¥387,000 の差</div>
+        <p>月額費用には配信企画・文言作成・レポート作成・改善提案がすべて含まれます。<strong>「作って終わり」ではなく、数字が動き続ける状態を一緒に維持します。</strong></p>
       </div>
     </div>
   </section>
@@ -1930,157 +1936,141 @@
     <div class="container">
       <div class="rv" style="text-align:center;">
         <span class="section-label">料金プラン</span>
-        <h2 class="section-heading">シンプルな料金体系</h2>
+        <h2 class="section-heading">4つのプランから選べます</h2>
         <span class="heading-accent--center heading-accent"></span>
-        <p class="section-sub">ご要件やご予算に合わせてプランをお選びください。不明な点はお気軽にご相談ください。</p>
+        <p class="section-sub">保守のみのシンプルなプランから、配信・レポート・改善提案まで込みのフル運用プランまでご用意しています。</p>
       </div>
       <div class="pricing-grid">
-        <!-- Light Plan -->
+        <!-- Super Light Plan -->
         <div class="plan-card rv rv-d1">
-          <p class="plan-name">Light</p>
+          <p class="plan-name">Super Light</p>
           <div>
-            <p class="plan-price">¥29,800<span>〜（税込）</span></p>
-            <p style="font-size:11px;color:var(--sub);margin-top:4px;">※ 現在の受付価格</p>
+            <p class="plan-price">¥49,800<span>（税込）</span></p>
           </div>
-          <span style="display:inline-block;font-size:11px;color:var(--sub);margin:8px 0 16px;">保守 ¥3,000〜/月</span>
+          <span class="plan-monitor">保守のみ ¥5,000/月</span>
           <div class="plan-divider"></div>
-          <p class="plan-desc">まずLINEを動かしたい方向け。リッチメニューと自動返信の基本構成を整えます。</p>
+          <p class="plan-desc">GAS自動化まで整えて、配信・運用は自分でやりたい方向け。構築後は保守のみでサポートします。</p>
           <ul class="plan-items">
             <li>リッチメニュー制作（デザイン込み）</li>
             <li>キーワード自動返信（3パターン）</li>
             <li>あいさつメッセージ設定</li>
             <li>Googleフォーム連携</li>
+            <li>GASスクリプト基本設定</li>
             <li>操作マニュアル付き</li>
-            <li>動作確認レポート</li>
-            <li class="dim">ステップ配信設計</li>
-            <li class="dim">スプレッドシート顧客管理</li>
-            <li class="dim">GAS自動化・Webhook連携</li>
+            <li class="dim">配信文の作成代行</li>
+            <li class="dim">月次レポート</li>
+            <li class="dim">改善提案</li>
           </ul>
+          <div class="plan-monthly">
+            <p class="plan-monthly-label">月額¥5,000（保守）の内容</p>
+            <ul>
+              <li>GAS動作確認・ログチェック（月1回）</li>
+              <li>設定変更1件まで（文言・リッチメニュー差し替え等）</li>
+              <li>チャット質問2回まで対応</li>
+            </ul>
+          </div>
           <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn btn-outline plan-btn">このプランで相談する</a>
         </div>
 
-        <!-- Standard Plan -->
-        <div class="plan-card plan-card--featured rv rv-d2">
-          <p class="plan-name">Standard</p>
+        <!-- Light Plan -->
+        <div class="plan-card rv rv-d2">
+          <p class="plan-name">Light</p>
           <div>
-            <p class="plan-price">¥79,800<span>〜（税込）</span></p>
-            <p style="font-size:11px;color:var(--sub);margin-top:4px;">※ 現在の受付価格</p>
+            <p class="plan-price">¥80,000<span>（税込）</span></p>
           </div>
-          <span style="display:inline-block;font-size:11px;color:var(--g);background:var(--gbg);padding:3px 10px;border-radius:100px;margin:8px 0 16px;">保守 ¥3,000〜/月</span>
+          <span class="plan-monitor">運用込み ¥30,000/月</span>
           <div class="plan-divider"></div>
-          <p class="plan-desc">ステップ配信・自動返信・顧客管理をまとめて整えたい方向け。LINE公式の主要機能をフル活用します。</p>
+          <p class="plan-desc">月次の配信・改善まで任せたい個店・士業・コーチの方向け。</p>
           <ul class="plan-items">
             <li>リッチメニュー制作（デザイン込み）</li>
             <li>キーワード自動返信（5パターン）</li>
             <li>あいさつメッセージ設定</li>
-            <li>ステップ配信設計（5通まで）</li>
+            <li>ステップ配信設計（3通まで）</li>
             <li>Googleフォーム連携</li>
+            <li>GASスクリプト基本設定</li>
             <li>操作マニュアル付き</li>
-            <li>動作確認レポート</li>
-            <li class="dim">スプレッドシート顧客管理（GAS）</li>
-            <li class="dim">予約リマインド自動送信</li>
+            <li class="dim">セグメント配信設計</li>
+            <li class="dim">A/Bテスト</li>
           </ul>
-          <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn btn-primary plan-btn">このプランで相談する</a>
-        </div>
-
-        <!-- Premium Plan -->
-        <div class="plan-card rv rv-d3">
-          <p class="plan-name">Premium</p>
-          <div>
-            <p class="plan-price">¥198,000<span>〜（税込）</span></p>
-            <p style="font-size:11px;color:var(--sub);margin-top:4px;">※ 現在の受付価格</p>
+          <div class="plan-monthly">
+            <p class="plan-monthly-label">月額¥30,000（運用込み）の内容</p>
+            <ul>
+              <li>月1〜2回配信（テーマ提案・文言作成・送信まで）</li>
+              <li>リッチメニュー更新月1回</li>
+              <li>簡易月次レポート（友だち数・開封率）</li>
+              <li>設定変更・改善月1件まで</li>
+              <li>チャット対応（翌営業日内）</li>
+            </ul>
           </div>
-          <span style="display:inline-block;font-size:11px;color:var(--sub);margin:8px 0 16px;">保守 ¥3,000〜/月</span>
-          <div class="plan-divider"></div>
-          <p class="plan-desc">スプレッドシート連携・GAS自動化まで含めた本格構成。業務フローへの組み込みを想定した方向け。</p>
-          <ul class="plan-items">
-            <li>スタンダードの全機能</li>
-            <li>スプレッドシート顧客管理（GAS連携）</li>
-            <li>予約リマインド自動送信</li>
-            <li>Webhook・外部API連携</li>
-            <li>Googleカレンダー連携</li>
-            <li>GASカスタムスクリプト開発</li>
-            <li>複雑なステップシナリオ設計</li>
-          </ul>
           <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn btn-outline plan-btn">このプランで相談する</a>
         </div>
 
-        <!-- Custom Plan -->
-        <div class="plan-card rv rv-d4">
-          <p class="plan-name">Custom</p>
+        <!-- Standard Plan -->
+        <div class="plan-card plan-card--featured rv rv-d3">
+          <span class="plan-badge">サロン・飲食・クリニックに人気</span>
+          <p class="plan-name">Standard</p>
           <div>
-            <p class="plan-price" style="font-size:22px;line-height:1.3;">¥150,000<span>〜（税込）</span></p>
+            <p class="plan-price">¥150,000<span>（税込）</span></p>
           </div>
-          <span style="display:inline-block;font-size:11px;color:var(--sub);margin:8px 0 16px;">要件により変動・要お見積もり</span>
+          <span class="plan-monitor">運用込み ¥50,000/月</span>
           <div class="plan-divider"></div>
-          <p class="plan-desc">複数店舗・Lステップなど外部ツール連携・特殊なシナリオ設計など、標準プランに収まらない要件をお持ちの方へ。</p>
+          <p class="plan-desc">予約・再来店・問い合わせ改善を、設計から配信まで任せたい方向け。</p>
           <ul class="plan-items">
-            <li>要件ヒアリングのうえ個別設計</li>
-            <li>複数店舗・複数アカウント対応</li>
-            <li>Lステップ等ツールでの構築も対応</li>
-            <li>複数リッチメニュー切り替え</li>
-            <li>複数スタッフ・権限管理設計</li>
-            <li>その他・特殊要件</li>
+            <li>リッチメニュー制作（デザイン込み）</li>
+            <li>キーワード自動返信（5パターン）</li>
+            <li>ステップ配信設計（5通まで）</li>
+            <li>Googleフォーム連携</li>
+            <li>GASスクリプト設定（予約リマインド・顧客管理）</li>
+            <li>動作確認レポート</li>
+            <li>操作マニュアル付き</li>
+            <li class="dim">セグメント配信設計</li>
+            <li class="dim">A/Bテスト</li>
           </ul>
-          <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn btn-outline plan-btn">要件を相談する</a>
-        </div>
-      </div>
-
-      <!-- Maintenance -->
-      <div class="maintenance-section rv">
-        <h3 class="section-heading" style="font-size:22px;margin-bottom:6px;">保守・運用サポート</h3>
-        <p class="section-sub" style="margin-bottom:28px;">納品後の変更対応や継続的なサポートが必要な方向けに、月額オプションをご用意しています。</p>
-
-        <div class="maintenance-base">
-          <div class="maintenance-base-left">
-            <h3>ベースプラン</h3>
-            <p>月1回の状態確認・軽微な相談対応を含みます</p>
+          <div class="plan-monthly">
+            <p class="plan-monthly-label">月額¥50,000（運用込み）の内容</p>
+            <ul>
+              <li>月2〜4回配信（企画・文言作成・セグメント設定・送信）</li>
+              <li>ステップシナリオ調整月1回</li>
+              <li>月次レポート（友だち純増・開封率・予約/問合せ数・ブロック率）</li>
+              <li>改善提案月1件</li>
+              <li>GASスクリプト軽微修正月1件まで</li>
+              <li>チャット対応（翌営業日内）</li>
+            </ul>
           </div>
-          <div class="maintenance-base-price">¥3,000<span>/月</span></div>
+          <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn btn-primary plan-btn">このプランで相談する</a>
         </div>
 
-        <p class="options-heading">追加オプション（ベースプランに加算）</p>
-        <div class="options-grid">
-          <div class="option-card">
-            <h4>文言・キーワード変更</h4>
-            <p class="option-price">+¥2,000/月</p>
+        <!-- Growth Plan -->
+        <div class="plan-card rv rv-d4">
+          <p class="plan-name">Growth</p>
+          <div>
+            <p class="plan-price">¥250,000<span>（税込）</span></p>
           </div>
-          <div class="option-card">
-            <h4>リッチメニュー更新</h4>
-            <p class="option-price">+¥2,000/月</p>
+          <span class="plan-monitor">運用込み ¥80,000/月</span>
+          <div class="plan-divider"></div>
+          <p class="plan-desc">多店舗・高単価サービスで、セグメント配信・A/Bテストまで回したい方向け。</p>
+          <ul class="plan-items">
+            <li>スタンダードの全機能</li>
+            <li>スプレッドシート顧客管理（GAS連携）</li>
+            <li>ステップシナリオ設計（10通まで）</li>
+            <li>セグメントタグ設計</li>
+            <li>Googleカレンダー連携</li>
+            <li>Webhook・外部API連携</li>
+            <li>GASカスタムスクリプト開発</li>
+          </ul>
+          <div class="plan-monthly">
+            <p class="plan-monthly-label">月額¥80,000（運用込み）の内容</p>
+            <ul>
+              <li>月4〜8回配信（企画・文言・セグメント別設定・送信）</li>
+              <li>ステップシナリオA/Bテスト月1回</li>
+              <li>月次会議30分（Zoom）</li>
+              <li>詳細月次レポート（LINE経由予約数・工数削減時間）</li>
+              <li>改善提案月2件</li>
+              <li>GAS修正・機能追加 月2時間まで</li>
+              <li>チャット優先対応（当日内返答）</li>
+            </ul>
           </div>
-          <div class="option-card">
-            <h4>GASスクリプト軽微修正</h4>
-            <p class="option-price">+¥3,000/月</p>
-          </div>
-          <div class="option-card">
-            <h4>月次レポート作成</h4>
-            <p class="option-price">+¥2,000/月</p>
-          </div>
-          <div class="option-card">
-            <h4>ステップ配信更新</h4>
-            <p class="option-price">+¥3,000/月</p>
-          </div>
-          <div class="option-card">
-            <h4>優先サポート</h4>
-            <p class="option-price">+¥3,000/月</p>
-          </div>
-          <div class="option-card">
-            <h4>一斉配信文の作成代行</h4>
-            <p class="option-price">+¥3,000/月</p>
-          </div>
-          <div class="option-card">
-            <h4>クーポン・ポイント設定</h4>
-            <p class="option-price">+¥2,000/月</p>
-          </div>
-          <div class="option-card">
-            <h4>アカウントプロフィール更新</h4>
-            <p class="option-price">+¥1,000/月</p>
-          </div>
-          <div class="option-card">
-            <h4>月次ミーティング（30分）</h4>
-            <p class="option-price">+¥3,000/月</p>
-          </div>
+          <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn btn-outline plan-btn">このプランで相談する</a>
         </div>
       </div>
     </div>
@@ -2143,7 +2133,7 @@
           </button>
           <div class="fa">
             <div class="fa-inner">
-              ライトプランで最短3営業日〜、スタンダードプランで5〜7営業日が目安です。ご依頼内容の複雑さや事前のヒアリング内容の確認状況によって前後することがあります。急いでいる場合はご相談時にお伝えください。
+              スーパーライト・ライトプランで5〜7営業日、スタンダードプランで10〜14営業日が目安です。GAS自動化の実装範囲や事前ヒアリングの内容によって前後することがあります。急いでいる場合はご相談時にお伝えください。
             </div>
           </div>
         </div>
