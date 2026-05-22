@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Form Flow — ロゴ案プレビュー</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #F3F4F6;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      padding: 48px 32px 80px;
+      color: #111827;
+    }
+
+    header {
+      margin-bottom: 48px;
+    }
+    header p {
+      font-size: 11px;
+      font-weight: 500;
+      color: #9CA3AF;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -.03em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 28px;
+      border: 1px solid #E9ECEF;
+    }
+
+    .card-num {
+      font-size: 10px;
+      font-weight: 600;
+      color: #D1D5DB;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    /* ── Logo display area ── */
+    .logo-large {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      min-height: 48px;
+    }
+
+    /* Nav bar simulation */
+    .nav-bar {
+      background: #fff;
+      border: 1px solid #F3F4F6;
+      border-radius: 10px;
+      padding: 11px 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .nav-label { font-size: 10px; color: #D1D5DB; margin-bottom: 6px; }
+
+    .card-desc {
+      font-size: 12px;
+      color: #9CA3AF;
+      line-height: 1.7;
+      margin-top: 16px;
+      border-top: 1px solid #F3F4F6;
+      padding-top: 14px;
+    }
+
+    /* Typography helpers */
+    .t-outfit { font-family: 'Outfit', sans-serif; }
+    .t-dm     { font-family: 'DM Sans', sans-serif; }
+    .green    { color: #06C755; }
+  </style>
+</head>
+<body>
+
+<header>
+  <p>Form Flow</p>
+  <h1>ロゴ案プレビュー</h1>
+</header>
+
+<div class="grid">
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       案 01  ウェーブライン
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <div class="card">
+    <div class="card-num">案 01 — ウェーブライン</div>
+
+    <!-- Large -->
+    <div class="logo-large">
+      <svg width="48" height="34" viewBox="0 0 48 34" fill="none">
+        <path d="M2 8 C9 2 17 14 24 8 S 39 2 46 8"   stroke="#06C755" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M2 17 C9 11 17 23 24 17 S 39 11 46 17" stroke="#06C755" stroke-width="2.4" stroke-linecap="round" opacity=".6"/>
+        <path d="M2 26 C9 20 17 32 24 26 S 39 20 46 26" stroke="#06C755" stroke-width="2.4" stroke-linecap="round" opacity=".3"/>
+      </svg>
+      <div class="t-outfit" style="font-size:22px;font-weight:600;letter-spacing:-.02em;">
+        form <span class="green">flow</span>
+      </div>
+    </div>
+
+    <!-- Nav size -->
+    <div class="nav-label">ナビサイズ</div>
+    <div class="nav-bar">
+      <svg width="30" height="22" viewBox="0 0 48 34" fill="none">
+        <path d="M2 8 C9 2 17 14 24 8 S 39 2 46 8"   stroke="#06C755" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M2 17 C9 11 17 23 24 17 S 39 11 46 17" stroke="#06C755" stroke-width="2.6" stroke-linecap="round" opacity=".6"/>
+        <path d="M2 26 C9 20 17 32 24 26 S 39 20 46 26" stroke="#06C755" stroke-width="2.6" stroke-linecap="round" opacity=".3"/>
+      </svg>
+      <span class="t-outfit" style="font-size:16px;font-weight:600;letter-spacing:-.02em;">form <span class="green">flow</span></span>
+    </div>
+
+    <p class="card-desc">3本の波線が右へ流れるシンプルなマーク。Stripe的なミニマル高級感。</p>
+  </div>
+
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       案 02  グラデーション F
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <div class="card">
+    <div class="card-num">案 02 — グラデーション F</div>
+
+    <div class="logo-large">
+      <svg width="30" height="44" viewBox="0 0 30 44" fill="none">
+        <defs>
+          <linearGradient id="gF" x1="0" y1="0" x2="30" y2="44" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#06C755"/>
+            <stop offset="100%" stop-color="#0EA5E9"/>
+          </linearGradient>
+        </defs>
+        <path d="M8 4 C7.5 14 7.5 28 8 40"           stroke="url(#gF)" stroke-width="3"   stroke-linecap="round"/>
+        <path d="M8 4 C13 3.5 20 4 24 5.5"            stroke="url(#gF)" stroke-width="3"   stroke-linecap="round"/>
+        <path d="M8 22 C12 21.5 17 22 20 22.5"        stroke="url(#gF)" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <div class="t-outfit" style="letter-spacing:-.03em;line-height:1.1;">
+        <div style="font-size:24px;font-weight:700;">form</div>
+        <div style="font-size:24px;font-weight:300;color:#06C755;letter-spacing:.04em;">flow</div>
+      </div>
+    </div>
+
+    <div class="nav-label">ナビサイズ</div>
+    <div class="nav-bar">
+      <svg width="18" height="28" viewBox="0 0 30 44" fill="none">
+        <defs>
+          <linearGradient id="gF2" x1="0" y1="0" x2="30" y2="44" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#06C755"/>
+            <stop offset="100%" stop-color="#0EA5E9"/>
+          </linearGradient>
+        </defs>
+        <path d="M8 4 C7.5 14 7.5 28 8 40"    stroke="url(#gF2)" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M8 4 C13 3.5 20 4 24 5.5"     stroke="url(#gF2)" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M8 22 C12 21.5 17 22 20 22.5" stroke="url(#gF2)" stroke-width="3"   stroke-linecap="round"/>
+      </svg>
+      <span class="t-outfit" style="font-size:16px;font-weight:600;letter-spacing:-.02em;">Form <span class="green">Flow</span></span>
+    </div>
+
+    <p class="card-desc">緑→青グラデーションで描いたF字。デザインスタジオ・代理店系の洗練感。</p>
+  </div>
+
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       案 03  フローイング ドット
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <div class="card">
+    <div class="card-num">案 03 — フローイング ドット</div>
+
+    <div class="logo-large">
+      <svg width="56" height="28" viewBox="0 0 56 28" fill="none">
+        <circle cx="4"  cy="22" r="1.5" fill="#06C755" opacity=".2"/>
+        <circle cx="11" cy="16" r="2"   fill="#06C755" opacity=".38"/>
+        <circle cx="18" cy="11" r="2.6" fill="#06C755" opacity=".58"/>
+        <circle cx="26" cy="8"  r="3.4" fill="#06C755" opacity=".82"/>
+        <circle cx="34" cy="8"  r="3.4" fill="#06C755"/>
+        <circle cx="42" cy="11" r="2.6" fill="#06C755" opacity=".6"/>
+        <circle cx="49" cy="16" r="2"   fill="#06C755" opacity=".38"/>
+        <circle cx="54" cy="22" r="1.5" fill="#06C755" opacity=".2"/>
+      </svg>
+      <span class="t-dm" style="font-size:21px;font-weight:600;letter-spacing:-.01em;">FormFlow</span>
+    </div>
+
+    <div class="nav-label">ナビサイズ</div>
+    <div class="nav-bar">
+      <svg width="38" height="18" viewBox="0 0 56 28" fill="none">
+        <circle cx="4"  cy="22" r="1.5" fill="#06C755" opacity=".2"/>
+        <circle cx="11" cy="16" r="2"   fill="#06C755" opacity=".38"/>
+        <circle cx="18" cy="11" r="2.6" fill="#06C755" opacity=".58"/>
+        <circle cx="26" cy="8"  r="3.4" fill="#06C755" opacity=".82"/>
+        <circle cx="34" cy="8"  r="3.4" fill="#06C755"/>
+        <circle cx="42" cy="11" r="2.6" fill="#06C755" opacity=".6"/>
+        <circle cx="49" cy="16" r="2"   fill="#06C755" opacity=".38"/>
+        <circle cx="54" cy="22" r="1.5" fill="#06C755" opacity=".2"/>
+      </svg>
+      <span class="t-dm" style="font-size:16px;font-weight:600;">FormFlow</span>
+    </div>
+
+    <p class="card-desc">大小グラデーションドットが弧を描く。テック感とやわらかさが共存。</p>
+  </div>
+
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       案 04  ピル型 ff
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <div class="card">
+    <div class="card-num">案 04 — ピル型 ff</div>
+
+    <div class="logo-large" style="align-items:center;">
+      <svg width="60" height="36" viewBox="0 0 60 36" fill="none">
+        <defs>
+          <linearGradient id="gPill" x1="0" y1="0" x2="60" y2="36" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#06C755"/>
+            <stop offset="100%" stop-color="#00B09B"/>
+          </linearGradient>
+        </defs>
+        <rect width="60" height="36" rx="18" fill="url(#gPill)"/>
+        <text x="30" y="25" text-anchor="middle" font-family="'Outfit', sans-serif" font-size="17" font-weight="700" fill="white" letter-spacing="1">ff</text>
+      </svg>
+      <span class="t-outfit" style="font-size:21px;font-weight:600;letter-spacing:-.01em;">Form Flow</span>
+    </div>
+
+    <div class="nav-label">ナビサイズ</div>
+    <div class="nav-bar">
+      <svg width="40" height="24" viewBox="0 0 60 36" fill="none">
+        <defs>
+          <linearGradient id="gPill2" x1="0" y1="0" x2="60" y2="36" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#06C755"/>
+            <stop offset="100%" stop-color="#00B09B"/>
+          </linearGradient>
+        </defs>
+        <rect width="60" height="36" rx="18" fill="url(#gPill2)"/>
+        <text x="30" y="25" text-anchor="middle" font-family="'Outfit', sans-serif" font-size="17" font-weight="700" fill="white" letter-spacing="1">ff</text>
+      </svg>
+      <span class="t-outfit" style="font-size:16px;font-weight:600;">Form Flow</span>
+    </div>
+
+    <p class="card-desc">グラデーションピルに白 ff。SaaS・アプリ系のモダンでブランディングが効いた印象。</p>
+  </div>
+
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       案 05  タイポグラフィのみ
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <div class="card">
+    <div class="card-num">案 05 — タイポグラフィのみ</div>
+
+    <!-- A -->
+    <div style="margin-bottom:22px;">
+      <div style="font-size:10px;color:#D1D5DB;margin-bottom:10px;letter-spacing:.08em;">A : スラッシュ</div>
+      <div class="t-outfit" style="font-size:26px;font-weight:700;letter-spacing:-.03em;">
+        form<span style="color:#06C755;font-weight:200;margin:0 5px;">/</span>flow
+      </div>
+    </div>
+
+    <!-- B -->
+    <div style="margin-bottom:22px;">
+      <div style="font-size:10px;color:#D1D5DB;margin-bottom:10px;letter-spacing:.08em;">B : 細字 × 太字</div>
+      <div class="t-outfit" style="font-size:26px;letter-spacing:-.02em;">
+        <span style="font-weight:200;">form</span><span style="font-weight:800;color:#06C755;">flow</span>
+      </div>
+    </div>
+
+    <!-- C -->
+    <div style="margin-bottom:16px;">
+      <div style="font-size:10px;color:#D1D5DB;margin-bottom:10px;letter-spacing:.08em;">C : 2行スタック</div>
+      <div class="t-outfit" style="line-height:1.0;">
+        <div style="font-size:11px;font-weight:400;color:#9CA3AF;letter-spacing:.18em;text-transform:uppercase;">form</div>
+        <div style="font-size:30px;font-weight:800;color:#06C755;letter-spacing:-.04em;">flow</div>
+      </div>
+    </div>
+
+    <p class="card-desc">アイコン不要・文字だけで完結。ブランドが育つほど強くなるスタイル。</p>
+  </div>
+
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       案 06  アンダーライン フロー
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <div class="card">
+    <div class="card-num">案 06 — アンダーライン フロー</div>
+
+    <div class="logo-large" style="flex-direction:column;align-items:flex-start;gap:6px;">
+      <div class="t-outfit" style="font-size:24px;font-weight:700;letter-spacing:-.03em;line-height:1;">
+        Form Flow
+      </div>
+      <!-- flowing underline SVG -->
+      <svg width="140" height="10" viewBox="0 0 140 10" fill="none">
+        <defs>
+          <linearGradient id="gLine" x1="0" y1="0" x2="140" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#06C755" stop-opacity="0"/>
+            <stop offset="25%" stop-color="#06C755"/>
+            <stop offset="75%" stop-color="#0EA5E9"/>
+            <stop offset="100%" stop-color="#0EA5E9" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 7 C35 2 70 9 105 4 S 128 2 140 5" stroke="url(#gLine)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+
+    <div class="nav-label">ナビサイズ</div>
+    <div class="nav-bar" style="flex-direction:column;align-items:flex-start;gap:3px;">
+      <span class="t-outfit" style="font-size:16px;font-weight:700;letter-spacing:-.02em;">Form Flow</span>
+      <svg width="90" height="7" viewBox="0 0 140 10" fill="none">
+        <defs>
+          <linearGradient id="gLine2" x1="0" y1="0" x2="140" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#06C755" stop-opacity="0"/>
+            <stop offset="25%" stop-color="#06C755"/>
+            <stop offset="75%" stop-color="#0EA5E9"/>
+            <stop offset="100%" stop-color="#0EA5E9" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 7 C35 2 70 9 105 4 S 128 2 140 5" stroke="url(#gLine2)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+
+    <p class="card-desc">テキストの下に「流れる曲線」をひと筆。シンプルなのに動きが感じられる。</p>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQF63CGRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NWQF63CGRL');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LINE公式アカウントの自動返信を設定する方法——キーワード返信の基本から応用まで｜Form Flow</title>
+  <meta name="description" content="LINE公式アカウントの自動返信設定方法を解説。キーワード返信・あいさつメッセージ・GAS連携による高度な自動応答まで、ステップごとに説明します。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://formflow.jp/column/line-jidou-henshin-settei.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://formflow.jp/column/line-jidou-henshin-settei.html">
+  <meta property="og:title" content="LINE公式アカウントの自動返信を設定する方法——キーワード返信の基本から応用まで">
+  <meta property="og:description" content="LINE公式アカウントの自動返信設定方法を解説。キーワード返信・あいさつメッセージ・GAS連携による高度な自動応答まで説明します。">
+  <meta property="og:image" content="https://formflow.jp/ogp.png">
+  <meta property="og:site_name" content="Form Flow">
+  <meta property="og:locale" content="ja_JP">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "LINE公式アカウントの自動返信を設定する方法——キーワード返信の基本から応用まで",
+    "author": { "@type": "Organization", "name": "Form Flow" },
+    "publisher": { "@type": "Organization", "name": "Form Flow", "url": "https://formflow.jp/" },
+    "datePublished": "2026-05-23",
+    "dateModified": "2026-05-23"
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --g: #06C755; --gd: #059942; --gbg: #EFF9F4; --text: #111827; --body: #374151; --sub: #6B7280; --border: #E5E7EB; --bg: #FAFAF8; --shadow-sm: 0 1px 3px rgba(0,0,0,.07); --radius: 12px; }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: var(--body); background-color: #FAFAF8; background-image: radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px); background-size: 22px 22px; line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 64px; background: #fff; border-bottom: 1px solid var(--border); transition: box-shadow .2s; }
+    #nav.sc { box-shadow: 0 2px 16px rgba(0,0,0,.06); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .nav-logo { font-size: 19px; font-weight: 700; color: var(--text); }
+    .nav-back { font-size: 14px; color: var(--sub); transition: color .15s; }
+    .nav-back:hover { color: var(--text); }
+    .article-hero { margin-top: 64px; background: #fff; padding: 60px 0 48px; text-align: center; border-bottom: 1px solid var(--border); }
+    .article-hero-inner { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .cat-tag { display: inline-block; font-size: 11px; font-weight: 700; color: var(--g); background: var(--gbg); border: 1px solid rgba(6,199,85,.2); border-radius: 100px; padding: 3px 10px; margin-bottom: 16px; }
+    h1 { font-size: clamp(22px, 4vw, 30px); font-weight: 800; color: var(--text); line-height: 1.4; letter-spacing: -.02em; }
+    .article-meta { margin-top: 20px; font-size: 13px; color: var(--sub); }
+    .layout { display: grid; grid-template-columns: 1fr 260px; gap: 40px; max-width: 1080px; margin: 48px auto; padding: 0 24px; }
+    @media(max-width:768px){ .layout { grid-template-columns: 1fr; } aside { display: none; } }
+    main { min-width: 0; }
+    .article-body h2 { font-size: 20px; font-weight: 700; color: var(--text); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--g); }
+    .article-body h3 { font-size: 17px; font-weight: 700; color: var(--text); margin: 28px 0 12px; }
+    .article-body p { margin-bottom: 16px; }
+    .article-body ul, .article-body ol { padding-left: 1.5em; margin-bottom: 16px; }
+    .article-body li { margin-bottom: 8px; }
+    .step-box { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+    .step-num { display: inline-block; background: var(--g); color: #fff; font-size: 12px; font-weight: 700; border-radius: 100px; padding: 2px 10px; margin-bottom: 8px; }
+    .callout { background: var(--gbg); border-left: 4px solid var(--g); border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 24px 0; }
+    .callout p { margin: 0; font-size: 14px; }
+    .share-box { display: flex; gap: 8px; flex-wrap: wrap; margin: 40px 0 20px; }
+    .sbtn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 99px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: opacity .15s; }
+    .sbtn-line { background: #06C755; color: #fff; }
+    .sbtn-x { background: #000; color: #fff; }
+    .sbtn-copy { background: var(--border); color: var(--text); }
+    aside { position: sticky; top: 80px; align-self: start; }
+    .aside-logo { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .aside-logo span { color: var(--g); }
+    .aside-desc { font-size: 13px; color: var(--sub); margin-bottom: 16px; }
+    .aside-btn { display: block; text-align: center; padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 600; margin-bottom: 8px; transition: opacity .15s; }
+    .aside-btn:hover { opacity: .85; }
+    .aside-btn-primary { background: var(--g); color: #fff; }
+    .aside-btn-outline { border: 1px solid var(--border); color: var(--text); }
+    footer { text-align: center; padding: 40px 24px; font-size: 13px; color: var(--sub); border-top: 1px solid var(--border); margin-top: 60px; }
+    .footer-logo { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .footer-logo span { color: var(--g); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <span class="nav-logo">Form <span style="color:var(--g)">Flow</span></span>
+    <a href="../column.html" class="nav-back">← コラム一覧へ</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <div class="article-hero-inner">
+    <span class="cat-tag">自動化・設定</span>
+    <h1>LINE公式アカウントの自動返信を設定する方法<br>——キーワード返信の基本から応用まで</h1>
+    <p class="article-meta">2026年5月 | Form Flow編集部</p>
+  </div>
+</header>
+
+<div class="layout">
+  <main>
+    <div class="article-body">
+
+      <p>LINEに届くメッセージに毎回手動で返信しているなら、それは時間の無駄です。LINE公式アカウントには自動返信機能が標準搭載されており、設定次第で問い合わせの大部分を自動化できます。</p>
+
+      <h2>自動返信の種類</h2>
+      <p>LINE公式の自動返信には大きく3種類あります。</p>
+
+      <h3>1. あいさつメッセージ</h3>
+      <p>友だち追加した瞬間に自動送信されるメッセージです。「登録ありがとうございます」から始まる内容で、初回の案内やリッチメニューの説明を入れておくのが定番です。</p>
+
+      <h3>2. キーワード自動返信</h3>
+      <p>ユーザーが特定のキーワードを送ってきたときに自動で返信する機能です。「予約」「料金」「営業時間」などのキーワードに対して、あらかじめ用意した返答を送ります。無料プランでも使えます。</p>
+
+      <h3>3. GASを使った高度な自動返信</h3>
+      <p>LINE Messaging APIとGAS（Google Apps Script）を連携させることで、より複雑な自動応答が可能になります。たとえば「予約希望」と送られたらGoogleフォームのURLを返す、顧客情報をスプレッドシートに記録するといったことができます。</p>
+
+      <h2>キーワード返信の設定手順</h2>
+
+      <div class="step-box">
+        <span class="step-num">STEP 1</span>
+        <p>LINE Official Account Managerにログインし、「応答設定」→「キーワード応答」を選択します。</p>
+      </div>
+      <div class="step-box">
+        <span class="step-num">STEP 2</span>
+        <p>「作成」ボタンをクリックし、キーワードと返信メッセージを入力します。キーワードは部分一致・完全一致を選べます。</p>
+      </div>
+      <div class="step-box">
+        <span class="step-num">STEP 3</span>
+        <p>返信内容はテキストだけでなく、画像・動画・クーポン・リッチメッセージも設定可能です。予約フォームのURLや料金表画像を返すと便利です。</p>
+      </div>
+      <div class="step-box">
+        <span class="step-num">STEP 4</span>
+        <p>テストメッセージを送って動作を確認します。キーワードの揺れ（「予約」「ヨヤク」「よやく」など）も考慮して複数登録しておくと漏れが減ります。</p>
+      </div>
+
+      <h2>自動返信でよくある失敗</h2>
+
+      <h3>キーワードが多すぎて管理できない</h3>
+      <p>キーワードを増やしすぎると、どのキーワードがどの返信につながっているか把握できなくなります。最初は「予約」「料金」「営業時間」「場所」の4〜6個から始めるのが現実的です。</p>
+
+      <h3>あいさつメッセージが長すぎる</h3>
+      <p>登録直後のメッセージが長文だと読まれません。最初のメッセージは3行以内を目安に、「何ができるか」だけ伝えるようにしましょう。</p>
+
+      <h3>返信内容を更新し忘れる</h3>
+      <p>料金変更・営業時間変更があったときに自動返信の内容を更新しないと、古い情報を案内し続けます。定期的に内容を確認する習慣をつけておきましょう。</p>
+
+      <h2>GAS連携で自動返信を強化する</h2>
+      <p>標準機能のキーワード返信では対応できない「顧客情報の記録」「予約受付」「リマインド送信」は、GASとの連携で実現できます。月額費用ゼロで構築でき、一度設定すれば自動で動き続けます。</p>
+
+      <div class="callout">
+        <p>GAS連携の自動返信構築に興味がある場合は、Form Flowの<a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" style="color:var(--g)">LINEで無料相談</a>からご連絡ください。</p>
+      </div>
+
+      <h2>まとめ</h2>
+      <p>LINE公式の自動返信は、設定さえしてしまえば24時間対応できる仕組みです。まずはキーワード返信から始めて、慣れてきたらGAS連携に進むのが無理のない順序です。</p>
+
+      <div class="share-box">
+        <button class="sbtn sbtn-line" id="shareLine">LINEで送る</button>
+        <button class="sbtn sbtn-x" id="shareX">Xでシェア</button>
+        <button class="sbtn sbtn-copy" id="shareCopy">URLコピー</button>
+      </div>
+
+    </div>
+
+  <section class="related-articles">
+    <h2>関連記事</h2>
+      <a href="line-inquiry-automation.html" class="related-item">
+        <span class="related-arrow">→</span>
+        <span>LINE公式の問い合わせ対応を自動化する方法</span>
+      </a>
+      <a href="line-gas-automation-guide.html" class="related-item">
+        <span class="related-arrow">→</span>
+        <span>LINE公式×GASで月額0円の自動化</span>
+      </a>
+      <a href="line-kouchiku-daikou-hiyou.html" class="related-item">
+        <span class="related-arrow">→</span>
+        <span>LINE公式アカウント構築代行の費用相場</span>
+      </a>
+  </section>
+<style>
+.related-articles{margin:40px auto;max-width:720px;padding:28px 24px;background:#f8fafb;border-radius:12px;border:1px solid #e5e7eb;}
+.related-articles h2{font-size:15px;font-weight:700;color:#374151;margin-bottom:16px;letter-spacing:.02em;}
+.related-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #e5e7eb;text-decoration:none;color:#111;font-size:14px;transition:color .15s;}
+.related-item:last-child{border-bottom:none;}
+.related-item:hover{color:#06C755;}
+.related-arrow{color:#06C755;font-size:13px;flex-shrink:0;}
+</style>
+
+    </main>
+
+    <aside>
+      <div class="aside-logo">Form <span>Flow</span></div>
+      <p class="aside-desc">LINE公式アカウントの構築代行サービスです。GAS・Lステップに対応しています。</p>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="aside-btn aside-btn-primary">LINEで無料相談</a>
+      <a href="../index.html#contact" class="aside-btn aside-btn-outline">フォームで問い合わせ</a>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Form <span>Flow</span></div>
+  <p>© 2026 Form Flow. All rights reserved.</p>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('sc', window.scrollY > 60); }, { passive: true });
+  const SHARE_URL = 'https://formflow.jp/column/line-jidou-henshin-settei.html';
+  const SHARE_TITLE = 'LINE公式アカウントの自動返信を設定する方法——キーワード返信の基本から応用まで';
+  document.getElementById('shareLine').addEventListener('click', () => window.open('https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent(SHARE_URL), '_blank'));
+  document.getElementById('shareX').addEventListener('click', () => window.open('https://x.com/intent/tweet?url=' + encodeURIComponent(SHARE_URL) + '&text=' + encodeURIComponent(SHARE_TITLE + ' | Form Flow'), '_blank'));
+  document.getElementById('shareCopy').addEventListener('click', async () => { await navigator.clipboard.writeText(SHARE_URL); const b = document.getElementById('shareCopy'); b.textContent = 'コピーしました!'; setTimeout(() => b.textContent = 'URLコピー', 2000); });
+</script>
+</body>
+</html>

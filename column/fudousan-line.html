@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQF63CGRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NWQF63CGRL');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>不動産・賃貸会社のLINE公式活用術——内見予約から追客まで自動化する方法｜Form Flow</title>
+  <meta name="description" content="不動産・賃貸会社がLINE公式アカウントで内見予約・物件案内・追客メッセージを自動化する方法を解説。GAS連携で月額0円のシステムを構築できます。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://formflow.jp/column/fudousan-line.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://formflow.jp/column/fudousan-line.html">
+  <meta property="og:title" content="不動産・賃貸会社のLINE公式活用術——内見予約から追客まで自動化する方法">
+  <meta property="og:description" content="不動産・賃貸会社がLINE公式アカウントで内見予約・物件案内・追客メッセージを自動化する方法を解説。">
+  <meta property="og:image" content="https://formflow.jp/ogp.png">
+  <meta property="og:site_name" content="Form Flow">
+  <meta property="og:locale" content="ja_JP">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "不動産・賃貸会社のLINE公式活用術——内見予約から追客まで自動化する方法",
+    "author": { "@type": "Organization", "name": "Form Flow" },
+    "publisher": { "@type": "Organization", "name": "Form Flow", "url": "https://formflow.jp/" },
+    "datePublished": "2026-05-23",
+    "dateModified": "2026-05-23"
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --g: #06C755; --gd: #059942; --gbg: #EFF9F4; --text: #111827; --body: #374151; --sub: #6B7280; --border: #E5E7EB; --bg: #FAFAF8; --radius: 12px; }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: var(--body); background-color: #FAFAF8; background-image: radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px); background-size: 22px 22px; line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 64px; background: #fff; border-bottom: 1px solid var(--border); transition: box-shadow .2s; }
+    #nav.sc { box-shadow: 0 2px 16px rgba(0,0,0,.06); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .nav-logo { font-size: 19px; font-weight: 700; color: var(--text); }
+    .nav-back { font-size: 14px; color: var(--sub); transition: color .15s; }
+    .nav-back:hover { color: var(--text); }
+    .article-hero { margin-top: 64px; background: #fff; padding: 60px 0 48px; text-align: center; border-bottom: 1px solid var(--border); }
+    .article-hero-inner { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .cat-tag { display: inline-block; font-size: 11px; font-weight: 700; color: var(--g); background: var(--gbg); border: 1px solid rgba(6,199,85,.2); border-radius: 100px; padding: 3px 10px; margin-bottom: 16px; }
+    h1 { font-size: clamp(22px, 4vw, 30px); font-weight: 800; color: var(--text); line-height: 1.4; letter-spacing: -.02em; }
+    .article-meta { margin-top: 20px; font-size: 13px; color: var(--sub); }
+    .layout { display: grid; grid-template-columns: 1fr 260px; gap: 40px; max-width: 1080px; margin: 48px auto; padding: 0 24px; }
+    @media(max-width:768px){ .layout { grid-template-columns: 1fr; } aside { display: none; } }
+    main { min-width: 0; }
+    .article-body h2 { font-size: 20px; font-weight: 700; color: var(--text); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--g); }
+    .article-body h3 { font-size: 17px; font-weight: 700; color: var(--text); margin: 28px 0 12px; }
+    .article-body p { margin-bottom: 16px; }
+    .article-body ul, .article-body ol { padding-left: 1.5em; margin-bottom: 16px; }
+    .article-body li { margin-bottom: 8px; }
+    .use-case { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin: 16px 0; border-left: 4px solid var(--g); }
+    .use-case-title { font-weight: 700; color: var(--text); margin-bottom: 8px; font-size: 15px; }
+    .callout { background: var(--gbg); border-left: 4px solid var(--g); border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 24px 0; }
+    .callout p { margin: 0; font-size: 14px; }
+    .share-box { display: flex; gap: 8px; flex-wrap: wrap; margin: 40px 0 20px; }
+    .sbtn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 99px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: opacity .15s; }
+    .sbtn-line { background: #06C755; color: #fff; }
+    .sbtn-x { background: #000; color: #fff; }
+    .sbtn-copy { background: var(--border); color: var(--text); }
+    aside { position: sticky; top: 80px; align-self: start; }
+    .aside-logo { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .aside-logo span { color: var(--g); }
+    .aside-desc { font-size: 13px; color: var(--sub); margin-bottom: 16px; }
+    .aside-btn { display: block; text-align: center; padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 600; margin-bottom: 8px; transition: opacity .15s; }
+    .aside-btn:hover { opacity: .85; }
+    .aside-btn-primary { background: var(--g); color: #fff; }
+    .aside-btn-outline { border: 1px solid var(--border); color: var(--text); }
+    footer { text-align: center; padding: 40px 24px; font-size: 13px; color: var(--sub); border-top: 1px solid var(--border); margin-top: 60px; }
+    .footer-logo { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .footer-logo span { color: var(--g); }
+  </style>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <span class="nav-logo">Form <span style="color:var(--g)">Flow</span></span>
+    <a href="../column.html" class="nav-back">← コラム一覧へ</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <div class="article-hero-inner">
+    <span class="cat-tag">業種別活用</span>
+    <h1>不動産・賃貸会社のLINE公式活用術<br>——内見予約から追客まで自動化する方法</h1>
+    <p class="article-meta">2026年5月 | Form Flow編集部</p>
+  </div>
+</header>
+
+<div class="layout">
+  <main>
+    <div class="article-body">
+
+      <p>不動産・賃貸業界では、問い合わせから内見・契約までのスピードが機会損失を左右します。問い合わせが来てもメール対応に時間がかかる、内見後のフォローが手薄になる——そういった課題をLINE公式アカウントで解決できます。</p>
+
+      <h2>不動産会社がLINEを使うメリット</h2>
+      <p>不動産業においてLINEが有効な理由は、顧客との連絡手段として既に日常化しているからです。メールより開封率が高く、問い合わせから返信までのリードタイムを大幅に短縮できます。</p>
+
+      <ul>
+        <li>問い合わせへの初期応答を24時間自動化できる</li>
+        <li>内見後のフォローを自動で送れる</li>
+        <li>物件情報・間取り図をLINEで即座に送付できる</li>
+        <li>休眠顧客への掘り起こしメッセージを一斉配信できる</li>
+      </ul>
+
+      <h2>具体的な活用シーン</h2>
+
+      <div class="use-case">
+        <div class="use-case-title">内見予約の自動受付</div>
+        <p>「内見希望」というキーワードに対して予約フォームのURLを自動返信。Googleフォームと連携することで、受付→スプレッドシート記録→確認メッセージ送信まで自動化できます。</p>
+      </div>
+
+      <div class="use-case">
+        <div class="use-case-title">内見後の追客フォロー</div>
+        <p>内見翌日に「いかがでしたか？」の自動フォローメッセージを送信。ステップ配信を使えば、内見3日後・1週間後と段階的にアプローチを続けられます。</p>
+      </div>
+
+      <div class="use-case">
+        <div class="use-case-title">物件情報の即時案内</div>
+        <p>リッチメニューに「空き状況を確認する」「間取り一覧を見る」ボタンを設置。問い合わせ前の段階でユーザーが自分で情報を取れる仕組みにすることで、問い合わせの質が上がります。</p>
+      </div>
+
+      <div class="use-case">
+        <div class="use-case-title">休眠顧客の掘り起こし</div>
+        <p>「以前内見にきたが連絡が途切れた顧客」に対して、新着物件情報を一斉配信。タイミングが合えば再検討につながります。</p>
+      </div>
+
+      <h2>GAS連携でできること</h2>
+      <p>LINE公式の標準機能だけでは、顧客情報の管理・予約の自動記録・リマインド送信には対応できません。GAS（Google Apps Script）と連携することで、月額費用ゼロでこれらを実現できます。</p>
+
+      <ul>
+        <li><strong>内見予約の自動記録</strong>: フォーム回答をスプレッドシートに自動追記</li>
+        <li><strong>前日リマインド</strong>: 内見前日の朝に自動でLINEを送信</li>
+        <li><strong>顧客ステータス管理</strong>: 問い合わせ中・内見済み・成約済みをスプレッドシートで一元管理</li>
+      </ul>
+
+      <div class="callout">
+        <p>不動産業向けのLINE構築は対応実績があります。詳細は<a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" style="color:var(--g)">LINEで無料相談</a>からご連絡ください。</p>
+      </div>
+
+      <h2>導入時の注意点</h2>
+
+      <h3>個人情報の取り扱い</h3>
+      <p>内見予約や顧客情報をLINEで収集する場合、プライバシーポリシーに明記しておく必要があります。収集したデータの保管場所・利用目的を整理しておきましょう。</p>
+
+      <h3>友だち獲得の導線</h3>
+      <p>LINEを整備しても、友だちがいなければ意味がありません。物件紹介ページ・名刺・店頭POPにQRコードを掲載して、接触した顧客をLINEに誘導する仕組みが先決です。</p>
+
+      <h2>まとめ</h2>
+      <p>不動産・賃貸業での活用は、問い合わせ対応の速度向上と内見後フォローの自動化が主な効果です。GASとの連携で月額コストをかけずに運用できる点は、小規模な不動産会社にとって特に大きなメリットです。</p>
+
+      <div class="share-box">
+        <button class="sbtn sbtn-line" id="shareLine">LINEで送る</button>
+        <button class="sbtn sbtn-x" id="shareX">Xでシェア</button>
+        <button class="sbtn sbtn-copy" id="shareCopy">URLコピー</button>
+      </div>
+
+    </div>
+
+  <section class="related-articles">
+    <h2>関連記事</h2>
+      <a href="line-reservation-auto.html" class="related-item">
+        <span class="related-arrow">→</span>
+        <span>予約管理をLINEで完全自動化する方法</span>
+      </a>
+      <a href="line-repeat-customer.html" class="related-item">
+        <span class="related-arrow">→</span>
+        <span>LINEで離客を防ぐリピーター施策</span>
+      </a>
+      <a href="line-gas-automation-guide.html" class="related-item">
+        <span class="related-arrow">→</span>
+        <span>LINE公式×GASで月額0円の自動化</span>
+      </a>
+  </section>
+<style>
+.related-articles{margin:40px auto;max-width:720px;padding:28px 24px;background:#f8fafb;border-radius:12px;border:1px solid #e5e7eb;}
+.related-articles h2{font-size:15px;font-weight:700;color:#374151;margin-bottom:16px;letter-spacing:.02em;}
+.related-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #e5e7eb;text-decoration:none;color:#111;font-size:14px;transition:color .15s;}
+.related-item:last-child{border-bottom:none;}
+.related-item:hover{color:#06C755;}
+.related-arrow{color:#06C755;font-size:13px;flex-shrink:0;}
+</style>
+
+    </main>
+
+    <aside>
+      <div class="aside-logo">Form <span>Flow</span></div>
+      <p class="aside-desc">LINE公式アカウントの構築代行サービスです。GAS・Lステップに対応しています。</p>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="aside-btn aside-btn-primary">LINEで無料相談</a>
+      <a href="../index.html#contact" class="aside-btn aside-btn-outline">フォームで問い合わせ</a>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Form <span>Flow</span></div>
+  <p>© 2026 Form Flow. All rights reserved.</p>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('sc', window.scrollY > 60); }, { passive: true });
+  const SHARE_URL = 'https://formflow.jp/column/fudousan-line.html';
+  const SHARE_TITLE = '不動産・賃貸会社のLINE公式活用術——内見予約から追客まで自動化する方法';
+  document.getElementById('shareLine').addEventListener('click', () => window.open('https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent(SHARE_URL), '_blank'));
+  document.getElementById('shareX').addEventListener('click', () => window.open('https://x.com/intent/tweet?url=' + encodeURIComponent(SHARE_URL) + '&text=' + encodeURIComponent(SHARE_TITLE + ' | Form Flow'), '_blank'));
+  document.getElementById('shareCopy').addEventListener('click', async () => { await navigator.clipboard.writeText(SHARE_URL); const b = document.getElementById('shareCopy'); b.textContent = 'コピーしました!'; setTimeout(() => b.textContent = 'URLコピー', 2000); });
+</script>
+</body>
+</html>
