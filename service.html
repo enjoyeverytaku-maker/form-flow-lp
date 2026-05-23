@@ -59,6 +59,17 @@ nav.sc .nlinks a{color:var(--sub)}
 nav.sc .nlinks a:hover{color:var(--navy)}
 .ncta{background:var(--g)!important;color:#fff!important;padding:9px 22px;border-radius:8px;font-weight:700!important;font-size:13px;transition:background .2s,transform .15s!important}
 .ncta:hover{background:var(--gd)!important;transform:translateY(-1px)!important}
+.nav-dd{position:relative;}
+.nav-dd-btn{background:none;border:none;cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:4px;padding:0;font-family:inherit;transition:color .2s;}
+nav.sc .nav-dd-btn{color:var(--sub);}
+.nav-dd-btn:hover,.nav-dd.open .nav-dd-btn{color:#fff;}
+nav.sc .nav-dd-btn:hover,nav.sc .nav-dd.open .nav-dd-btn{color:var(--navy);}
+.nav-dd-btn .arr{font-size:9px;transition:transform .2s;}
+.nav-dd.open .arr{transform:rotate(180deg);}
+.nav-dd-menu{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:6px;min-width:150px;box-shadow:0 8px 24px rgba(0,0,0,.15);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;}
+.nav-dd.open .nav-dd-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+.nav-dd-menu a{display:block;padding:8px 14px;font-size:13px;color:var(--sub);border-radius:6px;white-space:nowrap;transition:background .15s,color .15s;}
+.nav-dd-menu a:hover{background:#f3f4f6;color:var(--navy);}
 .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
 .hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;transition:all .25s}
 nav.sc .hamburger span{background:var(--navy)}
@@ -205,25 +216,35 @@ nav.sc .hamburger span{background:var(--navy)}
 <nav id="nav">
   <a href="./index.html" class="nlogo">Form <em>Flow</em></a>
   <div class="nlinks">
-    <a href="./index.html#features">サービス内容</a>
     <a href="./cases.html">構築例</a>
-    <a href="./demo.html">デモ体験</a>
-    <a href="./column.html">コラム</a>
-    <a href="./glossary/">用語解説</a>
+    <div class="nav-dd">
+      <button class="nav-dd-btn">サービス <span class="arr">▾</span></button>
+      <div class="nav-dd-menu">
+        <a href="./index.html#features">できること</a>
+        <a href="./service.html#pricing">料金・プラン</a>
+        <a href="./demo.html">デモ体験</a>
+      </div>
+    </div>
+    <div class="nav-dd">
+      <button class="nav-dd-btn">学ぶ <span class="arr">▾</span></button>
+      <div class="nav-dd-menu">
+        <a href="./column.html">コラム</a>
+        <a href="./glossary/">用語解説</a>
+      </div>
+    </div>
     <a href="./about.html">制作者について</a>
-    <a href="./news.html">お知らせ</a>
     <a href="./index.html#cta" class="ncta magnetic">無料相談</a>
   </div>
   <button class="hamburger" id="hbtn"><span></span><span></span><span></span></button>
 </nav>
 <div class="mmenu" id="mmenu">
-  <a href="./index.html#features">サービス内容</a>
   <a href="./cases.html">構築例</a>
+  <a href="./index.html#features">できること</a>
+  <a href="./service.html#pricing">料金・プラン</a>
   <a href="./demo.html">デモ体験</a>
   <a href="./column.html">コラム</a>
   <a href="./glossary/">用語解説</a>
   <a href="./about.html">制作者について</a>
-  <a href="./news.html">お知らせ</a>
   <a href="./index.html#cta" class="mc">無料相談する</a>
 </div>
 
@@ -675,6 +696,14 @@ nav.sc .hamburger span{background:var(--navy)}
   const hbtn=document.getElementById('hbtn'),mm=document.getElementById('mmenu');
   hbtn.addEventListener('click',()=>{hbtn.classList.toggle('open');mm.classList.toggle('open')});
   mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hbtn.classList.remove('open');mm.classList.remove('open')}));
+  document.querySelectorAll('.nav-dd').forEach(dd=>{
+    dd.querySelector('.nav-dd-btn').addEventListener('click',e=>{
+      e.stopPropagation();
+      document.querySelectorAll('.nav-dd.open').forEach(o=>{if(o!==dd)o.classList.remove('open');});
+      dd.classList.toggle('open');
+    });
+  });
+  document.addEventListener('click',()=>document.querySelectorAll('.nav-dd.open').forEach(o=>o.classList.remove('open')));
   const rvObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.1});
   document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
   document.querySelectorAll('.magnetic').forEach(btn=>{

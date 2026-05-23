@@ -106,6 +106,15 @@ img{display:block;max-width:100%}
 }
 .nav-links a:hover { color: var(--text); }
 .nav-links a.active { color: var(--g); font-weight: 600; }
+.nav-dd{position:relative;}
+.nav-dd-btn{background:none;border:none;cursor:pointer;font-size:14px;font-weight:500;color:var(--sub);display:flex;align-items:center;gap:4px;padding:0;font-family:inherit;transition:color .15s;}
+.nav-dd-btn:hover,.nav-dd.open .nav-dd-btn{color:var(--text);}
+.nav-dd-btn .arr{font-size:9px;transition:transform .2s;}
+.nav-dd.open .arr{transform:rotate(180deg);}
+.nav-dd-menu{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);background:#fff;border:1px solid var(--border);border-radius:10px;padding:6px;min-width:150px;box-shadow:0 8px 24px rgba(0,0,0,.1);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;}
+.nav-dd.open .nav-dd-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+.nav-dd-menu a{display:block;padding:8px 14px;font-size:13px;color:var(--sub);border-radius:6px;white-space:nowrap;transition:background .15s,color .15s;}
+.nav-dd-menu a:hover{background:#f3f4f6;color:var(--text);}
 
 .nav-cta {
   display: inline-flex;
@@ -374,24 +383,32 @@ footer {
     </a>
     <div class="nav-links">
       <a href="./cases.html">構築例</a>
-      <a href="./demo.html">デモ体験</a>
-      <a href="./index.html#features">できること</a>
-      <a href="./index.html#pricing">料金</a>
-      <a href="./index.html#faq">よくある質問</a>
-      <a href="./column.html" class="active">コラム</a>
-      <a href="./glossary/">用語解説</a>
+      <div class="nav-dd">
+        <button class="nav-dd-btn">サービス <span class="arr">▾</span></button>
+        <div class="nav-dd-menu">
+          <a href="./index.html#features">できること</a>
+          <a href="./service.html#pricing">料金・プラン</a>
+          <a href="./demo.html">デモ体験</a>
+        </div>
+      </div>
+      <div class="nav-dd">
+        <button class="nav-dd-btn">学ぶ <span class="arr">▾</span></button>
+        <div class="nav-dd-menu">
+          <a href="./column.html" class="active">コラム</a>
+          <a href="./glossary/">用語解説</a>
+        </div>
+      </div>
       <a href="./about.html">制作者について</a>
-      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="nav-cta">無料相談・お問い合わせ</a>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="nav-cta">無料相談</a>
     </div>
     <button class="hamburger" id="hbtn"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="mobile-menu" id="mmenu">
   <a href="./cases.html">構築例</a>
-  <a href="./demo.html">デモ体験</a>
   <a href="./index.html#features">できること</a>
-  <a href="./index.html#pricing">料金</a>
-  <a href="./index.html#faq">よくある質問</a>
+  <a href="./service.html#pricing">料金・プラン</a>
+  <a href="./demo.html">デモ体験</a>
   <a href="./column.html">コラム</a>
   <a href="./glossary/">用語解説</a>
   <a href="./about.html">制作者について</a>
@@ -672,6 +689,14 @@ footer {
   const hbtn = document.getElementById('hbtn'), mm = document.getElementById('mmenu');
   hbtn.addEventListener('click', () => { hbtn.classList.toggle('open'); mm.classList.toggle('open'); });
   mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbtn.classList.remove('open'); mm.classList.remove('open'); }));
+  document.querySelectorAll('.nav-dd').forEach(dd => {
+    dd.querySelector('.nav-dd-btn').addEventListener('click', e => {
+      e.stopPropagation();
+      document.querySelectorAll('.nav-dd.open').forEach(o => { if(o!==dd) o.classList.remove('open'); });
+      dd.classList.toggle('open');
+    });
+  });
+  document.addEventListener('click', () => document.querySelectorAll('.nav-dd.open').forEach(o => o.classList.remove('open')));
   const rvObs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); rvObs.unobserve(e.target); } }), {threshold: .1});
   document.querySelectorAll('.rv').forEach(el => rvObs.observe(el));
   // search
