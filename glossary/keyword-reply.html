@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LINEのキーワード自動返信とは｜設定方法・活用例・注意点｜Form Flow</title>
+<meta name="description" content="LINEのキーワード自動返信とは、特定のメッセージに自動で返答する機能です。設定方法・よく使われる活用例・Lステップなしで実現する方法をわかりやすく解説。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://formflow.jp/glossary/keyword-reply.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--g:#06C755;--gd:#059942;--gbg:#EFF9F4;--text:#111827;--body:#374151;--sub:#6B7280;--muted:#9CA3AF;--border:#E5E7EB;--bg:#FAFAF8;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP',sans-serif;color:var(--body);background:#FAFAF8;line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit}
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:#fff;border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:19px;font-weight:700;color:var(--text);}
+.nav-logo-flow{color:var(--g);}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{font-size:14px;font-weight:500;color:var(--sub);}
+.nav-cta{padding:9px 20px;border-radius:99px;font-size:13px;font-weight:600;background:var(--g);color:#fff;margin-left:4px;}
+.container{max-width:720px;margin:0 auto;padding:0 24px;}
+.breadcrumb{max-width:720px;margin:0 auto;padding:80px 24px 0;font-size:12px;color:var(--muted);}
+.breadcrumb a{color:var(--muted);}
+.breadcrumb span{margin:0 6px;}
+.article-header{padding:40px 0 48px;border-bottom:1px solid var(--border);}
+.term-badge{display:inline-block;background:var(--gbg);color:var(--g);font-size:11px;font-weight:700;letter-spacing:.1em;padding:4px 12px;border-radius:99px;margin-bottom:16px;}
+.article-header h1{font-size:clamp(24px,3.5vw,38px);font-weight:700;color:var(--text);line-height:1.3;margin-bottom:16px;}
+.article-header .lead{font-size:16px;color:var(--sub);line-height:1.9;}
+.article-body{padding:48px 0;}
+.article-body h2{font-size:22px;font-weight:700;color:var(--text);margin:48px 0 16px;padding-top:8px;border-top:2px solid var(--g);}
+.article-body h2:first-child{margin-top:0;}
+.article-body p{font-size:15px;color:var(--body);line-height:1.9;margin-bottom:16px;}
+.article-body ul{margin:0 0 20px 20px;}
+.article-body li{font-size:15px;color:var(--body);line-height:1.9;margin-bottom:6px;}
+.example-grid{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.example-row{display:flex;align-items:flex-start;gap:16px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 20px;}
+.example-kw{flex-shrink:0;background:var(--gbg);color:var(--g);font-size:13px;font-weight:700;padding:4px 12px;border-radius:6px;min-width:80px;text-align:center;}
+.example-reply{font-size:14px;color:var(--body);line-height:1.7;}
+.example-reply small{display:block;font-size:12px;color:var(--muted);margin-top:2px;}
+.inline-cta{margin:48px 0;padding:24px 28px;background:var(--gbg);border:1.5px solid rgba(6,199,85,.3);border-radius:14px;}
+.inline-cta p{font-size:14px;color:var(--body);font-weight:500;margin-bottom:14px;}
+.inline-cta a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:700;background:var(--g);color:#fff;}
+.related{padding:48px 0;border-top:1px solid var(--border);}
+.related h3{font-size:16px;font-weight:700;color:var(--text);margin-bottom:16px;}
+.related-links{display:flex;flex-direction:column;gap:8px;}
+.related-links a{font-size:14px;color:var(--g);}
+footer{background:#fff;border-top:1px solid var(--border);padding:40px 48px;margin-top:40px;}
+.footer-inner{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.footer-logo{font-size:17px;font-weight:700;color:var(--text);}
+.footer-logo span{color:var(--g);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:12px;color:var(--sub);}
+.footer-copy{font-size:12px;color:var(--muted);}
+@media(max-width:640px){.nav-inner{padding:0 20px;}.nav-links{display:none;}.breadcrumb,.container{padding-left:20px;padding-right:20px;}footer{padding:32px 20px;}.footer-inner{flex-direction:column;text-align:center;}}
+</style>
+<script>if(location.hostname.includes('github.io')){var m=document.createElement('meta');m.name='robots';m.content='noindex';document.head.appendChild(m);}</script>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Form <span class="nav-logo-flow">Flow</span></a>
+    <div class="nav-links">
+      <a href="../cases.html">構築例</a>
+      <a href="../demo.html">デモ体験</a>
+      <a href="../service.html#pricing">料金</a>
+      <a href="../column.html">コラム</a>
+      <a href="./index.html">用語解説</a>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="nav-cta">無料相談</a>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../index.html">Form Flow</a><span>›</span>
+  <a href="./index.html">用語解説</a><span>›</span>
+  キーワード自動返信とは
+</div>
+
+<div class="container">
+  <header class="article-header">
+    <div class="term-badge">KEYWORD REPLY</div>
+    <h1>LINEのキーワード自動返信とは</h1>
+    <p class="lead">ユーザーが特定のキーワードを送ると、あらかじめ設定した返信を自動で届ける機能です。「予約」と送ったら予約フォームのURLが届く、「料金」と送ったら料金案内が届く——という仕組みです。</p>
+  </header>
+
+  <article class="article-body">
+
+    <h2>どんな場面で使われるか</h2>
+    <p>よくあるキーワードと返信内容の組み合わせ例です。</p>
+    <div class="example-grid">
+      <div class="example-row">
+        <div class="example-kw">予約</div>
+        <div class="example-reply">予約フォームのURLを自動送信<small>→ 深夜でも予約受付が完結する</small></div>
+      </div>
+      <div class="example-row">
+        <div class="example-kw">料金</div>
+        <div class="example-reply">メニュー・価格一覧を自動送信<small>→ 同じ質問への繰り返し返信が不要になる</small></div>
+      </div>
+      <div class="example-row">
+        <div class="example-kw">アクセス</div>
+        <div class="example-reply">地図URLや最寄り駅情報を自動送信<small>→ 来店前の問い合わせが減る</small></div>
+      </div>
+      <div class="example-row">
+        <div class="example-kw">キャンセル</div>
+        <div class="example-reply">キャンセルフォームや手順を自動送信<small>→ 対応漏れを防ぐ</small></div>
+      </div>
+    </div>
+    <p>「よく聞かれること」をキーワードに設定しておくと、スタッフが対応しなくても情報が届くようになります。</p>
+
+    <h2>設定できる場所</h2>
+    <p>LINE公式アカウントの管理画面（LINE Official Account Manager）の「自動応答メッセージ」から設定できます。<strong>フリープランでも利用可能</strong>です。</p>
+    <ul>
+      <li>キーワードは完全一致・部分一致を選べる</li>
+      <li>1つのキーワードに複数のメッセージを設定できる（テキスト・画像・ボタンなど）</li>
+      <li>曜日・時間帯ごとに返信内容を変えることも可能</li>
+    </ul>
+
+    <h2>GASと組み合わせるとできること</h2>
+    <p>標準の自動返信は「固定文」の返信のみです。GAS（Google Apps Script）と組み合わせると、より柔軟な対応が可能になります。</p>
+    <ul>
+      <li>キーワードに応じてスプレッドシートに記録する</li>
+      <li>送ってきたユーザーの情報を取得して個別返信する</li>
+      <li>複数ステップのやり取り（チャットボット的な動き）</li>
+    </ul>
+
+    <div class="inline-cta">
+      <p>「どんなキーワードを設定すれば効果的か分からない」という方へ。業種に合わせた設計から実装まで代行します。</p>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener">LINEで無料相談する →</a>
+    </div>
+
+    <h2>設定のコツ</h2>
+    <ul>
+      <li>まず「よく来る質問トップ3」をキーワードにする。それだけで問い合わせが体感で減る</li>
+      <li>キーワードは短い言葉で設定する（「予約したい」より「予約」の方が反応しやすい）</li>
+      <li>リッチメニューのボタンとキーワードをセットで設計すると、ユーザーが迷わない</li>
+    </ul>
+
+  </article>
+
+  <nav class="related">
+    <h3>関連コンテンツ</h3>
+    <div class="related-links">
+      <a href="./richmenu.html">→ リッチメニューとは（用語解説）</a>
+      <a href="./webhook.html">→ Webhookとは（用語解説）</a>
+      <a href="./gas.html">→ GASとは（用語解説）</a>
+    </div>
+  </nav>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Form <span>Flow</span></div>
+    <div class="footer-links">
+      <a href="../privacy.html">プライバシーポリシー</a>
+      <a href="../terms.html">利用規約</a>
+      <a href="../tokushoho.html">特定商取引法</a>
+    </div>
+    <div class="footer-copy">© 2026 Form Flow. All rights reserved.</div>
+  </div>
+</footer>
+<script>window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('sc',scrollY>60),{passive:true});</script>
+</body>
+</html>
