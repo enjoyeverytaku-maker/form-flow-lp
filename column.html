@@ -15,7 +15,14 @@
 <meta property="og:title" content="LINE活用コラム｜自動化・GAS連携・集客ノウハウ｜Form Flow">
 <meta property="og:description" content="LINE公式アカウントの活用術・GAS自動化・集客のコツを解説。Lステップなしで実現できる自動化も紹介。">
 <meta property="og:image" content="https://formflow.jp/ogp.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Form Flow">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LINE活用コラム｜自動化・GAS連携・集客ノウハウ｜Form Flow">
+  <meta name="twitter:description" content="LINE公式アカウントの活用術・GAS自動化・集客のコツを解説。Lステップなしで実現できる自動化も紹介。">
+  <meta name="twitter:image" content="https://formflow.jp/ogp.png">
 <meta property="og:locale" content="ja_JP">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -242,6 +249,13 @@ img{display:block;max-width:100%}
 .search-box input::placeholder { color: var(--muted); }
 .no-results { grid-column: 1/-1; text-align: center; padding: 60px 0; color: var(--sub); font-size: 15px; }
 .col-cat { display: inline-block; font-size: 11px; font-weight: 700; color: var(--g); background: var(--gbg); border-radius: 99px; padding: 3px 10px; margin-bottom: 12px; }
+
+/* ── FILTER TABS ── */
+.filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 24px 0 0; }
+.filter-tab { display: inline-flex; align-items: center; padding: 7px 16px; border-radius: 99px; font-size: 13px; font-weight: 600; border: 1.5px solid var(--border); background: #fff; color: var(--sub); cursor: pointer; transition: all .15s; white-space: nowrap; }
+.filter-tab:hover { border-color: var(--g); color: var(--g); }
+.filter-tab.active { background: var(--g); color: #fff; border-color: var(--g); }
+@media(max-width:480px){ .filter-tab { font-size: 12px; padding: 6px 12px; } }
 .col-card h3 { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.55; margin-bottom: 10px; }
 .col-card p { font-size: 13px; color: var(--sub); line-height: 1.8; flex: 1; }
 .col-read { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 600; color: var(--g); margin-top: 16px; }
@@ -365,6 +379,7 @@ footer {
       <a href="./index.html#pricing">料金</a>
       <a href="./index.html#faq">よくある質問</a>
       <a href="./column.html" class="active">コラム</a>
+      <a href="./about.html">制作者について</a>
       <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="nav-cta">無料相談・お問い合わせ</a>
     </div>
     <button class="hamburger" id="hbtn"><span></span><span></span><span></span></button>
@@ -377,6 +392,7 @@ footer {
   <a href="./index.html#pricing">料金</a>
   <a href="./index.html#faq">よくある質問</a>
   <a href="./column.html">コラム</a>
+  <a href="./about.html">制作者について</a>
   <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="mc">無料相談・お問い合わせ</a>
 </div>
 
@@ -400,193 +416,201 @@ footer {
         <span id="searchCount" style="font-size:11px;color:var(--muted);white-space:nowrap;"></span>
       </div>
     </div>
+    <div class="filter-tabs rv" id="filterTabs">
+      <button class="filter-tab active" data-filter="all">すべて</button>
+      <button class="filter-tab" data-filter="業種別">業種別</button>
+      <button class="filter-tab" data-filter="自動化・設定">自動化・設定</button>
+      <button class="filter-tab" data-filter="集客・リピーター">集客・リピーター</button>
+      <button class="filter-tab" data-filter="費用・比較">費用・比較</button>
+      <button class="filter-tab" data-filter="入門・基礎">入門・基礎</button>
+    </div>
     <div class="col-grid" id="articleGrid">
 
-      <!-- 1. 集客・友だち増加 -->
-      <a href="./column/line-friends-increase.html" class="col-card rv d1">
+      <!-- 1. 集客・リピーター -->
+      <a href="./column/line-friends-increase.html" class="col-card rv d1" data-category="集客・リピーター">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="LINE友だち追加を増やす施策" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">集客・友だち増加</span>
+          <span class="col-cat">集客・リピーター</span>
           <h3>LINE友だちを増やす7つの施策</h3>
           <p>QRコード設置場所・登録特典・SNS誘導など、LINE友だちを増やすための7つの施策を構築現場の視点から解説します。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <!-- 2. ツール比較 -->
-      <a href="./column/lstep-vs-gas.html" class="col-card rv d2">
+      <!-- 2. 費用・比較 -->
+      <a href="./column/lstep-vs-gas.html" class="col-card rv d2" data-category="費用・比較">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="LステップとGASの比較" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">ツール比較</span>
+          <span class="col-cat">費用・比較</span>
           <h3>Lステップ vs GAS——コスト・機能・難易度を徹底比較</h3>
           <p>月額数万円のLステップと、無料のGASで何が違うのか。機能・コスト・難易度を現場目線で比較します。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <!-- 3. 活用Tips -->
-      <a href="./column/line-step-delivery-scenario.html" class="col-card rv d3">
+      <!-- 3. 集客・リピーター -->
+      <a href="./column/line-step-delivery-scenario.html" class="col-card rv d3" data-category="集客・リピーター">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="ステップ配信シナリオ設計" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">活用Tips</span>
+          <span class="col-cat">集客・リピーター</span>
           <h3>ステップ配信シナリオ設計——登録〜成約までの5ステップ</h3>
           <p>友だち追加から成約まで、自動で育てるシナリオの作り方を5ステップで解説します。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <!-- 4. 業種別活用 -->
-      <a href="./column/seitai-line-katsuyo.html" class="col-card rv d1">
+      <!-- 4. 業種別 -->
+      <a href="./column/seitai-line-katsuyo.html" class="col-card rv d1" data-category="業種別">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80" alt="整体院のLINE活用術" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">業種別活用</span>
+          <span class="col-cat">業種別</span>
           <h3>整体院・接骨院のLINE活用術——予約リマインドから休眠顧客掘り起こしまで</h3>
           <p>ステップ配信・予約リマインド・休眠顧客への一斉配信の3軸でLINEを活用する方法を解説します。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <!-- 5. 技術解説：GAS -->
-      <a href="./column/line-gas-automation-guide.html" class="col-card rv d2">
+      <!-- 5. 自動化・設定 -->
+      <a href="./column/line-gas-automation-guide.html" class="col-card rv d2" data-category="自動化・設定">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="GASで自動化完全ガイド" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">技術解説</span>
+          <span class="col-cat">自動化・設定</span>
           <h3>GASで自動化完全ガイド【Lステップなし・月額0円】</h3>
           <p>アカウント開設からGAS連携による自動返信・顧客管理の設定まで、月額0円で実現する手順を解説します。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <!-- 6. 技術解説：Webhook -->
-      <a href="./column/line-webhook-gas.html" class="col-card rv d3">
+      <!-- 6. 自動化・設定 -->
+      <a href="./column/line-webhook-gas.html" class="col-card rv d3" data-category="自動化・設定">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" alt="WebhookとGASの仕組み" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">技術解説</span>
+          <span class="col-cat">自動化・設定</span>
           <h3>Webhookとは何か——GASとの組み合わせをコードなしで理解する</h3>
           <p>Webhookとは何か、GASとどう組み合わせるかを、コードなしで理解できるように解説します。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <!-- 7. 基礎知識 -->
-      <a href="./column/line-pricing-plan-2026.html" class="col-card rv d1">
+      <!-- 7. 費用・比較 -->
+      <a href="./column/line-pricing-plan-2026.html" class="col-card rv d1" data-category="費用・比較">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80" alt="LINE公式料金プラン解説" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">基礎知識</span>
+          <span class="col-cat">費用・比較</span>
           <h3>LINE公式アカウント料金プラン解説2026——どのプランを選ぶべきか</h3>
           <p>フリー・ライト・スタンダードの違い、メッセージ数上限と追加料金、GAS活用でのコスト最適化を解説します。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <!-- 8. デザイン -->
-      <a href="./column/richmenu-design.html" class="col-card rv d2">
+      <!-- 8. 入門・基礎 -->
+      <a href="./column/richmenu-design.html" class="col-card rv d2" data-category="入門・基礎">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&w=600&q=80" alt="リッチメニューのデザイン設計" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">デザイン</span>
+          <span class="col-cat">入門・基礎</span>
           <h3>リッチメニュー設計術——業種別テンプレートで解説</h3>
           <p>トーク画面下のリッチメニューを最大限活用するデザイン設計と設定手順を業種別テンプレートで解説します。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <a href="./column/salon-line-katsuyo.html" class="col-card rv d3">
+      <a href="./column/salon-line-katsuyo.html" class="col-card rv d3" data-category="業種別">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="美容サロンのLINE活用術" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">美容サロン・ネイル</span>
+          <span class="col-cat">業種別</span>
           <h3>美容サロン・ネイル・エステのLINE公式活用術——リピーター獲得から予約自動化まで</h3>
           <p>美容サロン・ネイルサロン・エステがLINEでリピーターを増やし、予約リマインドやキャンセル対策を実現する方法を解説します。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <a href="./column/line-hajimeru-mae.html" class="col-card rv d1">
+      <a href="./column/line-hajimeru-mae.html" class="col-card rv d1" data-category="入門・基礎">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80" alt="個人事業主のLINE公式入門" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">LINE入門</span>
+          <span class="col-cat">入門・基礎</span>
           <h3>個人事業主がLINE公式を始める前に知っておくべきこと——費用・機能・失敗パターン</h3>
           <p>LINE公式の無料プランでできること、有料プランへの切り替え時期、最初の設定、よくある失敗パターンをまとめました。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <a href="./column/consultant-line-katsuyo.html" class="col-card rv d2">
+      <a href="./column/consultant-line-katsuyo.html" class="col-card rv d2" data-category="業種別">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80" alt="コンサルタント向けLINE活用術" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">コンサルタント・士業</span>
+          <span class="col-cat">業種別</span>
           <h3>コンサルタント・コーチ向けLINE公式活用術——問い合わせ自動化からセミナー集客まで</h3>
           <p>コンサルタント・コーチ・士業がLINEで問い合わせ対応・個別相談予約・セミナー案内を効率化する方法を解説します。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <a href="./column/line-inquiry-automation.html" class="col-card rv d3">
+      <a href="./column/line-inquiry-automation.html" class="col-card rv d3" data-category="自動化・設定">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="LINE問い合わせ対応の自動化" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">自動化</span>
+          <span class="col-cat">自動化・設定</span>
           <h3>LINE公式の問い合わせ対応を自動化する方法——キーワード返信からGAS連携まで</h3>
           <p>キーワード自動返信の基本設定から、Googleフォーム連携・GASを使った高度な自動化まで段階別に解説します。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <!-- 13. ネイル・エステ -->
-      <a href="./column/nail-salon-line.html" class="col-card rv d1">
+      <!-- 13. 業種別 -->
+      <a href="./column/nail-salon-line.html" class="col-card rv d1" data-category="業種別">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=600&q=80" alt="ネイルサロン・エステのLINE活用術" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">ネイル・エステ</span>
+          <span class="col-cat">業種別</span>
           <h3>ネイルサロン・エステのLINE公式活用術——リピーター獲得と予約管理を自動化する方法</h3>
           <p>施術後フォロー・予約リマインド・季節メニュー配信をLINEで自動化。有料ツール不要で始められます。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <!-- 14. 飲食店・カフェ -->
-      <a href="./column/restaurant-line.html" class="col-card rv d2">
+      <!-- 14. 業種別 -->
+      <a href="./column/restaurant-line.html" class="col-card rv d2" data-category="業種別">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="飲食店・カフェのLINE活用術" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">飲食店・カフェ</span>
+          <span class="col-cat">業種別</span>
           <h3>飲食店・カフェのLINE公式活用術——常連客を育てるメッセージ設計と予約管理</h3>
           <p>来店後フォロー・週次メニュー配信・予約リマインドをLINEで自動化。常連客を仕組みで育てる方法を解説します。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <!-- 15. リピーター施策 -->
-      <a href="./column/line-repeat-customer.html" class="col-card rv d3">
+      <!-- 15. 集客・リピーター -->
+      <a href="./column/line-repeat-customer.html" class="col-card rv d3" data-category="集客・リピーター">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80" alt="LINEで離客を防ぐリピーター施策" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">リピーター施策</span>
+          <span class="col-cat">集客・リピーター</span>
           <h3>LINEで離客を防ぐリピーター施策——休眠顧客の掘り起こしから定期来店の仕組みづくりまで</h3>
           <p>離客を予防するステップ配信の設計と、休眠顧客への掘り起こしメッセージの作り方を解説します。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <!-- 16. 予約自動化 -->
-      <a href="./column/line-reservation-auto.html" class="col-card rv d1">
+      <!-- 16. 自動化・設定 -->
+      <a href="./column/line-reservation-auto.html" class="col-card rv d1" data-category="自動化・設定">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80" alt="予約管理をLINEで完全自動化する方法" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">予約管理</span>
+          <span class="col-cat">自動化・設定</span>
           <h3>予約管理をLINEで完全自動化する方法——GAS連携で予約受付からリマインドまで無人化</h3>
           <p>Googleフォームで予約受付→GASがスプレッドシートに記録→前日リマインド自動送信まで月額0円で実現する手順を解説。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <!-- 17. 構築代行費用 -->
-      <a href="./column/line-kouchiku-daikou-hiyou.html" class="col-card rv d2">
+      <!-- 17. 費用・比較 -->
+      <a href="./column/line-kouchiku-daikou-hiyou.html" class="col-card rv d2" data-category="費用・比較">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80" alt="LINE公式アカウント構築代行の費用相場" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">費用・コスト</span>
+          <span class="col-cat">費用・比較</span>
           <h3>LINE公式アカウント構築代行の費用相場——自分で設定する場合との比較</h3>
           <p>構築代行に頼む場合の相場と、自分でやる場合の時間コストを比較。依頼すべきケースとしなくていいケースを整理しました。</p>
           <span class="col-read">続きを読む →</span>
         </div>
       </a>
 
-      <!-- 18. 自動返信設定 -->
-      <a href="./column/line-jidou-henshin-settei.html" class="col-card rv d3">
+      <!-- 18. 自動化・設定 -->
+      <a href="./column/line-jidou-henshin-settei.html" class="col-card rv d3" data-category="自動化・設定">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&w=600&q=80" alt="LINE公式アカウントの自動返信を設定する方法" loading="lazy"></div>
         <div class="col-card-body">
           <span class="col-cat">自動化・設定</span>
@@ -596,11 +620,11 @@ footer {
         </div>
       </a>
 
-      <!-- 19. 不動産活用 -->
-      <a href="./column/fudousan-line.html" class="col-card rv d1">
+      <!-- 19. 業種別 -->
+      <a href="./column/fudousan-line.html" class="col-card rv d1" data-category="業種別">
         <div class="col-thumb"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80" alt="不動産・賃貸会社のLINE公式活用術" loading="lazy"></div>
         <div class="col-card-body">
-          <span class="col-cat">業種別活用</span>
+          <span class="col-cat">業種別</span>
           <h3>不動産・賃貸会社のLINE公式活用術——内見予約から追客まで自動化する方法</h3>
           <p>内見予約の自動受付・内見後フォロー・休眠顧客掘り起こしをLINEとGASで実現する方法を解説。</p>
           <span class="col-read">続きを読む →</span>
@@ -652,26 +676,45 @@ footer {
   const searchInput = document.getElementById('searchInput');
   const articleGrid = document.getElementById('articleGrid');
   const countEl = document.getElementById('searchCount');
-  if(searchInput && articleGrid){
+  const filterTabs = document.getElementById('filterTabs');
+  let activeFilter = 'all';
+
+  if(articleGrid){
     const cards = Array.from(articleGrid.querySelectorAll('.col-card'));
     countEl.textContent = cards.length + '件';
-    searchInput.addEventListener('input', () => {
-      const q = searchInput.value.trim().toLowerCase();
+
+    function applyFilters(){
+      const q = searchInput ? searchInput.value.trim().toLowerCase() : '';
       articleGrid.querySelectorAll('.no-results').forEach(el => el.remove());
       let shown = 0;
       cards.forEach(card => {
-        const match = !q || card.textContent.toLowerCase().includes(q);
-        card.style.display = match ? '' : 'none';
-        if(match) shown++;
+        const catMatch = activeFilter === 'all' || card.dataset.category === activeFilter;
+        const textMatch = !q || card.textContent.toLowerCase().includes(q);
+        const visible = catMatch && textMatch;
+        card.style.display = visible ? '' : 'none';
+        if(visible) shown++;
       });
-      countEl.textContent = (q ? shown : cards.length) + '件';
+      countEl.textContent = shown + '件';
       if(shown === 0){
         const p = document.createElement('p');
         p.className = 'no-results';
-        p.textContent = '「' + searchInput.value + '」に一致する記事が見つかりませんでした';
+        p.textContent = '該当する記事が見つかりませんでした';
         articleGrid.appendChild(p);
       }
-    });
+    }
+
+    if(searchInput) searchInput.addEventListener('input', applyFilters);
+
+    if(filterTabs){
+      filterTabs.querySelectorAll('.filter-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          filterTabs.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          activeFilter = tab.dataset.filter;
+          applyFilters();
+        });
+      });
+    }
   }
 })();
 </script>

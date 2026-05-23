@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美容室｜休眠顧客への掘り起こし配信で15%が再来店｜Form Flow 構築事例</title>
+<meta name="description" content="美容室の休眠顧客掘り起こし事例。3ヶ月以上未来店の顧客へ季節メッセージを一斉配信し、15%が再来店。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://formflow.jp/cases/beauty-01.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--g:#06C755;--gd:#059942;--gbg:#EFF9F4;--text:#111827;--body:#374151;--sub:#6B7280;--muted:#9CA3AF;--border:#E5E7EB;--bg:#FAFAF8;--shadow-sm:0 1px 3px rgba(0,0,0,.07),0 2px 8px rgba(0,0,0,.04);--radius:12px;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP',sans-serif;color:var(--body);background:#FAFAF8;line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit}
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:#fff;border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:19px;font-weight:700;color:var(--text);}
+.nav-logo-flow{color:var(--g);}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{font-size:14px;font-weight:500;color:var(--sub);}
+.nav-cta{padding:9px 20px;border-radius:99px;font-size:13px;font-weight:600;background:var(--g);color:#fff;margin-left:4px;}
+.container{max-width:720px;margin:0 auto;padding:0 24px;}
+.breadcrumb{max-width:720px;margin:0 auto;padding:80px 24px 0;font-size:12px;color:var(--muted);}
+.breadcrumb a{color:var(--muted);}
+.breadcrumb span{margin:0 6px;}
+.case-hero{padding:48px 0 56px;border-bottom:1px solid var(--border);}
+.case-tag{display:inline-block;background:var(--gbg);color:var(--g);font-size:11px;font-weight:700;letter-spacing:.1em;padding:4px 12px;border-radius:99px;margin-bottom:16px;}
+.case-hero h1{font-size:clamp(22px,3.5vw,34px);font-weight:700;color:var(--text);line-height:1.35;margin-bottom:24px;}
+.achievement-box{background:var(--gbg);border:1.5px solid rgba(6,199,85,.3);border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:16px;}
+.achievement-num{font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--g);white-space:nowrap;}
+.achievement-label{font-size:14px;color:var(--body);line-height:1.6;}
+.case-body{padding:48px 0;}
+.case-body h2{font-size:20px;font-weight:700;color:var(--text);margin:40px 0 14px;padding-left:12px;border-left:3px solid var(--g);}
+.case-body h2:first-child{margin-top:0;}
+.case-body p{font-size:15px;color:var(--body);line-height:1.9;margin-bottom:14px;}
+.case-body ul{margin:0 0 18px 20px;}
+.case-body li{font-size:15px;color:var(--body);line-height:1.9;margin-bottom:4px;}
+.inline-cta{margin:40px 0;padding:22px 24px;background:var(--gbg);border:1.5px solid rgba(6,199,85,.3);border-radius:12px;}
+.inline-cta p{font-size:14px;color:var(--body);font-weight:500;margin-bottom:12px;}
+.inline-cta a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:700;background:var(--g);color:#fff;}
+.related{padding:40px 0;border-top:1px solid var(--border);}
+.related h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:12px;}
+.related-links{display:flex;flex-direction:column;gap:8px;}
+.related-links a{font-size:14px;color:var(--g);}
+footer{background:#fff;border-top:1px solid var(--border);padding:40px 48px;margin-top:40px;}
+.footer-inner{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.footer-logo{font-size:17px;font-weight:700;color:var(--text);}
+.footer-logo span{color:var(--g);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:12px;color:var(--sub);}
+.footer-copy{font-size:12px;color:var(--muted);}
+@media(max-width:640px){.nav-inner{padding:0 20px;}.nav-links{display:none;}.breadcrumb,.container{padding-left:20px;padding-right:20px;}.achievement-box{flex-direction:column;text-align:center;}footer{padding:32px 20px;}.footer-inner{flex-direction:column;text-align:center;}}</style>
+<script>if(location.hostname.includes('github.io')){var m=document.createElement('meta');m.name='robots';m.content='noindex';document.head.appendChild(m);}</script>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Form <span class="nav-logo-flow">Flow</span></a>
+    <div class="nav-links">
+      <a href="../cases.html">構築例</a>
+      <a href="../demo.html">デモ体験</a>
+      <a href="../service.html#pricing">料金</a>
+      <a href="../column.html">コラム</a>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="nav-cta">無料相談</a>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../index.html">Form Flow</a><span>›</span>
+  <a href="../cases.html">構築例</a><span>›</span>
+  美容室・ヘアサロン
+</div>
+
+<div class="container">
+  <header class="case-hero">
+    <div class="case-tag">美容室・ヘアサロン</div>
+    <h1>美容室｜休眠顧客への掘り起こし配信で15%が再来店</h1>
+    <div class="achievement-box">
+      <div class="achievement-num">休眠顧客の15%が再来店</div>
+      <div class="achievement-label">3ヶ月以上来店がない顧客へ季節のメッセージを一斉配信。自然な形で再来店を促進。</div>
+    </div>
+  </header>
+
+  <article class="case-body">
+
+    <h2>課題</h2>
+    <p>友だち数は増えているが、来店頻度が落ちている休眠顧客が増えてきた。個別に連絡する時間はなく、かといって全員に同じメッセージを送ってもスパムになりそうで躊躇していた。</p>
+
+    <h2>実施した施策</h2>
+    <ul>
+      <li>スプレッドシートで最終来店日を管理し、3ヶ月以上来店がない顧客リストをGASが自動抽出</li>
+      <li>「最近いかがですか？季節の変わり目に、ヘアケアのご提案があります」という自然な文面で配信</li>
+      <li>配信タイミングを春・夏・秋・冬の季節変わり目（年4回）に設定</li>
+      <li>メッセージにクーポンURLを同封し、予約フォームへ直接誘導</li>
+    </ul>
+
+    <h2>結果</h2>
+    <p>初回配信で休眠顧客の15%が再来店。クーポン利用率は配信数に対して8%で、通常の一斉配信（2〜3%）を大幅に上回った。「また来たいと思っていたところだった」という反応が多かった。</p>
+
+    <div class="inline-cta">
+      <p>同じような課題をお持ちの方へ。まずは無料相談で状況をお聞かせください。</p>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener">LINEで無料相談する →</a>
+    </div>
+
+  </article>
+
+  <nav class="related">
+    <h3>関連コンテンツ</h3>
+    <div class="related-links">
+      <a href="../cases.html">→ 構築例一覧に戻る</a>
+      <a href="../column/line-repeat-customer.html">→ LINEで離客を防ぐリピーター施策</a>
+    </div>
+  </nav>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Form <span>Flow</span></div>
+    <div class="footer-links">
+      <a href="../privacy.html">プライバシーポリシー</a>
+      <a href="../terms.html">利用規約</a>
+      <a href="../tokushoho.html">特定商取引法</a>
+    </div>
+    <div class="footer-copy">© 2026 Form Flow. All rights reserved.</div>
+  </div>
+</footer>
+<script>window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('sc',scrollY>60),{passive:true});</script>
+</body>
+</html>

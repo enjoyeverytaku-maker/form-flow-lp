@@ -10,7 +10,7 @@
     gtag('config', 'G-NWQF63CGRL');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webhookとは何か——LINEをGASで「考えられる」ようにする仕組み｜Form Flow</title>
+  <title>Webhookとは何か——LINEを<a href="/glossary/gas.html">GAS</a>で「考えられる」ようにする仕組み｜Form Flow</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:image" content="https://formflow.jp/ogp.png">
 
@@ -23,6 +23,11 @@
   <meta property="og:description" content="LINE Messaging APIのWebhookをGASで受け取ると何ができるのか。友だち追加の自動記録を例に解説。">
   <meta property="og:image" content="https://formflow.jp/ogp.png">
   <meta property="og:site_name" content="Form Flow">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Webhookとは何か——LINEをGASで「考えられる」ようにする仕組み">
+  <meta name="twitter:description" content="LINE Messaging APIのWebhookをGASで受け取ると何ができるのか。友だち追加の自動記録を例に解説。">
+  <meta name="twitter:image" content="https://formflow.jp/ogp.png">
   <meta property="og:locale" content="ja_JP">
   <script type="application/ld+json">
   {
@@ -33,6 +38,10 @@
     "publisher": { "@type": "Organization", "name": "Form Flow", "url": "https://formflow.jp/" },
     "datePublished": "2026-05-17",
     "dateModified": "2026-05-17"
+  ,
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://formflow.jp/column/line-webhook-gas.html" },
+    "image": "https://formflow.jp/ogp.png",
+    "description": "LINE Messaging APIのWebhookをGASで受け取ると何ができるのか。友だち追加の自動記録を例に、Webhookの考え方を解説。"
   }
   </script>
   <style>
@@ -261,7 +270,7 @@
   <div class="article-grid">
     <main class="article-body">
 
-      <p>LINE公式アカウントのGAS連携を説明するとき、必ず登場するのが「Webhook」という言葉です。聞き慣れない言葉ですが、これを理解するとLINEの自動化の幅が一気に広がります。今回は、技術的な詳細より「何ができるか」「なぜ必要か」に絞って書きます。</p>
+      <p>LINE公式アカウントのGAS連携を説明するとき、必ず登場するのが「<a href="/glossary/webhook.html">Webhook</a>」という言葉です。聞き慣れない言葉ですが、これを理解するとLINEの自動化の幅が一気に広がります。今回は、技術的な詳細より「何ができるか」「なぜ必要か」に絞って書きます。</p>
 
       <h2>Webhookがない状態のLINE</h2>
 
@@ -377,6 +386,15 @@
   </div>
 </div>
 
+
+      <div class="article-related">
+        <h3>関連ページ</h3>
+        <ul>
+          <li><a href="/glossary/webhook.html">LINE×GASのWebhookとは（用語解説）</a></li>
+          <li><a href="/glossary/gas.html">GASでLINEを自動化する方法（用語解説）</a></li>
+        </ul>
+      </div>
+
 <footer>
   <div class="footer-logo">Form <span>Flow</span></div>
   <p>© 2026 Form Flow. All rights reserved.</p>
@@ -423,7 +441,14 @@
 .sticky-cta-btn:hover{background:#059942;}
 .sticky-cta-close{background:none;border:none;color:#9ca3af;font-size:20px;cursor:pointer;padding:4px;line-height:1;flex-shrink:0;}
 @media(max-width:480px){.sticky-cta-text{display:none;}}
-</style>
+
+    /* 関連リンクボックス */
+    .article-related{margin:48px 0 0;padding:24px 28px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;}
+    .article-related h3{font-size:13px;font-weight:700;color:#6B7280;letter-spacing:.08em;margin-bottom:12px;}
+    .article-related ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+    .article-related li a{font-size:14px;color:#06C755;display:inline-flex;align-items:center;gap:5px;}
+    .article-related li a::before{content:"→";flex-shrink:0;}
+  </style>
 
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-cta-text">

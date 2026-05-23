@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LINEのステップ配信とは｜友だち追加後に自動でメッセージを届ける仕組みと設定方法｜Form Flow</title>
+<meta name="description" content="LINEのステップ配信とは、友だち追加後に設定スケジュールで自動メッセージを届ける機能。Lステップなし・GASで月額0円で実現する方法と業種別シナリオ例を解説。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://formflow.jp/glossary/step-delivery.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"ステップ配信とは｜仕組み・設定方法・活用事例をわかりやすく解説","description":"ステップ配信の仕組み・設定方法・業種別活用事例を解説します。","publisher":{"@type":"Organization","name":"Form Flow","url":"https://formflow.jp"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--g:#06C755;--gd:#059942;--gbg:#EFF9F4;--text:#111827;--body:#374151;--sub:#6B7280;--muted:#9CA3AF;--border:#E5E7EB;--bg:#FAFAF8;--shadow-sm:0 1px 3px rgba(0,0,0,.07),0 2px 8px rgba(0,0,0,.04);--radius:12px;}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP',sans-serif;color:var(--body);background:#FAFAF8;line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit}
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:#fff;border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:19px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:10px;}
+.nav-logo-flow{color:var(--g);}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{font-size:14px;font-weight:500;color:var(--sub);}
+.nav-cta{padding:9px 20px;border-radius:99px;font-size:13px;font-weight:600;background:var(--g);color:#fff;margin-left:4px;}
+.container{max-width:720px;margin:0 auto;padding:0 24px;}
+.breadcrumb{max-width:720px;margin:0 auto;padding:80px 24px 0;font-size:12px;color:var(--muted);}
+.breadcrumb a{color:var(--muted);}
+.breadcrumb a:hover{color:var(--g);}
+.breadcrumb span{margin:0 6px;}
+.article-header{padding:40px 0 48px;border-bottom:1px solid var(--border);}
+.term-badge{display:inline-block;background:var(--gbg);color:var(--g);font-size:11px;font-weight:700;letter-spacing:.1em;padding:4px 12px;border-radius:99px;margin-bottom:16px;}
+.article-header h1{font-size:clamp(24px,3.5vw,38px);font-weight:700;color:var(--text);line-height:1.3;margin-bottom:16px;}
+.article-header .lead{font-size:16px;color:var(--sub);line-height:1.9;}
+.article-body{padding:48px 0;}
+.article-body h2{font-size:22px;font-weight:700;color:var(--text);margin:48px 0 16px;padding-top:8px;border-top:2px solid var(--g);}
+.article-body h2:first-child{margin-top:0;}
+.article-body p{font-size:15px;color:var(--body);line-height:1.9;margin-bottom:16px;}
+.article-body ul{margin:0 0 20px 20px;}
+.article-body li{font-size:15px;color:var(--body);line-height:1.9;margin-bottom:6px;}
+.step-flow{display:flex;flex-direction:column;gap:0;margin:24px 0;}
+.step-row{display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-bottom:1px solid var(--border);}
+.step-row:last-child{border-bottom:none;}
+.step-day{flex-shrink:0;width:72px;background:var(--g);color:#fff;border-radius:8px;padding:8px;text-align:center;font-size:12px;font-weight:700;line-height:1.3;}
+.step-content h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.step-content p{font-size:14px;color:var(--sub);margin:0;}
+.inline-cta{margin:48px 0;padding:24px 28px;background:var(--gbg);border:1.5px solid rgba(6,199,85,.3);border-radius:14px;}
+.inline-cta p{font-size:14px;color:var(--body);font-weight:500;margin-bottom:14px;}
+.inline-cta a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:700;background:var(--g);color:#fff;}
+.related{padding:48px 0;border-top:1px solid var(--border);}
+.related h3{font-size:16px;font-weight:700;color:var(--text);margin-bottom:16px;}
+.related-links{display:flex;flex-direction:column;gap:8px;}
+.related-links a{font-size:14px;color:var(--g);display:flex;align-items:center;gap:6px;}
+footer{background:#fff;border-top:1px solid var(--border);padding:40px 48px;margin-top:40px;}
+.footer-inner{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.footer-logo{font-size:17px;font-weight:700;color:var(--text);}
+.footer-logo span{color:var(--g);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:12px;color:var(--sub);}
+.footer-copy{font-size:12px;color:var(--muted);}
+@media(max-width:640px){.nav-inner{padding:0 20px;}.nav-links{display:none;}.breadcrumb,.container{padding-left:20px;padding-right:20px;}footer{padding:32px 20px;}.footer-inner{flex-direction:column;text-align:center;}}
+</style>
+<script>if(location.hostname.includes('github.io')){var m=document.createElement('meta');m.name='robots';m.content='noindex';document.head.appendChild(m);}</script>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Form <span class="nav-logo-flow">Flow</span></a>
+    <div class="nav-links">
+      <a href="../cases.html">構築例</a>
+      <a href="../demo.html">デモ体験</a>
+      <a href="../service.html#pricing">料金</a>
+      <a href="../column.html">コラム</a>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="nav-cta">無料相談</a>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../index.html">Form Flow</a><span>›</span>
+  <a href="./index.html">用語解説</a><span>›</span>
+  ステップ配信とは
+</div>
+
+<div class="container">
+  <header class="article-header">
+    <div class="term-badge">STEP DELIVERY</div>
+    <h1>ステップ配信とは</h1>
+    <p class="lead">友だち追加後、あらかじめ設定したスケジュールに沿って自動でメッセージを届ける機能です。一度設定すれば動き続けるため、見込み客の育成やリピーター獲得に広く使われています。</p>
+  </header>
+
+  <article class="article-body">
+
+    <h2>仕組みをシンプルに理解する</h2>
+    <p>友だち追加をトリガーに、「登録直後・3日後・7日後…」というタイムラインで自動メッセージが送られます。一斉送信と違い、<strong>「登録してからの経過日数」に応じて個別に届く</strong>のが特徴です。</p>
+    <p>例えば100人が異なる日に友だち追加しても、それぞれの「登録からN日後」のタイミングで正確にメッセージが届きます。</p>
+
+    <h2>よく使われるシナリオ例</h2>
+    <div class="step-flow">
+      <div class="step-row">
+        <div class="step-day">登録直後</div>
+        <div class="step-content"><h3>あいさつ＋無料特典の案内</h3><p>「登録ありがとうございます」＋自己紹介・できることの紹介</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-day">3日後</div>
+        <div class="step-content"><h3>よくある悩みへのアドバイス</h3><p>読者の課題に寄り添うコンテンツで信頼を築く</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-day">7日後</div>
+        <div class="step-content"><h3>サービス・商品の案内</h3><p>関係が温まったタイミングでオファーを届ける</p></div>
+      </div>
+      <div class="step-row">
+        <div class="step-day">14日後</div>
+        <div class="step-content"><h3>FAQ・事例の紹介</h3><p>不安や疑問を先回りして解消する</p></div>
+      </div>
+    </div>
+
+    <h2>Lステップなしで実現できるか</h2>
+    <p>ステップ配信は本来Lステップなどの有料ツール（月額数万円）が必要とされてきました。しかし<strong>GAS（Google Apps Script）とスプレッドシートを組み合わせることで、月額0円</strong>で同等の動きを実現できます。</p>
+    <p>登録日をスプレッドシートに記録し、毎日GASが「今日が登録からN日目のユーザー」を抽出してメッセージを送る仕組みです。</p>
+
+    <div class="inline-cta">
+      <p>ステップ配信の設計・構築を代行します。シナリオ設計からGAS実装まで一括対応。</p>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener">LINEで無料相談する →</a>
+    </div>
+
+    <h2>設定時の注意点</h2>
+    <ul>
+      <li>メッセージ数が多いほど読者の疲れにつながる。最初は3〜5通に絞るのが現実的</li>
+      <li>登録直後のメッセージが最も開封率が高い。最初の1通が最重要</li>
+      <li>売り込みを前半に入れると解除率が上がる。信頼を先に作ること</li>
+    </ul>
+
+  </article>
+
+  <nav class="related">
+    <h3>関連コンテンツ</h3>
+    <div class="related-links">
+      <a href="../column/line-step-delivery-scenario.html">→ ステップ配信シナリオ設計——登録〜成約までの5ステップ</a>
+      <a href="../column/line-repeat-customer.html">→ LINEで離客を防ぐリピーター施策</a>
+      <a href="./gas.html">→ GASとは（用語解説）</a>
+    </div>
+  </nav>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Form <span>Flow</span></div>
+    <div class="footer-links">
+      <a href="../privacy.html">プライバシーポリシー</a>
+      <a href="../terms.html">利用規約</a>
+      <a href="../tokushoho.html">特定商取引法</a>
+    </div>
+    <div class="footer-copy">© 2026 Form Flow. All rights reserved.</div>
+  </div>
+</footer>
+<script>window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('sc',scrollY>60),{passive:true});</script>
+</body>
+</html>

@@ -23,6 +23,11 @@
   <meta property="og:description" content="LINE公式アカウントの自動返信設定方法を解説。キーワード返信・あいさつメッセージ・GAS連携による高度な自動応答まで説明します。">
   <meta property="og:image" content="https://formflow.jp/ogp.png">
   <meta property="og:site_name" content="Form Flow">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LINE公式アカウントの自動返信を設定する方法——キーワード返信の基本から応用まで">
+  <meta name="twitter:description" content="LINE公式アカウントの自動返信設定方法を解説。キーワード返信・あいさつメッセージ・GAS連携による高度な自動応答まで説明します。">
+  <meta name="twitter:image" content="https://formflow.jp/ogp.png">
   <meta property="og:locale" content="ja_JP">
   <script type="application/ld+json">
   {
@@ -33,6 +38,10 @@
     "publisher": { "@type": "Organization", "name": "Form Flow", "url": "https://formflow.jp/" },
     "datePublished": "2026-05-23",
     "dateModified": "2026-05-23"
+  ,
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://formflow.jp/column/line-jidou-henshin-settei.html" },
+    "image": "https://formflow.jp/ogp.png",
+    "description": "LINE公式アカウントの自動返信設定方法を解説。キーワード返信・あいさつメッセージ・GAS連携による高度な自動応答まで、ステップごとに説明します。"
   }
   </script>
   <style>
@@ -114,7 +123,7 @@
       <h3>2. キーワード自動返信</h3>
       <p>ユーザーが特定のキーワードを送ってきたときに自動で返信する機能です。「予約」「料金」「営業時間」などのキーワードに対して、あらかじめ用意した返答を送ります。無料プランでも使えます。</p>
 
-      <h3>3. GASを使った高度な自動返信</h3>
+      <h3>3. <a href="/glossary/gas.html">GAS</a>を使った高度な自動返信</h3>
       <p>LINE Messaging APIとGAS（Google Apps Script）を連携させることで、より複雑な自動応答が可能になります。たとえば「予約希望」と送られたらGoogleフォームのURLを返す、顧客情報をスプレッドシートに記録するといったことができます。</p>
 
       <h2>キーワード返信の設定手順</h2>
@@ -144,7 +153,21 @@
   </div>
   <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" style="background:#06C755;color:#fff;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap;">無料で相談する →</a>
 </div>
-<h2>自動返信でよくある失敗</h2>
+
+      <!-- インラインCTA -->
+      <div class="inline-cta">
+        <p class="inline-cta-lead">「自分で設定するのが難しい」と感じたら、代わりに構築します</p>
+        <div class="inline-cta-buttons">
+          <a href="/demo.html" class="inline-cta-btn inline-cta-btn--outline">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            デモを体験する
+          </a>
+          <a href="/service.html#pricing" class="inline-cta-btn inline-cta-btn--primary">
+            料金・プランを確認する →
+          </a>
+        </div>
+      </div>
+      <h2>自動返信でよくある失敗</h2>
 
       <h3>キーワードが多すぎて管理できない</h3>
       <p>キーワードを増やしすぎると、どのキーワードがどの返信につながっているか把握できなくなります。最初は「予約」「料金」「営業時間」「場所」の4〜6個から始めるのが現実的です。</p>
@@ -216,6 +239,16 @@
   </div>
 </div>
 
+
+      <div class="article-related">
+        <h3>関連ページ</h3>
+        <ul>
+          <li><a href="/glossary/webhook.html">LINE×GASのWebhookとは（用語解説）</a></li>
+          <li><a href="/glossary/gas.html">GASでLINEを自動化する方法（用語解説）</a></li>
+          <li><a href="/tools/gas-template.html">LINE×GASテンプレート無料配布</a></li>
+        </ul>
+      </div>
+
 <footer>
   <div class="footer-logo">Form <span>Flow</span></div>
   <p>© 2026 Form Flow. All rights reserved.</p>
@@ -240,7 +273,25 @@
 .sticky-cta-btn:hover{background:#059942;}
 .sticky-cta-close{background:none;border:none;color:#9ca3af;font-size:20px;cursor:pointer;padding:4px;line-height:1;flex-shrink:0;}
 @media(max-width:480px){.sticky-cta-text{display:none;}}
-</style>
+
+    /* インラインCTA */
+    .inline-cta{margin:36px 0;padding:20px 24px;background:#EFF9F4;border:1.5px solid rgba(6,199,85,.3);border-radius:14px;}
+    .inline-cta-lead{font-size:14px;color:#374151;margin-bottom:14px;font-weight:500;}
+    .inline-cta-buttons{display:flex;gap:10px;flex-wrap:wrap;}
+    .inline-cta-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;transition:background .2s,box-shadow .2s;}
+    .inline-cta-btn--primary{background:#06C755;color:#fff;}
+    .inline-cta-btn--primary:hover{background:#059942;box-shadow:0 4px 12px rgba(6,199,85,.35);}
+    .inline-cta-btn--outline{background:#fff;color:#06C755;border:1.5px solid #06C755;}
+    .inline-cta-btn--outline:hover{background:#EFF9F4;}
+    @media(max-width:480px){.inline-cta-buttons{flex-direction:column;}.inline-cta-btn{justify-content:center;}}
+  
+    /* 関連リンクボックス */
+    .article-related{margin:48px 0 0;padding:24px 28px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;}
+    .article-related h3{font-size:13px;font-weight:700;color:#6B7280;letter-spacing:.08em;margin-bottom:12px;}
+    .article-related ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+    .article-related li a{font-size:14px;color:#06C755;display:inline-flex;align-items:center;gap:5px;}
+    .article-related li a::before{content:"→";flex-shrink:0;}
+  </style>
 
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-cta-text">

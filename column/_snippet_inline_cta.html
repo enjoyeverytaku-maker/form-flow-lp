@@ -1,0 +1,107 @@
+<!--
+  ============================================================
+  インラインCTAブロック — コラム記事用スニペット
+  ============================================================
+  使いどころ:
+    - 記事中盤（課題の説明が終わって解決策に入る手前）
+    - h2 セクションの直後あたりに貼る
+    - 1記事につき1〜2か所まで（多すぎると読み感を損なう）
+
+  バリエーション:
+    A: デモ + 料金（両方見せたいとき） ← メイン
+    B: デモのみ（技術解説記事など）
+    C: 料金のみ（コスト比較記事など）
+  ============================================================
+-->
+
+<!-- ▼ バリエーション A: デモ + 料金 ▼ -->
+<div class="inline-cta">
+  <p class="inline-cta-lead">「実際どんな動きをするの？」と気になった方へ</p>
+  <div class="inline-cta-buttons">
+    <a href="/demo.html" class="inline-cta-btn inline-cta-btn--outline">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      デモを体験する
+    </a>
+    <a href="/service.html#pricing" class="inline-cta-btn inline-cta-btn--primary">
+      料金・プランを確認する →
+    </a>
+  </div>
+</div>
+
+<!-- ▼ バリエーション B: デモのみ ▼ -->
+<!--
+<div class="inline-cta">
+  <p class="inline-cta-lead">実際の動作を確認したい方はデモページへどうぞ</p>
+  <div class="inline-cta-buttons">
+    <a href="/demo.html" class="inline-cta-btn inline-cta-btn--primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      デモを体験する
+    </a>
+  </div>
+</div>
+-->
+
+<!-- ▼ バリエーション C: 料金のみ ▼ -->
+<!--
+<div class="inline-cta">
+  <p class="inline-cta-lead">Form Flowに依頼した場合の費用はこちらで確認できます</p>
+  <div class="inline-cta-buttons">
+    <a href="/service.html#pricing" class="inline-cta-btn inline-cta-btn--primary">
+      料金・プランを確認する →
+    </a>
+  </div>
+</div>
+-->
+
+<!-- ▼ CSS（各記事の <style> に一度だけ追加） ▼ -->
+<style>
+.inline-cta {
+  margin: 36px 0;
+  padding: 20px 24px;
+  background: #EFF9F4;
+  border: 1.5px solid rgba(6,199,85,0.3);
+  border-radius: 14px;
+}
+.inline-cta-lead {
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+.inline-cta-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.inline-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background .2s, box-shadow .2s;
+}
+.inline-cta-btn--primary {
+  background: #06C755;
+  color: #fff;
+}
+.inline-cta-btn--primary:hover {
+  background: #059942;
+  box-shadow: 0 4px 12px rgba(6,199,85,0.35);
+}
+.inline-cta-btn--outline {
+  background: #fff;
+  color: #06C755;
+  border: 1.5px solid #06C755;
+}
+.inline-cta-btn--outline:hover {
+  background: #EFF9F4;
+}
+@media (max-width: 480px) {
+  .inline-cta-buttons { flex-direction: column; }
+  .inline-cta-btn { justify-content: center; }
+}
+</style>

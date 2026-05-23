@@ -23,6 +23,11 @@
   <meta property="og:description" content="ネイルサロン・エステのLINEリピーター施策。来店後フォロー・休眠顧客掘り起こし・予約リマインドをGAS連携で自動化。Form Flowが¥49,800〜で代行...">
   <meta property="og:image" content="https://formflow.jp/ogp.png">
   <meta property="og:site_name" content="Form Flow">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ネイルサロン・エステのLINE公式活用術——リピーター獲得と予約管理を自動化する方法">
+  <meta name="twitter:description" content="ネイルサロン・エステのLINEリピーター施策。来店後フォロー・休眠顧客掘り起こし・予約リマインドをGAS連携で自動化。Form Flowが¥49,800〜で代行...">
+  <meta name="twitter:image" content="https://formflow.jp/ogp.png">
   <meta property="og:locale" content="ja_JP">
   <script type="application/ld+json">
   {
@@ -33,6 +38,10 @@
     "publisher": { "@type": "Organization", "name": "Form Flow", "url": "https://formflow.jp/" },
     "datePublished": "2026-05-21",
     "dateModified": "2026-05-21"
+  ,
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://formflow.jp/column/nail-salon-line.html" },
+    "image": "https://formflow.jp/ogp.png",
+    "description": "ネイルサロン・エステのLINEリピーター施策。来店後フォロー・休眠顧客掘り起こし・予約リマインドをGAS連携で自動化。Form Flowが¥49,800〜で代行します。"
   }
   </script>
   <style>
@@ -266,7 +275,7 @@
 
       <p>LINE公式アカウントを活用することで、その仕組みをほぼ自動で動かすことができます。有料のLステップなどのツールがなくても、LINE公式の標準機能とGASの組み合わせで多くのことが実現できます。</p>
 
-      <h2>① 施術後フォローをステップ配信で自動化する</h2>
+      <h2>① 施術後フォローを<a href="/glossary/step-delivery.html">ステップ配信</a>で自動化する</h2>
 
       <p>施術後1〜2週間のフォローは、リピート率を大きく左右します。担当者が個別に連絡しなくても、LINE公式の「ステップ配信」機能を使えば自動でフォローメッセージを届けられます。</p>
 
@@ -320,6 +329,20 @@
 
       <p>リッチメニューの設定もLINE管理画面から無料で行えます。画像は Canva などで作成し、ボタンに予約フォームやInstagramへのURLを設定するだけです。</p>
 
+      
+      <!-- インラインCTA -->
+      <div class="inline-cta">
+        <p class="inline-cta-lead">「自分で設定するのが難しい」と感じたら、代わりに構築します</p>
+        <div class="inline-cta-buttons">
+          <a href="/demo.html" class="inline-cta-btn inline-cta-btn--outline">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            デモを体験する
+          </a>
+          <a href="/service.html#pricing" class="inline-cta-btn inline-cta-btn--primary">
+            料金・プランを確認する →
+          </a>
+        </div>
+      </div>
       <h2>まとめ——まず友だちを増やし、ステップ配信を動かす</h2>
 
       <p>ネイルサロン・エステでLINEを活用する順番は次のとおりです。</p>
@@ -392,6 +415,15 @@
   </div>
 </div>
 
+
+      <div class="article-related">
+        <h3>関連ページ</h3>
+        <ul>
+          <li><a href="/glossary/step-delivery.html">LINEのステップ配信とは（用語解説）</a></li>
+          <li><a href="/cases/nail-salon-01.html">事例：ネイルサロン｜再来率40%向上</a></li>
+        </ul>
+      </div>
+
 <footer>
   <div class="footer-logo">Form <span>Flow</span></div>
   <p>© 2026 Form Flow. All rights reserved.</p>
@@ -434,7 +466,25 @@
 .sticky-cta-btn:hover{background:#059942;}
 .sticky-cta-close{background:none;border:none;color:#9ca3af;font-size:20px;cursor:pointer;padding:4px;line-height:1;flex-shrink:0;}
 @media(max-width:480px){.sticky-cta-text{display:none;}}
-</style>
+
+    /* インラインCTA */
+    .inline-cta{margin:36px 0;padding:20px 24px;background:#EFF9F4;border:1.5px solid rgba(6,199,85,.3);border-radius:14px;}
+    .inline-cta-lead{font-size:14px;color:#374151;margin-bottom:14px;font-weight:500;}
+    .inline-cta-buttons{display:flex;gap:10px;flex-wrap:wrap;}
+    .inline-cta-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;transition:background .2s,box-shadow .2s;}
+    .inline-cta-btn--primary{background:#06C755;color:#fff;}
+    .inline-cta-btn--primary:hover{background:#059942;box-shadow:0 4px 12px rgba(6,199,85,.35);}
+    .inline-cta-btn--outline{background:#fff;color:#06C755;border:1.5px solid #06C755;}
+    .inline-cta-btn--outline:hover{background:#EFF9F4;}
+    @media(max-width:480px){.inline-cta-buttons{flex-direction:column;}.inline-cta-btn{justify-content:center;}}
+  
+    /* 関連リンクボックス */
+    .article-related{margin:48px 0 0;padding:24px 28px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;}
+    .article-related h3{font-size:13px;font-weight:700;color:#6B7280;letter-spacing:.08em;margin-bottom:12px;}
+    .article-related ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+    .article-related li a{font-size:14px;color:#06C755;display:inline-flex;align-items:center;gap:5px;}
+    .article-related li a::before{content:"→";flex-shrink:0;}
+  </style>
 
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-cta-text">

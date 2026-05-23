@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LINE×GASテンプレート無料配布｜自動返信・予約管理・一斉送信｜Form Flow</title>
+<meta name="description" content="LINE公式アカウントとGASを連携するテンプレートを無料配布。自動返信・予約管理・一斉送信・フォーム連携のGASコードをご利用いただけます。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://formflow.jp/tools/gas-template.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--g:#06C755;--gd:#059942;--gbg:#EFF9F4;--text:#111827;--body:#374151;--sub:#6B7280;--muted:#9CA3AF;--border:#E5E7EB;--bg:#FAFAF8;--shadow-sm:0 1px 3px rgba(0,0,0,.07),0 2px 8px rgba(0,0,0,.04);--shadow:0 4px 20px rgba(0,0,0,.08);--radius:12px;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP',sans-serif;color:var(--body);background:#FAFAF8;line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit}
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:#fff;border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:19px;font-weight:700;color:var(--text);}
+.nav-logo-flow{color:var(--g);}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{font-size:14px;font-weight:500;color:var(--sub);}
+.nav-cta{padding:9px 20px;border-radius:99px;font-size:13px;font-weight:600;background:var(--g);color:#fff;margin-left:4px;}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:20px 24px 24px;z-index:99;}
+.mobile-menu.open{display:block;}
+.mobile-menu a{display:block;padding:12px 0;font-size:15px;font-weight:500;color:var(--body);border-bottom:1px solid var(--border);}
+.mobile-menu a:last-child{border-bottom:none;}
+.mobile-menu .mc{margin-top:16px;display:block;text-align:center;background:var(--g);color:#fff;padding:13px;border-radius:10px;font-weight:700;border-bottom:none;}
+.page-hero{padding:128px 48px 80px;text-align:center;background:#fff;border-bottom:1px solid var(--border);}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:12px;}
+.page-hero h1{font-size:clamp(26px,4vw,46px);font-weight:700;color:var(--text);margin-bottom:16px;line-height:1.3;}
+.page-hero h1 em{color:var(--g);font-style:normal;}
+.page-hero p{font-size:16px;color:var(--sub);max-width:520px;margin:0 auto 12px;line-height:1.9;}
+.page-hero-note{font-size:12px;color:var(--muted);}
+.container{max-width:1120px;margin:0 auto;padding:0 48px;}
+.templates-section{padding:80px 0 104px;}
+.section-eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:10px;}
+.section-title{font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--text);margin-bottom:48px;line-height:1.35;}
+.template-list{display:flex;flex-direction:column;gap:32px;}
+.template-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:36px;box-shadow:var(--shadow-sm);display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start;}
+.template-tag{display:inline-block;font-size:11px;font-weight:700;background:var(--gbg);color:var(--g);border-radius:99px;padding:3px 10px;margin-bottom:12px;}
+.template-card h2{font-size:20px;font-weight:700;color:var(--text);margin-bottom:10px;line-height:1.35;}
+.template-card p{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:16px;}
+.template-features{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.template-features li{font-size:13px;color:var(--body);display:flex;align-items:flex-start;gap:8px;}
+.template-features li::before{content:"✓";color:var(--g);font-weight:700;flex-shrink:0;}
+.template-action{display:flex;flex-direction:column;align-items:flex-end;gap:12px;min-width:180px;}
+.btn-get{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:99px;font-size:14px;font-weight:700;background:var(--g);color:#fff;white-space:nowrap;transition:background .2s;}
+.btn-get:hover{background:var(--gd);}
+.template-note{font-size:12px;color:var(--muted);text-align:right;line-height:1.6;}
+.how-section{padding:80px 0;background:var(--gbg);border-top:1px solid rgba(6,199,85,.15);}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
+.how-card{background:#fff;border-radius:var(--radius);padding:28px 24px;border:1px solid rgba(6,199,85,.2);}
+.how-step{font-size:11px;font-weight:700;color:var(--g);letter-spacing:.1em;margin-bottom:8px;}
+.how-card h3{font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;}
+.how-card p{font-size:13px;color:var(--sub);line-height:1.8;}
+.cta-section{padding:96px 48px;text-align:center;background:#fff;border-top:1px solid var(--border);}
+.cta-section h2{font-size:clamp(22px,3vw,36px);font-weight:700;color:var(--text);margin-bottom:16px;line-height:1.35;}
+.cta-section p{font-size:15px;color:var(--sub);margin-bottom:40px;line-height:1.9;}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--g);color:#fff;font-weight:700;font-size:16px;padding:16px 36px;border-radius:99px;box-shadow:0 4px 20px rgba(6,199,85,.3);transition:background .2s,transform .15s;}
+.btn-primary:hover{background:var(--gd);transform:translateY(-2px);}
+footer{background:#fff;border-top:1px solid var(--border);padding:40px 48px;}
+.footer-inner{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.footer-logo{font-size:17px;font-weight:700;color:var(--text);}
+.footer-logo span{color:var(--g);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:12px;color:var(--sub);}
+.footer-copy{font-size:12px;color:var(--muted);}
+@media(max-width:768px){.template-card{grid-template-columns:1fr;}.template-action{align-items:flex-start;}.how-grid{grid-template-columns:1fr;}}
+@media(max-width:640px){.nav-inner,.container{padding:0 20px;}.nav-links{display:none;}.hamburger{display:flex;}.page-hero{padding:100px 24px 60px;}.templates-section{padding:56px 0 72px;}.cta-section{padding:72px 20px;}footer{padding:32px 20px;}.footer-inner{flex-direction:column;text-align:center;}}
+</style>
+<script>if(location.hostname.includes('github.io')){var m=document.createElement('meta');m.name='robots';m.content='noindex';document.head.appendChild(m);}</script>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Form <span class="nav-logo-flow">Flow</span></a>
+    <div class="nav-links">
+      <a href="../cases.html">構築例</a>
+      <a href="../demo.html">デモ体験</a>
+      <a href="../service.html#pricing">料金</a>
+      <a href="../column.html">コラム</a>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="nav-cta">無料相談</a>
+    </div>
+    <button class="hamburger" id="hbtn"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mmenu">
+  <a href="../cases.html">構築例</a>
+  <a href="../demo.html">デモ体験</a>
+  <a href="../service.html#pricing">料金</a>
+  <a href="../column.html">コラム</a>
+  <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="mc">無料相談・お問い合わせ</a>
+</div>
+
+<section class="page-hero">
+  <div class="eyebrow">Free Templates</div>
+  <h1>LINE×GAS<em>テンプレート</em><br>無料配布</h1>
+  <p>自動返信・予約管理・一斉送信など、実際に動くGASコードをLINE相談時に無料でお渡しします。Lステップ不要・月額0円で動きます。</p>
+  <p class="page-hero-note">※ テンプレートはLINEでのお問い合わせ時にお渡しします</p>
+</section>
+
+<section class="templates-section">
+  <div class="container">
+    <div class="section-eyebrow">Templates</div>
+    <h2 class="section-title">配布中のテンプレート一覧</h2>
+    <div class="template-list">
+
+      <div class="template-card">
+        <div>
+          <div class="template-tag">自動返信 / Webhook</div>
+          <h2>キーワード自動返信 + 顧客記録テンプレート</h2>
+          <p>LINEに届いたメッセージのキーワードを判定して自動返信し、送信者の情報をスプレッドシートに記録します。最もよく使われる基本テンプレートです。</p>
+          <ul class="template-features">
+            <li>キーワード判定（部分一致対応）</li>
+            <li>複数キーワード・複数返信文の設定</li>
+            <li>ユーザーIDと受信日時をスプレッドシートに自動記録</li>
+            <li>Webhook受信エラー時のログ出力</li>
+          </ul>
+        </div>
+        <div class="template-action">
+          <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-get">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+            LINEで受け取る
+          </a>
+          <div class="template-note">無料 / 商用利用可</div>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div>
+          <div class="template-tag">予約管理 / フォーム連携</div>
+          <h2>フォーム→カレンダー予約 + LINE確認送信テンプレート</h2>
+          <p>Googleフォームで予約を受け付け、内容をスプレッドシートに記録しながらGoogleカレンダーに追加。同時にLINEでお客さまに確認メッセージを自動送信します。</p>
+          <ul class="template-features">
+            <li>Googleフォーム送信をトリガーに自動起動</li>
+            <li>予約内容をGoogleカレンダーに自動追加</li>
+            <li>お客さまのLINEへ確認メッセージを送信</li>
+            <li>前日リマインド送信の設定例付き</li>
+          </ul>
+        </div>
+        <div class="template-action">
+          <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-get">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+            LINEで受け取る
+          </a>
+          <div class="template-note">無料 / 商用利用可</div>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div>
+          <div class="template-tag">一斉送信 / バッチ処理</div>
+          <h2>友だちリスト一斉送信テンプレート</h2>
+          <p>スプレッドシートに登録した友だちリストへ一斉送信します。チャンク処理で大人数にも対応。タイムアウト対策と送信ログ記録を実装済みです。</p>
+          <ul class="template-features">
+            <li>スプレッドシートの友だちリストをもとに送信</li>
+            <li>50件ずつのチャンク処理でタイムアウト防止</li>
+            <li>送信結果（成功・失敗）をログに記録</li>
+            <li>送信日時の指定（タイマートリガー設定例付き）</li>
+          </ul>
+        </div>
+        <div class="template-action">
+          <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-get">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+            LINEで受け取る
+          </a>
+          <div class="template-note">無料 / 商用利用可</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="how-section">
+  <div class="container">
+    <div class="section-eyebrow">How to get</div>
+    <h2 class="section-title">受け取り方</h2>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-step">STEP 01</div>
+        <h3>LINEで相談する</h3>
+        <p>下のボタンからForm FlowのLINEを友だち追加して「テンプレートほしい」とメッセージしてください。</p>
+      </div>
+      <div class="how-card">
+        <div class="how-step">STEP 02</div>
+        <h3>用途を教える</h3>
+        <p>どのテンプレートが必要か・何に使うかを教えてください。用途に合わせた設定方法も一緒にお伝えします。</p>
+      </div>
+      <div class="how-card">
+        <div class="how-step">STEP 03</div>
+        <h3>テンプレートを受け取る</h3>
+        <p>GASコードとスプレッドシートのサンプルをお渡しします。設定で詰まった場合もLINEでサポートします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>自分で設定するのが難しければ<br>構築ごと代行します</h2>
+  <p>テンプレートを使った設定でつまずいた場合や、最初から構築を任せたい場合はお気軽にご相談ください。</p>
+  <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="btn-primary">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+    LINEで無料相談する
+  </a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Form <span>Flow</span></div>
+    <div class="footer-links">
+      <a href="../privacy.html">プライバシーポリシー</a>
+      <a href="../terms.html">利用規約</a>
+      <a href="../tokushoho.html">特定商取引法</a>
+    </div>
+    <div class="footer-copy">© 2026 Form Flow. All rights reserved.</div>
+  </div>
+</footer>
+<script>
+(function(){
+  window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('sc',scrollY>60),{passive:true});
+  const hbtn=document.getElementById('hbtn'),mm=document.getElementById('mmenu');
+  if(hbtn){hbtn.addEventListener('click',()=>{hbtn.classList.toggle('open');mm.classList.toggle('open');});}
+})();
+</script>
+</body>
+</html>

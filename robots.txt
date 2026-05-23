@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://enjoyeverytaku-maker.github.io/form-flow-lp/sitemap.xml
+Sitemap: https://formflow.jp/sitemap.xml

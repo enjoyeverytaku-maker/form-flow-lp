@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LINE×GASのWebhookとは｜メッセージを受け取って自動返信する仕組みを解説｜Form Flow</title>
+<meta name="description" content="LINE公式アカウントとGASを連携するWebhookの仕組みを解説。メッセージが届いた瞬間に自動返信・顧客記録を実行する流れをコードなしで理解できます。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://formflow.jp/glossary/webhook.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--g:#06C755;--gbg:#EFF9F4;--text:#111827;--body:#374151;--sub:#6B7280;--muted:#9CA3AF;--border:#E5E7EB;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP',sans-serif;color:var(--body);background:#FAFAF8;line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit}
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:#fff;border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-size:19px;font-weight:700;color:var(--text);}
+.nav-logo-flow{color:var(--g);}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{font-size:14px;font-weight:500;color:var(--sub);}
+.nav-cta{padding:9px 20px;border-radius:99px;font-size:13px;font-weight:600;background:var(--g);color:#fff;margin-left:4px;}
+.container{max-width:720px;margin:0 auto;padding:0 24px;}
+.breadcrumb{max-width:720px;margin:0 auto;padding:80px 24px 0;font-size:12px;color:var(--muted);}
+.breadcrumb a{color:var(--muted);}
+.breadcrumb span{margin:0 6px;}
+.article-header{padding:40px 0 48px;border-bottom:1px solid var(--border);}
+.term-badge{display:inline-block;background:var(--gbg);color:var(--g);font-size:11px;font-weight:700;letter-spacing:.1em;padding:4px 12px;border-radius:99px;margin-bottom:16px;}
+.article-header h1{font-size:clamp(24px,3.5vw,38px);font-weight:700;color:var(--text);line-height:1.3;margin-bottom:16px;}
+.article-header .lead{font-size:16px;color:var(--sub);line-height:1.9;}
+.article-body{padding:48px 0;}
+.article-body h2{font-size:22px;font-weight:700;color:var(--text);margin:48px 0 16px;padding-top:8px;border-top:2px solid var(--g);}
+.article-body h2:first-child{margin-top:0;}
+.article-body p{font-size:15px;color:var(--body);line-height:1.9;margin-bottom:16px;}
+.article-body ul{margin:0 0 20px 20px;}
+.article-body li{font-size:15px;color:var(--body);line-height:1.9;margin-bottom:6px;}
+.flow-diagram{display:flex;align-items:center;gap:0;margin:24px 0;flex-wrap:wrap;}
+.flow-box{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:14px 18px;font-size:14px;font-weight:600;color:var(--text);text-align:center;min-width:110px;}
+.flow-box.green{background:var(--gbg);border-color:rgba(6,199,85,.4);color:var(--g);}
+.flow-arrow{font-size:20px;color:var(--g);margin:0 8px;flex-shrink:0;}
+.flow-sub{font-size:11px;color:var(--sub);font-weight:400;margin-top:4px;}
+.inline-cta{margin:48px 0;padding:24px 28px;background:var(--gbg);border:1.5px solid rgba(6,199,85,.3);border-radius:14px;}
+.inline-cta p{font-size:14px;color:var(--body);font-weight:500;margin-bottom:14px;}
+.inline-cta a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:700;background:var(--g);color:#fff;}
+.related{padding:48px 0;border-top:1px solid var(--border);}
+.related h3{font-size:16px;font-weight:700;color:var(--text);margin-bottom:16px;}
+.related-links{display:flex;flex-direction:column;gap:8px;}
+.related-links a{font-size:14px;color:var(--g);}
+footer{background:#fff;border-top:1px solid var(--border);padding:40px 48px;margin-top:40px;}
+.footer-inner{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.footer-logo{font-size:17px;font-weight:700;color:var(--text);}
+.footer-logo span{color:var(--g);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:12px;color:var(--sub);}
+.footer-copy{font-size:12px;color:var(--muted);}
+@media(max-width:640px){.nav-inner{padding:0 20px;}.nav-links{display:none;}.breadcrumb,.container{padding-left:20px;padding-right:20px;}.flow-diagram{gap:4px;}.flow-box{min-width:80px;padding:10px 12px;font-size:12px;}footer{padding:32px 20px;}.footer-inner{flex-direction:column;text-align:center;}}
+</style>
+<script>if(location.hostname.includes('github.io')){var m=document.createElement('meta');m.name='robots';m.content='noindex';document.head.appendChild(m);}</script>
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Form <span class="nav-logo-flow">Flow</span></a>
+    <div class="nav-links">
+      <a href="../cases.html">構築例</a>
+      <a href="../demo.html">デモ体験</a>
+      <a href="../service.html#pricing">料金</a>
+      <a href="../column.html">コラム</a>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="nav-cta">無料相談</a>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="../index.html">Form Flow</a><span>›</span>
+  <a href="./index.html">用語解説</a><span>›</span>
+  Webhookとは
+</div>
+
+<div class="container">
+  <header class="article-header">
+    <div class="term-badge">WEBHOOK</div>
+    <h1>LINE×GASのWebhookとは</h1>
+    <p class="lead">「何か起きたとき、外部システムに自動で通知する」仕組みです。LINEではユーザーがメッセージを送ったタイミングでGASへ通知が飛び、GASが自動で処理・返信を行います。</p>
+  </header>
+
+  <article class="article-body">
+
+    <h2>流れをシンプルに理解する</h2>
+    <p>難しく聞こえますが、動きはシンプルです。</p>
+    <div class="flow-diagram">
+      <div class="flow-box">ユーザーが<br>LINEに送信<div class="flow-sub">「予約」など</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box green">LINE が<br>GASに通知<div class="flow-sub">Webhook</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">GASが<br>処理・返信<div class="flow-sub">自動返信など</div></div>
+    </div>
+    <p>LINEは「メッセージが届いた」という事実をGASに伝えるだけです。GASはその通知を受け取って「何をするか」を判断し、自動返信・スプレッドシート記録・カレンダー追加などを実行します。</p>
+
+    <h2>Webhookがないとどうなるか</h2>
+    <p>Webhookがなければ、GASはLINEに何か届いたことを知る方法がありません。代わりに「毎分チェックする」という方法もありますが、リアルタイム性がなく、GASの実行上限も消費します。</p>
+    <p><strong>Webhookを使うと、メッセージが届いた瞬間に処理が走ります</strong>。深夜や休日でも数秒以内に自動返信が届く、という体験はWebhookで実現しています。</p>
+
+    <div class="inline-cta">
+      <p>Webhook設定・GAS連携の構築はForm Flowにお任せください。技術的な部分はすべて代行します。</p>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener">LINEで無料相談する →</a>
+    </div>
+
+    <h2>設定に必要なもの</h2>
+    <ul>
+      <li>LINE公式アカウント（Messaging API有効化）</li>
+      <li>GASのWebアプリURL（デプロイして発行する）</li>
+      <li>LINE DevelopersコンソールでWebhook URLを登録</li>
+    </ul>
+    <p>設定自体は難しくありませんが、GASのコードを書く必要があります。テンプレートを使えばゼロから書く必要はありません。</p>
+
+  </article>
+
+  <nav class="related">
+    <h3>関連コンテンツ</h3>
+    <div class="related-links">
+      <a href="../column/line-webhook-gas.html">→ Webhookとは何か——GASとの組み合わせをコードなしで理解する</a>
+      <a href="./gas.html">→ GASとは（用語解説）</a>
+      <a href="../tools/gas-template.html">→ GASテンプレートを無料配布中</a>
+    </div>
+  </nav>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Form <span>Flow</span></div>
+    <div class="footer-links">
+      <a href="../privacy.html">プライバシーポリシー</a>
+      <a href="../terms.html">利用規約</a>
+      <a href="../tokushoho.html">特定商取引法</a>
+    </div>
+    <div class="footer-copy">© 2026 Form Flow. All rights reserved.</div>
+  </div>
+</footer>
+<script>window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('sc',scrollY>60),{passive:true});</script>
+</body>
+</html>
