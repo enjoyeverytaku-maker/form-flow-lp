@@ -289,7 +289,15 @@
 
       <p>ポイントは「売り込みにならないこと」です。情報提供・気遣い・関係維持の文脈でメッセージを届けると、受け取り側の印象が良くなり、ブロック率が下がります。</p>
 
-      <h2>③ 休眠顧客の見極め方</h2>
+      
+<div style="background:#EFF9F4;border:1px solid #06C755;border-radius:10px;padding:20px 24px;margin:32px 0;display:flex;flex-wrap:wrap;align-items:center;gap:16px;">
+  <div style="flex:1;min-width:200px;">
+    <div style="font-size:13px;font-weight:700;color:#059942;margin-bottom:4px;">📌 設定が難しいと感じたら</div>
+    <div style="font-size:14px;color:#374151;line-height:1.6;">GAS連携・ステップ配信・リッチメニューまで、すべて代わりに設定します。</div>
+  </div>
+  <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" style="background:#06C755;color:#fff;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap;">無料で相談する →</a>
+</div>
+<h2>③ 休眠顧客の見極め方</h2>
 
       <p>来店後3ヶ月以上経過し、LINEの返信やクリックがない友だちは「休眠顧客」として扱います。これらのお客さまに対してはステップ配信とは別に、特別なアプローチが必要です。</p>
 
@@ -414,6 +422,35 @@
   document.getElementById('shareLine').addEventListener('click',()=>window.open('https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(SHARE_URL),'_blank'));
   document.getElementById('shareX').addEventListener('click',()=>window.open('https://x.com/intent/tweet?url='+encodeURIComponent(SHARE_URL)+'&text='+encodeURIComponent(SHARE_TITLE+' | Form Flow'),'_blank'));
   document.getElementById('shareCopy').addEventListener('click',async()=>{await navigator.clipboard.writeText(SHARE_URL);const b=document.getElementById('shareCopy');b.textContent='コピーしました!';b.classList.add('copied');setTimeout(()=>{b.textContent='URLコピー';b.classList.remove('copied');},2000);});
+</script>
+
+<style>
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e5e7eb;box-shadow:0 -4px 16px rgba(0,0,0,.08);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:999;transition:transform .3s;}
+.sticky-cta.hide{transform:translateY(100%);}
+.sticky-cta-text{font-size:13px;color:#374151;line-height:1.4;flex:1;}
+.sticky-cta-text strong{display:block;font-size:14px;color:#111;}
+.sticky-cta-btn{background:#06C755;color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:700;white-space:nowrap;cursor:pointer;text-decoration:none;}
+.sticky-cta-btn:hover{background:#059942;}
+.sticky-cta-close{background:none;border:none;color:#9ca3af;font-size:20px;cursor:pointer;padding:4px;line-height:1;flex-shrink:0;}
+@media(max-width:480px){.sticky-cta-text{display:none;}}
+</style>
+
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text">
+    <strong>自分で設定するのが不安な方へ</strong>
+    代わりに設定します。マニュアル付き・テスト済みで納品。
+  </div>
+  <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="sticky-cta-btn">LINEで無料相談</a>
+  <button class="sticky-cta-close" id="stickyClose" aria-label="閉じる">×</button>
+</div>
+<script>
+(()=>{
+  const bar=document.getElementById('stickyCta');
+  const cl=document.getElementById('stickyClose');
+  if(!bar)return;
+  if(sessionStorage.getItem('ctaClosed')){bar.classList.add('hide');return;}
+  cl.addEventListener('click',()=>{bar.classList.add('hide');sessionStorage.setItem('ctaClosed','1');});
+})();
 </script>
 </body>
 </html>
