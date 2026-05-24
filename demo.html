@@ -322,6 +322,82 @@ img{display:block;max-width:100%}
 }
 .demo-note a { color: var(--g); }
 
+/* 業種タグ */
+.demo-industry-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #EEF2FF;
+  color: #4338ca;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  width: fit-content;
+  letter-spacing: .03em;
+}
+
+/* 準備中デモグリッド */
+.demo-lineup-section {
+  background: var(--bg-white);
+  padding: 64px 0 80px;
+  border-top: 1px solid var(--border);
+}
+.demo-lineup-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+.demo-lineup-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 20px;
+  text-align: center;
+  background: var(--bg);
+  position: relative;
+  opacity: .7;
+}
+.demo-lineup-card.live {
+  border-color: var(--g);
+  background: var(--gbg);
+  opacity: 1;
+}
+.lineup-icon { font-size: 28px; margin-bottom: 10px; }
+.lineup-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.lineup-desc {
+  font-size: 11px;
+  color: var(--sub);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.lineup-status {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: .05em;
+}
+.lineup-status.live-badge {
+  background: var(--g);
+  color: #fff;
+}
+.lineup-status.soon-badge {
+  background: #f3f4f6;
+  color: #9ca3af;
+  border: 1px solid #e5e7eb;
+}
+@media (max-width: 768px) {
+  .demo-lineup-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* QR SIDE */
 .demo-qr-side {
   background: var(--bg-green);
@@ -661,6 +737,7 @@ footer {
           <span class="demo-badge-dot"></span>
           LIVE DEMO — 今すぐ体験できます
         </div>
+        <div class="demo-industry-tag">🏢 士業・コンサル向け</div>
         <h2>Form Flow デモアカウント</h2>
         <p>実際に構築したLINE公式アカウントをそのまま体験できます。友だち追加後すぐに自動メッセージが届き、リッチメニューの操作感・キーワード返信の精度をご確認いただけます。</p>
         <ul class="demo-features">
@@ -687,6 +764,44 @@ footer {
           LINEで直接追加する
         </a>
         <p class="qr-note">上のボタンまたはQRコードで<br>友だち追加後すぐに体験できます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- デモアカウント一覧 -->
+<section class="demo-lineup-section">
+  <div class="container">
+    <div style="text-align:center">
+      <div class="eyebrow-label">Demo Lineup</div>
+      <h2 class="section-heading">業種別デモアカウント</h2>
+      <span class="heading-accent"></span>
+      <p class="section-sub">業種に合わせた構成・文言・リッチメニューのデモを順次公開予定です。</p>
+    </div>
+    <div class="demo-lineup-grid">
+      <div class="demo-lineup-card live">
+        <div class="lineup-icon">🏢</div>
+        <div class="lineup-name">士業・コンサル</div>
+        <div class="lineup-desc">相談予約・料金案内・キーワード返信</div>
+        <span class="lineup-status live-badge">公開中</span>
+      </div>
+      <div class="demo-lineup-card">
+        <div class="lineup-icon">✂️</div>
+        <div class="lineup-name">美容室・サロン</div>
+        <div class="lineup-desc">予約受付・新規クーポン・再来店促進</div>
+        <span class="lineup-status soon-badge">準備中</span>
+      </div>
+      <div class="demo-lineup-card">
+        <div class="lineup-icon">🏠</div>
+        <div class="lineup-name">不動産</div>
+        <div class="lineup-desc">物件問い合わせ・内見予約・自動案内</div>
+        <span class="lineup-status soon-badge">準備中</span>
+      </div>
+      <div class="demo-lineup-card">
+        <div class="lineup-icon">🍽️</div>
+        <div class="lineup-name">飲食店</div>
+        <div class="lineup-desc">予約・クーポン配信・常連フォロー</div>
+        <span class="lineup-status soon-badge">準備中</span>
       </div>
     </div>
   </div>
