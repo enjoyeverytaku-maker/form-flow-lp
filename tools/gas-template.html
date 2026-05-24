@@ -69,6 +69,16 @@ footer{background:#fff;border-top:1px solid var(--border);padding:40px 48px;}
 .footer-copy{font-size:12px;color:var(--muted);}
 @media(max-width:768px){.template-card{grid-template-columns:1fr;}.template-action{align-items:flex-start;}.how-grid{grid-template-columns:1fr;}}
 @media(max-width:640px){.nav-inner,.container{padding:0 20px;}.nav-links{display:none;}.hamburger{display:flex;}.page-hero{padding:100px 24px 60px;}.templates-section{padding:56px 0 72px;}.cta-section{padding:72px 20px;}footer{padding:32px 20px;}.footer-inner{flex-direction:column;text-align:center;}}
+
+.nav-dd{position:relative;}
+.nav-dd-btn{background:none;border:none;cursor:pointer;font-size:14px;font-weight:500;color:var(--sub);display:flex;align-items:center;gap:4px;padding:0;font-family:inherit;transition:color .15s;}
+.nav-dd-btn:hover,.nav-dd.open .nav-dd-btn{color:var(--text);}
+.nav-dd-btn .arr{font-size:9px;transition:transform .2s;}
+.nav-dd.open .arr{transform:rotate(180deg);}
+.nav-dd-menu{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);background:#fff;border:1px solid var(--border);border-radius:10px;padding:6px;min-width:150px;box-shadow:0 8px 24px rgba(0,0,0,.1);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;}
+.nav-dd.open .nav-dd-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+.nav-dd-menu a{display:block;padding:8px 14px;font-size:13px;color:var(--sub);border-radius:6px;white-space:nowrap;transition:background .15s,color .15s;}
+.nav-dd-menu a:hover{background:#f3f4f6;color:var(--text);}
 </style>
 <script>if(location.hostname.includes('github.io')){var m=document.createElement('meta');m.name='robots';m.content='noindex';document.head.appendChild(m);}</script>
 </head>
@@ -224,6 +234,15 @@ footer{background:#fff;border-top:1px solid var(--border);padding:40px 48px;}
   const hbtn=document.getElementById('hbtn'),mm=document.getElementById('mmenu');
   if(hbtn){hbtn.addEventListener('click',()=>{hbtn.classList.toggle('open');mm.classList.toggle('open');});}
 })();
+
+  document.querySelectorAll('.nav-dd').forEach(dd=>{
+    dd.querySelector('.nav-dd-btn').addEventListener('click',e=>{
+      e.stopPropagation();
+      document.querySelectorAll('.nav-dd.open').forEach(o=>{if(o!==dd)o.classList.remove('open');});
+      dd.classList.toggle('open');
+    });
+  });
+  document.addEventListener('click',()=>document.querySelectorAll('.nav-dd.open').forEach(o=>o.classList.remove('open')));
 </script>
 </body>
 </html>
