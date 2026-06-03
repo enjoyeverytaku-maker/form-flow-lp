@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /index_v2.html
+Disallow: /index_preview.html
+Disallow: /logo_preview.html
+Disallow: /column/_snippet_inline_cta.html
 
 Sitemap: https://formflow.jp/sitemap.xml
