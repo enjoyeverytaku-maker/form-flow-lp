@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQF63CGRL"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NWQF63CGRL');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学習塾・スクールのLINE公式活用術——保護者連絡と生徒フォローを効率化する方法｜Form Flow</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="description" content="学習塾・スクールのLINE公式活用術。保護者への自動連絡・休講お知らせ・体験入塾の問い合わせ対応・入塾後フォローをGAS連携で効率化。Form Flowが¥49,800〜で代行します。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://formflow.jp/column/juku-school-line.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://formflow.jp/column/juku-school-line.html">
+  <meta property="og:title" content="学習塾・スクールのLINE公式活用術——保護者連絡と生徒フォローを効率化する方法">
+  <meta property="og:description" content="学習塾・スクールのLINE公式活用術。保護者連絡・休講お知らせ・体験問い合わせ・入塾後フォローをGAS連携で効率化。Form Flowが¥49,800〜で代行。">
+  <meta property="og:image" content="https://formflow.jp/ogp.png">
+  <meta property="og:site_name" content="Form Flow">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="学習塾・スクールのLINE公式活用術——保護者連絡と生徒フォローを効率化する方法">
+  <meta name="twitter:description" content="学習塾・スクールのLINE公式活用術。保護者連絡・休講お知らせ・体験問い合わせ・入塾後フォローをGAS連携で効率化。">
+  <meta name="twitter:image" content="https://formflow.jp/ogp.png">
+  <meta property="og:locale" content="ja_JP">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"学習塾・スクールのLINE公式活用術——保護者連絡と生徒フォローを効率化する方法","author":{"@type":"Organization","name":"Form Flow"},"publisher":{"@type":"Organization","name":"Form Flow","url":"https://formflow.jp/"},"datePublished":"2026-06-13","dateModified":"2026-06-13","mainEntityOfPage":{"@type":"WebPage","@id":"https://formflow.jp/column/juku-school-line.html"},"image":"https://formflow.jp/ogp.png","description":"学習塾・スクールのLINE公式活用術。保護者への自動連絡・休講お知らせ・体験入塾の問い合わせ対応・入塾後フォローをGAS連携で効率化。Form Flowが¥49,800〜で代行します。"}
+  </script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--g:#06C755;--gd:#059942;--gbg:#EFF9F4;--text:#111827;--body:#374151;--sub:#6B7280;--border:#E5E7EB;--shadow-sm:0 1px 3px rgba(0,0,0,.07),0 2px 8px rgba(0,0,0,.04);--radius:12px;}
+    html{scroll-behavior:smooth;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;color:var(--body);background-color:#FAFAF8;background-image:radial-gradient(rgba(0,0,0,.04) 1px,transparent 1px);background-size:22px 22px;line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;}
+    #nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:#fff;border-bottom:1px solid var(--border);transition:box-shadow .2s;}
+    #nav.sc{box-shadow:0 2px 16px rgba(0,0,0,.06);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1120px;margin:0 auto;padding:0 24px;}
+    .nav-logo{font-size:19px;font-weight:700;color:var(--text);}
+    .nav-back{font-size:14px;color:var(--sub);transition:color .15s;}
+    .nav-back:hover{color:var(--text);}
+    .article-hero{margin-top:64px;background:#fff;padding:60px 0 48px;text-align:center;border-bottom:1px solid var(--border);}
+    .article-hero-inner{max-width:760px;margin:0 auto;padding:0 24px;}
+    .cat-tag{display:inline-block;font-size:11px;font-weight:700;color:var(--g);background:var(--gbg);border:1px solid rgba(6,199,85,.2);border-radius:100px;padding:4px 12px;margin-bottom:16px;letter-spacing:.04em;}
+    .article-hero h1{font-size:28px;font-weight:800;color:var(--text);line-height:1.45;}
+    .article-date{font-size:13px;color:var(--sub);margin-top:10px;}
+    .article-wrap{max-width:1040px;margin:0 auto;padding:0 24px 80px;}
+    .article-grid{display:grid;grid-template-columns:1fr 300px;gap:40px;padding-top:48px;}
+    .article-body{background:#fff;border-radius:12px;border:1px solid var(--border);padding:40px;box-shadow:var(--shadow-sm);}
+    .article-body h2{font-size:20px;font-weight:700;color:var(--text);margin:40px 0 16px;border-left:3px solid var(--g);padding-left:12px;}
+    .article-body h2:first-child{margin-top:0;}
+    .article-body h3{font-size:17px;font-weight:700;color:var(--text);margin:28px 0 12px;}
+    .article-body p{margin-bottom:16px;line-height:1.85;color:var(--body);}
+    .article-body ul,.article-body ol{margin:12px 0 20px 20px;}
+    .article-body li{margin-bottom:8px;line-height:1.7;}
+    .article-body table{width:100%;border-collapse:collapse;margin:20px 0;}
+    .article-body th{background:var(--gbg);padding:10px 14px;font-size:14px;border:1px solid var(--border);font-weight:600;text-align:left;color:var(--text);}
+    .article-body td{padding:10px 14px;font-size:14px;border:1px solid var(--border);color:var(--body);vertical-align:top;}
+    .article-body strong{color:var(--text);font-weight:700;}
+    .article-body blockquote{border-left:3px solid var(--g);padding:8px 0 8px 16px;margin:20px 0;color:var(--sub);font-size:15px;line-height:1.8;}
+    .step-box{background:var(--gbg);border:1px solid rgba(6,199,85,.2);border-radius:12px;padding:20px 24px;margin:20px 0;}
+    .step-box strong{color:var(--text);}
+    .point-box{background:var(--gbg);border:1px solid rgba(6,199,85,.2);border-radius:12px;padding:16px 20px;margin:20px 0;}
+    .point-box p{color:var(--body);margin-bottom:0;}
+    aside{position:sticky;top:80px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-sm);height:fit-content;}
+    .aside-logo{font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px;}
+    .aside-logo span{color:var(--g);}
+    .aside-desc{font-size:13px;color:var(--sub);line-height:1.7;margin-bottom:18px;}
+    .aside-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px 16px;border-radius:99px;font-size:14px;font-weight:600;cursor:pointer;border:none;text-align:center;transition:background .2s,transform .15s;margin-bottom:10px;text-decoration:none;}
+    .aside-btn:hover{transform:translateY(-1px);}
+    .aside-btn-primary{background:var(--g);color:#fff;box-shadow:0 4px 14px rgba(6,199,85,.25);}
+    .aside-btn-primary:hover{background:var(--gd);}
+    .aside-btn-outline{background:transparent;color:var(--text);border:2px solid var(--border)!important;}
+    footer{background:#fff;border-top:1px solid var(--border);text-align:center;padding:24px;font-size:13px;color:var(--sub);}
+    .footer-logo{font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;}
+    .footer-logo span{color:var(--g);}
+    @media(max-width:768px){.article-hero h1{font-size:22px;}.article-grid{grid-template-columns:1fr;}aside{position:static;}.article-body{padding:24px 20px;}}
+    .share-section{margin-top:48px;padding:28px 32px;background:var(--gbg);border:1px solid rgba(6,199,85,.2);border-radius:12px;text-align:center;}
+    .share-label{font-size:12px;font-weight:700;color:var(--sub);letter-spacing:.08em;margin-bottom:20px;}
+    .like-area{margin-bottom:20px;}
+    .art-like-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);color:var(--sub);font-size:13px;font-weight:700;padding:10px 22px;border-radius:20px;cursor:pointer;transition:all .2s;font-family:inherit;}
+    .art-like-btn:hover{border-color:#fca5a5;color:#ef4444;background:#fef2f2;}
+    .art-like-btn.liked{border-color:#ef4444;color:#ef4444;background:#fef2f2;}
+    .art-like-count{font-weight:800;}
+    .share-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:4px;}
+    .sbtn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:opacity .2s,transform .15s;text-decoration:none;font-family:inherit;}
+    .sbtn:hover{opacity:.85;transform:translateY(-1px);}
+    .sbtn-line{background:var(--g);color:#fff;}
+    .sbtn-x{background:#000;color:#fff;}
+    .sbtn-copy{background:#fff;color:var(--text);border:1px solid var(--border)!important;}
+    .sbtn-copy.copied{background:var(--gbg);color:var(--g);border-color:rgba(6,199,85,.3)!important;}
+    .nd{transform-box:fill-box;transform-origin:center;}
+    .nd1{opacity:.20;}.nd2{opacity:.38;}.nd3{opacity:.58;}.nd4{opacity:.82;}.nd5{opacity:1;}.nd6{opacity:.60;}.nd7{opacity:.38;}.nd8{opacity:.20;}
+    @keyframes ndIn{from{opacity:0;transform:scale(0);}to{transform:scale(1);}}
+    .nd{animation:ndIn .4s cubic-bezier(.34,1.56,.64,1) both;}
+    .nd1{animation-delay:0s;}.nd2{animation-delay:.12s;}.nd3{animation-delay:.24s;}.nd4{animation-delay:.36s;}.nd5{animation-delay:.48s;}.nd6{animation-delay:.60s;}.nd7{animation-delay:.72s;}.nd8{animation-delay:.84s;}
+    @keyframes nlIn{from{opacity:0;transform:translateX(-6px);}to{opacity:1;transform:translateX(0);}}
+    .nav-logo-text{animation:nlIn .45s ease-out both;animation-delay:1.0s;}
+    .inline-cta{margin:36px 0;padding:20px 24px;background:#EFF9F4;border:1.5px solid rgba(6,199,85,.3);border-radius:14px;}
+    .inline-cta-lead{font-size:14px;color:#374151;margin-bottom:14px;font-weight:500;}
+    .inline-cta-buttons{display:flex;gap:10px;flex-wrap:wrap;}
+    .inline-cta-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;transition:background .2s,box-shadow .2s;}
+    .inline-cta-btn--primary{background:#06C755;color:#fff;}
+    .inline-cta-btn--primary:hover{background:#059942;box-shadow:0 4px 12px rgba(6,199,85,.35);}
+    .inline-cta-btn--outline{background:#fff;color:#06C755;border:1.5px solid #06C755;}
+    .inline-cta-btn--outline:hover{background:#EFF9F4;}
+    @media(max-width:480px){.inline-cta-buttons{flex-direction:column;}.inline-cta-btn{justify-content:center;}}
+    .related-articles{margin:40px auto;max-width:720px;padding:28px 24px;background:#f8fafb;border-radius:12px;border:1px solid #e5e7eb;}
+    .related-articles h2{font-size:15px;font-weight:700;color:#374151;margin-bottom:16px;}
+    .related-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #e5e7eb;text-decoration:none;color:#111;font-size:14px;transition:color .15s;}
+    .related-item:last-child{border-bottom:none;}
+    .related-item:hover{color:#06C755;}
+    .related-arrow{color:#06C755;font-size:13px;flex-shrink:0;}
+    .article-related{margin:48px 0 0;padding:24px 28px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;}
+    .article-related h3{font-size:13px;font-weight:700;color:#6B7280;letter-spacing:.08em;margin-bottom:12px;}
+    .article-related ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+    .article-related li a{font-size:14px;color:#06C755;display:inline-flex;align-items:center;gap:5px;}
+    .article-related li a::before{content:"→";flex-shrink:0;}
+    .sticky-cta{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e5e7eb;box-shadow:0 -4px 16px rgba(0,0,0,.08);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:999;transition:transform .3s;}
+    .sticky-cta.hide{transform:translateY(100%);}
+    .sticky-cta-text{font-size:13px;color:#374151;line-height:1.4;flex:1;}
+    .sticky-cta-text strong{display:block;font-size:14px;color:#111;}
+    .sticky-cta-btn{background:#06C755;color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:700;white-space:nowrap;cursor:pointer;text-decoration:none;}
+    .sticky-cta-close{background:none;border:none;color:#9ca3af;font-size:20px;cursor:pointer;padding:4px;line-height:1;flex-shrink:0;}
+    @media(max-width:480px){.sticky-cta-text{display:none;}}
+  </style>
+  <script>if(location.hostname.includes('github.io')){var m=document.createElement('meta');m.name='robots';m.content='noindex';document.head.appendChild(m);}</script>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo" style="text-decoration:none;color:inherit;"><svg width="44" height="22" viewBox="0 0 56 28" fill="none" xmlns="http://www.w3.org/2000/svg"><circle class="nd nd1" cx="4" cy="22" r="1.5" fill="#06C755"/><circle class="nd nd2" cx="11" cy="16" r="2" fill="#06C755"/><circle class="nd nd3" cx="18" cy="11" r="2.6" fill="#06C755"/><circle class="nd nd4" cx="26" cy="8" r="3.4" fill="#06C755"/><circle class="nd nd5" cx="34" cy="8" r="3.4" fill="#06C755"/><circle class="nd nd6" cx="42" cy="11" r="2.6" fill="#06C755"/><circle class="nd nd7" cx="49" cy="16" r="2" fill="#06C755"/><circle class="nd nd8" cx="54" cy="22" r="1.5" fill="#06C755"/></svg><span class="nav-logo-text">Form <span style="color:var(--g)">Flow</span></span></a>
+    <a href="../column.html" class="nav-back">← コラム一覧へ</a>
+  </div>
+</nav>
+
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <div><span class="cat-tag">学習塾・スクール</span> <span class="cat-tag">保護者連絡</span> <span class="cat-tag">入塾促進</span></div>
+    <h1>学習塾・スクールのLINE公式活用術<br>——保護者連絡と生徒フォローを効率化する方法</h1>
+    <p class="article-date">2026年6月13日</p>
+  </div>
+</section>
+
+<div class="article-wrap">
+  <div class="article-grid">
+    <main class="article-body">
+
+      <p>学習塾やスクールの運営において、「保護者への連絡業務」は意外と時間を取られる作業です。休講のお知らせ、テスト前の案内、体験授業の問い合わせ対応——これらをLINE公式アカウントで自動化することで、スタッフが本来集中すべき授業の質向上やフォローアップに時間を使えるようになります。</p>
+
+      <p>また、塾の入塾を検討している保護者へのフォロー（体験申込後のステップ配信）を自動化することで、体験授業からの入塾転換率を高めることもできます。</p>
+
+      <h2>① 休講・変更のお知らせを一斉配信で即座に届ける</h2>
+
+      <p>講師の急病や天候による休講は、電話でひとりひとりに連絡するのは時間もかかりミスも起こりやすいです。LINE公式の一斉配信なら、ボタン1つで全保護者に同時に届きます。</p>
+
+      <div class="step-box">
+        <strong>緊急連絡の配信例</strong>
+        <ul style="margin-top:12px;">
+          <li><strong>休講の場合</strong>：「本日〇〇コース（17:00〜）は講師体調不良のため休講とさせていただきます。振替授業は〇月〇日を予定しています。ご迷惑をおかけして申し訳ありません」</li>
+          <li><strong>台風・大雪の場合</strong>：「本日は荒天のため、全クラスを休講とします。安全を最優先にお過ごしください」</li>
+          <li><strong>日程変更の場合</strong>：「〇日の授業を〇日に変更します。詳細はこちらのフォームからご確認ください」</li>
+        </ul>
+      </div>
+
+      <p>セグメント配信（特定のコースや学年の保護者だけに送る）を活用すれば、関係のない保護者への誤配信も防げます。</p>
+
+      <h2>② 体験申込後のステップ配信で入塾転換率を上げる</h2>
+
+      <p>体験授業に来てくれた方が入塾を決めるかどうかは、体験後のフォローが大きく左右します。「よかったけど、入塾するかは少し考えよう」という状態が続くと、そのまま別の塾を選んでしまうことも少なくありません。</p>
+
+      <div class="point-box">
+        <p>体験授業後にLINEで自動フォローするだけで、問い合わせのタイミングを逃さずに入塾を後押しできます。</p>
+      </div>
+
+      <div class="step-box">
+        <strong>体験後ステップ配信の設計例</strong>
+        <ul style="margin-top:12px;">
+          <li><strong>体験当日の夜</strong>：「本日はお越しいただきありがとうございました。授業の感想はいかがでしたか？ご質問があればいつでもどうぞ」</li>
+          <li><strong>3日後</strong>：「入塾をご検討の方へ。よくある質問をまとめました」＋FAQ集へのリンク</li>
+          <li><strong>1週間後</strong>：「来月の入塾受付は〇日までです。席に限りがありますのでお早めにご検討ください」</li>
+          <li><strong>2週間後（未入塾の場合）</strong>：「気になることがあればいつでもご相談ください。無料の追加体験も受け付けています」</li>
+        </ul>
+      </div>
+
+      <div style="background:#EFF9F4;border:1px solid #06C755;border-radius:10px;padding:20px 24px;margin:32px 0;display:flex;flex-wrap:wrap;align-items:center;gap:16px;">
+        <div style="flex:1;min-width:200px;">
+          <div style="font-size:13px;font-weight:700;color:#059942;margin-bottom:4px;">📌 設定が難しいと感じたら</div>
+          <div style="font-size:14px;color:#374151;line-height:1.6;">GAS連携・ステップ配信・リッチメニューまで、すべて代わりに設定します。</div>
+        </div>
+        <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" style="background:#06C755;color:#fff;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap;">無料で相談する →</a>
+      </div>
+
+      <h2>③ テスト前・模試前の案内を自動配信する</h2>
+
+      <p>定期テストや模試のスケジュールに合わせて、事前に勉強方法の案内や直前対策授業の案内を自動配信できます。保護者は「塾が積極的に情報を届けてくれている」という安心感を得られ、継続率の向上にもつながります。</p>
+
+      <ul>
+        <li>テスト2週間前：「〇〇中学校の中間テストまで2週間です。重点課題を配布しました」</li>
+        <li>テスト1週間前：「直前対策授業（土曜）のご案内。お申し込みはこちら」</li>
+        <li>テスト後：「お疲れ様でした。テスト結果の振り返り面談を受け付けています」</li>
+      </ul>
+
+      <h2>④ リッチメニューで保護者の動線を整理する</h2>
+
+      <p>LINE公式のリッチメニューに「休講確認」「授業日程」「費用・プラン」「体験申込」などを設置することで、保護者が知りたい情報にすぐアクセスできます。電話問い合わせが減り、スタッフの対応工数を削減できます。</p>
+
+      <blockquote>「保護者からの電話が半分以下になった。LINEで確認できるようになってからは、問い合わせ内容も具体的になって対応しやすくなった」という声は、LINE公式を導入した塾から多く聞かれます。</blockquote>
+
+      <table>
+        <thead>
+          <tr><th>ボタン</th><th>リンク先・用途</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>体験授業を申込む</td><td>Googleフォームで希望日時・学年を受付</td></tr>
+          <tr><td>授業スケジュール</td><td>月ごとの授業カレンダー（GoogleカレンダーURL）</td></tr>
+          <tr><td>費用・コース案内</td><td>料金・コース紹介ページへのリンク</td></tr>
+          <tr><td>よくある質問</td><td>FAQ集へのリンク</td></tr>
+          <tr><td>欠席・遅刻連絡</td><td>Googleフォームで連絡受付</td></tr>
+          <tr><td>お問い合わせ</td><td>LINEトークへ誘導</td></tr>
+        </tbody>
+      </table>
+
+      <div class="inline-cta">
+        <p class="inline-cta-lead">「自分で設定するのが難しい」と感じたら、代わりに構築します</p>
+        <div class="inline-cta-buttons">
+          <a href="/demo.html" class="inline-cta-btn inline-cta-btn--outline">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            デモを体験する
+          </a>
+          <a href="/service.html#pricing" class="inline-cta-btn inline-cta-btn--primary">
+            料金・プランを確認する →
+          </a>
+        </div>
+      </div>
+
+      <h2>まとめ——まず一斉配信とリッチメニューから始める</h2>
+
+      <p>学習塾・スクールでLINEを活用する順番は次のとおりです。</p>
+
+      <ol>
+        <li>友だち追加のQRコードを教室・入塾パンフレット・ホームページに設置する</li>
+        <li>リッチメニューで体験申込・スケジュール確認への導線を整備する</li>
+        <li>よくある問い合わせへの自動返信を設定する</li>
+        <li>体験後のステップ配信で入塾フォローを自動化する</li>
+        <li>テスト前の一斉配信・休講連絡を仕組み化する</li>
+      </ol>
+
+      <p>電話と紙でやっていた連絡業務がLINEに移行するだけで、スタッフの時間が大幅に解放されます。その分を授業の質向上や生徒・保護者との関係構築に使える点が、LINE導入の最大のメリットです。</p>
+
+      <div class="share-section">
+        <p class="share-label">この記事をシェアする</p>
+        <div class="like-area">
+          <button class="art-like-btn" id="likeBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            いいね <span class="art-like-count" id="likeCount">–</span>
+          </button>
+        </div>
+        <div class="share-row">
+          <button class="sbtn sbtn-line" id="shareLine"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>LINEでシェア</button>
+          <button class="sbtn sbtn-x" id="shareX"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>Xでシェア</button>
+          <button class="sbtn sbtn-copy" id="shareCopy"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>URLコピー</button>
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#EFF9F4 0%,#f0fdf4 100%);border:2px solid #06C755;border-radius:12px;padding:24px;margin:40px auto;max-width:720px;text-align:center;">
+        <div style="font-size:13px;color:#059942;font-weight:700;margin-bottom:6px;">📋 Form Flow の料金プラン</div>
+        <div style="font-size:16px;font-weight:700;color:#111;margin-bottom:8px;">Super Light ¥49,800〜｜マニュアル付き・テスト済みで納品</div>
+        <div style="font-size:13px;color:#374151;margin-bottom:16px;">初期費用のみ。月額ゼロのGAS構成で、一斉配信・ステップ配信・自動返信をまとめて構築します。</div>
+        <a href="../service.html" style="display:inline-block;background:#06C755;color:#fff;border-radius:8px;padding:12px 28px;font-size:15px;font-weight:700;text-decoration:none;">料金・プランを確認する →</a>
+      </div>
+
+      <section class="related-articles">
+        <h2>関連記事</h2>
+        <a href="line-step-delivery-scenario.html" class="related-item"><span class="related-arrow">→</span><span>ステップ配信のシナリオ設計ガイド</span></a>
+        <a href="line-ichiji-haishin-kouka.html" class="related-item"><span class="related-arrow">→</span><span>LINE一斉配信の効果を高める5つのコツ</span></a>
+        <a href="line-inquiry-automation.html" class="related-item"><span class="related-arrow">→</span><span>LINE問い合わせ対応の自動化ガイド</span></a>
+      </section>
+
+      <div class="article-related">
+        <h3>関連ページ</h3>
+        <ul>
+          <li><a href="/column/richmenu-design.html">リッチメニューのデザインと設定方法</a></li>
+          <li><a href="/column/line-gas-automation-guide.html">LINE×GAS自動化の完全ガイド</a></li>
+        </ul>
+      </div>
+
+    </main>
+
+    <aside>
+      <div class="aside-logo">Form <span>Flow</span></div>
+      <p class="aside-desc">LINE公式アカウントの構築代行サービスです。GAS連携・ステップ配信・リッチメニュー設定まで一括対応。</p>
+      <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="aside-btn aside-btn-primary">LINEで無料相談</a>
+      <a href="../index.html#contact" class="aside-btn aside-btn-outline">フォームで問い合わせ</a>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Form <span>Flow</span></div>
+  <p>© 2026 Form Flow. All rights reserved.</p>
+</footer>
+
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text">
+    <strong>自分で設定するのが不安な方へ</strong>
+    代わりに設定します。マニュアル付き・テスト済みで納品。
+  </div>
+  <a href="https://lin.ee/SD2HKgtW" target="_blank" rel="noopener" class="sticky-cta-btn">LINEで無料相談</a>
+  <button class="sticky-cta-close" id="stickyClose" aria-label="閉じる">×</button>
+</div>
+
+<script>
+(()=>{
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{nav.classList.toggle('sc',window.scrollY>60);},{passive:true});
+  const sc=document.getElementById('stickyCta');
+  const cl=document.getElementById('stickyClose');
+  if(cl)cl.addEventListener('click',()=>sc.classList.add('hide'));
+  window.addEventListener('scroll',()=>{sc.classList.toggle('hide',window.scrollY<300);},{passive:true});
+})();
+const SLUG='juku-school-line';
+const SHARE_TITLE='学習塾・スクールのLINE公式活用術——保護者連絡と生徒フォローを効率化する方法';
+const SHARE_URL='https://formflow.jp/column/juku-school-line.html';
+const SB_URL='https://dxerzoqxaupzclohdiis.supabase.co';
+const SB_KEY='sb_publishable_5iTgXF1XKOVIpLoAR0MYlQ_woZTy6V1';
+const likeBtn=document.getElementById('likeBtn');
+const likeCount=document.getElementById('likeCount');
+if(localStorage.getItem('liked_'+SLUG)==='1')likeBtn.classList.add('liked');
+fetch(SB_URL+'/rest/v1/article_likes?slug=eq.'+SLUG+'&select=count',{headers:{apikey:SB_KEY,Authorization:'Bearer '+SB_KEY}})
+  .then(r=>r.json()).then(d=>{likeCount.textContent=d[0]?.count??0;}).catch(()=>{likeCount.textContent='–';});
+likeBtn.addEventListener('click',async()=>{
+  if(likeBtn.classList.contains('liked'))return;
+  likeBtn.classList.add('liked');
+  localStorage.setItem('liked_'+SLUG,'1');
+  try{const r=await fetch(SB_URL+'/rest/v1/rpc/increment_likes',{method:'POST',headers:{apikey:SB_KEY,Authorization:'Bearer '+SB_KEY,'Content-Type':'application/json'},body:JSON.stringify({article_slug:SLUG})});const n=await r.json();if(typeof n==='number')likeCount.textContent=n;}catch(_){}
+});
+document.getElementById('shareLine').addEventListener('click',()=>window.open('https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(SHARE_URL),'_blank'));
+document.getElementById('shareX').addEventListener('click',()=>window.open('https://x.com/intent/tweet?url='+encodeURIComponent(SHARE_URL)+'&text='+encodeURIComponent(SHARE_TITLE+' | Form Flow'),'_blank'));
+document.getElementById('shareCopy').addEventListener('click',async()=>{await navigator.clipboard.writeText(SHARE_URL);const b=document.getElementById('shareCopy');b.textContent='コピーしました!';b.classList.add('copied');setTimeout(()=>{b.textContent='URLコピー';b.classList.remove('copied');},2000);});
+</script>
+</body>
+</html>
